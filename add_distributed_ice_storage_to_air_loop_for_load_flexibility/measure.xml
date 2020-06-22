@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>add_distributed_ice_storage_to_air_loop_for_load_flexibility</name>
+  <uid>2aa8c128-53b9-49fd-9aaf-9253a1f05936</uid>
+  <version_id>87ab34cc-300f-4570-a208-0010aac8c693</version_id>
+  <version_modified>20200617T044818Z</version_modified>
+  <xml_checksum>2617824F</xml_checksum>
+  <class_name>AddDistributedIceStorageToAirLoopForLoadFlexibility</class_name>
+  <display_name>Add Distributed Ice Storage to Air Loop for Load Flexibility</display_name>
+  <description>This measure removes the cooling coils in the model and replaces them with packaged air conditioning units with integrated ice storage.</description>
+  <modeler_description>This measure applies to packaged single zone air conditioning systems or packaged variable air volume systems that were originally modeled with CoilSystem:Cooling:DX or AirLoopHVAC:UnitarySystem container objects. It adds a Coil:Cooling:DX:SingleSpeed:ThermalStorage coil object to each user-selected thermal zone and deletes the existing cooling coil.
+
+    Users inputs are accepted for cooling coil size, ice storage size, system control method, modes of operation, and operating schedule.
+
+    The measure requires schedule objects and performance curves from an included resource file TESCurves.idf. Output variables of typical interest are included as well.</modeler_description>
+  <arguments>
+    <argument>
+      <name>delimiter</name>
+      <display_name>Select Coils to Replace:</display_name>
+      <type>String</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+      <default_value>-----------------------------------------------------------------</default_value>
+    </argument>
+    <argument>
+      <name>ice_cap</name>
+      <display_name>Input the ice storage capacity [ton-hours]</display_name>
+      <description>To specify by coil, in alphabetical order, enter values for each separated by comma.</description>
+      <type>String</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>AutoSize</default_value>
+    </argument>
+    <argument>
+      <name>size_mult</name>
+      <display_name>Enter a sizing multiplier to manually adjust the autosize results for ice tank capacities.</display_name>
+      <type>String</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1.0</default_value>
+    </argument>
+    <argument>
+      <name>ctl</name>
+      <display_name>Select ice storage control method</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>EMSControlled</default_value>
+      <choices>
+        <choice>
+          <value>ScheduledModes</value>
+          <display_name>ScheduledModes</display_name>
+        </choice>
+        <choice>
+          <value>EMSControlled</value>
+          <display_name>EMSControlled</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>sched</name>
+      <display_name>Select the operating mode schedule for the new TES coils</display_name>
+      <description>Use the fields below to set a simple daily ice charge/discharge schedule. Or, select from pre-defined options.</description>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Simple User Sched</default_value>
+      <choices>
+        <choice>
+          <value>Simple User Sched</value>
+          <display_name>Simple User Sched</display_name>
+        </choice>
+        <choice>
+          <value>TES Sched 1: TES Off</value>
+          <display_name>TES Sched 1: TES Off</display_name>
+        </choice>
+        <choice>
+          <value>TES Sched 2: 1-5 Peak</value>
+          <display_name>TES Sched 2: 1-5 Peak</display_name>
+        </choice>
+        <choice>
+          <value>TES Sched 3: 3-8 Peak</value>
+          <display_name>TES Sched 3: 3-8 Peak</display_name>
+        </choice>
+        <choice>
+          <value>TES Sched 4: GSS-T</value>
+          <display_name>TES Sched 4: GSS-T</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>wknd</name>
+      <display_name>Run TES on the weekends?</display_name>
+      <description>Select if building is occupied on weekends.</description>
+      <type>Boolean</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>season</name>
+      <display_name>Select season during which the ice cooling may be used:</display_name>
+      <description>Use MM/DD-MM/DD format</description>
+      <type>String</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+      <default_value>01/01-12/31</default_value>
+    </argument>
+    <argument>
+      <name>charge_start</name>
+      <display_name>Input start time for ice charge (hr:min)</display_name>
+      <description>Use 24 hour format</description>
+      <type>String</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+      <default_value>22:00</default_value>
+    </argument>
+    <argument>
+      <name>charge_end</name>
+      <display_name>Input end time for ice charge (hr:min)</display_name>
+      <description>Use 24 hour format</description>
+      <type>String</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+      <default_value>07:00</default_value>
+    </argument>
+    <argument>
+      <name>discharge_start</name>
+      <display_name>Input start time for ice discharge (hr:min)</display_name>
+      <description>Use 24hour format.
+If 'AutoSize' is selected for ice capacity, these inputs set an ice capacity sizing factor. Otherwise, these only affect discharging schedule.</description>
+      <type>String</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+      <default_value>12:00</default_value>
+    </argument>
+    <argument>
+      <name>discharge_end</name>
+      <display_name>Input target end time for ice discharge (hr:min)</display_name>
+      <description>Use 24 hour format</description>
+      <type>String</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+      <default_value>18:00</default_value>
+    </argument>
+  </arguments>
+  <outputs />
+  <provenances />
+  <tags>
+    <tag>HVAC.Cooling</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Model Articulation</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Type</name>
+      <value>EnergyPlusMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Model Articulation</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>New Construction EE</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Retrofit EE</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>LICENSE.md</filename>
+      <filetype>md</filetype>
+      <usage_type>license</usage_type>
+      <checksum>59B484B4</checksum>
+    </file>
+    <file>
+      <filename>TESCurves.idf</filename>
+      <filetype>idf</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>E919566C</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>9B589E2A</checksum>
+    </file>
+    <file>
+      <filename>MeasureTest.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>DC0DCC4B</checksum>
+    </file>
+    <file>
+      <filename>add_distributed_ice_storage_to_air_loop_for_load_flexibility_test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>10E811F9</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>3.0.0</identifier>
+        <min_compatible>3.0.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>67A61AE6</checksum>
+    </file>
+  </files>
+</measure>
