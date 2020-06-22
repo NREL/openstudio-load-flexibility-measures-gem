@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <measure>
   <schema_version>3.0</schema_version>
-  <name>flexible_domestic_hot_water</name>
+  <name>add_central_hpwh_for_load_flexibility</name>
   <uid>518cde6f-1806-4b9a-bee9-ccaac49c7a53</uid>
-  <version_id>4a487206-22ea-442f-b97b-5135ddd0f2fe</version_id>
-  <version_modified>20200619T183649Z</version_modified>
+  <version_id>23e55d63-c6c9-45cc-a738-53f15dfeefe6</version_id>
+  <version_modified>20200622T162707Z</version_modified>
   <xml_checksum>A374667A</xml_checksum>
-  <class_name>FlexibleDomesticHotWater</class_name>
+  <class_name>AddCentralHPWHForLoadFlexibility</class_name>
   <display_name>flexible_domestic_hot_water</display_name>
   <description>This measure adds or replaces existing domestic hot water heater with air source heat pump system and allows for the addition of multiple daily flexible control time windows. The heater/tank system may charge at maximum capacity up to an elevated temperature, or float without any heat addition for a specified timeframe down to a minimum tank temperature.</description>
   <modeler_description>This measure allows selection between three heat pump water heater modeling approaches in EnergyPlus.The user may select between the pumped-condenser or wrapped-condenser objects. They may also elect to use a simplified calculation which does not use the heat pump objects, but instead used an electric resistance heater and approximates the equivalent electrical input that would be required from a heat pump. This expedites simulation at the expense of accuracy. 
@@ -366,16 +366,16 @@ The flexibility of the system is based on user-defined temperatures and times, w
       <checksum>EB637B7E</checksum>
     </file>
     <file>
-      <filename>Flexible Domestic Hot Water Implementation Guide.docx</filename>
-      <filetype>docx</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>D43D1BE3</checksum>
-    </file>
-    <file>
       <filename>Flexible Domestic Hot Water Implementation Guide.pdf</filename>
       <filetype>pdf</filetype>
       <usage_type>doc</usage_type>
       <checksum>E8326C12</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>E4E50206</checksum>
     </file>
     <file>
       <version>
@@ -386,19 +386,13 @@ The flexibility of the system is based on user-defined temperatures and times, w
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>6121FFF5</checksum>
+      <checksum>BAFDE3DB</checksum>
     </file>
     <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>E4E50206</checksum>
-    </file>
-    <file>
-      <filename>flexible_domestic_hot_water_test.rb</filename>
+      <filename>add_central_hpwh_for_load_flexibility.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>6225CE7C</checksum>
+      <checksum>28D6FFC9</checksum>
     </file>
   </files>
 </measure>

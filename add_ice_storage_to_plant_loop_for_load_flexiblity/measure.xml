@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <measure>
   <schema_version>3.0</schema_version>
-  <name>add_ice_storage_tank</name>
+  <name>add_ice_storage_to_plant_loop_for_load_flexibility</name>
   <uid>48f37812-0cb6-4770-b695-beb8d8a5660d</uid>
-  <version_id>74272188-501e-46cb-81bf-c589cfc87312</version_id>
-  <version_modified>20200617T191334Z</version_modified>
+  <version_id>7676338d-d380-415d-9951-949c6ef8b061</version_id>
+  <version_modified>20200622T162708Z</version_modified>
   <xml_checksum>6394841D</xml_checksum>
-  <class_name>AddIceStorageTank</class_name>
+  <class_name>AddIceStorageToPlantLoopForLoadFlexibility</class_name>
   <display_name>Add Ice Storage Tank</display_name>
   <description>This measure adds an ice storage tank to a chilled water loop for the purpose of thermal energy storage.</description>
   <modeler_description>This measure adds the necessary components and performs required model articulations to add an ice thermal storage tank (ITS) to an existing chilled water loop. Special consideration is given to implementing configuration and control options. Refer to the ASHRAE CTES Design Guide or manufacturer applications guides for detailed implementation info. A user guide document is included in the docs folder of this measure to help translate design objectives into measure argument input values.</modeler_description>
@@ -474,10 +474,16 @@
       <checksum>59B484B4</checksum>
     </file>
     <file>
-      <filename>add_ice_storage_tank_test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>69FD7D10</checksum>
+      <filename>Ice Measure Implementation Guide.pdf</filename>
+      <filetype>pdf</filetype>
+      <usage_type>doc</usage_type>
+      <checksum>090841B0</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>F360189C</checksum>
     </file>
     <file>
       <version>
@@ -488,25 +494,13 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>BBBF7CCF</checksum>
+      <checksum>6D3034CE</checksum>
     </file>
     <file>
-      <filename>Ice Measure Implementation Guide.pdf</filename>
-      <filetype>pdf</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>090841B0</checksum>
-    </file>
-    <file>
-      <filename>Ice Measure Implementation Guide.docx</filename>
-      <filetype>docx</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>9E6622EF</checksum>
-    </file>
-    <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>F360189C</checksum>
+      <filename>add_ice_storage_to_plant_loop_for_load_flexibility_test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>4582A017</checksum>
     </file>
   </files>
 </measure>
