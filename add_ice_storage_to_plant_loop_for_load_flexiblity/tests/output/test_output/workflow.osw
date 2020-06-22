@@ -1,7 +1,0 @@
-{
-   "created_at" : "20200415T220520Z",
-   "seed_file" : "../test_output.osm",
-   "steps" : [],
-   "updated_at" : "20200415T220530Z",
-   "weather_file" : "USA_ID_Boise.Air.Terminal.726810_TMY3.epw"
-}
