@@ -621,7 +621,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
       if model.getModelObjectByName('Temperature').get.initialized
         sched_limits_temp = model.getModelObjectByName('Temperature').get.to_ScheduleTypeLimits.get
         if sched_limits_temp.lowerLimitValue.to_f > chg_sp
-          sched_limits_temp.setLowerLimitValue = chg_sp
+          sched_limits_temp.setLowerLimitValue(chg_sp)
         end
       else
         sched_limits_temp = OpenStudio::Model::ScheduleTypeLimits.new(model)
