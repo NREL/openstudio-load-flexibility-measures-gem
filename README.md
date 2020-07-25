@@ -1,6 +1,6 @@
 # Openstudio Load Flexibility Measures Gem
 
-TODO: Add a description of this gem
+This gem contains measures for thermal energy storage for building cooling and domestic hot water heating.
 
 ## Installation
 
@@ -20,13 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-To be filled out later. 
+To be filled out later.
 
 ## TODO
 
-- [ ] Remove measures from OpenStudio-Measures to standardize on this location
 - [ ] Update measures to code standards
-- [ ] Review and fill out the gemspec file with author and gem description
 
 # Releasing
 
