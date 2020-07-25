@@ -6,11 +6,11 @@ require 'openstudio/load_flexibility_measures/version'
 Gem::Specification.new do |spec|
   spec.name          = 'openstudio-load-flexibility-measures'
   spec.version       = OpenStudio::LoadFlexibilityMeasures::VERSION
-  spec.authors       = ['']
-  spec.email         = ['']
+  spec.authors       = ['Karl Heine', 'Ryan Meyer']
+  spec.email         = ['karl.heine@nrel.gov', 'ryan.meyer@nrel.gov']
 
-  spec.summary       = 'library and measures for OpenStudio'
-  spec.description   = 'library and measures for OpenStudio'
+  spec.summary       = 'library and measures for OpenStudio for load flexibility applications.'
+  spec.description   = 'library and measures for OpenStudio for load flexibility applications.'
   spec.homepage      = 'https://openstudio.net'
 
   # Specify which files should be added to the gem when it is released.
