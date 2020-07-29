@@ -885,6 +885,9 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
       # Instances of Chiller Limit Application - Empty Global Variable
       evar_limit_counter = OpenStudio::Model::EnergyManagementSystemGlobalVariable.new(model, 'Limit_Counter')
 
+      # Ice Tank thermal storage capacity - Empty Global Variable
+      evar_tes_cap = OpenStudio::Model::EnergyManagementSystemGlobalVariable.new(model, 'TES_Cap')
+
       # Max Delta-T for Chiller De-Rate - Empty Global Variable
       dt_ems = OpenStudio::Model::EnergyManagementSystemGlobalVariable.new(model, 'DT_Max')
 
@@ -961,6 +964,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
   			SET Limit_Counter = 0
   			SET DR_Flag = 0
         SET DT_Max = #{dt_max}
+        SET TES_Cap = #{storage_capacity}
       EMS
       chiller_limit_calculation.setBody(body)
 
@@ -984,6 +988,9 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
 
       eout_limit_counter = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_limit_counter)
       eout_limit_counter.setName('Chiller Limit Counter')
+
+      eout_tes_cap = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_tes_cap)
+      eout_tes_cap.setName('Ice Thermal Storage Capacity')
     end
 
     ## DR EVENT TESTER EMS --------------------------
@@ -1256,6 +1263,12 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
       ovars << v
 
     end
+
+    # Create output variable for TES Capacity (from EMS Global Variable)
+    v = OpenStudio::Model::OutputVariable.new(eout_tes_cap.name.to_s, model)
+    v.setName("#{ctes.name} Ice Thermal Storage Capacity [GJ]")
+    v.setVariableName('Ice Thermal Storage Capacity')
+    ovars << v
 
     # Set variable reporting frequency for newly created output variables
     ovars.each do |v|
