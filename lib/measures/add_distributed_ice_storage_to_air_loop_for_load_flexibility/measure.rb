@@ -78,9 +78,9 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure:
     end
 
     # make boolean argument for selecting cooling coils to replace
-    coilhash.each do |c, v|
+    coilhash.each do |k, v|
       coil_selection = OpenStudio::Measure::OSArgument.makeBoolArgument(c, true)
-      coil_selection.setDisplayName(c)
+      coil_selection.setDisplayName(k)
       coil_selection.setDefaultValue(v)
       args << coil_selection
     end
@@ -97,7 +97,7 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure:
     args << size_mult
 
     # make argument for control method
-    ctl = OpenStudio::Measure::OSArgument.makeChoiceArgument('ctl', %w[ScheduledModes EMSControlled], true)
+    ctl = OpenStudio::Measure::OSArgument.makeChoiceArgument('ctl', ['ScheduledModes', 'EMSControlled'], true)
     ctl.setDisplayName('Select ice storage control method')
     ctl.setDefaultValue('EMSControlled')
     args << ctl
@@ -159,7 +159,8 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure:
     args << discharge_end
 
     args
-  end # end the arguments method
+    # end the arguments method
+  end
 
   # define what happens when the measure is run
   def run(workspace, runner, user_arguments)
@@ -201,9 +202,9 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure:
     end
 
     coil_selection = []
-    coilhash.each do |c, _v|
-      temp_var = runner.getBoolArgumentValue(c, user_arguments)
-      coil_selection << c if temp_var
+    coilhash.each do |k, v|
+      temp_var = runner.getBoolArgumentValue(k, user_arguments)
+      coil_selection << k if temp_var
     end
 
     # create other useful variables
@@ -671,7 +672,8 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure:
       # Coil replaced, Coil Added, EMS Program Added
       runner.registerInfo("Coil '#{old_coil_name}' was replaced with a unitary thermal storage system named" \
                           "'#{utss.name}' with a capacity of #{ice_cap} GJ.\n")
-    end # end of coil replacement routine
+      # end of coil replacement routine
+    end
 
     # additional output for schedule verification
     runner.registerInfo("The user-selected schedule for the ice unit operation is:\n\n#{user_schedule}")

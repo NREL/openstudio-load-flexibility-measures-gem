@@ -39,7 +39,7 @@ require 'minitest/autorun'
 
 require_relative '../measure.rb'
 
-class AddDistributedIceStorageToAirLoopForLoadFlexibility_Test < MiniTest::Test
+class AddDistributedIceStorageToAirLoopForLoadFlexibilityTest < MiniTest::Test
   # def setup
   # end
 

@@ -26,6 +26,11 @@
 # measures tests
 lib/measures/.rubocop.yml
 lib/measures/test_results/*
+lib/measures/*/tests/output
+lib/measures/*/tests/output/*
 
 # runner conf
 runner.conf
+
+# DS_Store
+lib/.DS_Store

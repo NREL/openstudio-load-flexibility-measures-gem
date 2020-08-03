@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>add_ice_storage_to_plant_loop_for_load_flexibility</name>
   <uid>48f37812-0cb6-4770-b695-beb8d8a5660d</uid>
-  <version_id>7676338d-d380-415d-9951-949c6ef8b061</version_id>
-  <version_modified>20200622T162708Z</version_modified>
+  <version_id>ec8fce33-0983-427d-baf9-624b66c9bdb6</version_id>
+  <version_modified>20200729T185358Z</version_modified>
   <xml_checksum>6394841D</xml_checksum>
   <class_name>AddIceStorageToPlantLoopForLoadFlexibility</class_name>
   <display_name>Add Ice Storage Tank</display_name>
@@ -456,12 +456,6 @@
       <checksum>703C9964</checksum>
     </file>
     <file>
-      <filename>OsLib_Schedules.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>C53CDDCD</checksum>
-    </file>
-    <file>
       <filename>ice_test_model.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
@@ -486,6 +480,18 @@
       <checksum>F360189C</checksum>
     </file>
     <file>
+      <filename>OsLib_Schedules.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>2F6D3DE2</checksum>
+    </file>
+    <file>
+      <filename>add_ice_storage_to_plant_loop_for_load_flexibility_test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>7C4811E5</checksum>
+    </file>
+    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>2.7.1</identifier>
@@ -494,13 +500,7 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>6D3034CE</checksum>
-    </file>
-    <file>
-      <filename>add_ice_storage_to_plant_loop_for_load_flexibility_test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>4582A017</checksum>
+      <checksum>E05DCD4F</checksum>
     </file>
   </files>
 </measure>

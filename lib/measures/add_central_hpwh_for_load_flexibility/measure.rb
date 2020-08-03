@@ -136,7 +136,7 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
 
     # create argument for water heater type
     type = OpenStudio::Measure::OSArgument.makeChoiceArgument('type',
-                                                              %w[PumpedCondenser WrappedCondenser Simplified], true)
+                                                              ['PumpedCondenser', 'WrappedCondenser', 'Simplified'], true)
     type.setDisplayName('Select heat pump water heater type')
     type.setDescription('')
     type.setDefaultValue('PumpedCondenser')
@@ -626,8 +626,8 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
     end
 
     # Set variable reporting frequency for newly created output variables
-    ovars.each do |v|
-      v.setReportingFrequency('TimeStep')
+    ovars.each do |var|
+      var.setReportingFrequency('TimeStep')
     end
 
     # Register info re: output variables:

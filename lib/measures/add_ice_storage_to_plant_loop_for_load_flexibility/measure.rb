@@ -81,7 +81,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     args << objective
 
     # Make choice argument for component layout
-    upstream = OpenStudio::Measure::OSArgument.makeChoiceArgument('upstream', %w[Chiller Storage])
+    upstream = OpenStudio::Measure::OSArgument.makeChoiceArgument('upstream', ['Chiller', 'Storage'])
     upstream.setDisplayName('Select Upstream Device:')
     upstream.setDescription('Partial Storage Only. See documentation for control implementation.')
     upstream.setDefaultValue('Chiller')
@@ -94,7 +94,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     args << storage_capacity
 
     # Make choice argument for ice melt process indicator
-    melt_indicator = OpenStudio::Measure::OSArgument.makeChoiceArgument('melt_indicator', %w[InsideMelt OutsideMelt], true)
+    melt_indicator = OpenStudio::Measure::OSArgument.makeChoiceArgument('melt_indicator', ['InsideMelt', 'OutsideMelt'], true)
     melt_indicator.setDisplayName('Select Thaw Process Indicator for Ice Storage:')
     melt_indicator.setDescription('')
     melt_indicator.setDefaultValue('InsideMelt')
@@ -172,7 +172,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
         elsif sched.scheduleTypeLimits.get.unitType.to_s == 'Availability' ||
               sched.scheduleTypeLimits.get.unitType.to_s == 'OnOff'
           sched_options2 << sched.name.to_s
-          end
+        end
       end
     end
     sched_options = ['N/A'] + sched_options.sort
@@ -281,7 +281,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     args << wknds
 
     # Make choice argument for output variable reporting frequency
-    report_choices = %w[Detailed Timestep Hourly Daily Monthly RunPeriod]
+    report_choices = ['Detailed', 'Timestep', 'Hourly', 'Daily', 'Monthly', 'RunPeriod']
     report_freq = OpenStudio::Measure::OSArgument.makeChoiceArgument('report_freq', report_choices, false)
     report_freq.setDisplayName('Select Reporting Frequency for New Output Variables')
     report_freq.setDescription('This will not change reporting frequency for existing output variables in the model.')
@@ -297,7 +297,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     args << dr
 
     # Make choice argument for type of demand response event (add or shed)
-    dr_add_shed = OpenStudio::Measure::OSArgument.makeChoiceArgument('dr_add_shed', %w[Add Shed], false)
+    dr_add_shed = OpenStudio::Measure::OSArgument.makeChoiceArgument('dr_add_shed', ['Add', 'Shed'], false)
     dr_add_shed.setDisplayName('Select if a Load Add or Load Shed Event')
     dr_add_shed.setDescription('')
     dr_add_shed.setDefaultValue('Shed')
@@ -460,27 +460,27 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
 
     # Check limits of chiller performance curves and adjust if necessary - Notify user with WARNING
     curve_output_check = false
-    capFT = ctes_chiller.coolingCapacityFunctionOfTemperature
-    min_x = capFT.minimumValueofx.to_f
+    cap_ft = ctes_chiller.coolingCapacityFunctionOfTemperature
+    min_x = cap_ft.minimumValueofx.to_f
     if min_x > chg_sp
-      capFT.setMinimumValueofx(chg_sp)
-      runner.registerWarning("VERIFY CURVE VALIDITY: The input range for the '#{capFT.name}' curve is too " \
+      cap_ft.setMinimumValueofx(chg_sp)
+      runner.registerWarning("VERIFY CURVE VALIDITY: The input range for the '#{cap_ft.name}' curve is too " \
                             'restrictive for use with ice charging. The provided curve has been ' \
                             "extrapolated to a lower limit of #{chg_sp.round(2)} C for the 'x' variable.")
       curve_output_check = true
     end
 
-    eirFT = ctes_chiller.electricInputToCoolingOutputRatioFunctionOfTemperature
-    min_x = eirFT.minimumValueofx.to_f
+    eir_ft = ctes_chiller.electricInputToCoolingOutputRatioFunctionOfTemperature
+    min_x = eir_ft.minimumValueofx.to_f
     if min_x > chg_sp
-      runner.registerWarning("VERIFY CURVE VALIDITY: The input range for the '#{eirFT.name}' curve is too " \
+      runner.registerWarning("VERIFY CURVE VALIDITY: The input range for the '#{eir_ft.name}' curve is too " \
                             'restrictive for use with ice charging. The provided curve has been ' \
                             "extrapolated to a lower limit of #{chg_sp.round(2)} C for the 'x' variable.")
     end
 
     # Report chiller performance derate at the ice-making conditions.
     if curve_output_check == true
-      derate = capFT.evaluate(chg_sp, ctes_chiller.referenceEnteringCondenserFluidTemperature)
+      derate = cap_ft.evaluate(chg_sp, ctes_chiller.referenceEnteringCondenserFluidTemperature)
       runner.registerInfo('A curve extrapolation warning was registered for the chiller capacity as a function ' \
                           'of temperature curve. At normal ice making temperatures, a chiller derate to 60-70% ' \
                           'of nominal capacity is expected. Using a condenser entering water temperature of ' \
@@ -822,7 +822,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
       loop_sp_node = ctes_loop.loopTemperatureSetpointNode
       loop_sp_mgrs = loop_sp_node.setpointManagers
       loop_sp_mgrs.each do |spm|
-        next unless %w[Temperature MinimumTemperature MaximumTemperature].include?(spm.controlVariable)
+        next unless ['Temperature', 'MinimumTemperature', 'MaximumTemperature'].include?(spm.controlVariable)
         spm.disconnect
         runner.registerInfo("Selected loop temperature setpoint manager '#{spm.name}' " \
 									"with control variable '#{spm.controlVariable}' was disconnected.")
@@ -835,7 +835,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
       demand_sp_mgr = loop_sp_mgr.clone.to_SetpointManagerScheduled.get
       demand_sp_mgr.addToNode(ctes_loop.demandInletNode)
       demand_sp_mgr.setName("#{ctes_loop.name} Demand Side Setpoint Manager (New)")
-  end
+    end
 
     # Register info about new schedule objects
     runner.registerInfo('The following component temperature setpoint managers were added to the ' \
@@ -856,7 +856,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
    		                  "model:\n" \
    		                  "   * #{loop_sp_mgr.name}\n" \
    		                  "   * #{demand_sp_mgr.name}")
-      end
+    end
 
     ## Create EMS Components to Control Load on Upstream (Priority) Device----------------------------------------------
 
@@ -864,10 +864,10 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     if chiller_limit != 1.0 || dr == true
 
       # Set up EMS output
-      output_EMS = model.getOutputEnergyManagementSystem
-      output_EMS.setActuatorAvailabilityDictionaryReporting('Verbose')
-      output_EMS.setInternalVariableAvailabilityDictionaryReporting('Verbose')
-      output_EMS.setEMSRuntimeLanguageDebugOutputLevel('None')
+      output_ems = model.getOutputEnergyManagementSystem
+      output_ems.setActuatorAvailabilityDictionaryReporting('Verbose')
+      output_ems.setInternalVariableAvailabilityDictionaryReporting('Verbose')
+      output_ems.setEMSRuntimeLanguageDebugOutputLevel('None')
 
       runner.registerInfo("A #{(chiller_limit * 100).round(2)}% capacity limit has been placed on the chiller " \
   		                  'during ice discharge. EMS scripting is employed to actuate this control via chiller ' \
@@ -1252,7 +1252,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
       v.setVariableName('Chiller Limit Counter')
       ovars << v
 
-  end
+    end
 
     # Create output variable for Demand Response Flag (from EMS Output Variable)
     if dr
@@ -1271,8 +1271,8 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     ovars << v
 
     # Set variable reporting frequency for newly created output variables
-    ovars.each do |v|
-      v.setReportingFrequency(report_freq)
+    ovars.each do |var|
+      var.setReportingFrequency(report_freq)
     end
 
     # Register info about new output variables
