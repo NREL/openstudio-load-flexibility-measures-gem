@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-The '''openstudio-load-flexibility-measures''' gem contains measures to apply thermal load flexibility to a building model. The current version contains the following:
+The openstudio-load-flexibility-measures gem contains measures to apply thermal load flexibility to a building model. The current version contains the following:
 * Add Central HPWH for Load Flexibility
 * Add Distributed Ice Storage to Air Loop for Load Flexibility
 * Add Ice Storage to Plant Loop for Load Flexibility
@@ -39,5 +39,4 @@ Detailed instructions for usage are included in each measure's respective README
 
 ## TODO
 
-- [ ] Update measures to code standards (get rubocop.yml from other OS gems)
 - [ ] Update usage with links to respective measure documentation
