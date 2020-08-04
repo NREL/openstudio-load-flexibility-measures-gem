@@ -103,7 +103,7 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure:
     args << ctl
 
     #obtain default schedule names in TESCurves.idf. This allows users to manually add schedules to the idf and be able to access them in OS or PAT
-    source_idf = OpenStudio::IdfFile::load(OpenStudio::Path.new(File.dirname(__FILE__) + '\resources\TESCurves.idf')).get
+    source_idf = OpenStudio::IdfFile::load(OpenStudio::Path.new(File.dirname(__FILE__) + '/resources/TESCurves.idf')).get
     schedules = source_idf.getObjectsByType("Schedule:Compact".to_IddObjectType)
     schedule_names = OpenStudio::StringVector.new
 
@@ -171,7 +171,7 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure:
     end
 
     #load required TESCurves.idf. This contains all the TES performance curves and default schedules
-    source_idf = OpenStudio::IdfFile::load(OpenStudio::Path.new(File.dirname(__FILE__) + '\resources\TESCurves.idf')).get
+    source_idf = OpenStudio::IdfFile::load(OpenStudio::Path.new(File.dirname(__FILE__) + '/resources/TESCurves.idf')).get
     # workspace.addObjects(idf_obj_vector) does not work here. Add each obj individually.
     source_idf.objects.each do |o|
       workspace.addObject(o)
