@@ -1,3 +1,38 @@
+# *******************************************************************************
+# OpenStudio(R), Copyright (c) 2008-2020, Alliance for Sustainable Energy, LLC.
+# All rights reserved.
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+# (1) Redistributions of source code must retain the above copyright notice,
+# this list of conditions and the following disclaimer.
+#
+# (2) Redistributions in binary form must reproduce the above copyright notice,
+# this list of conditions and the following disclaimer in the documentation
+# and/or other materials provided with the distribution.
+#
+# (3) Neither the name of the copyright holder nor the names of any contributors
+# may be used to endorse or promote products derived from this software without
+# specific prior written permission from the respective party.
+#
+# (4) Other than as required in clauses (1) and (2), distributions in any form
+# of modifications or other derivative works may not use the "OpenStudio"
+# trademark, "OS", "os", or any other confusingly similar designation without
+# specific prior written permission from Alliance for Sustainable Energy, LLC.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDER(S) AND ANY CONTRIBUTORS
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+# THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER(S), ANY CONTRIBUTORS, THE
+# UNITED STATES GOVERNMENT, OR THE UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF
+# THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+# OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+# STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# *******************************************************************************
+
 # Measure distributed under NREL Copyright terms, see LICENSE.md file.
 
 # Author: Karl Heine
@@ -9,18 +44,17 @@
 
 # start the measure
 class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
-
   require 'openstudio-standards'
 
   # human readable name
   def name
     # Measure name should be the title case of the class name.
-    return 'flexible_domestic_hot_water'
+    'flexible_domestic_hot_water'
   end
 
   # human readable description
   def description
-    return 'This measure adds or replaces existing domestic hot water heater with air source heat pump system and ' \
+    'This measure adds or replaces existing domestic hot water heater with air source heat pump system and ' \
            'allows for the addition of multiple daily flexible control time windows. The heater/tank system may ' \
            'charge at maximum capacity up to an elevated temperature, or float without any heat addition for a ' \
            'specified timeframe down to a minimum tank temperature.'
@@ -40,10 +74,10 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
            'heaters to a maximum temperature. (4) Float: all heating elements are turned-off for a user-defined time ' \
            'period unless the tank temperature falls below a minimum value. The heat pump will be prioritized in a ' \
            "low tank temperature event, with the electric resistance heaters serving as back-up. \n"
-           'Due to the heat pump interaction with zone conditioning as well as tank heating, users may experience ' \
-           'simulation errors if the heat pump is too large and placed in an already conditioned zoned. Try using ' \
-           'multiple smaller units, modifying the heat pump location within the model, or adjusting the zone thermo' \
-           'stat constraints. Use mulitiple instances of the measure to add multiple heat pump water heaters. '
+    'Due to the heat pump interaction with zone conditioning as well as tank heating, users may experience ' \
+    'simulation errors if the heat pump is too large and placed in an already conditioned zoned. Try using ' \
+    'multiple smaller units, modifying the heat pump location within the model, or adjusting the zone thermo' \
+    'stat constraints. Use mulitiple instances of the measure to add multiple heat pump water heaters. '
   end
 
   ## USER ARGS ---------------------------------------------------------------------------------------------------------
@@ -59,22 +93,19 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
     args << remove_wh
 
     # find available plant loops (heating)
-    loop_names = Array.new
+    loop_names = []
 
-    if !model.getPlantLoops.empty?
+    unless model.getPlantLoops.empty?
       loops = model.getPlantLoops
       loops.each do |lp|
-        if !lp.sizingPlant.loopType.empty?
-          if lp.sizingPlant.loopType.to_s == 'Heating'
-            loop_names << lp.name.to_s
-          end
+        unless lp.sizingPlant.loopType.empty?
+          next unless lp.sizingPlant.loopType.to_s == 'Heating'
+          loop_names << lp.name.to_s
         end
       end
     end
 
-    if loop_names.empty?
-      loop_names << 'Error: No Service Water Loop Found'
-    end
+    loop_names << 'Error: No Service Water Loop Found' if loop_names.empty?
 
     # create argument for loop selection
     loop = OpenStudio::Measure::OSArgument.makeChoiceArgument('loop', loop_names.sort, true)
@@ -84,9 +115,9 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
     args << loop
 
     # find available spaces for heater location
-    zone_names = Array.new
+    zone_names = []
 
-    if !model.getThermalZones.empty?
+    unless model.getThermalZones.empty?
       zones = model.getThermalZones
       zones.each do |zn|
         zone_names << zn.name.to_s
@@ -94,9 +125,7 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
       zone_names.sort!
     end
 
-    if zone_names.empty?
-      zone_names << 'Error: No Thermal Zones Found'
-    end
+    zone_names << 'Error: No Thermal Zones Found' if zone_names.empty?
 
     # create argument for thermal zone selection (location of water heater)
     zone = OpenStudio::Measure::OSArgument.makeChoiceArgument('zone', zone_names, true)
@@ -107,25 +136,25 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
 
     # create argument for water heater type
     type = OpenStudio::Measure::OSArgument.makeChoiceArgument('type',
-                                          ['PumpedCondenser', 'WrappedCondenser', 'Simplified'], true)
+                                                              ['PumpedCondenser', 'WrappedCondenser', 'Simplified'], true)
     type.setDisplayName('Select heat pump water heater type')
     type.setDescription('')
     type.setDefaultValue('PumpedCondenser')
     args << type
 
     # find largest current water heater volume - if any mixed tanks are already present. Default is 80 gal.
-    default_vol = 80.0    # gal
+    default_vol = 80.0 # gal
 
-    if !model.getWaterHeaterMixeds.empty?
-      wheaters = model.getWaterHeaterMixeds
-    else
-      wheaters = Array.new
-    end
+    wheaters = if !model.getWaterHeaterMixeds.empty?
+                 model.getWaterHeaterMixeds
+               else
+                 []
+               end
 
-    if !wheaters.empty?
+    unless wheaters.empty?
       wheaters.each do |wh|
-        if !wh.tankVolume.empty?
-          default_vol = [default_vol, (wh.tankVolume.to_f / 0.0037854118).round(1)].max  # convert m^3 to gal
+        unless wh.tankVolume.empty?
+          default_vol = [default_vol, (wh.tankVolume.to_f / 0.0037854118).round(1)].max # convert m^3 to gal
         end
       end
     end
@@ -181,17 +210,15 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
 
     # find existing temperature setpoint schedules for water heater
     all_scheds = model.getSchedules
-    temp_sched_names = Array.new
+    temp_sched_names = []
     default_sched = '--Create New @ 140F--'
     default_ambient = ''
     all_scheds.each do |sch|
-      if !sch.scheduleTypeLimits.empty?
-        if sch.scheduleTypeLimits.get.unitType.to_s == 'Temperature'
-          temp_sched_names << sch.name.to_s
-          if !wheaters.empty? and sch.name.to_s == wheaters[0].setpointTemperatureSchedule.get.name.to_s
-            default_sched = sch.name.to_s
-          end
-        end
+      next if sch.scheduleTypeLimits.empty?
+      next unless sch.scheduleTypeLimits.get.unitType.to_s == 'Temperature'
+      temp_sched_names << sch.name.to_s
+      if !wheaters.empty? && (sch.name.to_s == wheaters[0].setpointTemperatureSchedule.get.name.to_s)
+        default_sched = sch.name.to_s
       end
     end
     temp_sched_names = [default_sched] + temp_sched_names.sort
@@ -204,23 +231,23 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
     args << sched
 
     # define possible flex options
-    flex_options = ['None','Charge - Heat Pump', 'Charge - Electric', 'Float']
+    flex_options = ['None', 'Charge - Heat Pump', 'Charge - Electric', 'Float']
 
     # create choice and string arguments for flex periods
     4.times do |n|
-      flex = OpenStudio::Measure::OSArgument.makeChoiceArgument('flex'+"#{n}", flex_options, true)
-      flex.setDisplayName("Daily Flex Period #{n+1}:")
+      flex = OpenStudio::Measure::OSArgument.makeChoiceArgument('flex' + n.to_s, flex_options, true)
+      flex.setDisplayName("Daily Flex Period #{n + 1}:")
       flex.setDescription('Applies every day in the full run period.')
       flex.setDefaultValue('None')
       args << flex
 
-      flex_hrs = OpenStudio::Measure::OSArgument.makeStringArgument('flex_hrs'+"#{n}", false)
+      flex_hrs = OpenStudio::Measure::OSArgument.makeStringArgument('flex_hrs' + n.to_s, false)
       flex_hrs.setDisplayName('Use 24-Hour Format')
       flex_hrs.setDefaultValue('HH:MM - HH:MM')
       args << flex_hrs
     end
 
-    return args
+    args
   end
   ## END USER ARGS -----------------------------------------------------------------------------------------------------
 
@@ -242,7 +269,7 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
     # before exiting gracefully prior to measure execution.
 
     # use the built-in error checking
-    if !runner.validateUserArguments(arguments(model), user_arguments)
+    unless runner.validateUserArguments(arguments(model), user_arguments)
       return false
     end
 
@@ -253,13 +280,13 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
                                     "#{hpwh_ic} heat pump water heater(s).")
 
     # create empty arrays and initialize variables for future use
-    flex = Array.new
-    flex_type = Array.new
-    flex_hrs = Array.new
-    time_check = Array.new
-    hours = Array.new
-    minutes = Array.new
-    flex_times = Array.new
+    flex = []
+    flex_type = []
+    flex_hrs = []
+    time_check = []
+    hours = []
+    minutes = []
+    flex_times = []
 
     # assign the user inputs to variables
     remove_wh = runner.getBoolArgumentValue('remove_wh', user_arguments)
@@ -276,8 +303,8 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
     sched = runner.getStringArgumentValue('sched', user_arguments)
 
     4.times do |n|
-      flex << runner.getStringArgumentValue('flex'+"#{n}", user_arguments)
-      flex_hrs << runner.getStringArgumentValue('flex_hrs'+"#{n}", user_arguments)
+      flex << runner.getStringArgumentValue('flex' + n.to_s, user_arguments)
+      flex_hrs << runner.getStringArgumentValue('flex_hrs' + n.to_s, user_arguments)
     end
 
     # check for error inputs
@@ -315,12 +342,12 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
 
     if max_temp > 160
       runner.registerWarning("#{max_temp}F is above or near the limit of the HP performance curves. If the " \
-                            "simulation fails with cooling capacity less than 0, you have exceeded performance " \
-                            "limits. Consider setting max temp to less than 160F.")
+                            'simulation fails with cooling capacity less than 0, you have exceeded performance ' \
+                            'limits. Consider setting max temp to less than 160F.')
     end
 
     # check selected schedule and set flag for later use
-    sched_flag = false    # flag for either creating new (false) or modifying existing (true) schedule
+    sched_flag = false # flag for either creating new (false) or modifying existing (true) schedule
     if sched == '--Create New @ 140F--'
       runner.registerInfo('No reference water heater temperature setpoint schedule was selected; a new one ' \
                           'will be created.')
@@ -334,7 +361,7 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
     flex_hrs.each do |fh|
       if flex[idx] != 'None'
         data = fh.split(/[-:]/)
-        data.each {|e| e.delete!(' ')}
+        data.each { |e| e.delete!(' ') }
         if data[2] > data[0]
           flex_type << flex[idx]
           hours << data[0]
@@ -364,14 +391,12 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
       idx += 1
     end
 
-    #flex.delete('None')
+    # flex.delete('None')
 
-    runner.registerInfo("A total of #{idx/2} flex periods will be added to the selected water heater setpoint schedule.")
+    runner.registerInfo("A total of #{idx / 2} flex periods will be added to the selected water heater setpoint schedule.")
 
     # exit gracefully if errors registered above
-    if !runner.result.errors.empty?
-      return false
-    end
+    return false unless runner.result.errors.empty?
     ## END ARGUMENT VALIDATION -----------------------------------------------------------------------------------------
 
     ## CONTROLS: HEAT PUMP HEATING TEMPERATURE SETPOINT SCHEDULE -------------------------------------------------------
@@ -379,7 +404,7 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
     # The tank schedule is created here
 
     # find or create new reference temperature schedule based on sched_flag value
-    if sched_flag     # schedule already exists and must be modified
+    if sched_flag # schedule already exists and must be modified
       # converts the STRING into a MODEL OBJECT, same variable name
       sched = model.getScheduleRulesetByName(sched).get.clone.to_ScheduleRuleset.get
     else
@@ -391,8 +416,8 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
     sched.setName('Heat Pump Heating Temperature Setpoint')
     sched.defaultDaySchedule.setName('Heat Pump Heating Temperature Setpoint Default')
 
-    #tank_sched = sched.clone.to_ScheduleRuleset.get
-    tank_sched = OpenStudio::Model::ScheduleRuleset.new(model, 60 - (db_temp/1.8 + 2))
+    # tank_sched = sched.clone.to_ScheduleRuleset.get
+    tank_sched = OpenStudio::Model::ScheduleRuleset.new(model, 60 - (db_temp / 1.8 + 2))
     tank_sched.setName('Tank Electric Heater Setpoint')
     tank_sched.defaultDaySchedule.setName('Tank Electric Heater Setpoint Default')
 
@@ -404,17 +429,15 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
 
     # find existing values in reference schedule and grab for use in new-rule creation
     flex_times.size.times do |i|
-      if (i%2) == 0
+      if i.even?
         n = 0
         old_times.each do |ot|
-          if flex_times[i] <= ot
-            new_values[i] = old_values[n]
-          end
+          new_values[i] = old_values[n] if flex_times[i] <= ot
           n += 1
         end
-      elsif flex_type[(i/2).floor] == 'Charge - Heat Pump'
+      elsif flex_type[(i / 2).floor] == 'Charge - Heat Pump'
         new_values[i] = OpenStudio.convert(max_temp, 'F', 'C').get
-      elsif flex_type[(i/2).floor] == 'Float' || flex_type[(i/2).floor] == 'Charge - Electric'
+      elsif flex_type[(i / 2).floor] == 'Float' || flex_type[(i / 2).floor] == 'Charge - Electric'
         new_values[i] = OpenStudio.convert(min_temp, 'F', 'C').get
       end
     end
@@ -439,20 +462,18 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
 
     # find existing values in reference schedule and grab for use in new-rule creation
     flex_times.size.times do |i|
-      if (i%2) == 0
+      if i.even?
         n = 0
         old_times.each do |ot|
-          if flex_times[i] <= ot
-            new_values[i] = old_values[n]
-          end
+          new_values[i] = old_values[n] if flex_times[i] <= ot
           n += 1
         end
-      elsif flex_type[(i/2).floor] == 'Charge - Electric'
+      elsif flex_type[(i / 2).floor] == 'Charge - Electric'
         new_values[i] = OpenStudio.convert(max_temp, 'F', 'C').get
-      elsif flex_type[(i/2).floor] == 'Float' #|| flex_type[(i/2).floor] == 'Charge - Heat Pump'
+      elsif flex_type[(i / 2).floor] == 'Float' # || flex_type[(i/2).floor] == 'Charge - Heat Pump'
         new_values[i] = OpenStudio.convert(min_temp - db_temp, 'F', 'C').get
-      elsif flex_type[(i/2).floor] == 'Charge - Heat Pump'
-        new_values[i] =  60 - (db_temp/1.8)
+      elsif flex_type[(i / 2).floor] == 'Charge - Heat Pump'
+        new_values[i] = 60 - (db_temp / 1.8)
       end
     end
 
@@ -471,10 +492,10 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
     # in place, the new HPWH tank will be placed in front (to the left) of them.
 
     # use OS standards build - arbitrary selection, but NZE Ready seems appropriate
-    std = Standard.build("NREL ZNE Ready 2017")
+    std = Standard.build('NREL ZNE Ready 2017')
 
     # create empty arrays and initialize variables for later use
-    old_heater = Array.new
+    old_heater = []
     count = 0
 
     # convert loop and zone names from STRINGS into OS model OBJECTS
@@ -493,7 +514,7 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
       end
     end
 
-    if !old_heater.empty?
+    unless old_heater.empty?
       inlet = old_heater[0].supplyInletModelObject.get.to_Node.get
       outlet = old_heater[0].supplyOutletModelObject.get.to_Node.get
     end
@@ -502,34 +523,34 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
     # Reference: https://github.com/NREL/openstudio-standards/blob/master/lib/
     # => openstudio-standards/prototypes/common/objects/Prototype.ServiceWaterHeating.rb
     if type != 'Simplified'
-      hpwh = std.model_add_heatpump_water_heater(model,                             # model
-              type: type,                                                           # type
-              water_heater_capacity: (cap * 1000 / cop),                            # water_heater_capacity
-              electric_backup_capacity: (bu_cap * 1000),                            # electric_backup_capacity
-              water_heater_volume: OpenStudio.convert(vol, 'gal', 'm^3').get,       # water_heater_volume
-              service_water_temperature: OpenStudio.convert(140.0, 'F', 'C').get,   # service_water_temperature
-              parasitic_fuel_consumption_rate: 3.0,                                 # parasitic_fuel_consumption_rate
-              swh_temp_sch: sched,                                                  # swh_temp_sch
-              cop: cop,                                                             # cop
-              shr: 0.88,                                                            # shr
-              tank_ua: 3.9,                                                         # tank_ua
-              set_peak_use_flowrate: false,                                         # set_peak_use_flowrate
-              peak_flowrate: 0.0,                                                   # peak_flowrate
-              flowrate_schedule: nil,                                               # flowrate_schedule
-              water_heater_thermal_zone: zone)                                      # water_heater_thermal_zone
+      hpwh = std.model_add_heatpump_water_heater(model, # model
+                                                 type: type,                                                           # type
+                                                 water_heater_capacity: (cap * 1000 / cop),                            # water_heater_capacity
+                                                 electric_backup_capacity: (bu_cap * 1000),                            # electric_backup_capacity
+                                                 water_heater_volume: OpenStudio.convert(vol, 'gal', 'm^3').get,       # water_heater_volume
+                                                 service_water_temperature: OpenStudio.convert(140.0, 'F', 'C').get,   # service_water_temperature
+                                                 parasitic_fuel_consumption_rate: 3.0,                                 # parasitic_fuel_consumption_rate
+                                                 swh_temp_sch: sched,                                                  # swh_temp_sch
+                                                 cop: cop,                                                             # cop
+                                                 shr: 0.88,                                                            # shr
+                                                 tank_ua: 3.9,                                                         # tank_ua
+                                                 set_peak_use_flowrate: false,                                         # set_peak_use_flowrate
+                                                 peak_flowrate: 0.0,                                                   # peak_flowrate
+                                                 flowrate_schedule: nil,                                               # flowrate_schedule
+                                                 water_heater_thermal_zone: zone)                                      # water_heater_thermal_zone
     else
-      hpwh = std.model_add_water_heater(model,                                      # model
-              (cap * 1000),                                                         # water_heater_capacity
-              OpenStudio.convert(vol, 'gal', 'm^3').get,                            # water_heater_volume
-              'HeatPump',                                                           # water_heater_fuel
-              OpenStudio.convert(140.0, 'F', 'C').get,                              # service_water_temperature
-              3.0,                                                                  # parasitic_fuel_consumption_rate
-              sched,                                                                # swh_temp_sch
-              false,                                                                # set_peak_use_flowrate
-              0.0,                                                                  # peak_flowrate
-              nil,                                                                  # flowrate_schedule
-              zone,                                                                 # water_heater_thermal_zone
-              1)                                                                    # number_water_heaters
+      hpwh = std.model_add_water_heater(model, # model
+                                        (cap * 1000),                                                         # water_heater_capacity
+                                        OpenStudio.convert(vol, 'gal', 'm^3').get,                            # water_heater_volume
+                                        'HeatPump',                                                           # water_heater_fuel
+                                        OpenStudio.convert(140.0, 'F', 'C').get,                              # service_water_temperature
+                                        3.0,                                                                  # parasitic_fuel_consumption_rate
+                                        sched,                                                                # swh_temp_sch
+                                        false,                                                                # set_peak_use_flowrate
+                                        0.0,                                                                  # peak_flowrate
+                                        nil,                                                                  # flowrate_schedule
+                                        zone,                                                                 # water_heater_thermal_zone
+                                        1)                                                                    # number_water_heaters
     end
 
     # add tank to appropriate branch and node (will be placed first in series if old tanks not removed)
@@ -538,7 +559,7 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
       loop.addSupplyBranchForComponent(hpwh.tank)
     elsif type != 'Simplified'
       hpwh.tank.addToNode(inlet)
-      hpwh.setDeadBandTemperatureDifference(db_temp/1.8)
+      hpwh.setDeadBandTemperatureDifference(db_temp / 1.8)
       runner.registerInfo("#{hpwh.tank.name} was added to the model on #{loop.name}")
     else
       hpwh.addToNode(inlet)
@@ -605,8 +626,8 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
     end
 
     # Set variable reporting frequency for newly created output variables
-    ovars.each do |v|
-      v.setReportingFrequency('TimeStep')
+    ovars.each do |var|
+      var.setReportingFrequency('TimeStep')
     end
 
     # Register info re: output variables:
@@ -619,7 +640,7 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
     runner.registerFinalCondition("The building finshed with #{tanks_fc} water heater tank(s) and " \
                                   "#{hpwh_fc} heat pump water heater(s).")
 
-    return true
+    true
   end
 end
 
