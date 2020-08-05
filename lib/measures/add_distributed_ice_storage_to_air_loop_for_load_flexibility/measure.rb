@@ -79,7 +79,7 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure:
 
     # make boolean argument for selecting cooling coils to replace
     coilhash.each do |k, v|
-      coil_selection = OpenStudio::Measure::OSArgument.makeBoolArgument(c, true)
+      coil_selection = OpenStudio::Measure::OSArgument.makeBoolArgument(k, true)
       coil_selection.setDisplayName(k)
       coil_selection.setDefaultValue(v)
       args << coil_selection
