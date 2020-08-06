@@ -21,7 +21,7 @@ ModelMeasure
 ## Arguments
 
 
-### Remove existing water heater on selected loop?
+### Remove existing water heater on selected loop
 
 **Name:** remove_wh,
 **Type:** Boolean,
@@ -70,7 +70,7 @@ This is where the water heater tank will be placed
 **Model Dependent:** false
 
 ### Set heat pump rated COP (heating)
-[-]
+
 **Name:** cop,
 **Type:** Double,
 **Units:** ,

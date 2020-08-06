@@ -160,6 +160,7 @@ class AddIceStorageToPlantLoopForLoadFlexibilityTest < Minitest::Test
     args_hash['storage_capacity'] = 550
     args_hash['melt_indicator'] = 'InsideMelt'
     args_hash['chiller_resize_factor'] = 0.75
+    args_hash['chiller_limit'] = 0.7
     args_hash['chg_sp'] = 26
     args_hash['loop_sp'] = 42
     args_hash['delta_t'] = '16'

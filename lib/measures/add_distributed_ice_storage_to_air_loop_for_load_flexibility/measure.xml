@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>add_distributed_ice_storage_to_air_loop_for_load_flexibility</name>
   <uid>2aa8c128-53b9-49fd-9aaf-9253a1f05936</uid>
-  <version_id>58142df5-609b-4ec5-9312-35d9a76a94ea</version_id>
-  <version_modified>20200727T193248Z</version_modified>
+  <version_id>8b55d314-a611-495a-bbc3-47cdd3ed9e86</version_id>
+  <version_modified>20200806T183852Z</version_modified>
   <xml_checksum>2617824F</xml_checksum>
   <class_name>AddDistributedIceStorageToAirLoopForLoadFlexibility</class_name>
   <display_name>Add Distributed Ice Storage to Air Loop for Load Flexibility</display_name>
@@ -34,7 +34,7 @@
     </argument>
     <argument>
       <name>size_mult</name>
-      <display_name>Enter a sizing multiplier to manually adjust the autosize results for ice tank capacities.</display_name>
+      <display_name>Enter a sizing multiplier to manually adjust the autosize results for ice tank capacities</display_name>
       <type>String</type>
       <required>false</required>
       <model_dependent>false</model_dependent>
@@ -91,8 +91,8 @@
     </argument>
     <argument>
       <name>wknd</name>
-      <display_name>Run TES on the weekends?</display_name>
-      <description>Select if building is occupied on weekends.</description>
+      <display_name>Run TES on the weekends</display_name>
+      <description>Select if building is occupied on weekends</description>
       <type>Boolean</type>
       <required>false</required>
       <model_dependent>false</model_dependent>
@@ -110,7 +110,7 @@
     </argument>
     <argument>
       <name>season</name>
-      <display_name>Select season during which the ice cooling may be used:</display_name>
+      <display_name>Select season during which the ice cooling may be used</display_name>
       <description>Use MM/DD-MM/DD format</description>
       <type>String</type>
       <required>false</required>
@@ -209,12 +209,6 @@ If 'AutoSize' is selected for ice capacity, these inputs set an ice capacity siz
   </attributes>
   <files>
     <file>
-      <filename>LICENSE.md</filename>
-      <filetype>md</filetype>
-      <usage_type>license</usage_type>
-      <checksum>59B484B4</checksum>
-    </file>
-    <file>
       <filename>TESCurves.idf</filename>
       <filetype>idf</filetype>
       <usage_type>resource</usage_type>
@@ -233,10 +227,16 @@ If 'AutoSize' is selected for ice capacity, these inputs set an ice capacity siz
       <checksum>B27484F2</checksum>
     </file>
     <file>
+      <filename>LICENSE.md</filename>
+      <filetype>md</filetype>
+      <usage_type>license</usage_type>
+      <checksum>E0468DD6</checksum>
+    </file>
+    <file>
       <filename>add_distributed_ice_storage_to_air_loop_for_load_flexibility_test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>FE5F5343</checksum>
+      <checksum>FC11EAC7</checksum>
     </file>
     <file>
       <version>
@@ -247,7 +247,7 @@ If 'AutoSize' is selected for ice capacity, these inputs set an ice capacity siz
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>65E65993</checksum>
+      <checksum>AFBDDEF7</checksum>
     </file>
   </files>
 </measure>

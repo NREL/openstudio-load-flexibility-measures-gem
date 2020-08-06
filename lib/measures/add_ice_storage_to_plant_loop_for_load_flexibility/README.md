@@ -83,7 +83,7 @@ Enter as a fraction of chiller capacity (0.0 - 1.0).
 **Required:** false,
 **Model Dependent:** false
 
-### Use Existing (Pre-Defined) Temperature Control Schedules?
+### Use Existing (Pre-Defined) Temperature Control Schedules
 Use drop-down selections below.
 **Name:** old,
 **Type:** Boolean,
@@ -115,7 +115,7 @@ Use drop-down selections below.
 **Required:** false,
 **Model Dependent:** false
 
-### Create New (Simple) Temperature Control Schedules?
+### Create New (Simple) Temperature Control Schedules
 Use entry fields below. If Pre-Defined is also selected, these new schedules will be created but not applied.
 **Name:** new,
 **Type:** Boolean,
@@ -195,7 +195,7 @@ Use 24 hour format (HR:MM)
 **Required:** true,
 **Model Dependent:** false
 
-### Allow Ice Discharge on Weekends?
+### Allow Ice Discharge on Weekends
 
 **Name:** wknds,
 **Type:** Boolean,
@@ -211,7 +211,7 @@ This will not change reporting frequency for existing output variables in the mo
 **Required:** false,
 **Model Dependent:** false
 
-### Test Demand Reponse Event?
+### Test Demand Reponse Event
 
 **Name:** dr,
 **Type:** Boolean,
@@ -251,7 +251,7 @@ Use 24 hour format (HR:MM)
 **Required:** false,
 **Model Dependent:** false
 
-### Allow chiller to back-up ice during DR event?
+### Allow chiller to back-up ice during DR event
 Unselection may result in unmet cooling hours
 **Name:** dr_chill,
 **Type:** Boolean,

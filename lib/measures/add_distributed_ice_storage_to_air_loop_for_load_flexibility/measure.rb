@@ -92,7 +92,7 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure:
     args << ice_cap
 
     size_mult = OpenStudio::Measure::OSArgument.makeStringArgument('size_mult', false)
-    size_mult.setDisplayName('Enter a sizing multiplier to manually adjust the autosize results for ice tank capacities.')
+    size_mult.setDisplayName('Enter a sizing multiplier to manually adjust the autosize results for ice tank capacities')
     size_mult.setDefaultValue('1.0')
     args << size_mult
 
@@ -102,9 +102,9 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure:
     ctl.setDefaultValue('EMSControlled')
     args << ctl
 
-    #obtain default schedule names in TESCurves.idf. This allows users to manually add schedules to the idf and be able to access them in OS or PAT
-    source_idf = OpenStudio::IdfFile::load(OpenStudio::Path.new(File.dirname(__FILE__) + '/resources/TESCurves.idf')).get
-    schedules = source_idf.getObjectsByType("Schedule:Compact".to_IddObjectType)
+    # obtain default schedule names in TESCurves.idf. This allows users to manually add schedules to the idf and be able to access them in OS or PAT
+    source_idf = OpenStudio::IdfFile.load(OpenStudio::Path.new(File.dirname(__FILE__) + '/resources/TESCurves.idf')).get
+    schedules = source_idf.getObjectsByType('Schedule:Compact'.to_IddObjectType)
     schedule_names = OpenStudio::StringVector.new
 
     schedules.each do |sch|
@@ -120,14 +120,14 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure:
 
     # make arguement for weekend TES operation
     wknd = OpenStudio::Measure::OSArgument.makeBoolArgument('wknd', false)
-    wknd.setDisplayName('Run TES on the weekends?')
-    wknd.setDescription('Select if building is occupied on weekends.')
+    wknd.setDisplayName('Run TES on the weekends')
+    wknd.setDescription('Select if building is occupied on weekends')
     wknd.setDefaultValue(true)
     args << wknd
 
     # make arguments for operating season
     season = OpenStudio::Measure::OSArgument.makeStringArgument('season', false)
-    season.setDisplayName('Select season during which the ice cooling may be used:')
+    season.setDisplayName('Select season during which the ice cooling may be used')
     season.setDescription('Use MM/DD-MM/DD format')
     season.setDefaultValue('01/01-12/31')
     args << season
@@ -171,8 +171,8 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure:
       return false
     end
 
-    #load required TESCurves.idf. This contains all the TES performance curves and default schedules
-    source_idf = OpenStudio::IdfFile::load(OpenStudio::Path.new(File.dirname(__FILE__) + '/resources/TESCurves.idf')).get
+    # load required TESCurves.idf. This contains all the TES performance curves and default schedules
+    source_idf = OpenStudio::IdfFile.load(OpenStudio::Path.new(File.dirname(__FILE__) + '/resources/TESCurves.idf')).get
 
     # workspace.addObjects(idf_obj_vector) does not work here. Add each obj individually.
     source_idf.objects.each do |o|

@@ -143,19 +143,19 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     # Make double argument for ice chiller resizing factor - relative to selected chiller capacity
     chiller_resize_factor = OpenStudio::Measure::OSArgument.makeDoubleArgument('chiller_resize_factor', false)
     chiller_resize_factor.setDisplayName('Enter Chiller Sizing Factor:')
-    chiller_resize_factor.setDefaultValue('0.7')
+    chiller_resize_factor.setDefaultValue(0.75)
     args << chiller_resize_factor
 
     # Make double argument for chiller max capacity limit during ice discharge
     chiller_limit = OpenStudio::Measure::OSArgument.makeDoubleArgument('chiller_limit', false)
     chiller_limit.setDisplayName('Enter Chiller Max Capacity Limit During Ice Discharge:')
     chiller_limit.setDescription('Enter as a fraction of chiller capacity (0.0 - 1.0).')
-    chiller_limit.setDefaultValue('0.75')
+    chiller_limit.setDefaultValue(1.0)
     args << chiller_limit
 
     # Make choice argument for schedule options
     old = OpenStudio::Measure::OSArgument.makeBoolArgument('old', false)
-    old.setDisplayName('Use Existing (Pre-Defined) Temperature Control Schedules?')
+    old.setDisplayName('Use Existing (Pre-Defined) Temperature Control Schedules')
     old.setDescription('Use drop-down selections below.')
     old.setDefaultValue(false)
     args << old
@@ -207,7 +207,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
 
     # Make bool argument for creating new schedules
     new = OpenStudio::Measure::OSArgument.makeBoolArgument('new', false)
-    new.setDisplayName('Create New (Simple) Temperature Control Schedules?')
+    new.setDisplayName('Create New (Simple) Temperature Control Schedules')
     new.setDescription('Use entry fields below. If Pre-Defined is also selected, these new schedules will be created' \
                        ' but not applied.')
     new.setDefaultValue(true)
@@ -231,7 +231,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     # Make double argument for loop temperature for ice charging
     chg_sp = OpenStudio::Measure::OSArgument.makeDoubleArgument('chg_sp', true)
     chg_sp.setDisplayName('Ice Charging Setpoint Temperature F:')
-    chg_sp.setDefaultValue('25')
+    chg_sp.setDefaultValue(25)
     args << chg_sp
 
     # Make double argument for loop design delta T
@@ -276,7 +276,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
 
     # Make boolean arguments for ctes dischage days
     wknds = OpenStudio::Measure::OSArgument.makeBoolArgument('wknds', true)
-    wknds.setDisplayName('Allow Ice Discharge on Weekends?')
+    wknds.setDisplayName('Allow Ice Discharge on Weekends')
     wknds.setDefaultValue(false)
     args << wknds
 
@@ -291,15 +291,13 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     ## DR TESTER INPUTS -----------------------------------------
     # Make boolean argument for use of demand response event test
     dr = OpenStudio::Measure::OSArgument.makeBoolArgument('dr', false)
-    dr.setDisplayName('Test Demand Reponse Event?')
-    dr.setDescription('')
+    dr.setDisplayName('Test Demand Reponse Event')
     dr.setDefaultValue(false)
     args << dr
 
     # Make choice argument for type of demand response event (add or shed)
     dr_add_shed = OpenStudio::Measure::OSArgument.makeChoiceArgument('dr_add_shed', ['Add', 'Shed'], false)
     dr_add_shed.setDisplayName('Select if a Load Add or Load Shed Event')
-    dr_add_shed.setDescription('')
     dr_add_shed.setDefaultValue('Shed')
     args << dr_add_shed
 
@@ -320,13 +318,12 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     # Make double argument for DR event duration
     dr_dur = OpenStudio::Measure::OSArgument.makeDoubleArgument('dr_dur', false)
     dr_dur.setDisplayName('Enter duration of demand response event [hr]:')
-    dr_dur.setDescription('')
-    dr_dur.setDefaultValue('3')
+    dr_dur.setDefaultValue(3)
     args << dr_dur
 
     # Make boolean argument for allowing chiller to back-up ice
     dr_chill = OpenStudio::Measure::OSArgument.makeBoolArgument('dr_chill', false)
-    dr_chill.setDisplayName('Allow chiller to back-up ice during DR event?')
+    dr_chill.setDisplayName('Allow chiller to back-up ice during DR event')
     dr_chill.setDescription('Unselection may result in unmet cooling hours')
     dr_chill.setDefaultValue('false')
     args << dr_chill
@@ -858,6 +855,29 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
    		                  "   * #{demand_sp_mgr.name}")
     end
 
+    ## Create General EMS Variables for Chiller and TES Capacities------------------------------------------------------
+
+    # Chiller Nominal Capacity Internal Variable
+    evar_chiller_cap = OpenStudio::Model::EnergyManagementSystemInternalVariable.new(model, 'Chiller Nominal Capacity')
+    evar_chiller_cap.setInternalDataIndexKeyName(ctes_chiller.name.to_s)
+    evar_chiller_cap.setName('CTES_Chiller_Capacity')
+
+    # Ice Tank thermal storage capacity - Empty Global Variable
+    evar_tes_cap = OpenStudio::Model::EnergyManagementSystemGlobalVariable.new(model, 'TES_Cap')
+
+    # Set TES Capacity from User Inputs
+    set_tes_cap = OpenStudio::Model::EnergyManagementSystemProgram.new(model)
+    set_tes_cap.setName('Set_TES_Cap')
+    body = <<-EMS
+      SET TES_Cap = #{storage_capacity}
+    EMS
+    set_tes_cap.setBody(body)
+
+    set_tes_cap_pcm = OpenStudio::Model::EnergyManagementSystemProgramCallingManager.new(model)
+    set_tes_cap_pcm.setName('Set_TES_Cap_CallMgr')
+    set_tes_cap_pcm.setCallingPoint('BeginNewEnvironment')
+    set_tes_cap_pcm.addProgram(set_tes_cap)
+
     ## Create EMS Components to Control Load on Upstream (Priority) Device----------------------------------------------
 
     # Flag value indicating that a chiller limiter is required or DR Test is Activated
@@ -874,19 +894,12 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
   		                  'outlet setpoint. ')
 
       # Internal and Global Variable(s)
-      # Chiller Nominal Capacity
-      evar_chiller_cap = OpenStudio::Model::EnergyManagementSystemInternalVariable.new(model, 'Chiller Nominal Capacity')
-      evar_chiller_cap.setInternalDataIndexKeyName(ctes_chiller.name.to_s)
-      evar_chiller_cap.setName('CTES_Chiller_Capacity')
 
       # Chiller Limited Capacity for Ice Discharge Period - Empty Global Variable
       evar_chiller_limit = OpenStudio::Model::EnergyManagementSystemGlobalVariable.new(model, 'Chiller_Limited_Capacity')
 
       # Instances of Chiller Limit Application - Empty Global Variable
       evar_limit_counter = OpenStudio::Model::EnergyManagementSystemGlobalVariable.new(model, 'Limit_Counter')
-
-      # Ice Tank thermal storage capacity - Empty Global Variable
-      evar_tes_cap = OpenStudio::Model::EnergyManagementSystemGlobalVariable.new(model, 'TES_Cap')
 
       # Max Delta-T for Chiller De-Rate - Empty Global Variable
       dt_ems = OpenStudio::Model::EnergyManagementSystemGlobalVariable.new(model, 'DT_Max')
@@ -964,7 +977,6 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
   			SET Limit_Counter = 0
   			SET DR_Flag = 0
         SET DT_Max = #{dt_max}
-        SET TES_Cap = #{storage_capacity}
       EMS
       chiller_limit_calculation.setBody(body)
 
@@ -979,18 +991,13 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
       chiller_limit_calc_pcm.setCallingPoint('BeginNewEnvironment')
       chiller_limit_calc_pcm.addProgram(chiller_limit_calculation)
 
-      # EMS Output Variable(s)
-      eout_chiller_cap = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_chiller_cap)
-      eout_chiller_cap.setName('Chiller Nominal Capacity')
-
+      # EMS Output Variable(s) - Chiller Limiter Dependent
       eout_chiller_limit = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_chiller_limit)
       eout_chiller_limit.setName('Chiller Limited Capacity')
 
       eout_limit_counter = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_limit_counter)
       eout_limit_counter.setName('Chiller Limit Counter')
 
-      eout_tes_cap = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_tes_cap)
-      eout_tes_cap.setName('Ice Thermal Storage Capacity')
     end
 
     ## DR EVENT TESTER EMS --------------------------
@@ -1074,6 +1081,13 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     ## END DR EVENT TESTER EMS ---------------------
 
     ## Add Output Variables and Meters----------------------------------------------------------------------------------
+
+    # EMS Output Variable(s) - Chiller Limit Independent
+    eout_chiller_cap = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_chiller_cap)
+    eout_chiller_cap.setName('Chiller Nominal Capacity')
+
+    eout_tes_cap = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_tes_cap)
+    eout_tes_cap.setName('Ice Thermal Storage Capacity')
 
     # Identify existing output variables
     vars = model.getOutputVariables
@@ -1234,12 +1248,6 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
 
     if chiller_limit != 1.0 # flag for EMS use, following EMS vars only exist if previous script ran
 
-      # Create output variable for chiller nominal capacity (from EMS Output Variable)
-      v = OpenStudio::Model::OutputVariable.new(eout_chiller_cap.name.to_s, model)
-      v.setName("#{ctes_chiller.name} Nominal Capacity [W]")
-      v.setVariableName('Chiller Nominal Capacity')
-      ovars << v
-
       # Create output variable for chiller limited capacity (from EMS Output Variable)
       v = OpenStudio::Model::OutputVariable.new(eout_chiller_limit.name.to_s, model)
       v.setName("#{ctes_chiller.name} Limited Capacity")
@@ -1268,6 +1276,12 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     v = OpenStudio::Model::OutputVariable.new(eout_tes_cap.name.to_s, model)
     v.setName("#{ctes.name} Ice Thermal Storage Capacity [GJ]")
     v.setVariableName('Ice Thermal Storage Capacity')
+    ovars << v
+
+    # Create output variable for chiller nominal capacity (from EMS Output Variable)
+    v = OpenStudio::Model::OutputVariable.new(eout_chiller_cap.name.to_s, model)
+    v.setName("#{ctes_chiller.name} Nominal Capacity [W]")
+    v.setVariableName('Chiller Nominal Capacity')
     ovars << v
 
     # Set variable reporting frequency for newly created output variables

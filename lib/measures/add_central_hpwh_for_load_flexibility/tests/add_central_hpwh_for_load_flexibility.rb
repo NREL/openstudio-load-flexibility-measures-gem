@@ -41,7 +41,7 @@ require 'minitest/autorun'
 require_relative '../measure.rb'
 require 'fileutils'
 
-class AddCentralHPWHForLoadFlexibilityTest < Minitest::Test
+class AddCentralHpwhForLoadFlexibilityTest < Minitest::Test
   # def setup
   # end
 
@@ -50,7 +50,7 @@ class AddCentralHPWHForLoadFlexibilityTest < Minitest::Test
 
   def test_good_argument_values
     # create an instance of the measure
-    measure = AddCentralHPWHForLoadFlexibility.new
+    measure = AddCentralHpwhForLoadFlexibility.new
 
     # create runner with empty OSW
     osw = OpenStudio::WorkflowJSON.new
@@ -85,11 +85,11 @@ class AddCentralHPWHForLoadFlexibilityTest < Minitest::Test
     measure.run(model, runner, argument_map)
     result = runner.result
 
-    # show the output
-    show_output(result)
-
     # assert that it ran correctly
     assert_equal('Success', result.value.valueName)
+
+    # show the output
+    show_output(result)
 
     # save the model to test output directory
     output_file_path = "#{File.dirname(__FILE__)}//output/test_output.osm"

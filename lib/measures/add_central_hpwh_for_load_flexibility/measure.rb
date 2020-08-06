@@ -43,7 +43,7 @@
 # EnergyPlus Engineering Reference, Sections:
 
 # start the measure
-class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
+class AddCentralHpwhForLoadFlexibility < OpenStudio::Measure::ModelMeasure
   require 'openstudio-standards'
 
   # human readable name
@@ -87,7 +87,7 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
 
     # create argument for removal of existing water heater tanks on selected loop
     remove_wh = OpenStudio::Measure::OSArgument.makeBoolArgument('remove_wh', true)
-    remove_wh.setDisplayName('Remove existing water heater on selected loop?')
+    remove_wh.setDisplayName('Remove existing water heater on selected loop')
     remove_wh.setDescription('')
     remove_wh.setDefaultValue(true)
     args << remove_wh
@@ -176,7 +176,6 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
     # create argument for heat pump rated cop
     cop = OpenStudio::Measure::OSArgument.makeDoubleArgument('cop', true)
     cop.setDisplayName('Set heat pump rated COP (heating)')
-    cop.setDescription('[-]')
     cop.setDefaultValue(2.8)
     args << cop
 
@@ -645,4 +644,4 @@ class AddCentralHPWHForLoadFlexibility < OpenStudio::Measure::ModelMeasure
 end
 
 # register the measure to be used by the application
-AddCentralHPWHForLoadFlexibility.new.registerWithApplication
+AddCentralHpwhForLoadFlexibility.new.registerWithApplication
