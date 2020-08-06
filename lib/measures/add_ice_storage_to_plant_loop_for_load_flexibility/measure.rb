@@ -155,7 +155,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
 
     # Make choice argument for schedule options
     old = OpenStudio::Measure::OSArgument.makeBoolArgument('old', false)
-    old.setDisplayName('Use Existing (Pre-Defined) Temperature Control Schedules?')
+    old.setDisplayName('Use Existing (Pre-Defined) Temperature Control Schedules')
     old.setDescription('Use drop-down selections below.')
     old.setDefaultValue(false)
     args << old
@@ -207,7 +207,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
 
     # Make bool argument for creating new schedules
     new = OpenStudio::Measure::OSArgument.makeBoolArgument('new', false)
-    new.setDisplayName('Create New (Simple) Temperature Control Schedules?')
+    new.setDisplayName('Create New (Simple) Temperature Control Schedules')
     new.setDescription('Use entry fields below. If Pre-Defined is also selected, these new schedules will be created' \
                        ' but not applied.')
     new.setDefaultValue(true)
@@ -276,7 +276,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
 
     # Make boolean arguments for ctes dischage days
     wknds = OpenStudio::Measure::OSArgument.makeBoolArgument('wknds', true)
-    wknds.setDisplayName('Allow Ice Discharge on Weekends?')
+    wknds.setDisplayName('Allow Ice Discharge on Weekends')
     wknds.setDefaultValue(false)
     args << wknds
 
@@ -291,15 +291,13 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     ## DR TESTER INPUTS -----------------------------------------
     # Make boolean argument for use of demand response event test
     dr = OpenStudio::Measure::OSArgument.makeBoolArgument('dr', false)
-    dr.setDisplayName('Test Demand Reponse Event?')
-    dr.setDescription('')
+    dr.setDisplayName('Test Demand Reponse Event')
     dr.setDefaultValue(false)
     args << dr
 
     # Make choice argument for type of demand response event (add or shed)
     dr_add_shed = OpenStudio::Measure::OSArgument.makeChoiceArgument('dr_add_shed', ['Add', 'Shed'], false)
     dr_add_shed.setDisplayName('Select if a Load Add or Load Shed Event')
-    dr_add_shed.setDescription('')
     dr_add_shed.setDefaultValue('Shed')
     args << dr_add_shed
 
@@ -320,13 +318,12 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     # Make double argument for DR event duration
     dr_dur = OpenStudio::Measure::OSArgument.makeDoubleArgument('dr_dur', false)
     dr_dur.setDisplayName('Enter duration of demand response event [hr]:')
-    dr_dur.setDescription('')
     dr_dur.setDefaultValue(3)
     args << dr_dur
 
     # Make boolean argument for allowing chiller to back-up ice
     dr_chill = OpenStudio::Measure::OSArgument.makeBoolArgument('dr_chill', false)
-    dr_chill.setDisplayName('Allow chiller to back-up ice during DR event?')
+    dr_chill.setDisplayName('Allow chiller to back-up ice during DR event')
     dr_chill.setDescription('Unselection may result in unmet cooling hours')
     dr_chill.setDefaultValue('false')
     args << dr_chill

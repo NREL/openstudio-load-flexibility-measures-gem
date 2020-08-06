@@ -92,7 +92,7 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure:
     args << ice_cap
 
     size_mult = OpenStudio::Measure::OSArgument.makeStringArgument('size_mult', false)
-    size_mult.setDisplayName('Enter a sizing multiplier to manually adjust the autosize results for ice tank capacities.')
+    size_mult.setDisplayName('Enter a sizing multiplier to manually adjust the autosize results for ice tank capacities')
     size_mult.setDefaultValue('1.0')
     args << size_mult
 
@@ -120,14 +120,14 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure:
 
     # make arguement for weekend TES operation
     wknd = OpenStudio::Measure::OSArgument.makeBoolArgument('wknd', false)
-    wknd.setDisplayName('Run TES on the weekends?')
-    wknd.setDescription('Select if building is occupied on weekends.')
+    wknd.setDisplayName('Run TES on the weekends')
+    wknd.setDescription('Select if building is occupied on weekends')
     wknd.setDefaultValue(true)
     args << wknd
 
     # make arguments for operating season
     season = OpenStudio::Measure::OSArgument.makeStringArgument('season', false)
-    season.setDisplayName('Select season during which the ice cooling may be used:')
+    season.setDisplayName('Select season during which the ice cooling may be used')
     season.setDescription('Use MM/DD-MM/DD format')
     season.setDefaultValue('01/01-12/31')
     args << season

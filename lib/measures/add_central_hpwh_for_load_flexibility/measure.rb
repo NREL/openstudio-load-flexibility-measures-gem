@@ -176,7 +176,6 @@ class AddCentralHpwhForLoadFlexibility < OpenStudio::Measure::ModelMeasure
     # create argument for heat pump rated cop
     cop = OpenStudio::Measure::OSArgument.makeDoubleArgument('cop', true)
     cop.setDisplayName('Set heat pump rated COP (heating)')
-    cop.setDescription('[-]')
     cop.setDefaultValue(2.8)
     args << cop
 
