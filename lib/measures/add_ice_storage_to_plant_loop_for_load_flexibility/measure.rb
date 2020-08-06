@@ -231,7 +231,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     # Make double argument for loop temperature for ice charging
     chg_sp = OpenStudio::Measure::OSArgument.makeDoubleArgument('chg_sp', true)
     chg_sp.setDisplayName('Ice Charging Setpoint Temperature F:')
-    chg_sp.setDefaultValue('25')
+    chg_sp.setDefaultValue(25)
     args << chg_sp
 
     # Make double argument for loop design delta T
@@ -321,7 +321,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     dr_dur = OpenStudio::Measure::OSArgument.makeDoubleArgument('dr_dur', false)
     dr_dur.setDisplayName('Enter duration of demand response event [hr]:')
     dr_dur.setDescription('')
-    dr_dur.setDefaultValue('3')
+    dr_dur.setDefaultValue(3)
     args << dr_dur
 
     # Make boolean argument for allowing chiller to back-up ice
