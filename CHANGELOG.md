@@ -3,9 +3,9 @@
 ## Version 0.1.2
 
 * Bug Fixes:
-  * ![Fixed:][fixed] [#4](https://github.com/NREL/openstudio-load-flexibility-measures-gem/issues/4), use unix paths in 'add_distributed_ice_storage_to_air_loop_for_load_flexibility'
-  * ![Fixed:][fixed] [#6](https://github.com/NREL/openstudio-load-flexibility-measures-gem/issues/6), code error in add_distributed measure
-  * ![Fixed:][fixed] [#8](https://github.com/NREL/openstudio-load-flexibility-measures-gem/issues/8), EMS output variables cause measure failure
+  * [#4](https://github.com/NREL/openstudio-load-flexibility-measures-gem/issues/4), use unix paths in 'add_distributed_ice_storage_to_air_loop_for_load_flexibility'
+  * [#6](https://github.com/NREL/openstudio-load-flexibility-measures-gem/issues/6), code error in add_distributed measure
+  * [#8](https://github.com/NREL/openstudio-load-flexibility-measures-gem/issues/8), EMS output variables cause measure failure
 * Remove .DS_Store and exclude from future releases
 * Code cleanup
 
