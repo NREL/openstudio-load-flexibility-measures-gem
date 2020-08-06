@@ -143,14 +143,14 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     # Make double argument for ice chiller resizing factor - relative to selected chiller capacity
     chiller_resize_factor = OpenStudio::Measure::OSArgument.makeDoubleArgument('chiller_resize_factor', false)
     chiller_resize_factor.setDisplayName('Enter Chiller Sizing Factor:')
-    chiller_resize_factor.setDefaultValue('0.7')
+    chiller_resize_factor.setDefaultValue(0.75)
     args << chiller_resize_factor
 
     # Make double argument for chiller max capacity limit during ice discharge
     chiller_limit = OpenStudio::Measure::OSArgument.makeDoubleArgument('chiller_limit', false)
     chiller_limit.setDisplayName('Enter Chiller Max Capacity Limit During Ice Discharge:')
     chiller_limit.setDescription('Enter as a fraction of chiller capacity (0.0 - 1.0).')
-    chiller_limit.setDefaultValue('0.75')
+    chiller_limit.setDefaultValue(1.0)
     args << chiller_limit
 
     # Make choice argument for schedule options
