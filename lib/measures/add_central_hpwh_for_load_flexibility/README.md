@@ -21,7 +21,7 @@ ModelMeasure
 ## Arguments
 
 
-### Remove existing water heater on selected loop?
+### Remove existing water heater on selected loop
 
 **Name:** remove_wh,
 **Type:** Boolean,

@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>add_ice_storage_to_plant_loop_for_load_flexibility</name>
   <uid>48f37812-0cb6-4770-b695-beb8d8a5660d</uid>
-  <version_id>ec8fce33-0983-427d-baf9-624b66c9bdb6</version_id>
-  <version_modified>20200729T185358Z</version_modified>
+  <version_id>dea207c2-c62b-4840-a615-3198e08d34c2</version_id>
+  <version_modified>20200806T174355Z</version_modified>
   <xml_checksum>6394841D</xml_checksum>
   <class_name>AddIceStorageToPlantLoopForLoadFlexibility</class_name>
   <display_name>Add Ice Storage Tank</display_name>
@@ -97,7 +97,7 @@
       <type>Double</type>
       <required>false</required>
       <model_dependent>false</model_dependent>
-      <default_value>0.7</default_value>
+      <default_value>0.75</default_value>
     </argument>
     <argument>
       <name>chiller_limit</name>
@@ -106,7 +106,7 @@
       <type>Double</type>
       <required>false</required>
       <model_dependent>false</model_dependent>
-      <default_value>0.75</default_value>
+      <default_value>1</default_value>
     </argument>
     <argument>
       <name>old</name>
@@ -462,12 +462,6 @@
       <checksum>A3FC1180</checksum>
     </file>
     <file>
-      <filename>LICENSE.md</filename>
-      <filetype>md</filetype>
-      <usage_type>license</usage_type>
-      <checksum>59B484B4</checksum>
-    </file>
-    <file>
       <filename>Ice Measure Implementation Guide.pdf</filename>
       <filetype>pdf</filetype>
       <usage_type>doc</usage_type>
@@ -486,10 +480,16 @@
       <checksum>2F6D3DE2</checksum>
     </file>
     <file>
+      <filename>LICENSE.md</filename>
+      <filetype>md</filetype>
+      <usage_type>license</usage_type>
+      <checksum>E0468DD6</checksum>
+    </file>
+    <file>
       <filename>add_ice_storage_to_plant_loop_for_load_flexibility_test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>7C4811E5</checksum>
+      <checksum>4CDCF2D8</checksum>
     </file>
     <file>
       <version>
@@ -500,7 +500,7 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>E05DCD4F</checksum>
+      <checksum>44A5E277</checksum>
     </file>
   </files>
 </measure>
