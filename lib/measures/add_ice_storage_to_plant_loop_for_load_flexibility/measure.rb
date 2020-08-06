@@ -868,6 +868,19 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     # Ice Tank thermal storage capacity - Empty Global Variable
     evar_tes_cap = OpenStudio::Model::EnergyManagementSystemGlobalVariable.new(model, 'TES_Cap')
 
+    # Set TES Capacity from User Inputs
+    set_tes_cap = OpenStudio::Model::EnergyManagementSystemProgram.new(model)
+    set_tes_cap.setName('Set_TES_Cap')
+    body = <<-EMS
+      SET TES_Cap = #{storage_capacity}
+    EMS
+    set_tes_cap.setBody(body)
+
+    set_tes_cap_pcm = OpenStudio::Model::EnergyManagementSystemProgramCallingManager.new(model)
+    set_tes_cap_pcm.setName('Set_TES_Cap_CallMgr')
+    set_tes_cap_pcm.setCallingPoint('BeginNewEnvironment')
+    set_tes_cap_pcm.addProgram(set_tes_cap)
+    
     ## Create EMS Components to Control Load on Upstream (Priority) Device----------------------------------------------
 
     # Flag value indicating that a chiller limiter is required or DR Test is Activated
