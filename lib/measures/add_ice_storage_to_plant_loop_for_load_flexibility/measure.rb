@@ -880,7 +880,7 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     set_tes_cap_pcm.setName('Set_TES_Cap_CallMgr')
     set_tes_cap_pcm.setCallingPoint('BeginNewEnvironment')
     set_tes_cap_pcm.addProgram(set_tes_cap)
-    
+
     ## Create EMS Components to Control Load on Upstream (Priority) Device----------------------------------------------
 
     # Flag value indicating that a chiller limiter is required or DR Test is Activated
@@ -980,7 +980,6 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
   			SET Limit_Counter = 0
   			SET DR_Flag = 0
         SET DT_Max = #{dt_max}
-        SET TES_Cap = #{storage_capacity}
       EMS
       chiller_limit_calculation.setBody(body)
 
@@ -1088,10 +1087,10 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
 
     # EMS Output Variable(s) - Chiller Limit Independent
     eout_chiller_cap = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_chiller_cap)
-    eout_chiller_cap.setName('Chiller Nominal Capacity')
+    eout_chiller_cap.setName('Chiller Nominal Capacity (kW)')
 
     eout_tes_cap = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_tes_cap)
-    eout_tes_cap.setName('Ice Thermal Storage Capacity')
+    eout_tes_cap.setName('Ice Thermal Storage Capacity (GJ)')
 
     # Identify existing output variables
     vars = model.getOutputVariables
@@ -1252,12 +1251,6 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
 
     if chiller_limit != 1.0 # flag for EMS use, following EMS vars only exist if previous script ran
 
-      # Create output variable for chiller nominal capacity (from EMS Output Variable)
-      v = OpenStudio::Model::OutputVariable.new(eout_chiller_cap.name.to_s, model)
-      v.setName("#{ctes_chiller.name} Nominal Capacity [W]")
-      v.setVariableName('Chiller Nominal Capacity')
-      ovars << v
-
       # Create output variable for chiller limited capacity (from EMS Output Variable)
       v = OpenStudio::Model::OutputVariable.new(eout_chiller_limit.name.to_s, model)
       v.setName("#{ctes_chiller.name} Limited Capacity")
@@ -1286,6 +1279,12 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     v = OpenStudio::Model::OutputVariable.new(eout_tes_cap.name.to_s, model)
     v.setName("#{ctes.name} Ice Thermal Storage Capacity [GJ]")
     v.setVariableName('Ice Thermal Storage Capacity')
+    ovars << v
+
+    # Create output variable for chiller nominal capacity (from EMS Output Variable)
+    v = OpenStudio::Model::OutputVariable.new(eout_chiller_cap.name.to_s, model)
+    v.setName("#{ctes_chiller.name} Nominal Capacity [W]")
+    v.setVariableName('Chiller Nominal Capacity')
     ovars << v
 
     # Set variable reporting frequency for newly created output variables
