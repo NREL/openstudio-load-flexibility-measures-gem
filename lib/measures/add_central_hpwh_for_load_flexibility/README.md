@@ -70,7 +70,7 @@ This is where the water heater tank will be placed
 **Model Dependent:** false
 
 ### Set heat pump rated COP (heating)
-[-]
+
 **Name:** cop,
 **Type:** Double,
 **Units:** ,

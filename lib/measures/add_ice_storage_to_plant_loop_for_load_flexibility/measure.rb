@@ -1084,10 +1084,10 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
 
     # EMS Output Variable(s) - Chiller Limit Independent
     eout_chiller_cap = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_chiller_cap)
-    eout_chiller_cap.setName('Chiller Nominal Capacity (kW)')
+    eout_chiller_cap.setName('Chiller Nominal Capacity')
 
     eout_tes_cap = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_tes_cap)
-    eout_tes_cap.setName('Ice Thermal Storage Capacity (GJ)')
+    eout_tes_cap.setName('Ice Thermal Storage Capacity')
 
     # Identify existing output variables
     vars = model.getOutputVariables

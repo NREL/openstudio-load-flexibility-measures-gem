@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>add_ice_storage_to_plant_loop_for_load_flexibility</name>
   <uid>48f37812-0cb6-4770-b695-beb8d8a5660d</uid>
-  <version_id>dea207c2-c62b-4840-a615-3198e08d34c2</version_id>
-  <version_modified>20200806T174355Z</version_modified>
+  <version_id>7c7e99fa-5fa6-403b-98d2-d08a19e2dba2</version_id>
+  <version_modified>20200806T183852Z</version_modified>
   <xml_checksum>6394841D</xml_checksum>
   <class_name>AddIceStorageToPlantLoopForLoadFlexibility</class_name>
   <display_name>Add Ice Storage Tank</display_name>
@@ -110,7 +110,7 @@
     </argument>
     <argument>
       <name>old</name>
-      <display_name>Use Existing (Pre-Defined) Temperature Control Schedules?</display_name>
+      <display_name>Use Existing (Pre-Defined) Temperature Control Schedules</display_name>
       <description>Use drop-down selections below.</description>
       <type>Boolean</type>
       <required>false</required>
@@ -171,7 +171,7 @@
     </argument>
     <argument>
       <name>new</name>
-      <display_name>Create New (Simple) Temperature Control Schedules?</display_name>
+      <display_name>Create New (Simple) Temperature Control Schedules</display_name>
       <description>Use entry fields below. If Pre-Defined is also selected, these new schedules will be created but not applied.</description>
       <type>Boolean</type>
       <required>false</required>
@@ -270,7 +270,7 @@
     </argument>
     <argument>
       <name>wknds</name>
-      <display_name>Allow Ice Discharge on Weekends?</display_name>
+      <display_name>Allow Ice Discharge on Weekends</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -323,8 +323,7 @@
     </argument>
     <argument>
       <name>dr</name>
-      <display_name>Test Demand Reponse Event?</display_name>
-      <description></description>
+      <display_name>Test Demand Reponse Event</display_name>
       <type>Boolean</type>
       <required>false</required>
       <model_dependent>false</model_dependent>
@@ -343,7 +342,6 @@
     <argument>
       <name>dr_add_shed</name>
       <display_name>Select if a Load Add or Load Shed Event</display_name>
-      <description></description>
       <type>Choice</type>
       <required>false</required>
       <model_dependent>false</model_dependent>
@@ -380,7 +378,6 @@
     <argument>
       <name>dr_dur</name>
       <display_name>Enter duration of demand response event [hr]:</display_name>
-      <description></description>
       <type>Double</type>
       <required>false</required>
       <model_dependent>false</model_dependent>
@@ -388,7 +385,7 @@
     </argument>
     <argument>
       <name>dr_chill</name>
-      <display_name>Allow chiller to back-up ice during DR event?</display_name>
+      <display_name>Allow chiller to back-up ice during DR event</display_name>
       <description>Unselection may result in unmet cooling hours</description>
       <type>Boolean</type>
       <required>false</required>
@@ -468,12 +465,6 @@
       <checksum>090841B0</checksum>
     </file>
     <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>F360189C</checksum>
-    </file>
-    <file>
       <filename>OsLib_Schedules.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
@@ -500,7 +491,13 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>44A5E277</checksum>
+      <checksum>32CD91EE</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>69EDB2DB</checksum>
     </file>
   </files>
 </measure>
