@@ -979,18 +979,13 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
       chiller_limit_calc_pcm.setCallingPoint('BeginNewEnvironment')
       chiller_limit_calc_pcm.addProgram(chiller_limit_calculation)
 
-      # EMS Output Variable(s)
-      eout_chiller_cap = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_chiller_cap)
-      eout_chiller_cap.setName('Chiller Nominal Capacity')
-
+      # EMS Output Variable(s) - Chiller Limiter Dependent
       eout_chiller_limit = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_chiller_limit)
       eout_chiller_limit.setName('Chiller Limited Capacity')
 
       eout_limit_counter = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_limit_counter)
       eout_limit_counter.setName('Chiller Limit Counter')
 
-      eout_tes_cap = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_tes_cap)
-      eout_tes_cap.setName('Ice Thermal Storage Capacity')
     end
 
     ## DR EVENT TESTER EMS --------------------------
@@ -1074,6 +1069,13 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
     ## END DR EVENT TESTER EMS ---------------------
 
     ## Add Output Variables and Meters----------------------------------------------------------------------------------
+
+    # EMS Output Variable(s) - Chiller Limit Independent
+    eout_chiller_cap = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_chiller_cap)
+    eout_chiller_cap.setName('Chiller Nominal Capacity')
+
+    eout_tes_cap = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, evar_tes_cap)
+    eout_tes_cap.setName('Ice Thermal Storage Capacity')
 
     # Identify existing output variables
     vars = model.getOutputVariables
