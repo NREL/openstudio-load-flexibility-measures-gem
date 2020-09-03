@@ -40,3 +40,4 @@ Detailed instructions for usage are included in each measure's respective README
 ## TODO
 
 - [ ] Update usage with links to respective measure documentation
+- [ ] Update documentation pdf's to reflect revised measure names
