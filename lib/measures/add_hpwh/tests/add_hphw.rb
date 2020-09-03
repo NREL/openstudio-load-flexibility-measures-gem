@@ -41,7 +41,7 @@ require 'minitest/autorun'
 require_relative '../measure.rb'
 require 'fileutils'
 
-class AddCentralHpwhForLoadFlexibilityTest < Minitest::Test
+class AddHphwTest < Minitest::Test
   # def setup
   # end
 
@@ -50,7 +50,7 @@ class AddCentralHpwhForLoadFlexibilityTest < Minitest::Test
 
   def test_good_argument_values
     # create an instance of the measure
-    measure = AddCentralHpwhForLoadFlexibility.new
+    measure = AddHphw.new
 
     # create runner with empty OSW
     osw = OpenStudio::WorkflowJSON.new
