@@ -3,7 +3,7 @@
 ## Version 0.1.3
 
 * Measures have been renamed and readme updated:
-  * "Add Central Ice Storage to Plant Loop for Load Flexibility" is now "Add Central Ice Storage"
+  * "Add Ice Storage to Plant Loop for Load Flexibility" is now "Add Central Ice Storage"
   * "Add Distributed Ice Storage to Air Loop for Load Flexibility" is now "Add Packaged Ice Storage"
   * "Add Central HPHW for Load Flexibility" is now "Add HPHW"
 * Bug Fixes:
