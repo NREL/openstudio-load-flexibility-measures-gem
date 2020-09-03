@@ -1,5 +1,14 @@
 # OpenStudio Load Flexibility Measures Gem
 
+## Version 0.1.3
+
+* Measures have been renamed and readme updated:
+  * "Add Central Ice Storage to Plant Loop for Load Flexibility" is now "Add Central Ice Storage"
+  * "Add Distributed Ice Storage to Air Loop for Load Flexibility" is now "Add Packaged Ice Storage"
+  * "Add Central HPHW for Load Flexibility" is now "Add HPHW"
+* Bug Fixes:
+  * [#12](https://github.com/NREL/openstudio-load-flexibility-measures-gem/issues/12), File names become too long when using with URBANopt CLI
+
 ## Version 0.1.2
 
 * Bug Fixes:
