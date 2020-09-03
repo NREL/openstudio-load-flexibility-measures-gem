@@ -41,7 +41,7 @@ require 'minitest/autorun'
 require_relative '../measure.rb'
 require 'fileutils'
 
-class AddIceStorageToPlantLoopForLoadFlexibilityTest < Minitest::Test
+class AddCentralIceStorageTest < Minitest::Test
   # def setup
   # end
 
@@ -50,7 +50,7 @@ class AddIceStorageToPlantLoopForLoadFlexibilityTest < Minitest::Test
 
   def test_number_of_arguments_and_argument_names
     # create an instance of the measure
-    measure = AddIceStorageToPlantLoopForLoadFlexibility.new
+    measure = AddCentralIceStorage.new
 
     # create runner with empty OSW
     osw = OpenStudio::WorkflowJSON.new
@@ -96,7 +96,7 @@ class AddIceStorageToPlantLoopForLoadFlexibilityTest < Minitest::Test
 
   def test_bad_argument_values
     # create an instance of the measure
-    measure = AddIceStorageToPlantLoopForLoadFlexibility.new
+    measure = AddCentralIceStorage.new
 
     # create runner with empty OSW
     osw = OpenStudio::WorkflowJSON.new
@@ -135,7 +135,7 @@ class AddIceStorageToPlantLoopForLoadFlexibilityTest < Minitest::Test
 
   def test_good_argument_values
     # create an instance of the measure
-    measure = AddIceStorageToPlantLoopForLoadFlexibility.new
+    measure = AddCentralIceStorage.new
 
     # create runner with empty OSW
     osw = OpenStudio::WorkflowJSON.new
