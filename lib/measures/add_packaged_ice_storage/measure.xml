@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <measure>
   <schema_version>3.0</schema_version>
-  <name>add_distributed_ice_storage_to_air_loop_for_load_flexibility</name>
+  <name>add_packaged_ice_storage</name>
   <uid>2aa8c128-53b9-49fd-9aaf-9253a1f05936</uid>
-  <version_id>8b55d314-a611-495a-bbc3-47cdd3ed9e86</version_id>
-  <version_modified>20200806T183852Z</version_modified>
+  <version_id>db67a99f-13f3-4084-ab3f-548cfb8c32a5</version_id>
+  <version_modified>20200903T163041Z</version_modified>
   <xml_checksum>2617824F</xml_checksum>
-  <class_name>AddDistributedIceStorageToAirLoopForLoadFlexibility</class_name>
+  <class_name>AddPackagedIceStorage</class_name>
   <display_name>Add Distributed Ice Storage to Air Loop for Load Flexibility</display_name>
   <description>This measure removes the cooling coils in the model and replaces them with packaged air conditioning units with integrated ice storage.</description>
   <modeler_description>This measure applies to packaged single zone air conditioning systems or packaged variable air volume systems that were originally modeled with CoilSystem:Cooling:DX or AirLoopHVAC:UnitarySystem container objects. It adds a Coil:Cooling:DX:SingleSpeed:ThermalStorage coil object to each user-selected thermal zone and deletes the existing cooling coil.
@@ -233,12 +233,6 @@ If 'AutoSize' is selected for ice capacity, these inputs set an ice capacity siz
       <checksum>E0468DD6</checksum>
     </file>
     <file>
-      <filename>add_distributed_ice_storage_to_air_loop_for_load_flexibility_test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>FC11EAC7</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>3.0.0</identifier>
@@ -247,7 +241,13 @@ If 'AutoSize' is selected for ice capacity, these inputs set an ice capacity siz
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>AFBDDEF7</checksum>
+      <checksum>C1C62C47</checksum>
+    </file>
+    <file>
+      <filename>add_packaged_ice_storage_test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>2D918464</checksum>
     </file>
   </files>
 </measure>
