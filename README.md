@@ -21,9 +21,9 @@ Or install it yourself as:
 ## Usage
 
 The openstudio-load-flexibility-measures gem contains measures to apply thermal load flexibility to a building model. The current version contains the following:
-* Add Central HPWH for Load Flexibility
-* Add Distributed Ice Storage to Air Loop for Load Flexibility
-* Add Ice Storage to Plant Loop for Load Flexibility
+* Add HPHW (Heat Pump Hot Water Heater)
+* Add Central Ice Storage (for plant loops)
+* Add Packaged Ice Storage (for rooftop units)
 
 Detailed instructions for usage are included in each measure's respective README.md and docs folder. 
 
