@@ -43,7 +43,7 @@
 # EnergyPlus Engineering Reference, Sections:
 
 # start the measure
-class AddCentralHpwhForLoadFlexibility < OpenStudio::Measure::ModelMeasure
+class AddHphw < OpenStudio::Measure::ModelMeasure
   require 'openstudio-standards'
 
   # human readable name
@@ -644,4 +644,4 @@ class AddCentralHpwhForLoadFlexibility < OpenStudio::Measure::ModelMeasure
 end
 
 # register the measure to be used by the application
-AddCentralHpwhForLoadFlexibility.new.registerWithApplication
+AddHphw.new.registerWithApplication

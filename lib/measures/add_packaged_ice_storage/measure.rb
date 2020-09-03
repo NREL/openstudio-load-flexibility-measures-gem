@@ -37,7 +37,7 @@
 # Measure Renamed, License Updated, and Code Cleaned - KH June 2020
 
 # start the measure
-class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure::EnergyPlusMeasure
+class AddPackagedIceStorage < OpenStudio::Measure::EnergyPlusMeasure
   # human readable name
   def name
     'Add Distributed Ice Storage to Air Loop for Load Flexibility'
@@ -687,4 +687,4 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibility < OpenStudio::Measure:
 end
 
 # register the measure to be used by the application
-AddDistributedIceStorageToAirLoopForLoadFlexibility.new.registerWithApplication
+AddPackagedIceStorage.new.registerWithApplication

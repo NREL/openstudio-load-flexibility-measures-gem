@@ -49,7 +49,7 @@
 require "#{File.dirname(__FILE__)}/resources/OsLib_Schedules"
 
 # start the measure
-class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMeasure
+class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
   # human readable name
   def name
     # Measure name should be the title case of the class name.
@@ -1321,4 +1321,4 @@ class AddIceStorageToPlantLoopForLoadFlexibility < OpenStudio::Measure::ModelMea
 end
 
 # register the measure to be used by the application
-AddIceStorageToPlantLoopForLoadFlexibility.new.registerWithApplication
+AddCentralIceStorage.new.registerWithApplication
