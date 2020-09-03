@@ -39,7 +39,7 @@ require 'minitest/autorun'
 
 require_relative '../measure.rb'
 
-class AddDistributedIceStorageToAirLoopForLoadFlexibilityTest < MiniTest::Test
+class AddPackagedIceStorageTest < MiniTest::Test
   # def setup
   # end
 
@@ -48,7 +48,7 @@ class AddDistributedIceStorageToAirLoopForLoadFlexibilityTest < MiniTest::Test
 
   def test_good_argument_values
     # create an instance of the measure
-    measure = AddDistributedIceStorageToAirLoopForLoadFlexibility.new
+    measure = AddPackagedIceStorage.new
 
     # create runner with empty OSW
     osw = OpenStudio::WorkflowJSON.new
