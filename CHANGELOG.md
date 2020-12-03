@@ -3,8 +3,11 @@
 ## Version 0.2.0
 
 * Updated dependencies for OS Version 3.1:
-  * OS Extension to 0.3.1
-  * OS Standards to 0.2.12
+  * Merged [#15](https://github.com/NREL/openstudio-load-flexibility-measures-gem/pull/15), Os 3.1.0
+  * OS Extension set to 0.3.1
+  * OS Standards set to 0.2.12
+* Updated measure names within documentation
+* Updated documentation for Add Packaged Ice Storage measure
 
 ## Version 0.1.3
 
