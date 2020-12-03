@@ -1,4 +1,4 @@
-# Guide for Using Replace Cooling Cool with Packaged Ice Storage Unit Measure
+# Guide for the Add Packaged Ice Storage Measure
 
 ## Description
 This measure removes the cooling coils in the model and replaces them with packaged air conditioning units with integrated ice storage.
@@ -8,7 +8,7 @@ This measure applies to packaged single zone air conditioning systems or package
 
 Users inputs are accepted for cooling coil size, ice storage size, system control method, modes of operation, and operating schedule.
 
-The measure requires schedule objects and performance curves from an included resource file TESCurves.idf. Output variables of typical interest are included as well..
+The measure requires schedule objects and performance curves from an included resource file TESCurves.idf. Output variables of typical interest are included as well.
 
 ## Measure Type
 EnergyPlus Measure
