@@ -2,7 +2,7 @@
 
 ###### (Automatically generated documentation)
 
-# flexible_domestic_hot_water
+# Add HPWH for Domestic Hot Water
 
 ## Description
 This measure adds or replaces existing domestic hot water heater with air source heat pump system and allows for the addition of multiple daily flexible control time windows. The heater/tank system may charge at maximum capacity up to an elevated temperature, or float without any heat addition for a specified timeframe down to a minimum tank temperature.

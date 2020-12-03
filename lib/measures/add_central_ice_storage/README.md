@@ -2,7 +2,7 @@
 
 ###### (Automatically generated documentation)
 
-# Add Ice Storage Tank
+# Add Central Ice Storage
 
 ## Description
 This measure adds an ice storage tank to a chilled water loop for the purpose of thermal energy storage.
