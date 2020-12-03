@@ -40,7 +40,7 @@
 class AddPackagedIceStorage < OpenStudio::Measure::EnergyPlusMeasure
   # human readable name
   def name
-    'Add Distributed Ice Storage to Air Loop for Load Flexibility'
+    'Add Packaged Ice Storage'
   end
 
   # human readable description
