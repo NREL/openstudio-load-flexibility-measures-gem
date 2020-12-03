@@ -49,7 +49,7 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
   # human readable name
   def name
     # Measure name should be the title case of the class name.
-    'flexible_domestic_hot_water'
+    'Add HPWH for Domestic Hot Water'
   end
 
   # human readable description

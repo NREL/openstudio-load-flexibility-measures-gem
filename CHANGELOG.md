@@ -1,5 +1,11 @@
 # OpenStudio Load Flexibility Measures Gem
 
+## Version 0.2.0
+
+* Updated dependencies for OS Version 3.1:
+  * OS Extension to 0.3.1
+  * OS Standards to 0.2.12
+
 ## Version 0.1.3
 
 * Measures have been renamed and readme updated:

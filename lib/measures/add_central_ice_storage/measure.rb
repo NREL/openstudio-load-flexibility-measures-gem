@@ -53,7 +53,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
   # human readable name
   def name
     # Measure name should be the title case of the class name.
-    'Add Ice Storage Tank'
+    'Add Central Ice Storage'
   end
 
   # human readable description
