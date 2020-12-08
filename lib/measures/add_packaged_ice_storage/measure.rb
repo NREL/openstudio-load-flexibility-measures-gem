@@ -61,11 +61,11 @@ class AddPackagedIceStorage < OpenStudio::Measure::EnergyPlusMeasure
   def arguments(workspace)
     args = OpenStudio::Measure::OSArgumentVector.new
 
-    # Add a delimiter for clarify
-    delimiter = OpenStudio::Measure::OSArgument.makeStringArgument('delimiter', false)
-    delimiter.setDisplayName('Select Coils to Replace:')
-    delimiter.setDefaultValue('-----------------------------------------------------------------')
-    args << delimiter
+    # # Add a delimiter for clarify
+    # delimiter = OpenStudio::Measure::OSArgument.makeStringArgument('delimiter', false)
+    # delimiter.setDisplayName('Select Coils to Replace:')
+    # delimiter.setDefaultValue('-----------------------------------------------------------------')
+    # args << delimiter
 
     # get existing dx coils for user selection
     coils = workspace.getObjectsByType('Coil:Cooling:DX:SingleSpeed'.to_IddObjectType)
@@ -82,6 +82,7 @@ class AddPackagedIceStorage < OpenStudio::Measure::EnergyPlusMeasure
       coil_selection = OpenStudio::Measure::OSArgument.makeBoolArgument(k, true)
       coil_selection.setDisplayName(k)
       coil_selection.setDefaultValue(v)
+      coil_selection.setDescription('Replace this coil?')
       args << coil_selection
     end
 

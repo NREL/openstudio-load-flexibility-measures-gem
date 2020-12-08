@@ -1,5 +1,10 @@
 # OpenStudio Load Flexibility Measures Gem
 
+## Version 0.2.1
+* Updated dependency for OS Extension 0.3.2
+* Removed extraneous delimiter argument from Add Packaged Ice Storage measure
+  * Fixed [#18](https://github.com/NREL/openstudio-load-flexibility-measures-gem/issues/18), remove "delimiter" argument from add_packaged_ice_storage
+
 ## Version 0.2.0
 
 * Updated dependencies for OS Version 3.1:
