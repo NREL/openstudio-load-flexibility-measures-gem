@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>add_packaged_ice_storage</name>
   <uid>2aa8c128-53b9-49fd-9aaf-9253a1f05936</uid>
-  <version_id>58a7de86-a759-44e5-b3e5-ce79937cd3b4</version_id>
-  <version_modified>20201203T034328Z</version_modified>
+  <version_id>1a0ab79e-1825-4418-a4ad-aec2194d4707</version_id>
+  <version_modified>20201208T224029Z</version_modified>
   <xml_checksum>2617824F</xml_checksum>
   <class_name>AddPackagedIceStorage</class_name>
   <display_name>Add Packaged Ice Storage</display_name>
@@ -15,14 +15,6 @@
 
     The measure requires schedule objects and performance curves from an included resource file TESCurves.idf. Output variables of typical interest are included as well.</modeler_description>
   <arguments>
-    <argument>
-      <name>delimiter</name>
-      <display_name>Select Coils to Replace:</display_name>
-      <type>String</type>
-      <required>false</required>
-      <model_dependent>false</model_dependent>
-      <default_value>-----------------------------------------------------------------</default_value>
-    </argument>
     <argument>
       <name>ice_cap</name>
       <display_name>Input the ice storage capacity [ton-hours]</display_name>
@@ -247,7 +239,7 @@ If 'AutoSize' is selected for ice capacity, these inputs set an ice capacity siz
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>6AA725F2</checksum>
+      <checksum>749A70A0</checksum>
     </file>
   </files>
 </measure>
