@@ -30,7 +30,7 @@ This measure is built to simulate packaged ice storage units which integrate wit
 ## How the Measure Works
 The measure works by replacing user-selected single-speed and two-speed cooling coils (all applicable coils are pre-selected by default) with *Coil:Cooling:DX:SingleSpeed:ThermalStorage* objects. These TES units may be AutoSized, or hard-sized
 
-An Energy Management System (EMS) program is created for each new TES coil. The default controller turns ice charging and discharging on/off based on ice storage tank end fraction (state of charge). If users desire advanced control strategies, the EMS code may be modified directly in the "measure.rb" file (line 663 ff.). The default controller includes state-of-charge criteria that must be met before ice re-charging is permitted. This value is set at 70%, but may be manually adjusted within the measure.rb file at line 681. A built-in Schedule Modes controller is also available.
+An Energy Management System (EMS) program is created for each new TES coil. The default controller turns ice charging and discharging on/off based on ice storage tank end fraction (state of charge) and user-defined operating schedule. If users desire advanced control strategies, the EMS code may be modified directly in the "measure.rb" file (line 663 ff.). A built-in Schedule Modes controller is also available.
 
 Whether EMS Control or Schedule Modes are used, a charge/discharge schedule is required. The default is a simple schedule created by user inputs. Ice storage capacity is based on the ice discharge window.
 
