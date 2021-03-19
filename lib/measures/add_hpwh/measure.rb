@@ -599,7 +599,7 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
                   'Water Heater Use Side Heat Transfer Rate',
                   'Water Heater Source Side Heat Transfer Rate',
                   'Water Heater Unmet Demand Heat Transfer Rate',
-                  'Water Heater Electric Power',
+                  'Water Heater Electricity Rate',
                   'Water Heater Water Volume Flow Rate',
                   'Water Use Connections Hot Water Temperature']
 

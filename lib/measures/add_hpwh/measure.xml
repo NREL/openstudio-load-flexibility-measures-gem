@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>add_hphw</name>
   <uid>518cde6f-1806-4b9a-bee9-ccaac49c7a53</uid>
-  <version_id>7a10ef10-67db-4dd1-b607-24207b7ee597</version_id>
-  <version_modified>20201203T034328Z</version_modified>
+  <version_id>0a64fe16-eef8-4026-a3a6-45fa8dcad162</version_id>
+  <version_modified>20210317T134945Z</version_modified>
   <xml_checksum>A374667A</xml_checksum>
   <class_name>AddHphw</class_name>
   <display_name>Add HPWH for Domestic Hot Water</display_name>
@@ -371,17 +371,6 @@ The flexibility of the system is based on user-defined temperatures and times, w
       <checksum>E0468DD6</checksum>
     </file>
     <file>
-      <version>
-        <software_program>OpenStudio</software_program>
-        <identifier>3.0.0</identifier>
-        <min_compatible>2.8.0</min_compatible>
-      </version>
-      <filename>measure.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>script</usage_type>
-      <checksum>6F1357B0</checksum>
-    </file>
-    <file>
       <filename>add_hphw_test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
@@ -392,6 +381,17 @@ The flexibility of the system is based on user-defined temperatures and times, w
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>1FE9503E</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>3.0.0</identifier>
+        <min_compatible>2.8.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>F8FEB798</checksum>
     </file>
   </files>
 </measure>
