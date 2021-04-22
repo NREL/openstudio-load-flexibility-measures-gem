@@ -1,8 +1,8 @@
 # OpenStudio Load Flexibility Measures Gem
 
 ## Version 0.3.1
-* Updated OS Extension dependency to 0.4.1
-* Updated OS Standards dependency to 0.2.13.rc3
+* Updated OS Extension dependency to 0.4.2
+* Updated OS Standards dependency to 0.2.13
 
 ## Version 0.3.0
 * Merged [#20](https://github.com/NREL/openstudio-load-flexibility-measures-gem/pull/20), 030 upgrade
