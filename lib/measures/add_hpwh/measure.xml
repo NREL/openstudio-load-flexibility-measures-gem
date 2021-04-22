@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>add_hphw</name>
   <uid>518cde6f-1806-4b9a-bee9-ccaac49c7a53</uid>
-  <version_id>0a64fe16-eef8-4026-a3a6-45fa8dcad162</version_id>
-  <version_modified>20210317T134945Z</version_modified>
+  <version_id>28006b40-f618-45b9-a1bc-b07f054a0242</version_id>
+  <version_modified>20210421T154438Z</version_modified>
   <xml_checksum>A374667A</xml_checksum>
   <class_name>AddHphw</class_name>
   <display_name>Add HPWH for Domestic Hot Water</display_name>
@@ -69,7 +69,7 @@ The flexibility of the system is based on user-defined temperatures and times, w
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>PumpedCondenser</default_value>
+      <default_value>Simplified</default_value>
       <choices>
         <choice>
           <value>PumpedCondenser</value>
@@ -391,7 +391,7 @@ The flexibility of the system is based on user-defined temperatures and times, w
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>F8FEB798</checksum>
+      <checksum>A245A2E2</checksum>
     </file>
   </files>
 </measure>
