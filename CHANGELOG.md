@@ -1,7 +1,13 @@
 # OpenStudio Load Flexibility Measures Gem
 
+## Version 0.3.1
+* Updated OS Extension dependency to 0.4.2
+* Updated OS Standards dependency to 0.2.13
+* Added Jenkins file for CI testing
+
 ## Version 0.3.0
 * Merged [#20](https://github.com/NREL/openstudio-load-flexibility-measures-gem/pull/20), 030 upgrade
+  * Added Ruby 2.7.0 dependency
   * Updated OS Extension dependency to 0.4.0
 * Updated documentation for Add Packaged Ice Storage measure
 * Corrected output variable in Add HPWH measure
