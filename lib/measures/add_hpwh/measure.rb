@@ -115,7 +115,7 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
     # create argument for hot water tank volume
     vol = OpenStudio::Measure::OSArgument.makeDoubleArgument('vol', false)
     vol.setDisplayName('Set hot water tank volume [gal]')
-    vol.setDescription('Enter 0 to use existing tank volume(s).')
+    vol.setDescription('Enter 0 to use existing tank volume(s). Values less than 5 are treated as sizing multipliers.')
     vol.setUnits('gal')
     vol.setDefaultValue(0)
     args << vol
