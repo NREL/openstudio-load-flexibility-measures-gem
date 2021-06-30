@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>add_hphw</name>
   <uid>518cde6f-1806-4b9a-bee9-ccaac49c7a53</uid>
-  <version_id>0a64fe16-eef8-4026-a3a6-45fa8dcad162</version_id>
-  <version_modified>20210317T134945Z</version_modified>
+  <version_id>1ddd139f-d267-4817-95c1-339d78c6594e</version_id>
+  <version_modified>20210512T163832Z</version_modified>
   <xml_checksum>A374667A</xml_checksum>
   <class_name>AddHphw</class_name>
   <display_name>Add HPWH for Domestic Hot Water</display_name>
@@ -18,6 +18,7 @@ The flexibility of the system is based on user-defined temperatures and times, w
       <display_name>Remove existing water heater on selected loop</display_name>
       <description></description>
       <type>Boolean</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>true</default_value>
@@ -31,12 +32,15 @@ The flexibility of the system is based on user-defined temperatures and times, w
           <display_name>false</display_name>
         </choice>
       </choices>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>loop</name>
       <display_name>Select hot water loop</display_name>
       <description>The water tank will be placed on the supply side of this loop.</description>
       <type>Choice</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>Error: No Service Water Loop Found</default_value>
@@ -46,12 +50,15 @@ The flexibility of the system is based on user-defined temperatures and times, w
           <display_name>Error: No Service Water Loop Found</display_name>
         </choice>
       </choices>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>zone</name>
       <display_name>Select thermal zone</display_name>
       <description>This is where the water heater tank will be placed</description>
       <type>Choice</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>Error: No Thermal Zones Found</default_value>
@@ -61,15 +68,18 @@ The flexibility of the system is based on user-defined temperatures and times, w
           <display_name>Error: No Thermal Zones Found</display_name>
         </choice>
       </choices>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>type</name>
       <display_name>Select heat pump water heater type</display_name>
       <description></description>
       <type>Choice</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>PumpedCondenser</default_value>
+      <default_value>Simplified</default_value>
       <choices>
         <choice>
           <value>PumpedCondenser</value>
@@ -84,74 +94,99 @@ The flexibility of the system is based on user-defined temperatures and times, w
           <display_name>Simplified</display_name>
         </choice>
       </choices>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>vol</name>
       <display_name>Set hot water tank volume</display_name>
       <description>[gal]</description>
       <type>Double</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>80</default_value>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>cap</name>
       <display_name>Set heat pump heating capacity</display_name>
       <description>[kW]</description>
       <type>Double</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>23.4</default_value>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>cop</name>
       <display_name>Set heat pump rated COP (heating)</display_name>
+      <description></description>
       <type>Double</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>2.8</default_value>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>bu_cap</name>
       <display_name>Set electric backup heating capacity</display_name>
       <description>[kW]</description>
       <type>Double</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>23.4</default_value>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>max_temp</name>
       <display_name>Set maximum tank temperature</display_name>
       <description>[F]</description>
       <type>Double</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>160</default_value>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>min_temp</name>
       <display_name>Set minimum tank temperature during float</display_name>
       <description>[F]</description>
       <type>Double</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>120</default_value>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>db_temp</name>
       <display_name>Set deadband temperature difference between heat pump and electric backup</display_name>
       <description>[F]</description>
       <type>Double</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>5</default_value>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>sched</name>
       <display_name>Select reference tank setpoint temperature schedule</display_name>
       <description></description>
       <type>Choice</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>--Create New @ 140F--</default_value>
@@ -161,12 +196,15 @@ The flexibility of the system is based on user-defined temperatures and times, w
           <display_name>--Create New @ 140F--</display_name>
         </choice>
       </choices>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>flex0</name>
       <display_name>Daily Flex Period 1:</display_name>
       <description>Applies every day in the full run period.</description>
       <type>Choice</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>None</default_value>
@@ -188,20 +226,27 @@ The flexibility of the system is based on user-defined temperatures and times, w
           <display_name>Float</display_name>
         </choice>
       </choices>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>flex_hrs0</name>
       <display_name>Use 24-Hour Format</display_name>
+      <description></description>
       <type>String</type>
+      <units></units>
       <required>false</required>
       <model_dependent>false</model_dependent>
       <default_value>HH:MM - HH:MM</default_value>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>flex1</name>
       <display_name>Daily Flex Period 2:</display_name>
       <description>Applies every day in the full run period.</description>
       <type>Choice</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>None</default_value>
@@ -223,20 +268,27 @@ The flexibility of the system is based on user-defined temperatures and times, w
           <display_name>Float</display_name>
         </choice>
       </choices>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>flex_hrs1</name>
       <display_name>Use 24-Hour Format</display_name>
+      <description></description>
       <type>String</type>
+      <units></units>
       <required>false</required>
       <model_dependent>false</model_dependent>
       <default_value>HH:MM - HH:MM</default_value>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>flex2</name>
       <display_name>Daily Flex Period 3:</display_name>
       <description>Applies every day in the full run period.</description>
       <type>Choice</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>None</default_value>
@@ -258,20 +310,27 @@ The flexibility of the system is based on user-defined temperatures and times, w
           <display_name>Float</display_name>
         </choice>
       </choices>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>flex_hrs2</name>
       <display_name>Use 24-Hour Format</display_name>
+      <description></description>
       <type>String</type>
+      <units></units>
       <required>false</required>
       <model_dependent>false</model_dependent>
       <default_value>HH:MM - HH:MM</default_value>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>flex3</name>
       <display_name>Daily Flex Period 4:</display_name>
       <description>Applies every day in the full run period.</description>
       <type>Choice</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>None</default_value>
@@ -293,14 +352,20 @@ The flexibility of the system is based on user-defined temperatures and times, w
           <display_name>Float</display_name>
         </choice>
       </choices>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>flex_hrs3</name>
       <display_name>Use 24-Hour Format</display_name>
+      <description></description>
       <type>String</type>
+      <units></units>
       <required>false</required>
       <model_dependent>false</model_dependent>
       <default_value>HH:MM - HH:MM</default_value>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
   </arguments>
   <outputs />
@@ -377,12 +442,6 @@ The flexibility of the system is based on user-defined temperatures and times, w
       <checksum>15E27276</checksum>
     </file>
     <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>1FE9503E</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>3.0.0</identifier>
@@ -391,7 +450,14 @@ The flexibility of the system is based on user-defined temperatures and times, w
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>F8FEB798</checksum>
+      <checksum>44E0C02B</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>0B68E96D</checksum>
     </file>
   </files>
 </measure>
+<error>undefined method `each' for nil:NilClass</error>

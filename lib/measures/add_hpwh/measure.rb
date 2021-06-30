@@ -87,36 +87,49 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
 
     # create argument for removal of existing water heater tanks on selected loop
     remove_wh = OpenStudio::Measure::OSArgument.makeBoolArgument('remove_wh', true)
-    remove_wh.setDisplayName('Remove existing water heater on selected loop')
+    remove_wh.setDisplayName('Remove existing water heater?')
     remove_wh.setDescription('')
     remove_wh.setDefaultValue(true)
     args << remove_wh
 
-    # find available plant loops (heating)
-    loop_names = []
+    # find available water heaters and get default volume
+    if !model.getWaterHeaterMixeds.empty?
+      wheaters = model.getWaterHeaterMixeds
+    end
 
-    unless model.getPlantLoops.empty?
-      loops = model.getPlantLoops
-      loops.each do |lp|
-        unless lp.sizingPlant.loopType.empty?
-          next unless lp.sizingPlant.loopType.to_s == 'Heating'
-          loop_names << lp.name.to_s
-        end
+    default_vol = 80.0 # gallons
+    wh_names = ['All Water Heaters (Simplified Only)']
+    wheaters.each do |w|
+      if w.tankVolume.to_f > OpenStudio.convert(39, 'gal', 'm^3').to_f
+        wh_names << w.name.to_s
+        default_vol = [default_vol, (w.tankVolume.to_f / 0.0037854118).round(1)].max
       end
     end
 
-    loop_names << 'Error: No Service Water Loop Found' if loop_names.empty?
+    wh = OpenStudio::Measure::OSArgument.makeChoiceArgument('wh', wh_names, true)
+    wh.setDisplayName('Select 40+ gallon water heater to replace or augment')
+    wh.setDescription("All can only be used with the 'Simplified' model")
+    wh.setDefaultValue(wh_names[0])
+    args << wh
 
-    # create argument for loop selection
-    loop = OpenStudio::Measure::OSArgument.makeChoiceArgument('loop', loop_names.sort, true)
-    loop.setDisplayName('Select hot water loop')
-    loop.setDescription('The water tank will be placed on the supply side of this loop.')
-    loop.setDefaultValue(loop_names.sort[0])
-    args << loop
+    # create argument for hot water tank volume
+    vol = OpenStudio::Measure::OSArgument.makeDoubleArgument('vol', false)
+    vol.setDisplayName('Set hot water tank volume [gal]')
+    vol.setDescription('Enter 0 to use existing tank volume(s). Values less than 5 are treated as sizing multipliers.')
+    vol.setUnits('gal')
+    vol.setDefaultValue(0)
+    args << vol
+
+    # create argument for water heater type
+    type = OpenStudio::Measure::OSArgument.makeChoiceArgument('type',
+      ['Simplified', 'PumpedCondenser', 'WrappedCondenser'], true)
+    type.setDisplayName('Select heat pump water heater type')
+    type.setDescription('')
+    type.setDefaultValue('Simplified')
+    args << type
 
     # find available spaces for heater location
     zone_names = []
-
     unless model.getThermalZones.empty?
       zones = model.getThermalZones
       zones.each do |zn|
@@ -126,45 +139,14 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
     end
 
     zone_names << 'Error: No Thermal Zones Found' if zone_names.empty?
+    zone_names = ['N/A - Simplified'] + zone_names
 
     # create argument for thermal zone selection (location of water heater)
     zone = OpenStudio::Measure::OSArgument.makeChoiceArgument('zone', zone_names, true)
-    zone.setDisplayName('Select thermal zone')
-    zone.setDescription('This is where the water heater tank will be placed')
+    zone.setDisplayName('Select thermal zone for HP evaporator')
+    zone.setDescription("Does not apply to 'Simplified' cases")
     zone.setDefaultValue(zone_names[0])
     args << zone
-
-    # create argument for water heater type
-    type = OpenStudio::Measure::OSArgument.makeChoiceArgument('type',
-                                                              ['PumpedCondenser', 'WrappedCondenser', 'Simplified'], true)
-    type.setDisplayName('Select heat pump water heater type')
-    type.setDescription('')
-    type.setDefaultValue('PumpedCondenser')
-    args << type
-
-    # find largest current water heater volume - if any mixed tanks are already present. Default is 80 gal.
-    default_vol = 80.0 # gal
-
-    wheaters = if !model.getWaterHeaterMixeds.empty?
-                 model.getWaterHeaterMixeds
-               else
-                 []
-               end
-
-    unless wheaters.empty?
-      wheaters.each do |wh|
-        unless wh.tankVolume.empty?
-          default_vol = [default_vol, (wh.tankVolume.to_f / 0.0037854118).round(1)].max # convert m^3 to gal
-        end
-      end
-    end
-
-    # create argument for hot water tank volume
-    vol = OpenStudio::Measure::OSArgument.makeDoubleArgument('vol', true)
-    vol.setDisplayName('Set hot water tank volume')
-    vol.setDescription('[gal]')
-    vol.setDefaultValue(default_vol)
-    args << vol
 
     # create argument for heat pump capacity
     cap = OpenStudio::Measure::OSArgument.makeDoubleArgument('cap', true)
@@ -176,7 +158,7 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
     # create argument for heat pump rated cop
     cop = OpenStudio::Measure::OSArgument.makeDoubleArgument('cop', true)
     cop.setDisplayName('Set heat pump rated COP (heating)')
-    cop.setDefaultValue(2.8)
+    cop.setDefaultValue(3.2)
     args << cop
 
     # create argument for electric backup capacity
@@ -289,13 +271,13 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
 
     # assign the user inputs to variables
     remove_wh = runner.getBoolArgumentValue('remove_wh', user_arguments)
-    loop = runner.getStringArgumentValue('loop', user_arguments)
-    zone = runner.getStringArgumentValue('zone', user_arguments)
+    wh = runner.getStringArgumentValue('wh', user_arguments)
+    vol = runner.getDoubleArgumentValue('vol', user_arguments)
     type = runner.getStringArgumentValue('type', user_arguments)
+    zone = runner.getStringArgumentValue('zone', user_arguments)
     cap = runner.getDoubleArgumentValue('cap', user_arguments)
     cop = runner.getDoubleArgumentValue('cop', user_arguments)
     bu_cap = runner.getDoubleArgumentValue('bu_cap', user_arguments)
-    vol = runner.getDoubleArgumentValue('vol', user_arguments)
     max_temp = runner.getDoubleArgumentValue('max_temp', user_arguments)
     min_temp = runner.getDoubleArgumentValue('min_temp', user_arguments)
     db_temp = runner.getDoubleArgumentValue('db_temp', user_arguments)
@@ -304,15 +286,6 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
     4.times do |n|
       flex << runner.getStringArgumentValue('flex' + n.to_s, user_arguments)
       flex_hrs << runner.getStringArgumentValue('flex_hrs' + n.to_s, user_arguments)
-    end
-
-    # check for error inputs
-    if loop.include?('Error')
-      runner.registerError('No service hot water loop was found. Measure did not run.')
-    end
-
-    if zone.include?('Error')
-      runner.registerError('No thermal zone was found. Measure did not run.')
     end
 
     # check capacity, volume, and temps for reasonableness
@@ -324,7 +297,9 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
       runner.registerWarning('Backup heating capaicty is less than 5kW ( 17kBtu/hr).')
     end
 
-    if vol < 40
+    if vol == 0
+      runner.registerInfo('Tank volume was not specified, using existing tank capacity.')
+    elsif vol < 40
       runner.registerWarning('Tank has less than 40 gallon capacity; check heat pump sizing if model fails.')
     end
 
@@ -334,15 +309,15 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
                             'conditions facilitate the growth of Legionella.')
     end
 
-    if max_temp > 180
-      runner.registerWarning('Maximum charging temperature exceeded practical limits; reset to 180F.')
-      max_temp = 180.0
+    if max_temp > 185
+      runner.registerWarning('Maximum charging temperature exceeded practical limits; reset to 185F.')
+      max_temp = 185.0
     end
 
-    if max_temp > 160
+    if max_temp > 170
       runner.registerWarning("#{max_temp}F is above or near the limit of the HP performance curves. If the " \
                             'simulation fails with cooling capacity less than 0, you have exceeded performance ' \
-                            'limits. Consider setting max temp to less than 160F.')
+                            'limits. Consider setting max temp to less than 170F.')
     end
 
     # check selected schedule and set flag for later use
@@ -483,7 +458,7 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
       idx += 1
     end
 
-    ## CONTROLS: TANK TEMPERATURE SETPOINT SCHEDULE (ELECTRIC BACKUP) --------------------------------------------------
+    ## END CONTROLS: TANK TEMPERATURE SETPOINT SCHEDULE (ELECTRIC BACKUP) ----------------------------------------------
 
     ## HARDWARE --------------------------------------------------------------------------------------------------------
     # This section adds the selected type of heat pump water heater to the supply side of the selected loop. If
@@ -493,99 +468,122 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
     # use OS standards build - arbitrary selection, but NZE Ready seems appropriate
     std = Standard.build('NREL ZNE Ready 2017')
 
-    # create empty arrays and initialize variables for later use
-    old_heater = []
-    count = 0
-
-    # convert loop and zone names from STRINGS into OS model OBJECTS
-    zone =  model.getThermalZoneByName(zone).get
-    loop =  model.getPlantLoopByName(loop).get
-
-    # find and locate old water heater on selected loop, if applicable
-    loop_equip = loop.supplyComponents
-    loop_equip.each do |le|
-      if le.iddObject.name.include?('WaterHeater:Mixed')
-        old_heater << model.getWaterHeaterMixedByName(le.name.to_s).get
-        count += 1
-      elsif le.iddObject.name.include?('WaterHeater:Stratified')
-        old_heater << model.getWaterHeaterStratifiedByName(le.name.to_s).get
-        count += 1
+    #####
+    # get the selected water heaters
+    whtrs = []
+    model.getWaterHeaterMixeds.each do |w|
+      if wh == 'All Water Heaters (Simplified Only)'
+        # exclude booster tanks (<10gal):
+          if w.tankVolume.to_f < 0.037854
+            next
+          else
+            whtrs << w
+          end
+      elsif w.name.to_s == wh
+        whtrs << w
       end
     end
 
-    unless old_heater.empty?
-      inlet = old_heater[0].supplyInletModelObject.get.to_Node.get
-      outlet = old_heater[0].supplyOutletModelObject.get.to_Node.get
-    end
+    whtrs.each do |wh|
+      # create empty arrays and initialize variables for later use
+      old_heater = []
+      count = 0
 
-    # Add heat pump water heater and attach to selected loop
-    # Reference: https://github.com/NREL/openstudio-standards/blob/master/lib/
-    # => openstudio-standards/prototypes/common/objects/Prototype.ServiceWaterHeating.rb
-    if type != 'Simplified'
-      hpwh = std.model_add_heatpump_water_heater(model, # model
-                                                 type: type,                                                           # type
-                                                 water_heater_capacity: (cap * 1000 / cop),                            # water_heater_capacity
-                                                 electric_backup_capacity: (bu_cap * 1000),                            # electric_backup_capacity
-                                                 water_heater_volume: OpenStudio.convert(vol, 'gal', 'm^3').get,       # water_heater_volume
-                                                 service_water_temperature: OpenStudio.convert(140.0, 'F', 'C').get,   # service_water_temperature
-                                                 parasitic_fuel_consumption_rate: 3.0,                                 # parasitic_fuel_consumption_rate
-                                                 swh_temp_sch: sched,                                                  # swh_temp_sch
-                                                 cop: cop,                                                             # cop
-                                                 shr: 0.88,                                                            # shr
-                                                 tank_ua: 3.9,                                                         # tank_ua
-                                                 set_peak_use_flowrate: false,                                         # set_peak_use_flowrate
-                                                 peak_flowrate: 0.0,                                                   # peak_flowrate
-                                                 flowrate_schedule: nil,                                               # flowrate_schedule
-                                                 water_heater_thermal_zone: zone)                                      # water_heater_thermal_zone
-    else
-      hpwh = std.model_add_water_heater(model, # model
-                                        (cap * 1000),                                                         # water_heater_capacity
-                                        OpenStudio.convert(vol, 'gal', 'm^3').get,                            # water_heater_volume
-                                        'HeatPump',                                                           # water_heater_fuel
-                                        OpenStudio.convert(140.0, 'F', 'C').get,                              # service_water_temperature
-                                        3.0,                                                                  # parasitic_fuel_consumption_rate
-                                        sched,                                                                # swh_temp_sch
-                                        false,                                                                # set_peak_use_flowrate
-                                        0.0,                                                                  # peak_flowrate
-                                        nil,                                                                  # flowrate_schedule
-                                        zone,                                                                 # water_heater_thermal_zone
-                                        1)                                                                    # number_water_heaters
-    end
-
-    # add tank to appropriate branch and node (will be placed first in series if old tanks not removed)
-    # modify objects as ncessary
-    if old_heater.empty?
-      loop.addSupplyBranchForComponent(hpwh.tank)
-    elsif type != 'Simplified'
-      hpwh.tank.addToNode(inlet)
-      hpwh.setDeadBandTemperatureDifference(db_temp / 1.8)
-      runner.registerInfo("#{hpwh.tank.name} was added to the model on #{loop.name}")
-    else
-      hpwh.addToNode(inlet)
-      hpwh.setMaximumTemperatureLimit(OpenStudio.convert(max_temp, 'F', 'C').get)
-      runner.registerInfo("#{hpwh.name} was added to the model on #{loop.name}")
-    end
-
-    # remove old tank objects if necessary
-    if remove_wh
-      old_heater.each do |oh|
-        runner.registerInfo("#{oh.name} was removed from the model.")
-        oh.remove
+      # get the appropriate plant loop
+      loop = ''
+      loops = model.getPlantLoops
+      loops.each do |l|
+        l.supplyComponents.each do |c|
+          if c.name.to_s == wh.name.to_s
+            loop = l
+          end
+        end
       end
+
+      # use existing tank volume unless otherwise specified
+      # values between 0.0 and 5.0 are considered tank sizing multipliers
+      if vol == 0
+        v = wh.tankVolume
+      elsif vol > 0.0 and vol < 5.0
+        v = wh.tankVolume.to_f * vol
+      else
+        v = OpenStudio.convert(vol, 'gal', 'm^3').get
+      end
+
+      inlet = wh.supplyInletModelObject.get.to_Node.get
+      outlet = wh.supplyOutletModelObject.get.to_Node.get
+
+      # Add heat pump water heater and attach to selected loop
+      # Reference: https://github.com/NREL/openstudio-standards/blob/master/lib/
+      # => openstudio-standards/prototypes/common/objects/Prototype.ServiceWaterHeating.rb
+      if type != 'Simplified'
+        # convert zone name from STRING into OS model OBJECT
+        zone = model.getThermalZoneByName(zone).get
+        hpwh = std.model_add_heatpump_water_heater(model, # model
+                    type: type,                                                           # type
+                    water_heater_capacity: (cap * 1000 / cop),                            # water_heater_capacity
+                    electric_backup_capacity: (bu_cap * 1000),                            # electric_backup_capacity
+                    water_heater_volume: v,                                               # water_heater_volume
+                    service_water_temperature: OpenStudio.convert(140.0, 'F', 'C').get,   # service_water_temperature
+                    parasitic_fuel_consumption_rate: 3.0,                                 # parasitic_fuel_consumption_rate
+                    swh_temp_sch: sched,                                                  # swh_temp_sch
+                    cop: cop,                                                             # cop
+                    shr: 0.88,                                                            # shr
+                    tank_ua: 3.9,                                                         # tank_ua
+                    set_peak_use_flowrate: false,                                         # set_peak_use_flowrate
+                    peak_flowrate: 0.0,                                                   # peak_flowrate
+                    flowrate_schedule: nil,                                               # flowrate_schedule
+                    water_heater_thermal_zone: zone)                                      # water_heater_thermal_zone
+      else
+        # zone = wh.ambientTemperatureThermalZone.get
+        runner.registerWarning(wh.to_s)
+        hpwh = std.model_add_water_heater(model, # model
+                  (cap * 1000),                                                         # water_heater_capacity
+                  v.to_f,                                                               # water_heater_volume
+                  'HeatPump',                                                           # water_heater_fuel
+                  OpenStudio.convert(140.0, 'F', 'C').to_f,                             # service_water_temperature
+                  3.0,                                                                  # parasitic_fuel_consumption_rate
+                  sched,                                                                # swh_temp_sch
+                  false,                                                                # set_peak_use_flowrate
+                  0.0,                                                                  # peak_flowrate
+                  nil,                                                                  # flowrate_schedule
+                  model.getThermalZones[0],                                                              # water_heater_thermal_zone
+                  1)                                                                    # number_water_heaters
+        # set COP in PLF curve
+        cop_curve = hpwh.partLoadFactorCurve.get
+        cop_curve.setName(cop_curve.name.get.gsub('2.8', cop.to_s))
+        cop_curve.setCoefficient1Constant(cop)
+      end
+
+      # add tank to appropriate branch and node (will be placed first in series if old tanks not removed)
+      # modify objects as ncessary
+      if type != 'Simplified'
+        hpwh.tank.addToNode(inlet)
+        hpwh.setDeadBandTemperatureDifference(db_temp / 1.8)
+        runner.registerInfo("#{hpwh.tank.name} was added to the model on #{loop.name}")
+      else
+        hpwh.addToNode(inlet)
+        hpwh.setMaximumTemperatureLimit(OpenStudio.convert(max_temp, 'F', 'C').get)
+        runner.registerInfo("#{hpwh.name} was added to the model on #{loop.name}")
+      end
+
+      # remove old tank objects if necessary
+      if remove_wh
+        runner.registerInfo("#{wh.name} was removed from the model.")
+        wh.remove
+      end
+
+      # CONTROLS MODIFICATIONS FOR TANK ---------------------------------------------------------------------------------
+      # apply schedule to tank
+      if type == 'PumpedCondenser'
+        hpwh.tank.to_WaterHeaterMixed.get.setSetpointTemperatureSchedule(tank_sched)
+      elsif type == 'WrappedCondenser'
+        hpwh.tank.to_WaterHeaterStratified.get.setHeater1SetpointTemperatureSchedule(tank_sched)
+        hpwh.tank.to_WaterHeaterStratified.get.setHeater2SetpointTemperatureSchedule(tank_sched)
+      end
+      # END CONTROLS MODIFICATIONS FOR TANK -----------------------------------------------------------------------------
     end
     ## END HARDWARE ----------------------------------------------------------------------------------------------------
-
-    ## CONTROLS MODIFICATIONS FOR TANK ---------------------------------------------------------------------------------
-    # apply schedule to tank
-    if type == 'PumpedCondenser'
-      hpwh.tank.to_WaterHeaterMixed.get.setSetpointTemperatureSchedule(tank_sched)
-    elsif type == 'WrappedCondenser'
-      hpwh.tank.to_WaterHeaterStratified.get.setHeater1SetpointTemperatureSchedule(tank_sched)
-      hpwh.tank.to_WaterHeaterStratified.get.setHeater2SetpointTemperatureSchedule(tank_sched)
-    elsif type == 'Simplified'
-      runner.registerInfo('Line 492 was used. Nothing done here yet... Check tank temperature schedules...')
-    end
-    ## END CONTROLS MODIFICATIONS FOR TANK -----------------------------------------------------------------------------
 
     ## ADD REPORTED VARIABLES ------------------------------------------------------------------------------------------
 
