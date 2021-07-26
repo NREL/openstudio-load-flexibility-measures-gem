@@ -1,4 +1,3 @@
-
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'openstudio/load_flexibility_measures/version'
@@ -28,8 +27,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.9'
   spec.add_dependency 'rubocop', '~> 1.15.0'
-  spec.add_dependency 'rubocop-performance', '~> 1.11.3'
   spec.add_dependency 'rubocop-checkstyle_formatter', '~> 0.4.0'
+  spec.add_dependency 'rubocop-performance', '~> 1.11.3'
 
   spec.add_dependency 'openstudio-extension', '~> 0.4.3'
   spec.add_dependency 'openstudio-standards', '~> 0.2.14'

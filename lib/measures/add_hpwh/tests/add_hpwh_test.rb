@@ -38,10 +38,10 @@
 require 'openstudio'
 require 'openstudio/measure/ShowRunnerOutput'
 require 'minitest/autorun'
-require_relative '../measure.rb'
+require_relative '../measure'
 require 'fileutils'
 
-class AddHphwTest < Minitest::Test
+class AddHpwhTest < Minitest::Test
   # def setup
   # end
 
@@ -50,7 +50,7 @@ class AddHphwTest < Minitest::Test
 
   def test_good_argument_values
     # create an instance of the measure
-    measure = AddHphw.new
+    measure = AddHpwh.new
 
     # create runner with empty OSW
     osw = OpenStudio::WorkflowJSON.new
@@ -94,5 +94,44 @@ class AddHphwTest < Minitest::Test
     # save the model to test output directory
     output_file_path = "#{File.dirname(__FILE__)}//output/test_output.osm"
     model.save(output_file_path, true)
+  end
+
+  def test_empty_model
+    # create an instance of the measure
+    measure = AddHpwh.new
+
+    # create runner with empty OSW
+    osw = OpenStudio::WorkflowJSON.new
+    runner = OpenStudio::Measure::OSRunner.new(osw)
+
+    # make an empty model
+    model = OpenStudio::Model::Model.new
+
+    # get arguments
+    arguments = measure.arguments(model)
+    argument_map = OpenStudio::Measure.convertOSArgumentVectorToMap(arguments)
+
+    # create hash of argument values
+    args_hash = {}
+
+    # populate argument with specified hash value if specified
+    arguments.each do |arg|
+      temp_arg_var = arg.clone
+      if args_hash.key?(arg.name)
+        assert(temp_arg_var.setValue(args_hash[arg.name]))
+      end
+      argument_map[arg.name] = temp_arg_var
+    end
+
+    # run the measure
+    measure.run(model, runner, argument_map)
+    result = runner.result
+
+    # show the output
+    show_output(result)
+
+    # assert that it failed
+    assert_equal('Fail', result.value.valueName)
+    assert(result.errors.size == 1)
   end
 end

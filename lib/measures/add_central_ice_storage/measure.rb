@@ -167,10 +167,10 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
     all_scheds.each do |sched|
       sched.to_ScheduleBase.get
       unless sched.scheduleTypeLimits.empty?
-        if sched.scheduleTypeLimits.get.unitType.to_s == 'Temperature'
+        case sched.scheduleTypeLimits.get.unitType.to_s
+        when 'Temperature'
           sched_options << sched.name.to_s
-        elsif sched.scheduleTypeLimits.get.unitType.to_s == 'Availability' ||
-              sched.scheduleTypeLimits.get.unitType.to_s == 'OnOff'
+        when 'Availability', 'OnOff'
           sched_options2 << sched.name.to_s
         end
       end
@@ -387,7 +387,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
     ## Validate User Inputs---------------------------------------------------------------------------------------------
 
     # Convert thermal storage capacity from ton-hours to GJ
-    storage_capacity = 12_660_670.23144e-9 * storage_capacity
+    storage_capacity = 0.0126606708 * storage_capacity
 
     # Check for existence of charging setpoint temperature, reset to default if left blank.
     if chg_sp.nil? || chg_sp >= 32.0
@@ -426,7 +426,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
     end
 
     # Convert Delta T if needed from F to C (Overwrites string variables as floats)
-    if delta_t != 'Use Existing Loop Value' && delta_t.to_f != 0.0
+    if delta_t != 'Use Existing Loop Value' && delta_t.to_f > 0.0
       delta_t = delta_t.to_f / 1.8
     else
       # Could add additional checks here for invalid (non-numerical) entries
@@ -447,7 +447,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
     end
 
     # Convert chiller limit to a temperature value based on delta_t variable if != 1. Otherwise, use as flag for EMS
-    if chiller_limit != 1.0
+    if chiller_limit < 1.0
       dt_max = chiller_limit * delta_t # degrees C
       runner.registerInfo("Max chiller dT during ice discharge is set to: #{dt_max.round(2)} C " \
                           "(#{(dt_max * 1.8).round(2)} F).")
@@ -546,7 +546,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
     runner.registerInitialCondition("The model started with #{total_storage} ice storage device(s).")
 
     runner.registerInfo("Chiller '#{selected_chiller}' on Loop '#{selected_loop}' was selected for the addition " \
-                        "of a #{storage_capacity.round(2)} GJ (#{(storage_capacity / 12_660_670.23144e-9).round(0)} " \
+                        "of a #{storage_capacity.round(2)} GJ (#{(storage_capacity / 0.0126606708).round(0)} " \
                         'ton-hours) ice thermal energy storage object.')
 
     ## Modify Chiller Settings------------------------------------------------------------------------------------------
@@ -583,11 +583,9 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
     end
 
     # Adjust loop design temperature difference
-    if ctes_loop.sizingPlant.loopDesignTemperatureDifference.to_f != delta_t
-      ctes_loop.sizingPlant.setLoopDesignTemperatureDifference(delta_t)
-      runner.registerInfo("Selected loop design temperature difference was adjusted to #{delta_t.round(2)} C " \
-                          "(#{(delta_t * 1.8)} F).")
-    end
+    ctes_loop.sizingPlant.setLoopDesignTemperatureDifference(delta_t)
+    runner.registerInfo("Selected loop design temperature difference was set to #{delta_t.round(2)} C " \
+                        "(#{delta_t * 1.8} F).")
 
     # Adjust loop gylcol solution percentage and set glycol - if necessary
     if ctes_loop.fluidType == 'Water'
@@ -668,14 +666,16 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
       # cs = charge start, ce = charge end, ds = discharge start, de = discharge end
 
       # Set chiller and ice discharge setpoints for partial storage configs
-      if objective == 'Full Storage'
+      case objective
+      when 'Full Storage'
         chiller_setpoint = loop_sp
         ctes_setpoint = loop_sp
-      elsif objective == 'Partial Storage'
-        if upstream == 'Chiller'
+      when 'Partial Storage'
+        case upstream
+        when 'Chiller'
           chiller_setpoint = inter_sp
           ctes_setpoint = loop_sp
-        elsif upstream == 'Storage'
+        when 'Storage'
           chiller_setpoint = loop_sp
           ctes_setpoint = inter_sp
         end
@@ -820,9 +820,10 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
       loop_sp_mgrs = loop_sp_node.setpointManagers
       loop_sp_mgrs.each do |spm|
         next unless ['Temperature', 'MinimumTemperature', 'MaximumTemperature'].include?(spm.controlVariable)
+
         spm.disconnect
         runner.registerInfo("Selected loop temperature setpoint manager '#{spm.name}' " \
-									"with control variable '#{spm.controlVariable}' was disconnected.")
+                  "with control variable '#{spm.controlVariable}' was disconnected.")
       end
 
       loop_sp_mgr = OpenStudio::Model::SetpointManagerScheduled.new(model, loop_sch_new)
@@ -842,17 +843,17 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
 
     if old # Old Schedules always take precedence, even if new ones are also created
       runner.registerInfo("The following schedules ared used in the model:\n" \
-   		                  "   * #{ctes_avail_sched.name}\n" \
-   		                  "   * #{ctes_temp_sched.name}\n" \
-   		                  "   * #{chill_temp_sched.name}")
+                         "   * #{ctes_avail_sched.name}\n" \
+                         "   * #{ctes_temp_sched.name}\n" \
+                         "   * #{chill_temp_sched.name}")
       runner.registerInfo('The following loop temperature setpoint manager was added to the ' \
-  		                  "model:\n" \
-  		                  "   * #{demand_sp_mgr.name}")
+                        "model:\n" \
+                        "   * #{demand_sp_mgr.name}")
     elsif new && !old
       runner.registerInfo('The following loop temperature setpoint managers were added to the ' \
-   		                  "model:\n" \
-   		                  "   * #{loop_sp_mgr.name}\n" \
-   		                  "   * #{demand_sp_mgr.name}")
+                         "model:\n" \
+                         "   * #{loop_sp_mgr.name}\n" \
+                         "   * #{demand_sp_mgr.name}")
     end
 
     ## Create General EMS Variables for Chiller and TES Capacities------------------------------------------------------
@@ -881,7 +882,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
     ## Create EMS Components to Control Load on Upstream (Priority) Device----------------------------------------------
 
     # Flag value indicating that a chiller limiter is required or DR Test is Activated
-    if chiller_limit != 1.0 || dr == true
+    if chiller_limit < 1.0 || dr == true
 
       # Set up EMS output
       output_ems = model.getOutputEnergyManagementSystem
@@ -890,8 +891,8 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
       output_ems.setEMSRuntimeLanguageDebugOutputLevel('None')
 
       runner.registerInfo("A #{(chiller_limit * 100).round(2)}% capacity limit has been placed on the chiller " \
-  		                  'during ice discharge. EMS scripting is employed to actuate this control via chiller ' \
-  		                  'outlet setpoint. ')
+                        'during ice discharge. EMS scripting is employed to actuate this control via chiller ' \
+                        'outlet setpoint. ')
 
       # Internal and Global Variable(s)
 
@@ -950,7 +951,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
       elwt.setName('ELWT_SP')
     end
 
-    if chiller_limit != 1
+    if chiller_limit < 1.0
       # Program(s)
       # Apply Chiller Capacity Limit During Ice Discharge
       chiller_limit_program = OpenStudio::Model::EnergyManagementSystemProgram.new(model)
@@ -1036,7 +1037,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
           SET ELWT_SP = SP
 				ENDIF
 			ENDIF
-			EMS
+        EMS
         dr_program.setBody(body)
       elsif !dr_chill && dr_add_shed == 'Shed'	# Chiller is not permitted to pick up unmet load when ice is deficient
         body = <<-EMS
@@ -1048,7 +1049,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
 					SET DR_Flag = 0
 				ENDIF
 			ENDIF
-			EMS
+        EMS
         dr_program.setBody(body)
       elsif dr_add_shed == 'Add'
         body = <<-EMS
@@ -1064,7 +1065,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
           SET DR_Flag = 0
         ENDIF
       ENDIF
-      EMS
+        EMS
         dr_program.setBody(body)
       end
 
@@ -1246,7 +1247,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
     v.setName('Charge Curve Output Value')
     ovars << v
 
-    if chiller_limit != 1.0 # flag for EMS use, following EMS vars only exist if previous script ran
+    if chiller_limit < 1.0 # flag for EMS use, following EMS vars only exist if previous script ran
 
       # Create output variable for chiller limited capacity (from EMS Output Variable)
       v = OpenStudio::Model::OutputVariable.new(eout_chiller_limit.name.to_s, model)

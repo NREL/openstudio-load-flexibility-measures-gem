@@ -43,7 +43,7 @@
 # EnergyPlus Engineering Reference, Sections:
 
 # start the measure
-class AddHphw < OpenStudio::Measure::ModelMeasure
+class AddHpwh < OpenStudio::Measure::ModelMeasure
   require 'openstudio-standards'
 
   # human readable name
@@ -93,16 +93,15 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
     args << remove_wh
 
     # find available water heaters and get default volume
-    if !model.getWaterHeaterMixeds.empty?
-      wheaters = model.getWaterHeaterMixeds
-    end
-
     default_vol = 80.0 # gallons
     wh_names = ['All Water Heaters (Simplified Only)']
-    wheaters.each do |w|
-      if w.tankVolume.to_f > OpenStudio.convert(39, 'gal', 'm^3').to_f
-        wh_names << w.name.to_s
-        default_vol = [default_vol, (w.tankVolume.to_f / 0.0037854118).round(1)].max
+    if !model.getWaterHeaterMixeds.empty?
+      wheaters = model.getWaterHeaterMixeds
+      wheaters.each do |w|
+        if w.tankVolume.to_f > OpenStudio.convert(39, 'gal', 'm^3').to_f
+          wh_names << w.name.to_s
+          default_vol = [default_vol, (w.tankVolume.to_f / 0.0037854118).round(1)].max
+        end
       end
     end
 
@@ -197,6 +196,7 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
     all_scheds.each do |sch|
       next if sch.scheduleTypeLimits.empty?
       next unless sch.scheduleTypeLimits.get.unitType.to_s == 'Temperature'
+
       temp_sched_names << sch.name.to_s
       if !wheaters.empty? && (sch.name.to_s == wheaters[0].setpointTemperatureSchedule.get.name.to_s)
         default_sched = sch.name.to_s
@@ -216,13 +216,13 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
 
     # create choice and string arguments for flex periods
     4.times do |n|
-      flex = OpenStudio::Measure::OSArgument.makeChoiceArgument('flex' + n.to_s, flex_options, true)
+      flex = OpenStudio::Measure::OSArgument.makeChoiceArgument("flex#{n}", flex_options, true)
       flex.setDisplayName("Daily Flex Period #{n + 1}:")
       flex.setDescription('Applies every day in the full run period.')
       flex.setDefaultValue('None')
       args << flex
 
-      flex_hrs = OpenStudio::Measure::OSArgument.makeStringArgument('flex_hrs' + n.to_s, false)
+      flex_hrs = OpenStudio::Measure::OSArgument.makeStringArgument("flex_hrs#{n}", false)
       flex_hrs.setDisplayName('Use 24-Hour Format')
       flex_hrs.setDefaultValue('HH:MM - HH:MM')
       args << flex_hrs
@@ -284,8 +284,19 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
     sched = runner.getStringArgumentValue('sched', user_arguments)
 
     4.times do |n|
-      flex << runner.getStringArgumentValue('flex' + n.to_s, user_arguments)
-      flex_hrs << runner.getStringArgumentValue('flex_hrs' + n.to_s, user_arguments)
+      flex << runner.getStringArgumentValue("flex#{n}", user_arguments)
+      flex_hrs << runner.getStringArgumentValue("flex_hrs#{n}", user_arguments)
+    end
+
+    # check for existence of water heaters (if "all" is selected)
+    if model.getWaterHeaterMixeds.empty?
+      runner.registerError('No water heaters found in the model')
+      return false
+    end
+
+    # Alert user to "simplified" selection
+    if type == 'Simplified'
+      runner.registerInfo('NOTE: The simplified model is used, so heat pump objects are not employed.')
     end
 
     # check capacity, volume, and temps for reasonableness
@@ -371,6 +382,7 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
 
     # exit gracefully if errors registered above
     return false unless runner.result.errors.empty?
+
     ## END ARGUMENT VALIDATION -----------------------------------------------------------------------------------------
 
     ## CONTROLS: HEAT PUMP HEATING TEMPERATURE SETPOINT SCHEDULE -------------------------------------------------------
@@ -472,19 +484,20 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
     # get the selected water heaters
     whtrs = []
     model.getWaterHeaterMixeds.each do |w|
-      if wh == 'All Water Heaters (Simplified Only)'
+      case wh
+      when 'All Water Heaters (Simplified Only)'
         # exclude booster tanks (<10gal):
         if w.tankVolume.to_f < 0.037854
           next
         else
           whtrs << w
         end
-      elsif w.name.to_s == wh
+      when w.name.to_s
         whtrs << w
       end
     end
 
-    whtrs.each do |wh|
+    whtrs.each do |whtr|
       # create empty arrays and initialize variables for later use
       old_heater = []
       count = 0
@@ -494,7 +507,7 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
       loops = model.getPlantLoops
       loops.each do |l|
         l.supplyComponents.each do |c|
-          if c.name.to_s == wh.name.to_s
+          if c.name.to_s == whtr.name.to_s
             loop = l
           end
         end
@@ -503,15 +516,15 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
       # use existing tank volume unless otherwise specified
       # values between 0.0 and 5.0 are considered tank sizing multipliers
       if vol == 0
-        v = wh.tankVolume
+        v = whtr.tankVolume
       elsif (vol > 0.0) && (vol < 5.0)
-        v = wh.tankVolume.to_f * vol
+        v = whtr.tankVolume.to_f * vol
       else
         v = OpenStudio.convert(vol, 'gal', 'm^3').get
       end
 
-      inlet = wh.supplyInletModelObject.get.to_Node.get
-      outlet = wh.supplyOutletModelObject.get.to_Node.get
+      inlet = whtr.supplyInletModelObject.get.to_Node.get
+      outlet = whtr.supplyOutletModelObject.get.to_Node.get
 
       # Add heat pump water heater and attach to selected loop
       # Reference: https://github.com/NREL/openstudio-standards/blob/master/lib/
@@ -535,8 +548,7 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
                                                    flowrate_schedule: nil,                                               # flowrate_schedule
                                                    water_heater_thermal_zone: zone)                                      # water_heater_thermal_zone
       else
-        # zone = wh.ambientTemperatureThermalZone.get
-        runner.registerWarning(wh.to_s)
+        # zone = whtr.ambientTemperatureThermalZone.get
         hpwh = std.model_add_water_heater(model, # model
                                           (cap * 1000),                                                         # water_heater_capacity
                                           v.to_f,                                                               # water_heater_volume
@@ -569,15 +581,16 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
 
       # remove old tank objects if necessary
       if remove_wh
-        runner.registerInfo("#{wh.name} was removed from the model.")
-        wh.remove
+        runner.registerInfo("#{whtr.name} was removed from the model.")
+        whtr.remove
       end
 
       # CONTROLS MODIFICATIONS FOR TANK ---------------------------------------------------------------------------------
       # apply schedule to tank
-      if type == 'PumpedCondenser'
+      case type
+      when 'PumpedCondenser'
         hpwh.tank.to_WaterHeaterMixed.get.setSetpointTemperatureSchedule(tank_sched)
-      elsif type == 'WrappedCondenser'
+      when 'WrappedCondenser'
         hpwh.tank.to_WaterHeaterStratified.get.setHeater1SetpointTemperatureSchedule(tank_sched)
         hpwh.tank.to_WaterHeaterStratified.get.setHeater2SetpointTemperatureSchedule(tank_sched)
       end
@@ -634,12 +647,17 @@ class AddHphw < OpenStudio::Measure::ModelMeasure
     # Register final condition
     hpwh_fc = model.getWaterHeaterHeatPumps.size + model.getWaterHeaterHeatPumpWrappedCondensers.size
     tanks_fc = model.getWaterHeaterMixeds.size + model.getWaterHeaterStratifieds.size
-    runner.registerFinalCondition("The building finshed with #{tanks_fc} water heater tank(s) and " \
+    if type != 'Simplified'
+      runner.registerFinalCondition("The building finshed with #{tanks_fc} water heater tank(s) and " \
                                   "#{hpwh_fc} heat pump water heater(s).")
+    else
+      runner.registerFinalCondition("The building finished with #{tanks_fc - whtrs.size} water heater tank(s) " \
+                                  "and #{whtrs.size} heat pump water heater(s).")
+    end
 
     true
   end
 end
 
 # register the measure to be used by the application
-AddHphw.new.registerWithApplication
+AddHpwh.new.registerWithApplication

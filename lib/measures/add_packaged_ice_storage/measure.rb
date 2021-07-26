@@ -104,7 +104,7 @@ class AddPackagedIceStorage < OpenStudio::Measure::EnergyPlusMeasure
     args << ctl
 
     # obtain default schedule names in TESCurves.idf. This allows users to manually add schedules to the idf and be able to access them in OS or PAT
-    source_idf = OpenStudio::IdfFile.load(OpenStudio::Path.new(File.dirname(__FILE__) + '/resources/TESCurves.idf')).get
+    source_idf = OpenStudio::IdfFile.load(OpenStudio::Path.new("#{File.dirname(__FILE__)}/resources/TESCurves.idf")).get
     schedules = source_idf.getObjectsByType('Schedule:Compact'.to_IddObjectType)
     schedule_names = OpenStudio::StringVector.new
 
@@ -173,7 +173,7 @@ class AddPackagedIceStorage < OpenStudio::Measure::EnergyPlusMeasure
     end
 
     # load required TESCurves.idf. This contains all the TES performance curves and default schedules
-    source_idf = OpenStudio::IdfFile.load(OpenStudio::Path.new(File.dirname(__FILE__) + '/resources/TESCurves.idf')).get
+    source_idf = OpenStudio::IdfFile.load(OpenStudio::Path.new("#{File.dirname(__FILE__)}/resources/TESCurves.idf")).get
 
     # workspace.addObjects(idf_obj_vector) does not work here. Add each obj individually.
     source_idf.objects.each do |o|
@@ -492,10 +492,11 @@ class AddPackagedIceStorage < OpenStudio::Measure::EnergyPlusMeasure
       # fields of interest: (0 - Max Cap, 1 - Rated COP, 2 - Inlet Node, 3 - Outlet Node)
       field_names = [] # may not be required. Check scope in Ruby documentation
       sel_type = sel_coil.iddObject.type.valueDescription.to_s
-      if sel_type == 'Coil:Cooling:DX:SingleSpeed'
+      case sel_type
+      when 'Coil:Cooling:DX:SingleSpeed'
         field_names = ['Gross Rated Total Cooling Capacity', 'Gross Rated Cooling COP',
                        'Air Inlet Node Name', 'Air Outlet Node Name']
-      elsif sel_type == 'Coil:Cooling:DX:TwoSpeed'
+      when 'Coil:Cooling:DX:TwoSpeed'
         field_names = ['High Speed Gross Rated Total Cooling Capacity', 'High Speed Gross Rated Cooling COP',
                        'Air Inlet Node Name', 'Air Outlet Node Name']
       end
@@ -560,7 +561,8 @@ class AddPackagedIceStorage < OpenStudio::Measure::EnergyPlusMeasure
       utss.setString(7, ice_cap) # hardsized thermal storage capacity
 
       # copy old coil information over to TES object (use low-speed info for 2spd coils)
-      if sel_coil.iddObject.name == 'Coil:Cooling:DX:SingleSpeed'
+      case sel_coil.iddObject.name
+      when 'Coil:Cooling:DX:SingleSpeed'
         utss.setString(16, sel_coil.getString(2).get)
         utss.setString(18, sel_coil.getString(4).get)
         utss.setString(19, sel_coil.getString(9).get)
@@ -568,7 +570,7 @@ class AddPackagedIceStorage < OpenStudio::Measure::EnergyPlusMeasure
         utss.setString(21, sel_coil.getString(11).get)
         utss.setString(22, sel_coil.getString(12).get)
         utss.setString(23, sel_coil.getString(13).get)
-      elsif sel_coil.iddObject.name == 'Coil:Cooling:DX:TwoSpeed'
+      when 'Coil:Cooling:DX:TwoSpeed'
         utss.setString(16, sel_coil.getString(14).get)
         utss.setString(18, sel_coil.getString(16).get)
         utss.setString(19, sel_coil.getString(18).get)
@@ -580,13 +582,14 @@ class AddPackagedIceStorage < OpenStudio::Measure::EnergyPlusMeasure
 
       # identify container object in which the coil is used
       cooling_containers.each do |cont|
-        if cont.iddObject.type.valueDescription.to_s == 'CoilSystem:Cooling:DX'
+        case cont.iddObject.type.valueDescription.to_s
+        when 'CoilSystem:Cooling:DX'
           if cont.getString(6).to_s == old_coil_name
             cont.setString(5, 'Coil:Cooling:DX:SingleSpeed:ThermalStorage')
             cont.setString(6, utss_name)
             break
           end
-        elsif cont.iddObject.type.valueDescription.to_s == 'AirLoopHVAC:UnitarySystem'
+        when 'AirLoopHVAC:UnitarySystem'
           if cont.getString(15).to_s == old_coil_name
             cont.setString(14, 'Coil:Cooling:DX:SingleSpeed:ThermalStorage')
             cont.setString(15, utss_name)
