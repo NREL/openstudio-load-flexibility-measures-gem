@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>add_central_ice_storage</name>
   <uid>48f37812-0cb6-4770-b695-beb8d8a5660d</uid>
-  <version_id>2972286b-0047-4d40-90bf-c0c56a7a5799</version_id>
-  <version_modified>20201203T034326Z</version_modified>
+  <version_id>312f74e3-5357-416c-ad64-80a0fbf82bee</version_id>
+  <version_modified>20210726T175859Z</version_modified>
   <xml_checksum>6394841D</xml_checksum>
   <class_name>AddCentralIceStorage</class_name>
   <display_name>Add Central Ice Storage</display_name>
@@ -477,10 +477,16 @@
       <checksum>E0468DD6</checksum>
     </file>
     <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>962B1D2E</checksum>
+    </file>
+    <file>
       <filename>add_central_ice_storage_test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>8738374B</checksum>
+      <checksum>C534A102</checksum>
     </file>
     <file>
       <version>
@@ -491,13 +497,7 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>F06BB506</checksum>
-    </file>
-    <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>962B1D2E</checksum>
+      <checksum>045986B4</checksum>
     </file>
   </files>
 </measure>

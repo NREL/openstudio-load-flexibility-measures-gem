@@ -37,7 +37,7 @@ require 'openstudio'
 require 'openstudio/measure/ShowRunnerOutput'
 require 'minitest/autorun'
 
-require_relative '../measure.rb'
+require_relative '../measure'
 
 class AddPackagedIceStorageTest < MiniTest::Test
   # def setup
@@ -56,7 +56,7 @@ class AddPackagedIceStorageTest < MiniTest::Test
 
     # load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new(File.dirname(__FILE__) + '/MeasureTest.osm')
+    path = OpenStudio::Path.new("#{File.dirname(__FILE__)}/MeasureTest.osm")
     model = translator.loadModel(path)
     assert(!model.empty?)
     model = model.get
@@ -88,7 +88,7 @@ class AddPackagedIceStorageTest < MiniTest::Test
     show_output(result)
 
     # save the workspace to output directory
-    output_file_path = OpenStudio::Path.new(File.dirname(__FILE__) + '/output/test_output.idf')
+    output_file_path = OpenStudio::Path.new("#{File.dirname(__FILE__)}/output/test_output.idf")
     workspace.save(output_file_path, true)
 
     true

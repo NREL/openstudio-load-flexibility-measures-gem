@@ -38,7 +38,7 @@
 require 'openstudio'
 require 'openstudio/measure/ShowRunnerOutput'
 require 'minitest/autorun'
-require_relative '../measure.rb'
+require_relative '../measure'
 require 'fileutils'
 
 class AddCentralIceStorageTest < Minitest::Test
