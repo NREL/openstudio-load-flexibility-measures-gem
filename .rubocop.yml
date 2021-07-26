@@ -1,21 +1,6 @@
 AllCops:
   Exclude:
-    - gems/**/*
-    - init_templates/**/*
-    - lib/measures/**/resources/*
-    - lib/openstudio/extension/core/**/*
-  TargetRubyVersion: 2.7.0
-
+    - 'spec/test_measures/**/*'
 require: rubocop-performance
 inherit_from:
-    - http://s3.amazonaws.com/openstudio-resources/styles/rubocop_v4.yml
-
-# Reduce severity of cops routinely ignored (keep enabled)
-Metrics/ClassLength:
-  Severity: info
-
-Metrics/MethodLength:
-  Severity: info
-
-Metrics/AbcSize:
-  Severity: info
+  - http://s3.amazonaws.com/openstudio-resources/styles/rubocop_v4.yml
