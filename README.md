@@ -27,6 +27,19 @@ The openstudio-load-flexibility-measures gem contains measures to apply thermal 
 
 Detailed instructions for usage are included in each measure's respective README.md and docs folder. 
 
+# Compatibility Matrix
+
+|OpenStudio Load Flexibility Measures Gem|OpenStudio|Ruby|
+|:--------------:|:----------:|:--------:|
+| 0.3.2  | 3.2      | 2.7    |
+| 0.2.0 - 0.2.1  | 3.1      | 2.5    |
+| 0.1.1 - 0.1.3  | 3.0      | 2.5    |
+
+
+# Contributing 
+
+Please review the [OpenStudio Contribution Policy](https://openstudio.net/openstudio-contribution-policy) if you would like to contribute code to this gem.
+
 # Releasing
 
 * Update CHANGELOG.md
