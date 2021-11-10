@@ -81,9 +81,8 @@ module OsLib_Schedules
       week_day.addValue(OpenStudio::Time.new(0, hour, min, 0), v)
     end
 
-    result = sch_ruleset
-    result
-  end # end of OsLib_Schedules.createSimpleSchedule
+    sch_ruleset
+  end
 
   # create a complex ruleset schedule
   def self.createComplexSchedule(model, options = {})
@@ -167,7 +166,6 @@ module OsLib_Schedules
       end
     end
 
-    result = sch_ruleset
-    result
-  end # end of OsLib_Schedules.createComplexSchedule
+    sch_ruleset
+  end
 end
