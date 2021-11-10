@@ -1,5 +1,10 @@
 # OpenStudio Load Flexibility Measures Gem
 
+## Version 0.4.0
+* Updated OS Extension dependency to 0.5.1
+* Updated OS Standards dependency to 0.2.15
+* adding compatibility matrix and contribution policy
+
 ## Version 0.3.2
 * Modify HPWH measure "simplified" option to automatically identify water heater objects without explicit user naming
 * Modify HPWH measure to improve integration with URBANopt workflow
