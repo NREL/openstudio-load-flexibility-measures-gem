@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>add_packaged_ice_storage</name>
   <uid>2aa8c128-53b9-49fd-9aaf-9253a1f05936</uid>
-  <version_id>b237e5c6-41da-4687-a9b7-4dec1c9d287b</version_id>
-  <version_modified>20210726T175901Z</version_modified>
+  <version_id>e2b362ea-1e2a-44b0-8f2b-add4d320b86d</version_id>
+  <version_modified>20211110T211235Z</version_modified>
   <xml_checksum>2617824F</xml_checksum>
   <class_name>AddPackagedIceStorage</class_name>
   <display_name>Add Packaged Ice Storage</display_name>
@@ -228,7 +228,7 @@ If 'AutoSize' is selected for ice capacity, these inputs set an ice capacity siz
       <filename>add_packaged_ice_storage_test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>3DE8D6DA</checksum>
+      <checksum>B73245BC</checksum>
     </file>
     <file>
       <version>
@@ -239,7 +239,7 @@ If 'AutoSize' is selected for ice capacity, these inputs set an ice capacity siz
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>B93DE638</checksum>
+      <checksum>4AE2C2E6</checksum>
     </file>
   </files>
 </measure>
