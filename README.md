@@ -51,6 +51,3 @@ Please review the [OpenStudio Contribution Policy](https://openstudio.net/openst
 * Release via github
 * On GitHub, go to the releases page and update the latest release tag. Name it “Version x.y.z” and copy the CHANGELOG entry into the description box.
 
-## TODO
-
-- [ ] Update documentation pdf's to reflect revised measure names
