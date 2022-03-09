@@ -94,6 +94,7 @@ class AddHpwh < OpenStudio::Measure::ModelMeasure
 
     # find available water heaters and get default volume
     default_vol = 80.0 # gallons
+    wheaters = []
     wh_names = ['All Water Heaters (Simplified Only)']
     if !model.getWaterHeaterMixeds.empty?
       wheaters = model.getWaterHeaterMixeds
