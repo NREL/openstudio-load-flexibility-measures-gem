@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>add_hpwh</name>
   <uid>518cde6f-1806-4b9a-bee9-ccaac49c7a53</uid>
-  <version_id>5dbd49d0-0fc6-45cd-975e-9fabf73e9b75</version_id>
-  <version_modified>20220504T055127Z</version_modified>
+  <version_id>f28a1d23-0163-4fec-b85f-b624c9d61a79</version_id>
+  <version_modified>20220504T175752Z</version_modified>
   <xml_checksum>A374667A</xml_checksum>
   <class_name>AddHpwh</class_name>
   <display_name>Add HPWH for Domestic Hot Water</display_name>
@@ -390,13 +390,13 @@ The flexibility of the system is based on user-defined temperatures and times, w
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>2E92EC8B</checksum>
+      <checksum>4A3CEDDA</checksum>
     </file>
     <file>
       <filename>add_hpwh_test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>8AFBB167</checksum>
+      <checksum>4486F3FD</checksum>
     </file>
   </files>
 </measure>
