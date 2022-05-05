@@ -44,8 +44,8 @@ Please review the [OpenStudio Contribution Policy](https://openstudio.net/openst
 
 # Releasing
 
-* Update CHANGELOG.md
-* Run `rake openstudio:rubocop:auto_correct`
+* Update `CHANGELOG.md`
+* Run `rake rubocop:auto_correct`
 * Run `rake openstudio:update_copyright`
 * Run `rake openstudio:update_measures` (this has to be done last since prior tasks alter measure files)
 * Update version in `readme.md`

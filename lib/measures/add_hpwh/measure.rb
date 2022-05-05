@@ -285,7 +285,7 @@ class AddHpwh < OpenStudio::Measure::ModelMeasure
     sched = runner.getStringArgumentValue('sched', user_arguments)
 
     # get zone of one was selected
-    if zone.to_s != "N/A - Simplified"
+    if zone.to_s != 'N/A - Simplified'
       if model.getThermalZoneByName(zone).is_initialized
         zone = model.getThermalZoneByName(zone).get
       else
@@ -293,7 +293,7 @@ class AddHpwh < OpenStudio::Measure::ModelMeasure
         return false
       end
     else
-      zone = "N/A - Simplified"
+      zone = 'N/A - Simplified'
     end
 
     4.times do |n|
@@ -548,7 +548,7 @@ class AddHpwh < OpenStudio::Measure::ModelMeasure
                                                    type: type,                                                           # type
                                                    water_heater_capacity: (cap * 1000 / cop),                            # water_heater_capacity
                                                    electric_backup_capacity: (bu_cap * 1000),                            # electric_backup_capacity
-                                                   water_heater_volume: v.to_f,                                               # water_heater_volume
+                                                   water_heater_volume: v.to_f, # water_heater_volume
                                                    service_water_temperature: OpenStudio.convert(140.0, 'F', 'C').get,   # service_water_temperature
                                                    parasitic_fuel_consumption_rate: 3.0,                                 # parasitic_fuel_consumption_rate
                                                    swh_temp_sch: sched,                                                  # swh_temp_sch

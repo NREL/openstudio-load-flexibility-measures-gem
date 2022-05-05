@@ -135,7 +135,7 @@ class AddHpwhTest < Minitest::Test
     assert(result.errors.size == 1)
   end
 
-    def test_custom_args_PumpedCondenser_specific_zone
+  def test_custom_args_PumpedCondenser_specific_zone
     # create an instance of the measure
     measure = AddHpwh.new
 
@@ -185,7 +185,7 @@ class AddHpwhTest < Minitest::Test
     model.save(output_file_path, true)
   end
 
-    def test_custom_args_WrappedCondenser_specific_zone
+  def test_custom_args_WrappedCondenser_specific_zone
     # create an instance of the measure
     measure = AddHpwh.new
 
@@ -234,5 +234,4 @@ class AddHpwhTest < Minitest::Test
     output_file_path = "#{File.dirname(__FILE__)}//output/test_output.osm"
     model.save(output_file_path, true)
   end
-  
 end
