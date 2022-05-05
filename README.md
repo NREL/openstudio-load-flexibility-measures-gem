@@ -31,6 +31,7 @@ Detailed instructions for usage are included in each measure's respective README
 
 |OpenStudio Load Flexibility Measures Gem|OpenStudio|Ruby|
 |:--------------:|:----------:|:--------:|
+| 0.5  | 3.4      | 2.7    |
 | 0.4  | 3.2      | 2.7    |
 | 0.3.2  | 3.2      | 2.7    |
 | 0.2.0 - 0.2.1  | 3.1      | 2.5    |
@@ -44,10 +45,13 @@ Please review the [OpenStudio Contribution Policy](https://openstudio.net/openst
 # Releasing
 
 * Update CHANGELOG.md
-* Run rake rubocop:auto_correct
-* Update version in `/lib/openstudio/openstudio-load-flexibility-measures/version.rb`
+* Run `rake openstudio:rubocop:auto_correct`
+* Run `rake openstudio:update_copyright`
+* Run `rake openstudio:update_measures` (this has to be done last since prior tasks alter measure files)
+* Update version in `readme.md`
+* Update version in `openstudio-load-flexibility.gemspec`
+* Update version in `/lib/openstudio/load-flexibility/version.rb`
 * Create PR to master, after tests and reviews complete, then merge
-* Locally - from the master branch, run rake release
-* Release via github
+* Locally - from the master branch, run `rake release`
 * On GitHub, go to the releases page and update the latest release tag. Name it “Version x.y.z” and copy the CHANGELOG entry into the description box.
 
