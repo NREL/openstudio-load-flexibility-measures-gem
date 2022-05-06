@@ -94,6 +94,7 @@ class AddHpwh < OpenStudio::Measure::ModelMeasure
 
     # find available water heaters and get default volume
     default_vol = 80.0 # gallons
+    wheaters = []
     wh_names = ['All Water Heaters (Simplified Only)']
     if !model.getWaterHeaterMixeds.empty?
       wheaters = model.getWaterHeaterMixeds
@@ -282,6 +283,18 @@ class AddHpwh < OpenStudio::Measure::ModelMeasure
     min_temp = runner.getDoubleArgumentValue('min_temp', user_arguments)
     db_temp = runner.getDoubleArgumentValue('db_temp', user_arguments)
     sched = runner.getStringArgumentValue('sched', user_arguments)
+
+    # get zone of one was selected
+    if zone.to_s != 'N/A - Simplified'
+      if model.getThermalZoneByName(zone).is_initialized
+        zone = model.getThermalZoneByName(zone).get
+      else
+        runner.registerError("Could not find zone named #{zone} in the moodel")
+        return false
+      end
+    else
+      zone = 'N/A - Simplified'
+    end
 
     4.times do |n|
       flex << runner.getStringArgumentValue("flex#{n}", user_arguments)
@@ -531,12 +544,11 @@ class AddHpwh < OpenStudio::Measure::ModelMeasure
       # => openstudio-standards/prototypes/common/objects/Prototype.ServiceWaterHeating.rb
       if type != 'Simplified'
         # convert zone name from STRING into OS model OBJECT
-        zone = model.getThermalZoneByName(zone).get
         hpwh = std.model_add_heatpump_water_heater(model, # model
                                                    type: type,                                                           # type
                                                    water_heater_capacity: (cap * 1000 / cop),                            # water_heater_capacity
                                                    electric_backup_capacity: (bu_cap * 1000),                            # electric_backup_capacity
-                                                   water_heater_volume: v,                                               # water_heater_volume
+                                                   water_heater_volume: v.to_f, # water_heater_volume
                                                    service_water_temperature: OpenStudio.convert(140.0, 'F', 'C').get,   # service_water_temperature
                                                    parasitic_fuel_consumption_rate: 3.0,                                 # parasitic_fuel_consumption_rate
                                                    swh_temp_sch: sched,                                                  # swh_temp_sch
@@ -548,7 +560,6 @@ class AddHpwh < OpenStudio::Measure::ModelMeasure
                                                    flowrate_schedule: nil,                                               # flowrate_schedule
                                                    water_heater_thermal_zone: zone)                                      # water_heater_thermal_zone
       else
-        # zone = whtr.ambientTemperatureThermalZone.get
         hpwh = std.model_add_water_heater(model, # model
                                           (cap * 1000),                                                         # water_heater_capacity
                                           v.to_f,                                                               # water_heater_volume
