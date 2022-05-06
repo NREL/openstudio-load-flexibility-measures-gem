@@ -1,5 +1,9 @@
 # OpenStudio Load Flexibility Measures Gem
 
+## Version 0.5.0
+* Updated OS Standards dependency to 0.2.16
+* Fixed [#41](https://github.com/NREL/openstudio-load-flexibility-measures-gem/issues/41), Error in applying add_hpwh measure with "non-simplified" options to MF prototype building in OS 3.3
+
 ## Version 0.4.0
 * Updated OS Extension dependency to 0.5.1
 * Updated OS Standards dependency to 0.2.15

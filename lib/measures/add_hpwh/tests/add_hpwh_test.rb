@@ -1,5 +1,5 @@
 # *******************************************************************************
-# OpenStudio(R), Copyright (c) 2008-2022, Alliance for Sustainable Energy, LLC.
+# OpenStudio(R), Copyright (c) 2008-2021, Alliance for Sustainable Energy, LLC.
 # All rights reserved.
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -135,7 +135,7 @@ class AddHpwhTest < Minitest::Test
     assert(result.errors.size == 1)
   end
 
-    def test_custom_args_PumpedCondenser_specific_zone
+  def test_custom_args_PumpedCondenser_specific_zone
     # create an instance of the measure
     measure = AddHpwh.new
 
@@ -185,7 +185,7 @@ class AddHpwhTest < Minitest::Test
     model.save(output_file_path, true)
   end
 
-    def test_custom_args_WrappedCondenser_specific_zone
+  def test_custom_args_WrappedCondenser_specific_zone
     # create an instance of the measure
     measure = AddHpwh.new
 
@@ -234,5 +234,4 @@ class AddHpwhTest < Minitest::Test
     output_file_path = "#{File.dirname(__FILE__)}//output/test_output.osm"
     model.save(output_file_path, true)
   end
-  
 end
