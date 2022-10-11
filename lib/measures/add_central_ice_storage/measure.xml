@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>add_central_ice_storage</name>
   <uid>48f37812-0cb6-4770-b695-beb8d8a5660d</uid>
-  <version_id>f8f68f4a-4f32-4051-8f1f-0ec842998763</version_id>
-  <version_modified>20220505T192248Z</version_modified>
+  <version_id>25303cd9-74a2-451a-bf78-b4e03d2bd1a7</version_id>
+  <version_modified>20221011T225330Z</version_modified>
   <xml_checksum>6394841D</xml_checksum>
   <class_name>AddCentralIceStorage</class_name>
   <display_name>Add Central Ice Storage</display_name>
@@ -474,19 +474,19 @@
       <filename>LICENSE.md</filename>
       <filetype>md</filetype>
       <usage_type>license</usage_type>
-      <checksum>E0468DD6</checksum>
+      <checksum>64FFEBDE</checksum>
     </file>
     <file>
       <filename>OsLib_Schedules.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>64AFEC72</checksum>
+      <checksum>0582294E</checksum>
     </file>
     <file>
       <filename>add_central_ice_storage_test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>10164E33</checksum>
+      <checksum>B4007921</checksum>
     </file>
     <file>
       <version>
@@ -497,7 +497,7 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>C16EDFB8</checksum>
+      <checksum>554632ED</checksum>
     </file>
   </files>
 </measure>
