@@ -11,9 +11,9 @@ gemspec
 allow_local = ENV['FAVOR_LOCAL_GEMS']
 
 
- # Delete when these branchesa are merged and released
- gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'v0.6.0-rc1'
- gem 'openstudio-standards', '= 0.2.17.rc1', :github => 'NREL/openstudio-standards', :ref => '3.5.0_changes'
+# Delete when these branchesa are merged and released
+gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'v0.6.0-rc1'
+gem 'openstudio-standards', '= 0.2.17.rc1', :github => 'NREL/openstudio-standards', :ref => '3.5.0_changes'
 
 
 
