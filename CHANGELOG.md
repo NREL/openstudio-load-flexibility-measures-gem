@@ -1,5 +1,8 @@
 # OpenStudio Load Flexibility Measures Gem
 
+## Version 0.6.0
+- Support for OpenStudio 3.5 (upgrade to standards gem 0.3.0, extension gem 0.6.0)
+
 ## Version 0.5.1
 - Added the ShiftScheduleByType measure - [#47](https://github.com/NREL/openstudio-load-flexibility-measures-gem/issues/47)
 - Updating licenses and measure versions / checksums for 2022

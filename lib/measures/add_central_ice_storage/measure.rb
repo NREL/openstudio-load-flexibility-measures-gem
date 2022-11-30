@@ -457,7 +457,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
 
     # Check limits of chiller performance curves and adjust if necessary - Notify user with WARNING
     curve_output_check = false
-    cap_ft = ctes_chiller.coolingCapacityFunctionOfTemperature
+    cap_ft = ctes_chiller.coolingCapacityFunctionOfTemperature.to_CurveBiquadratic.get
     min_x = cap_ft.minimumValueofx.to_f
     if min_x > chg_sp
       cap_ft.setMinimumValueofx(chg_sp)
@@ -467,7 +467,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
       curve_output_check = true
     end
 
-    eir_ft = ctes_chiller.electricInputToCoolingOutputRatioFunctionOfTemperature
+    eir_ft = ctes_chiller.electricInputToCoolingOutputRatioFunctionOfTemperature.to_CurveBiquadratic.get
     min_x = eir_ft.minimumValueofx.to_f
     if min_x > chg_sp
       runner.registerWarning("VERIFY CURVE VALIDITY: The input range for the '#{eir_ft.name}' curve is too " \
