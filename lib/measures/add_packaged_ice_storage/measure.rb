@@ -563,14 +563,16 @@ class AddPackagedIceStorage < OpenStudio::Measure::EnergyPlusMeasure
       # copy old coil information over to TES object (use low-speed info for 2spd coils)
       case sel_coil.iddObject.name
       when 'Coil:Cooling:DX:SingleSpeed'
+        runner.registerInfo("Grabing inputs for #{utss.getString(0)} from #{sel_coil.iddObject.name} object named #{sel_coil.getString(0)}")
         utss.setString(16, sel_coil.getString(2).get)
         utss.setString(18, sel_coil.getString(4).get)
-        utss.setString(19, sel_coil.getString(9).get)
-        utss.setString(20, sel_coil.getString(10).get)
-        utss.setString(21, sel_coil.getString(11).get)
-        utss.setString(22, sel_coil.getString(12).get)
-        utss.setString(23, sel_coil.getString(13).get)
+        utss.setString(19, sel_coil.getString(10).get)
+        utss.setString(20, sel_coil.getString(11).get)
+        utss.setString(21, sel_coil.getString(12).get)
+        utss.setString(22, sel_coil.getString(13).get)
+        utss.setString(23, sel_coil.getString(14).get)
       when 'Coil:Cooling:DX:TwoSpeed'
+        runner.registerInfo("Grabing inputs for #{utss.getString(0)} from #{sel_coil.iddObject.name} object named #{sel_coil.getString(0)}")
         utss.setString(16, sel_coil.getString(14).get)
         utss.setString(18, sel_coil.getString(16).get)
         utss.setString(19, sel_coil.getString(18).get)
