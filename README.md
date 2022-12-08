@@ -31,6 +31,7 @@ Detailed instructions for usage are included in each measure's respective README
 
 |OpenStudio Load Flexibility Measures Gem|OpenStudio|Ruby|
 |:--------------:|:----------:|:--------:|
+| 0.6.1| 3.5      | 2.7    |
 | 0.6  | 3.5      | 2.7    |
 | 0.5  | 3.4      | 2.7    |
 | 0.4  | 3.2      | 2.7    |
