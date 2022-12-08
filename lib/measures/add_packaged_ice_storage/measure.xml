@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>add_packaged_ice_storage</name>
   <uid>2aa8c128-53b9-49fd-9aaf-9253a1f05936</uid>
-  <version_id>12ace3fc-b9d5-4236-9087-9c2fb61ec8c2</version_id>
-  <version_modified>20221011T225330Z</version_modified>
+  <version_id>c3501a29-d910-4956-ae94-61ad2bbbd94a</version_id>
+  <version_modified>20221208T143811Z</version_modified>
   <xml_checksum>2617824F</xml_checksum>
   <class_name>AddPackagedIceStorage</class_name>
   <display_name>Add Packaged Ice Storage</display_name>
@@ -228,7 +228,7 @@ If 'AutoSize' is selected for ice capacity, these inputs set an ice capacity siz
       <filename>add_packaged_ice_storage_test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>F32CF657</checksum>
+      <checksum>6D3FC710</checksum>
     </file>
     <file>
       <version>
@@ -239,7 +239,19 @@ If 'AutoSize' is selected for ice capacity, these inputs set an ice capacity siz
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>85F2A9C5</checksum>
+      <checksum>7D84A7F7</checksum>
+    </file>
+    <file>
+      <filename>single_speed_dx_350.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D9B82B85</checksum>
+    </file>
+    <file>
+      <filename>USA_IL_Chicago-OHare.Intl.AP.725300_TMY3.epw</filename>
+      <filetype>epw</filetype>
+      <usage_type>test</usage_type>
+      <checksum>C254B53F</checksum>
     </file>
   </files>
 </measure>
