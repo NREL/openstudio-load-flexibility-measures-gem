@@ -3,6 +3,8 @@
 # see the URL below for information on how to write OpenStudio measures
 # http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/
 
+require 'csv'
+
 # start the measure
 class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
   # human readable name
@@ -38,7 +40,8 @@ class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
     arg.setDefaultValue(0)
     args << arg
 
-    model.getScheduleFiles.each do |schedule_file|
+    schedule_files = model.getScheduleFiles.sort_by { |s| s.name.to_s }
+    schedule_files.each do |schedule_file|
       arg = OpenStudio::Measure::OSArgument::makeBoolArgument("schedules_peak_period_#{schedule_file.name}", true)
       arg.setDisplayName("Schedules: Peak Period #{schedule_file.name}")
       arg.setDescription("Whether to shift the #{schedule_file.name} schedule during the peak period.")
@@ -62,7 +65,7 @@ class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
     schedules_peak_period_delay = runner.getIntegerArgumentValue('schedules_peak_period_delay', user_arguments)
 
     schedule_files = {}
-    model.getScheduleFiles.each do |schedule_file|
+    model.getScheduleFiles.sort_by { |s| s.name.to_s }.each do |schedule_file|
       schedule_files[schedule_file.name.to_s] = runner.getBoolArgumentValue("schedules_peak_period_#{schedule_file.name}", user_arguments)
     end
 
@@ -72,6 +75,12 @@ class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
     end
 
     # TODO: use schedule_files, schedules_peak_period, schedules_peak_period_delay to shift referenced ScheduleFile objects
+    # 1 create ScheduleFile class for loading externalFile into hash
+    # 2 do the operations from https://github.com/NREL/OpenStudio-HPXML/pull/1293 on applicable columns
+    # 3 overwrite (export) the csv file
+    model.getExternalFiles.each do |external_file|
+      csv_file = CSV.read(external_file.filePath.to_s)
+    end
 
     return true
   end
