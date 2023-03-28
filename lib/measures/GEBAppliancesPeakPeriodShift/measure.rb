@@ -40,16 +40,24 @@ class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
     arg.setDefaultValue(0)
     args << arg
 
-    schedule_files = model.getScheduleFiles.sort_by { |s| s.name.to_s }
-    schedule_files.each do |schedule_file|
-      arg = OpenStudio::Measure::OSArgument::makeBoolArgument("schedules_peak_period_#{schedule_file.name}", true)
-      arg.setDisplayName("Schedules: Peak Period #{schedule_file.name}")
-      arg.setDescription("Whether to shift the #{schedule_file.name} schedule during the peak period.")
+    get_schedule_file_column_names(model).each do |schedule_file_column_name|
+      arg = OpenStudio::Measure::OSArgument::makeBoolArgument("schedules_peak_period_#{schedule_file_column_name}", true)
+      arg.setDisplayName("Schedules: Peak Period '#{schedule_file_column_name}'")
+      arg.setDescription("Whether to shift the '#{schedule_file_column_name}' schedule during the peak period.")
       arg.setDefaultValue(false)
       args << arg
     end
 
     return args
+  end
+
+  def get_schedule_file_column_names(model)
+    schedule_file_column_names = []
+    model.getExternalFiles.each do |external_file|
+      external_file_path = external_file.filePath.to_s
+      schedule_file_column_names += CSV.foreach(external_file_path).first
+    end
+    return schedule_file_column_names.uniq.sort
   end
 
   # define what happens when the measure is run
@@ -64,12 +72,12 @@ class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
     schedules_peak_period = runner.getStringArgumentValue('schedules_peak_period', user_arguments)
     schedules_peak_period_delay = runner.getIntegerArgumentValue('schedules_peak_period_delay', user_arguments)
 
-    schedule_files = {}
-    model.getScheduleFiles.sort_by { |s| s.name.to_s }.each do |schedule_file|
-      schedule_files[schedule_file.name.to_s] = runner.getBoolArgumentValue("schedules_peak_period_#{schedule_file.name}", user_arguments)
+    schedule_file_column_names_enabled = {}
+    get_schedule_file_column_names(model).each do |schedule_file_column_name|
+      schedule_file_column_names_enabled[schedule_file_column_name] = runner.getBoolArgumentValue("schedules_peak_period_#{schedule_file_column_name}", user_arguments)
     end
 
-    if schedule_files.empty? || schedule_files.values.all? { |value| value == false }
+    if schedule_file_column_names_enabled.empty? || schedule_file_column_names_enabled.values.all? { |value| value == false }
       runner.registerAsNotApplicable('Did not select any ScheduleFile objects to shift.')
       return true
     end
@@ -82,7 +90,7 @@ class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
       external_file_path = external_file.filePath.to_s
 
       schedules = Schedules.new(file_path: external_file_path)
-      schedules.do_something(schedule_files)
+      schedules.do_something(schedule_file_column_names_enabled)
       schedules.export()
     end
 
@@ -115,9 +123,11 @@ class Schedules
     end
   end
   
-  def do_something(schedule_files)
-    schedule_files.each do |schedule_file_name, peak_period_shift_enabled|
-      @schedules[schedule_file_name][0] *= 1.1 if peak_period_shift_enabled
+  def do_something(schedule_file_column_names_enabled)
+    schedule_file_column_names_enabled.each do |schedule_file_column_name, peak_period_shift_enabled|
+      next if !@schedules.keys.include?(schedule_file_column_name)
+
+      @schedules[schedule_file_column_name][0] *= 1.1 if peak_period_shift_enabled
     end
   end
   

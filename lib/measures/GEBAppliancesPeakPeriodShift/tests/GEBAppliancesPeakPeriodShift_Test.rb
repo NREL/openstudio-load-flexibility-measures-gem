@@ -26,12 +26,13 @@ class GEBAppliancesPeakPeriodShiftTest < Minitest::Test
 
     # get arguments and test that they are what we are expecting
     arguments = measure.arguments(model)
-    assert_equal(13, arguments.size)
+    assert_equal(2 + 15, arguments.size)
 
     count = -1
 
     assert_equal('schedules_peak_period', arguments[count += 1].name)
     assert_equal('schedules_peak_period_delay', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_ceiling_fan', arguments[count += 1].name)
     assert_equal('schedules_peak_period_clothes_dryer', arguments[count += 1].name)
     assert_equal('schedules_peak_period_clothes_washer', arguments[count += 1].name)
     assert_equal('schedules_peak_period_cooking_range', arguments[count += 1].name)
@@ -39,10 +40,13 @@ class GEBAppliancesPeakPeriodShiftTest < Minitest::Test
     assert_equal('schedules_peak_period_hot_water_clothes_washer', arguments[count += 1].name)
     assert_equal('schedules_peak_period_hot_water_dishwasher', arguments[count += 1].name)
     assert_equal('schedules_peak_period_hot_water_fixtures', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_lighting_garage', arguments[count += 1].name)
     assert_equal('schedules_peak_period_lighting_interior', arguments[count += 1].name)
     assert_equal('schedules_peak_period_occupants', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_outage', arguments[count += 1].name)
     assert_equal('schedules_peak_period_plug_loads_other', arguments[count += 1].name)
-    assert_equal('schedules_peak_period_plug_loads_tv', arguments[count += 1].name)    
+    assert_equal('schedules_peak_period_plug_loads_tv', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_vacancy', arguments[count += 1].name)
 
     # set argument values to good values and run the measure on model with spaces
     arguments = measure.arguments(model)
@@ -57,6 +61,10 @@ class GEBAppliancesPeakPeriodShiftTest < Minitest::Test
     schedules_peak_period_delay = arguments[count += 1].clone
     assert(schedules_peak_period_delay.setValue(1))
     argument_map['schedules_peak_period_delay'] = schedules_peak_period_delay
+
+    schedules_peak_period_ceiling_fan = arguments[count += 1].clone
+    assert(schedules_peak_period_ceiling_fan.setValue(true))
+    argument_map['schedules_peak_period_ceiling_fan'] = schedules_peak_period_ceiling_fan
 
     schedules_peak_period_clothes_dryer = arguments[count += 1].clone
     assert(schedules_peak_period_clothes_dryer.setValue(true))
@@ -86,6 +94,10 @@ class GEBAppliancesPeakPeriodShiftTest < Minitest::Test
     assert(schedules_peak_period_hot_water_fixtures.setValue(true))
     argument_map['schedules_peak_period_hot_water_fixtures'] = schedules_peak_period_hot_water_fixtures
 
+    schedules_peak_period_lighting_garage = arguments[count += 1].clone
+    assert(schedules_peak_period_lighting_garage.setValue(true))
+    argument_map['schedules_peak_period_lighting_garage'] = schedules_peak_period_lighting_garage
+
     schedules_peak_period_lighting_interior = arguments[count += 1].clone
     assert(schedules_peak_period_lighting_interior.setValue(true))
     argument_map['schedules_peak_period_lighting_interior'] = schedules_peak_period_lighting_interior
@@ -94,6 +106,10 @@ class GEBAppliancesPeakPeriodShiftTest < Minitest::Test
     assert(schedules_peak_period_occupants.setValue(true))
     argument_map['schedules_peak_period_occupants'] = schedules_peak_period_occupants
 
+    schedules_peak_period_outage = arguments[count += 1].clone
+    assert(schedules_peak_period_outage.setValue(true))
+    argument_map['schedules_peak_period_outage'] = schedules_peak_period_outage
+
     schedules_peak_period_plug_loads_other = arguments[count += 1].clone
     assert(schedules_peak_period_plug_loads_other.setValue(true))
     argument_map['schedules_peak_period_plug_loads_other'] = schedules_peak_period_plug_loads_other
@@ -101,6 +117,10 @@ class GEBAppliancesPeakPeriodShiftTest < Minitest::Test
     schedules_peak_period_plug_loads_tv = arguments[count += 1].clone
     assert(schedules_peak_period_plug_loads_tv.setValue(true))
     argument_map['schedules_peak_period_plug_loads_tv'] = schedules_peak_period_plug_loads_tv
+
+    schedules_peak_period_vacancy = arguments[count += 1].clone
+    assert(schedules_peak_period_vacancy.setValue(true))
+    argument_map['schedules_peak_period_vacancy'] = schedules_peak_period_vacancy
 
     # before
     schedules_before = {}
@@ -129,6 +149,7 @@ class GEBAppliancesPeakPeriodShiftTest < Minitest::Test
 
     assert(!schedules_before.empty?)
     assert(!schedules_after.empty?)
+    assert(schedules_before['ceiling_fan'][0] != schedules_after['ceiling_fan'][0])
     assert(schedules_before['clothes_dryer'][0] == schedules_after['clothes_dryer'][0])
     assert(schedules_before['clothes_washer'][0] == schedules_after['clothes_washer'][0])
     assert(schedules_before['cooking_range'][0] == schedules_after['cooking_range'][0])
@@ -136,6 +157,7 @@ class GEBAppliancesPeakPeriodShiftTest < Minitest::Test
     assert(schedules_before['hot_water_clothes_washer'][0] == schedules_after['hot_water_clothes_washer'][0])
     assert(schedules_before['hot_water_dishwasher'][0] == schedules_after['hot_water_dishwasher'][0])
     assert(schedules_before['hot_water_fixtures'][0] == schedules_after['hot_water_fixtures'][0])
+    assert(schedules_before['lighting_garage'][0] != schedules_after['lighting_garage'][0])
     assert(schedules_before['lighting_interior'][0] != schedules_after['lighting_interior'][0])
     assert(schedules_before['occupants'][0] != schedules_after['occupants'][0])
     assert(schedules_before['plug_loads_other'][0] != schedules_after['plug_loads_other'][0])
