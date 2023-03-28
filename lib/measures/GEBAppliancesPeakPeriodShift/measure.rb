@@ -79,10 +79,60 @@ class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
     # 2 do the operations from https://github.com/NREL/OpenStudio-HPXML/pull/1293 on applicable columns
     # 3 overwrite (export) the csv file
     model.getExternalFiles.each do |external_file|
-      csv_file = CSV.read(external_file.filePath.to_s)
+      external_file_path = external_file.filePath.to_s
+
+      schedules = Schedules.new(file_path: external_file_path)
+      schedules.do_something(schedule_files)
+      schedules.export()
     end
 
     return true
+  end
+end
+
+class Schedules
+  def initialize(file_path:)
+    @file_path = file_path
+    
+    import()
+  end
+
+  def import()
+    @schedules = {}
+    columns = CSV.read(@file_path).transpose
+    columns.each do |col|
+      col_name = col[0]
+
+      values = col[1..-1].reject { |v| v.nil? }
+
+      begin
+        values = values.map { |v| Float(v) }
+      rescue ArgumentError
+        fail "Schedule value must be numeric for column '#{col_name}'. [context: #{schedules_path}]"
+      end
+
+      @schedules[col_name] = values
+    end
+  end
+  
+  def do_something(schedule_files)
+    schedule_files.each do |schedule_file_name, peak_period_shift_enabled|
+      @schedules[schedule_file_name][0] *= 1.1 if peak_period_shift_enabled
+    end
+  end
+  
+  def export()
+    CSV.open(@file_path, 'wb') do |csv|
+      csv << @schedules.keys
+      rows = @schedules.values.transpose
+      rows.each do |row|
+        csv << row
+      end
+    end
+  end
+  
+  def schedules
+    return @schedules
   end
 end
 
