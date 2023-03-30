@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>geb_appliances_peak_period_shift</name>
   <uid>4954275f-9caf-422c-9e1f-061244ade152</uid>
-  <version_id>8af1707e-1b03-40da-98a7-6a90fad205f2</version_id>
-  <version_modified>20230322T184412Z</version_modified>
+  <version_id>9a35a61d-f71d-431b-af46-8e431be663af</version_id>
+  <version_modified>20230330T215718Z</version_modified>
   <xml_checksum>A8988589</xml_checksum>
   <class_name>GEBAppliancesPeakPeriodShift</class_name>
   <display_name>GEBAppliancesPeakPeriodShift</display_name>
@@ -30,6 +30,14 @@
       <model_dependent>false</model_dependent>
       <default_value>0</default_value>
     </argument>
+    <argument>
+      <name>schedules_peak_period_column_names</name>
+      <display_name>Schedules: Peak Period Schedule File Column Names</display_name>
+      <description>Comma-separated list of schedule file column names to shift during the peak period.</description>
+      <type>String</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
   </arguments>
   <outputs />
   <provenances />
@@ -50,12 +58,6 @@
   </attributes>
   <files>
     <file>
-      <filename>geb_appliances_peak_period_shift_test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>50D46D3C</checksum>
-    </file>
-    <file>
       <filename>README.md.erb</filename>
       <filetype>erb</filetype>
       <usage_type>readmeerb</usage_type>
@@ -68,16 +70,16 @@
       <checksum>CD7F5672</checksum>
     </file>
     <file>
-      <filename>.gitkeep</filename>
-      <filetype>gitkeep</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>00000000</checksum>
-    </file>
-    <file>
-      <filename>example_model.osm</filename>
+      <filename>base-schedules-detailed-occupancy-stochastic.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
-      <checksum>53D14E69</checksum>
+      <checksum>AC4D8730</checksum>
+    </file>
+    <file>
+      <filename>test_GEBAppliancesPeakPeriodShift.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>AC4D8730</checksum>
     </file>
     <file>
       <version>
@@ -88,13 +90,25 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>76661B2A</checksum>
+      <checksum>1B30550C</checksum>
     </file>
     <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
-      <checksum>A6EB45B0</checksum>
+      <checksum>F5D76499</checksum>
+    </file>
+    <file>
+      <filename>files/schedules20230327-33728-y5y5a5.csv</filename>
+      <filetype>csv</filetype>
+      <usage_type>test</usage_type>
+      <checksum>748724F1</checksum>
+    </file>
+    <file>
+      <filename>GEBAppliancesPeakPeriodShift_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>81A4B74E</checksum>
     </file>
   </files>
 </measure>

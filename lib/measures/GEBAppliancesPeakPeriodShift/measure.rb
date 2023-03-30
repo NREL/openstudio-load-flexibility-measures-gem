@@ -1,4 +1,4 @@
-# insert your copyright here
+# frozen_string_literal: true
 
 # see the URL below for information on how to write OpenStudio measures
 # http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/
@@ -24,7 +24,7 @@ class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
   end
 
   # define the arguments that the user will input
-  def arguments(model)
+  def arguments(_model)
     args = OpenStudio::Measure::OSArgumentVector.new
 
     arg = OpenStudio::Measure::OSArgument.makeStringArgument('schedules_peak_period', true)
@@ -40,13 +40,10 @@ class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
     arg.setDefaultValue(0)
     args << arg
 
-    get_schedule_file_column_names(model).each do |schedule_file_column_name|
-      arg = OpenStudio::Measure::OSArgument::makeBoolArgument("schedules_peak_period_#{schedule_file_column_name}", true)
-      arg.setDisplayName("Schedules: Peak Period '#{schedule_file_column_name}'")
-      arg.setDescription("Whether to shift the '#{schedule_file_column_name}' schedule during the peak period.")
-      arg.setDefaultValue(false)
-      args << arg
-    end
+    arg = OpenStudio::Measure::OSArgument.makeStringArgument('schedules_peak_period_column_names', false)
+    arg.setDisplayName('Schedules: Peak Period Schedule File Column Names')
+    arg.setDescription('Comma-separated list of schedule file column names to shift during the peak period.')
+    args << arg
 
     return args
   end
@@ -62,7 +59,7 @@ class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
 
   # define what happens when the measure is run
   def run(model, runner, user_arguments)
-    super(model, runner, user_arguments)  # Do **NOT** remove this line
+    super(model, runner, user_arguments) # Do **NOT** remove this line
 
     # use the built-in error checking
     if !runner.validateUserArguments(arguments(model), user_arguments)
@@ -70,11 +67,12 @@ class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
     end
 
     schedules_peak_period = runner.getStringArgumentValue('schedules_peak_period', user_arguments)
-    delay = runner.getIntegerArgumentValue('schedules_peak_period_delay', user_arguments)
+    schedules_peak_period_delay = runner.getIntegerArgumentValue('schedules_peak_period_delay', user_arguments)
+    schedules_peak_period_column_names = runner.getStringArgumentValue('schedules_peak_period_column_names', user_arguments).split(',').map(&:strip)
 
     schedule_file_column_names_enabled = {}
     get_schedule_file_column_names(model).each do |schedule_file_column_name|
-      schedule_file_column_names_enabled[schedule_file_column_name] = runner.getBoolArgumentValue("schedules_peak_period_#{schedule_file_column_name}", user_arguments)
+      schedule_file_column_names_enabled[schedule_file_column_name] = schedules_peak_period_column_names.include?(schedule_file_column_name)
     end
 
     if schedule_file_column_names_enabled.empty? || schedule_file_column_names_enabled.values.all? { |value| value == false }
@@ -89,8 +87,8 @@ class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
       return false
     end
 
-    if ((end_hour - begin_hour) + delay > 12)
-      runner.registerError("Specified peak period (#{begin_hour} - #{end_hour}), plus the delay (#{delay}), must be no longer than 12 hours.")
+    if ((end_hour - begin_hour) + schedules_peak_period_delay > 12)
+      runner.registerError("Specified peak period (#{begin_hour} - #{end_hour}), plus the delay (#{schedules_peak_period_delay}), must be no longer than 12 hours.")
       return false
     end
 
@@ -110,7 +108,7 @@ class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
       external_file_path = external_file.filePath.to_s
 
       schedules = Schedules.new(file_path: external_file_path)
-      schedules.shift_schedules(runner, schedule_file_column_names_enabled, begin_hour, end_hour, delay, total_days_in_year, sim_start_day, steps_in_day)
+      schedules.shift_schedules(runner, schedule_file_column_names_enabled, begin_hour, end_hour, schedules_peak_period_delay, total_days_in_year, sim_start_day, steps_in_day)
       schedules.export()
     end
 
@@ -121,7 +119,7 @@ end
 class Schedules
   def initialize(file_path:)
     @file_path = file_path
-    
+
     import()
   end
 
@@ -142,7 +140,7 @@ class Schedules
       @schedules[col_name] = values
     end
   end
-  
+
   def shift_schedules(runner, schedule_file_column_names_enabled, begin_hour, end_hour, delay, total_days_in_year, sim_start_day, steps_in_day)
     shift_summary = {}
     schedule_file_column_names_enabled.each do |schedule_file_column_name, peak_period_shift_enabled|
@@ -151,7 +149,7 @@ class Schedules
 
       schedule = @schedules[schedule_file_column_name]
       shift_summary[schedule_file_column_name] = 0
-      
+
       total_days_in_year.times do |day|
         today = sim_start_day + day
         day_of_week = today.wday
@@ -166,7 +164,7 @@ class Schedules
       runner.registerInfo("Out of #{total_days_in_year} total days, #{shifted_days} day(s) were shifted for the '#{schedule_file_column_name}' schedule.")
     end
   end
-  
+
   def day_peak_shift(schedule, day, begin_hour, end_hour, delay, steps_in_day)
     steps_in_hour = steps_in_day / 24
     period = (end_hour - begin_hour) * steps_in_hour # n steps
@@ -198,7 +196,7 @@ class Schedules
       end
     end
   end
-  
+
   def schedules
     return @schedules
   end
