@@ -94,18 +94,21 @@ class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
       return false
     end
 
-    total_days_in_year = 365 # TODO
-    sim_year = 2009 # TODO
-    sim_start_day = DateTime.new(sim_year, 1, 1)
-    steps_in_day = 24 # TODO
+    # get year
+    yd = model.getYearDescription
+    calendar_year = yd.assumedYear
+    calendar_year = yd.calendarYear.get if yd.calendarYear.is_initialized
+    total_days_in_year = Schedules.NumDaysInYear(calendar_year)
+    sim_start_day = DateTime.new(calendar_year, 1, 1)
 
-    # TODO: use schedule_files, schedules_peak_period, schedules_peak_period_delay to shift referenced ScheduleFile objects
-    # 1 create ScheduleFile class for loading externalFile into hash
-    # 2 do the operations from https://github.com/NREL/OpenStudio-HPXML/pull/1293 on applicable columns
-    # 3 overwrite (export) the csv file
+    # get steps
+    ts = model.getTimestep
+    ts_per_hour = ts.numberOfTimestepsPerHour
+    steps_in_day = ts_per_hour * 24
+
     model.getExternalFiles.each do |external_file|
       external_file_path = external_file.filePath.to_s
-puts external_file_path
+
       schedules = Schedules.new(file_path: external_file_path)
       schedules.shift_schedules(runner, schedule_file_column_names_enabled, begin_hour, end_hour, delay, total_days_in_year, sim_start_day, steps_in_day)
       schedules.export()
@@ -210,6 +213,18 @@ class Schedules
     end_hour = begin_end_times[1].strip.to_i
 
     return begin_hour, end_hour
+  end
+
+  def self.NumDaysInYear(year)
+    num_days_in_months = NumDaysInMonths(year)
+    num_days_in_year = num_days_in_months.sum
+    return num_days_in_year
+  end
+
+  def self.NumDaysInMonths(year)
+    num_days_in_months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    num_days_in_months[1] += 1 if Date.leap?(year)
+    return num_days_in_months
   end
 end
 
