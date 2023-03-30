@@ -105,9 +105,9 @@ class GEBAppliancesPeakPeriodShift < OpenStudio::Measure::ModelMeasure
     # 3 overwrite (export) the csv file
     model.getExternalFiles.each do |external_file|
       external_file_path = external_file.filePath.to_s
-
+puts external_file_path
       schedules = Schedules.new(file_path: external_file_path)
-      schedules.shift_schedules(schedule_file_column_names_enabled, begin_hour, end_hour, delay, total_days_in_year, sim_start_day, steps_in_day)
+      schedules.shift_schedules(runner, schedule_file_column_names_enabled, begin_hour, end_hour, delay, total_days_in_year, sim_start_day, steps_in_day)
       schedules.export()
     end
 
@@ -140,14 +140,14 @@ class Schedules
     end
   end
   
-  def shift_schedules(schedule_file_column_names_enabled, begin_hour, end_hour, delay, total_days_in_year, sim_start_day, steps_in_day)
-    unshifted = {}
+  def shift_schedules(runner, schedule_file_column_names_enabled, begin_hour, end_hour, delay, total_days_in_year, sim_start_day, steps_in_day)
+    shift_summary = {}
     schedule_file_column_names_enabled.each do |schedule_file_column_name, peak_period_shift_enabled|
       next if !@schedules.keys.include?(schedule_file_column_name)
       next if !peak_period_shift_enabled
 
       schedule = @schedules[schedule_file_column_name]
-      unshifted[schedule_file_column_name] = 0
+      shift_summary[schedule_file_column_name] = 0
       
       total_days_in_year.times do |day|
         today = sim_start_day + day
@@ -155,14 +155,12 @@ class Schedules
         next if [0, 6].include?(day_of_week)
 
         shifted = day_peak_shift(schedule, day, begin_hour, end_hour, delay, steps_in_day)
-        unshifted[schedule_file_column_name] += 1 if !shifted
+        shift_summary[schedule_file_column_name] += 1 if shifted
       end
     end
 
-    unshifted.each do |schedule_file_column_name, days|
-      next if days == 0
-
-      puts "To prevent stacking, #{days} days were not shifted for the '#{schedule_file_column_name}' schedule."
+    shift_summary.each do |schedule_file_column_name, shifted_days|
+      runner.registerInfo("Out of #{total_days_in_year} total days, #{shifted_days} day(s) were shifted for the '#{schedule_file_column_name}' schedule.")
     end
   end
   
@@ -178,12 +176,14 @@ class Schedules
     new_begin_ix = peak_end_ix + (delay * steps_in_hour)
     new_end_ix = new_begin_ix + period
 
-    return false if schedule[new_begin_ix...new_end_ix].any? { |x| x > 0 } # prevent stacking
+    shifted = false
+    return shifted if schedule[new_begin_ix...new_end_ix].any? { |x| x > 0 } # prevent stacking
 
+    shifted = true if schedule[peak_begin_ix...peak_end_ix].any? { |x| x > 0 } # schedule was actually moved
     schedule[new_begin_ix...new_end_ix] = schedule[peak_begin_ix...peak_end_ix]
     schedule[peak_begin_ix...peak_end_ix] = [0] * period
 
-    return true
+    return shifted
   end
 
   def export()
