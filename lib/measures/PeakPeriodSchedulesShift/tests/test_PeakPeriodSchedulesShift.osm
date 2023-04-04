@@ -8276,11 +8276,11 @@ OS:OutputControl:Files,
   Yes;                                    !- Output Tarcog
 
 OS:Schedule:Rule,
-  {486d4e36-bc63-4070-a0b8-ad4a2d91dda6}, !- Handle
+  {7a4f0345-5c67-4ea7-9241-4408d0a1dfee}, !- Handle
   fridge allday ruleset1 Shifted,         !- Name
   {568b5532-3950-49e4-bfdb-043ed40fce7f}, !- Schedule Ruleset Name
   7,                                      !- Rule Order
-  {f2935174-a72c-4e6f-b656-059208df19cc}, !- Day Schedule Name
+  {fac2efd0-d790-41b0-9033-02ecd62a4d72}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -8295,7 +8295,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {f2935174-a72c-4e6f-b656-059208df19cc}, !- Handle
+  {fac2efd0-d790-41b0-9033-02ecd62a4d72}, !- Handle
   fridge allday1 Shifted,                 !- Name
   {6067e4e1-e1b6-4469-8350-436a4dc887c4}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
