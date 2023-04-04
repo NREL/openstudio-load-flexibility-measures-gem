@@ -3543,7 +3543,7 @@ OS:Schedule:Rule,
   {6caec87b-db37-451c-a24f-b16336bed978}, !- Handle
   fridge allday ruleset1,                 !- Name
   {568b5532-3950-49e4-bfdb-043ed40fce7f}, !- Schedule Ruleset Name
-  6,                                      !- Rule Order
+  7,                                      !- Rule Order
   {5d4f16a3-8de1-40cb-888c-9b2bf0d50588}, !- Day Schedule Name
   Yes,                                    !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -3607,19 +3607,19 @@ OS:Schedule:Day,
   0.763686131386861,                      !- Value Until Time 14
   20,                                     !- Hour 15
   0,                                      !- Minute 15
-  0.733138686131387,                      !- Value Until Time 15
+  0,                                      !- Value Until Time 15
   21,                                     !- Hour 16
   0,                                      !- Minute 16
-  0.717864963503649,                      !- Value Until Time 16
+  0,                                      !- Value Until Time 16
   22,                                     !- Hour 17
   0,                                      !- Minute 17
-  0.702591240875912,                      !- Value Until Time 17
+  0,                                      !- Value Until Time 17
   23,                                     !- Hour 18
   0,                                      !- Minute 18
-  0.672043795620438,                      !- Value Until Time 18
+  0,                                      !- Value Until Time 18
   24,                                     !- Hour 19
   0,                                      !- Minute 19
-  0.626222627737226;                      !- Value Until Time 19
+  0;                                      !- Value Until Time 19
 
 OS:Schedule:Rule,
   {7d5c0aeb-fc0d-4f89-9915-c4e207854d15}, !- Handle
@@ -8274,4 +8274,101 @@ OS:OutputControl:Files,
   Yes,                                    !- Output Screen
   Yes,                                    !- Output ExtShd
   Yes;                                    !- Output Tarcog
+
+OS:Schedule:Rule,
+  {039e233f-14a4-42ef-953e-d23657406feb}, !- Handle
+  fridge allday ruleset1 Shifted,         !- Name
+  {568b5532-3950-49e4-bfdb-043ed40fce7f}, !- Schedule Ruleset Name
+  6,                                      !- Rule Order
+  {8eba3f44-d7cd-4764-abb0-44b30251cb64}, !- Day Schedule Name
+  No,                                     !- Apply Sunday
+  Yes,                                    !- Apply Monday
+  Yes,                                    !- Apply Tuesday
+  Yes,                                    !- Apply Wednesday
+  Yes,                                    !- Apply Thursday
+  Yes,                                    !- Apply Friday
+  No,                                     !- Apply Saturday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  1,                                      !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {8eba3f44-d7cd-4764-abb0-44b30251cb64}, !- Handle
+  fridge allday1 Shifted,                 !- Name
+  {6067e4e1-e1b6-4469-8350-436a4dc887c4}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  1,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.610948905109489,                      !- Value Until Time 1
+  2,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.595675182481752,                      !- Value Until Time 2
+  3,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.580401459854014,                      !- Value Until Time 3
+  4,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.565127737226277,                      !- Value Until Time 4
+  5,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.54985401459854,                       !- Value Until Time 5
+  6,                                      !- Hour 6
+  0,                                      !- Minute 6
+  0.54985401459854,                       !- Value Until Time 6
+  7,                                      !- Hour 7
+  0,                                      !- Minute 7
+  0.580401459854014,                      !- Value Until Time 7
+  8,                                      !- Hour 8
+  0,                                      !- Minute 8
+  0.610948905109489,                      !- Value Until Time 8
+  9,                                      !- Hour 9
+  0,                                      !- Minute 9
+  0.626222627737226,                      !- Value Until Time 9
+  10,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.626222627737226,                      !- Value Until Time 10
+  11,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.610948905109489,                      !- Value Until Time 11
+  12,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.610948905109489,                      !- Value Until Time 12
+  13,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.641496350364963,                      !- Value Until Time 13
+  14,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.641496350364963,                      !- Value Until Time 14
+  15,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.641496350364963,                      !- Value Until Time 15
+  16,                                     !- Hour 16
+  0,                                      !- Minute 16
+  0.626222627737226,                      !- Value Until Time 16
+  17,                                     !- Hour 17
+  0,                                      !- Minute 17
+  0.672043795620438,                      !- Value Until Time 17
+  18,                                     !- Hour 18
+  0,                                      !- Minute 18
+  0,                                      !- Value Until Time 18
+  19,                                     !- Hour 19
+  0,                                      !- Minute 19
+  0,                                      !- Value Until Time 19
+  20,                                     !- Hour 20
+  0,                                      !- Minute 20
+  0,                                      !- Value Until Time 20
+  21,                                     !- Hour 21
+  0,                                      !- Minute 21
+  0.733138686131387,                      !- Value Until Time 21
+  22,                                     !- Hour 22
+  0,                                      !- Minute 22
+  0.763686131386861,                      !- Value Until Time 22
+  23,                                     !- Hour 23
+  0,                                      !- Minute 23
+  0,                                      !- Value Until Time 23
+  24,                                     !- Hour 24
+  0,                                      !- Minute 24
+  0;                                      !- Value Until Time 24
 
