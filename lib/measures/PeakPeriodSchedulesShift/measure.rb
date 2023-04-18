@@ -40,7 +40,7 @@ class PeakPeriodSchedulesShift < OpenStudio::Measure::ModelMeasure
     arg.setDefaultValue(0)
     args << arg
 
-    arg = OpenStudio::Measure::OSArgument.makeIntegerArgument('schedules_peak_period_allow_stacking', false)
+    arg = OpenStudio::Measure::OSArgument.makeBoolArgument('schedules_peak_period_allow_stacking', false)
     arg.setDisplayName('Schedules: Peak Period Allow Stacking')
     arg.setDescription('Whether schedules can be shifted to periods that already have non-zero schedule values. Defaults to true.')
     args << arg
