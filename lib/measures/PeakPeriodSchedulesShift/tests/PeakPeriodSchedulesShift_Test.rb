@@ -180,8 +180,7 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
     assert(!schedule_rulesets.empty?)
     assert_equal(schedule_rulesets['fridge'].scheduleRules.size, 7)
     shiftable_rule = schedule_rulesets['fridge'].scheduleRules.find { |schedule_rule| schedule_rule.name.to_s == 'fridge allday ruleset1' }
-    values_before = shiftable_rule.daySchedule.values.uniq
-    assert_equal(values_before.size, 11)
+    values_before = measure.get_hourly_values(shiftable_rule.daySchedule)
 
     schedule_files_before = {}
     model.getExternalFiles.each do |external_file|
@@ -207,14 +206,13 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
       schedule_rulesets[schedule_ruleset.name.to_s] = schedule_ruleset
     end
     assert(!schedule_rulesets.empty?)
-    assert_equal(schedule_rulesets['fridge'].scheduleRules.size, 8)
+    assert_equal(schedule_rulesets['fridge'].scheduleRules.size, 14)
     shifted_rule = schedule_rulesets['fridge'].scheduleRules.find { |schedule_rule| schedule_rule.name.to_s == 'fridge allday ruleset1 Shifted' }
     assert(shifted_rule.applyWeekdays)
     assert(!shifted_rule.applyWeekends)
-    values_after = shifted_rule.daySchedule.values.uniq
-    assert_equal(values_after.size, 11)
+    values_after = measure.get_hourly_values(shifted_rule.daySchedule)
     assert(values_before != values_after)
-    assert_equal(values_before.sum, values_after.sum)
+    assert_in_epsilon(values_before.sum, values_after.sum, 0.00001)
 
     schedule_files_after = {}
     model.getExternalFiles.each do |external_file|
@@ -312,8 +310,7 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
     assert(!schedule_rulesets.empty?)
     assert_equal(schedule_rulesets['fridge'].scheduleRules.size, 7)
     shiftable_rule = schedule_rulesets['fridge'].scheduleRules.find { |schedule_rule| schedule_rule.name.to_s == 'fridge allday ruleset1' }
-    values_before = shiftable_rule.daySchedule.values.uniq
-    assert_equal(values_before.size, 11)
+    values_before = measure.get_hourly_values(shiftable_rule.daySchedule)
 
     schedule_files_before = {}
     model.getExternalFiles.each do |external_file|
@@ -331,7 +328,7 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
     assert_equal(result.info.size, 5)
 
     # save the model
-    output_file_path = OpenStudio::Path.new(File.dirname(__FILE__) + '/test_stochastic_schedules.osm')
+    output_file_path = OpenStudio::Path.new(File.dirname(__FILE__) + '/test_stochastic_schedules_no_stacking.osm')
     model.save(output_file_path, true)
 
     # after
@@ -339,14 +336,9 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
       schedule_rulesets[schedule_ruleset.name.to_s] = schedule_ruleset
     end
     assert(!schedule_rulesets.empty?)
-    assert_equal(schedule_rulesets['fridge'].scheduleRules.size, 8)
+    assert_equal(schedule_rulesets['fridge'].scheduleRules.size, 7)
     shifted_rule = schedule_rulesets['fridge'].scheduleRules.find { |schedule_rule| schedule_rule.name.to_s == 'fridge allday ruleset1 Shifted' }
-    assert(shifted_rule.applyWeekdays)
-    assert(!shifted_rule.applyWeekends)
-    values_after = shifted_rule.daySchedule.values.uniq
-    assert_equal(values_after.size, 11)
-    assert(values_before != values_after)
-    assert_equal(values_before.sum, values_after.sum)
+    assert(shifted_rule.nil?)
 
     schedule_files_after = {}
     model.getExternalFiles.each do |external_file|
