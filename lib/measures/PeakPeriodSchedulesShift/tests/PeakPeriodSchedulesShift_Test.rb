@@ -7,6 +7,195 @@ require_relative '../measure.rb'
 require 'fileutils'
 
 class PeakPeriodSchedulesShiftTest < Minitest::Test
+  def test_error_begin_hour_after_end_hour
+    # create an instance of the measure
+    measure = PeakPeriodSchedulesShift.new
+
+    # create an instance of a runner
+    workflow_json = OpenStudio::WorkflowJSON.new
+    workflow_json.addFilePath(File.join(File.dirname(__FILE__), 'files'))
+    runner = OpenStudio::Measure::OSRunner.new(workflow_json)
+
+    # load the test model
+    translator = OpenStudio::OSVersion::VersionTranslator.new
+    path = OpenStudio::Path.new(File.dirname(__FILE__) + '/base.osm')
+    model = translator.loadModel(path)
+    assert(!model.empty?)
+    model = model.get
+    model.setWorkflowJSON(workflow_json)
+
+    # get arguments and test that they are what we are expecting
+    arguments = measure.arguments(model)
+    assert_equal(5, arguments.size)
+
+    count = -1
+
+    assert_equal('schedules_peak_period', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_delay', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_allow_stacking', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_schedule_rulesets_names', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_schedule_files_column_names', arguments[count + 1].name)
+
+    # set argument values to good values and run the measure on model with spaces
+    arguments = measure.arguments(model)
+    argument_map = OpenStudio::Measure.convertOSArgumentVectorToMap(arguments)
+
+    count = -1
+
+    schedules_peak_period = arguments[count += 1].clone
+    assert(schedules_peak_period.setValue('19 - 17'))
+    argument_map['schedules_peak_period'] = schedules_peak_period
+
+    schedules_peak_period_delay = arguments[count += 1].clone
+    assert(schedules_peak_period_delay.setValue(1))
+    argument_map['schedules_peak_period_delay'] = schedules_peak_period_delay
+
+    schedules_peak_period_allow_stacking = arguments[count += 1].clone
+    # assert(schedules_peak_period_allow_stacking.setValue(true))
+    argument_map['schedules_peak_period_allow_stacking'] = schedules_peak_period_allow_stacking
+
+    schedules_peak_period_schedule_rulesets_names = arguments[count += 1].clone
+    assert(schedules_peak_period_schedule_rulesets_names.setValue('fridge, dishwasher, clothes washer, clothes dryer, cooking range, misc tv schedule, misc plug loads schedule, lighting schedule, exterior lighting schedule'))
+    argument_map['schedules_peak_period_schedule_rulesets_names'] = schedules_peak_period_schedule_rulesets_names
+
+    schedules_peak_period_schedule_files_column_names = arguments[count + 1].clone
+    # assert(schedules_peak_period_schedule_files_column_names.setValue(''))
+    argument_map['schedules_peak_period_schedule_files_column_names'] = schedules_peak_period_schedule_files_column_names
+
+    measure.run(model, runner, argument_map)
+    result = runner.result
+    show_output(result)
+    assert(result.value.valueName == 'Fail')
+    assert(result.warnings.empty?)
+    assert_equal(result.errors.size, 1)
+  end
+
+  def test_error_peak_period_plus_delay_greater_than_12
+    # create an instance of the measure
+    measure = PeakPeriodSchedulesShift.new
+
+    # create an instance of a runner
+    workflow_json = OpenStudio::WorkflowJSON.new
+    workflow_json.addFilePath(File.join(File.dirname(__FILE__), 'files'))
+    runner = OpenStudio::Measure::OSRunner.new(workflow_json)
+
+    # load the test model
+    translator = OpenStudio::OSVersion::VersionTranslator.new
+    path = OpenStudio::Path.new(File.dirname(__FILE__) + '/base.osm')
+    model = translator.loadModel(path)
+    assert(!model.empty?)
+    model = model.get
+    model.setWorkflowJSON(workflow_json)
+
+    # get arguments and test that they are what we are expecting
+    arguments = measure.arguments(model)
+    assert_equal(5, arguments.size)
+
+    count = -1
+
+    assert_equal('schedules_peak_period', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_delay', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_allow_stacking', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_schedule_rulesets_names', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_schedule_files_column_names', arguments[count + 1].name)
+
+    # set argument values to good values and run the measure on model with spaces
+    arguments = measure.arguments(model)
+    argument_map = OpenStudio::Measure.convertOSArgumentVectorToMap(arguments)
+
+    count = -1
+
+    schedules_peak_period = arguments[count += 1].clone
+    assert(schedules_peak_period.setValue('1 - 9'))
+    argument_map['schedules_peak_period'] = schedules_peak_period
+
+    schedules_peak_period_delay = arguments[count += 1].clone
+    assert(schedules_peak_period_delay.setValue(5))
+    argument_map['schedules_peak_period_delay'] = schedules_peak_period_delay
+
+    schedules_peak_period_allow_stacking = arguments[count += 1].clone
+    # assert(schedules_peak_period_allow_stacking.setValue(true))
+    argument_map['schedules_peak_period_allow_stacking'] = schedules_peak_period_allow_stacking
+
+    schedules_peak_period_schedule_rulesets_names = arguments[count += 1].clone
+    assert(schedules_peak_period_schedule_rulesets_names.setValue('fridge, dishwasher, clothes washer, clothes dryer, cooking range, misc tv schedule, misc plug loads schedule, lighting schedule, exterior lighting schedule'))
+    argument_map['schedules_peak_period_schedule_rulesets_names'] = schedules_peak_period_schedule_rulesets_names
+
+    schedules_peak_period_schedule_files_column_names = arguments[count + 1].clone
+    # assert(schedules_peak_period_schedule_files_column_names.setValue(''))
+    argument_map['schedules_peak_period_schedule_files_column_names'] = schedules_peak_period_schedule_files_column_names
+
+    measure.run(model, runner, argument_map)
+    result = runner.result
+    show_output(result)
+    assert(result.value.valueName == 'Fail')
+    assert(result.warnings.empty?)
+    assert_equal(result.errors.size, 1)
+  end
+
+  def test_error_peak_period_shift_into_next_day
+    # create an instance of the measure
+    measure = PeakPeriodSchedulesShift.new
+
+    # create an instance of a runner
+    workflow_json = OpenStudio::WorkflowJSON.new
+    workflow_json.addFilePath(File.join(File.dirname(__FILE__), 'files'))
+    runner = OpenStudio::Measure::OSRunner.new(workflow_json)
+
+    # load the test model
+    translator = OpenStudio::OSVersion::VersionTranslator.new
+    path = OpenStudio::Path.new(File.dirname(__FILE__) + '/base.osm')
+    model = translator.loadModel(path)
+    assert(!model.empty?)
+    model = model.get
+    model.setWorkflowJSON(workflow_json)
+
+    # get arguments and test that they are what we are expecting
+    arguments = measure.arguments(model)
+    assert_equal(5, arguments.size)
+
+    count = -1
+
+    assert_equal('schedules_peak_period', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_delay', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_allow_stacking', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_schedule_rulesets_names', arguments[count += 1].name)
+    assert_equal('schedules_peak_period_schedule_files_column_names', arguments[count + 1].name)
+
+    # set argument values to good values and run the measure on model with spaces
+    arguments = measure.arguments(model)
+    argument_map = OpenStudio::Measure.convertOSArgumentVectorToMap(arguments)
+
+    count = -1
+
+    schedules_peak_period = arguments[count += 1].clone
+    assert(schedules_peak_period.setValue('17 - 19'))
+    argument_map['schedules_peak_period'] = schedules_peak_period
+
+    schedules_peak_period_delay = arguments[count += 1].clone
+    assert(schedules_peak_period_delay.setValue(4))
+    argument_map['schedules_peak_period_delay'] = schedules_peak_period_delay
+
+    schedules_peak_period_allow_stacking = arguments[count += 1].clone
+    # assert(schedules_peak_period_allow_stacking.setValue(true))
+    argument_map['schedules_peak_period_allow_stacking'] = schedules_peak_period_allow_stacking
+
+    schedules_peak_period_schedule_rulesets_names = arguments[count += 1].clone
+    assert(schedules_peak_period_schedule_rulesets_names.setValue('fridge, dishwasher, clothes washer, clothes dryer, cooking range, misc tv schedule, misc plug loads schedule, lighting schedule, exterior lighting schedule'))
+    argument_map['schedules_peak_period_schedule_rulesets_names'] = schedules_peak_period_schedule_rulesets_names
+
+    schedules_peak_period_schedule_files_column_names = arguments[count + 1].clone
+    # assert(schedules_peak_period_schedule_files_column_names.setValue(''))
+    argument_map['schedules_peak_period_schedule_files_column_names'] = schedules_peak_period_schedule_files_column_names
+
+    measure.run(model, runner, argument_map)
+    result = runner.result
+    show_output(result)
+    assert(result.value.valueName == 'Fail')
+    assert(result.warnings.empty?)
+    assert_equal(result.errors.size, 1)
+  end
+
   def test_smooth_schedules
     # create an instance of the measure
     measure = PeakPeriodSchedulesShift.new

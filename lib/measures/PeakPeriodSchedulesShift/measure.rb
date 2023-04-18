@@ -116,12 +116,16 @@ class PeakPeriodSchedulesShift < OpenStudio::Measure::ModelMeasure
       return false
     end
 
-    if ((end_hour - begin_hour) + schedules_peak_period_delay > 12)
+    peak_period_length = end_hour - begin_hour
+    if (peak_period_length + schedules_peak_period_delay > 12)
       runner.registerError("Specified peak period (#{begin_hour} - #{end_hour}), plus the delay (#{schedules_peak_period_delay}), must be no longer than 12 hours.")
       return false
     end
 
-    # TODO: need to prevent shifting into next day (gets too complicated with Schedule:Ruleset)
+    if (peak_period_length + end_hour + schedules_peak_period_delay > 24)
+      runner.registerError("Cannot shift day schedules into the next day.")
+      return false
+    end
 
     # get year
     yd = model.getYearDescription

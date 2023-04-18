@@ -8570,7 +8570,7 @@ OS:Schedule:Rule,
   {518594ef-5d52-4b1c-b607-e32d26db3983}, !- Handle
   misc tv schedule weekday ruleset7,      !- Name
   {5588a408-3edd-43b1-9ea2-8d36ad2c9d47}, !- Schedule Ruleset Name
-  17,                                     !- Rule Order
+  16,                                     !- Rule Order
   {2e54b3b6-2b6d-4f67-a898-07bfcf8432f7}, !- Day Schedule Name
   ,                                       !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -9346,7 +9346,7 @@ OS:Schedule:Rule,
   {30c552c2-d04e-42e9-b7da-60263a37a495}, !- Handle
   misc tv schedule weekday ruleset11,     !- Name
   {5588a408-3edd-43b1-9ea2-8d36ad2c9d47}, !- Schedule Ruleset Name
-  5,                                      !- Rule Order
+  4,                                      !- Rule Order
   {58889937-2292-4e09-a15f-9b4776801e51}, !- Day Schedule Name
   ,                                       !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -9540,7 +9540,7 @@ OS:Schedule:Rule,
   {b2141934-ac5e-4d03-a2f5-7eb7f6937c08}, !- Handle
   misc tv schedule weekday ruleset12,     !- Name
   {5588a408-3edd-43b1-9ea2-8d36ad2c9d47}, !- Schedule Ruleset Name
-  2,                                      !- Rule Order
+  1,                                      !- Rule Order
   {c17f9a9b-2840-4023-9a08-214ef49bc4c5}, !- Day Schedule Name
   ,                                       !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -11936,7 +11936,7 @@ OS:Schedule:Rule,
   {9a46a1d1-d40f-4b70-9007-b2aa9e800977}, !- Handle
   exterior lighting schedule weekday ruleset1, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
-  31,                                     !- Rule Order
+  32,                                     !- Rule Order
   {1a948cd8-f9e5-4b6e-9473-85cbd9b28732}, !- Day Schedule Name
   ,                                       !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -12106,7 +12106,7 @@ OS:Schedule:Rule,
   {6564aed4-bfee-4b0c-97ab-b8c96a0e6c9b}, !- Handle
   exterior lighting schedule weekday ruleset2, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
-  29,                                     !- Rule Order
+  28,                                     !- Rule Order
   {45a3e172-93de-431f-8493-8d9d31f9aa5e}, !- Day Schedule Name
   ,                                       !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -12956,7 +12956,7 @@ OS:Schedule:Rule,
   {cd9a2ed4-1860-4115-9227-4a95dddd1109}, !- Handle
   exterior lighting schedule weekday ruleset7, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
-  14,                                     !- Rule Order
+  13,                                     !- Rule Order
   {1b693807-cc81-4338-ad8f-6a446fc0db7e}, !- Day Schedule Name
   ,                                       !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -13126,7 +13126,7 @@ OS:Schedule:Rule,
   {28096cc2-a248-415f-9061-30c9ee12b51f}, !- Handle
   exterior lighting schedule weekday ruleset9, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
-  11,                                     !- Rule Order
+  10,                                     !- Rule Order
   {280d4d0d-61b3-4231-9fbf-1ce29deef515}, !- Day Schedule Name
   ,                                       !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -13296,7 +13296,7 @@ OS:Schedule:Rule,
   {9ba17711-23cc-4a58-95d3-3480bb524aac}, !- Handle
   exterior lighting schedule weekday ruleset10, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
-  8,                                      !- Rule Order
+  7,                                      !- Rule Order
   {ec064eb6-bd48-4344-b11e-a5ecdc773f31}, !- Day Schedule Name
   ,                                       !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -13466,7 +13466,7 @@ OS:Schedule:Rule,
   {14b27e52-f99e-42b9-86b4-bb399726cd1d}, !- Handle
   exterior lighting schedule weekday ruleset11, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
-  5,                                      !- Rule Order
+  4,                                      !- Rule Order
   {b0d8f1d7-fd8a-4763-b6f9-19f298d8c7c4}, !- Day Schedule Name
   ,                                       !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -13636,7 +13636,7 @@ OS:Schedule:Rule,
   {5b905527-c6be-4ed2-8008-fe142429a2c5}, !- Handle
   exterior lighting schedule weekday ruleset12, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
-  2,                                      !- Rule Order
+  1,                                      !- Rule Order
   {aa8d2393-5158-48be-8948-fd828d18a4ca}, !- Day Schedule Name
   ,                                       !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -15646,11 +15646,11 @@ OS:OutputControl:Files,
   Yes;                                    !- Output Tarcog
 
 OS:Schedule:Rule,
-  {d909241d-8d00-4c56-966a-d5a611d77485}, !- Handle
+  {cf240b03-2f46-44af-9e40-87664d598ee9}, !- Handle
   clothes dryer allday ruleset1 Shifted,  !- Name
   {d2126224-b055-4b1c-bb0c-4c48331c8601}, !- Schedule Ruleset Name
   1,                                      !- Rule Order
-  {a7c4387d-231a-497f-91dd-8e0ba6c406b0}, !- Day Schedule Name
+  {555b0919-b261-4003-a7aa-5b4e15310234}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -15665,7 +15665,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {a7c4387d-231a-497f-91dd-8e0ba6c406b0}, !- Handle
+  {555b0919-b261-4003-a7aa-5b4e15310234}, !- Handle
   clothes dryer allday1 Shifted,          !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -15743,11 +15743,11 @@ OS:Schedule:Day,
   0.296296296296296;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {3abafbb9-94b8-461f-912d-76385fa684b1}, !- Handle
+  {87a7394a-cb61-49fc-b067-106072f53ec1}, !- Handle
   clothes washer allday ruleset12 Shifted, !- Name
   {761adc64-fbca-4220-8e63-b92c2e315583}, !- Schedule Ruleset Name
   1,                                      !- Rule Order
-  {872d15a6-387d-4bab-89eb-869c94662125}, !- Day Schedule Name
+  {e3d76e86-846f-4017-9c19-8f21d399005f}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -15762,7 +15762,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {872d15a6-387d-4bab-89eb-869c94662125}, !- Handle
+  {e3d76e86-846f-4017-9c19-8f21d399005f}, !- Handle
   clothes washer allday12 Shifted,        !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -15840,11 +15840,11 @@ OS:Schedule:Day,
   0.195546807445501;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {242b4257-ad9b-445c-b98e-93a5a55ecff1}, !- Handle
+  {969a6ce1-7f7e-4eeb-8263-76b5f7c84119}, !- Handle
   clothes washer allday ruleset11 Shifted, !- Name
   {761adc64-fbca-4220-8e63-b92c2e315583}, !- Schedule Ruleset Name
   3,                                      !- Rule Order
-  {eab77fc9-c88a-4d45-94d3-5cd392536abe}, !- Day Schedule Name
+  {da033357-4ff3-444b-85eb-321efc2e03ac}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -15859,7 +15859,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {eab77fc9-c88a-4d45-94d3-5cd392536abe}, !- Handle
+  {da033357-4ff3-444b-85eb-321efc2e03ac}, !- Handle
   clothes washer allday11 Shifted,        !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -15937,11 +15937,11 @@ OS:Schedule:Day,
   0.185489009238611;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {a1012a78-c7ba-4c9f-b818-b53ce27acb65}, !- Handle
+  {661e8926-0988-4ed4-b459-19f99e72a2a4}, !- Handle
   clothes washer allday ruleset10 Shifted, !- Name
   {761adc64-fbca-4220-8e63-b92c2e315583}, !- Schedule Ruleset Name
   5,                                      !- Rule Order
-  {25cdb468-0db0-46f1-87a7-4634bbe1210d}, !- Day Schedule Name
+  {e9f75719-fead-4679-8663-13397807702f}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -15956,7 +15956,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {25cdb468-0db0-46f1-87a7-4634bbe1210d}, !- Handle
+  {e9f75719-fead-4679-8663-13397807702f}, !- Handle
   clothes washer allday10 Shifted,        !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -16034,11 +16034,11 @@ OS:Schedule:Day,
   0.186456105220043;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {700c50bd-c656-457d-83e3-0f2af9429b4e}, !- Handle
+  {5ce8eeb8-8c3d-400d-9a7e-7af90d88c177}, !- Handle
   clothes washer allday ruleset9 Shifted, !- Name
   {761adc64-fbca-4220-8e63-b92c2e315583}, !- Schedule Ruleset Name
   7,                                      !- Rule Order
-  {591c1693-be36-4ad4-869e-5c2f51251025}, !- Day Schedule Name
+  {e577c851-2f86-4edb-9ab6-136c56d739a1}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -16053,7 +16053,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {591c1693-be36-4ad4-869e-5c2f51251025}, !- Handle
+  {e577c851-2f86-4edb-9ab6-136c56d739a1}, !- Handle
   clothes washer allday9 Shifted,         !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -16131,11 +16131,11 @@ OS:Schedule:Day,
   0.192645519501206;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {7c0d1a81-65cb-45d0-8260-5de19c982322}, !- Handle
+  {15c722d2-7fb4-4138-b9d8-ebd967434202}, !- Handle
   clothes washer allday ruleset7 Shifted, !- Name
   {761adc64-fbca-4220-8e63-b92c2e315583}, !- Schedule Ruleset Name
   9,                                      !- Rule Order
-  {82c5c63c-d564-46db-96b4-db2bfe29a63f}, !- Day Schedule Name
+  {457fda53-56f5-4498-b302-1aabffb6e379}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -16150,7 +16150,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {82c5c63c-d564-46db-96b4-db2bfe29a63f}, !- Handle
+  {457fda53-56f5-4498-b302-1aabffb6e379}, !- Handle
   clothes washer allday7 Shifted,         !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -16228,11 +16228,11 @@ OS:Schedule:Day,
   0.193225777090065;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {41c3f452-5970-4935-80cf-33930c371bd6}, !- Handle
+  {0fbf5775-a80b-4f2b-9c93-54c1ffb385b6}, !- Handle
   clothes washer allday ruleset6 Shifted, !- Name
   {761adc64-fbca-4220-8e63-b92c2e315583}, !- Schedule Ruleset Name
   11,                                     !- Rule Order
-  {41c13442-e777-4636-9ba5-5c6737328ed1}, !- Day Schedule Name
+  {1bd0dbfb-81e6-4ffb-b07b-cbd18a7f5d65}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -16247,7 +16247,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {41c13442-e777-4636-9ba5-5c6737328ed1}, !- Handle
+  {1bd0dbfb-81e6-4ffb-b07b-cbd18a7f5d65}, !- Handle
   clothes washer allday6 Shifted,         !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -16325,11 +16325,11 @@ OS:Schedule:Day,
   0.192645519501206;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {00f9812a-2ff4-4da7-829e-7debb4a62621}, !- Handle
+  {f54e85e3-2acc-4275-b76b-2b7cfbae9a03}, !- Handle
   clothes washer allday ruleset5 Shifted, !- Name
   {761adc64-fbca-4220-8e63-b92c2e315583}, !- Schedule Ruleset Name
   13,                                     !- Rule Order
-  {2820b9f0-15a3-482c-94ce-d13e977c2093}, !- Day Schedule Name
+  {6ed17131-0a01-4fd9-8186-f888742a83b0}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -16344,7 +16344,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {2820b9f0-15a3-482c-94ce-d13e977c2093}, !- Handle
+  {6ed17131-0a01-4fd9-8186-f888742a83b0}, !- Handle
   clothes washer allday5 Shifted,         !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -16422,11 +16422,11 @@ OS:Schedule:Day,
   0.197674418604651;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {a10af165-aba1-441a-8a3a-76106706cbd4}, !- Handle
+  {c047f7c1-e226-42ce-83e1-12a1b08fc91a}, !- Handle
   clothes washer allday ruleset4 Shifted, !- Name
   {761adc64-fbca-4220-8e63-b92c2e315583}, !- Schedule Ruleset Name
   15,                                     !- Rule Order
-  {cb9ab764-abb5-4ff1-a3de-a3b70dd4b67a}, !- Day Schedule Name
+  {db840e28-005c-4b23-a661-d0c13dd83626}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -16441,7 +16441,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {cb9ab764-abb5-4ff1-a3de-a3b70dd4b67a}, !- Handle
+  {db840e28-005c-4b23-a661-d0c13dd83626}, !- Handle
   clothes washer allday4 Shifted,         !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -16519,11 +16519,11 @@ OS:Schedule:Day,
   0.197287580212078;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {b928e119-e8db-4494-89db-fd136ab8ce62}, !- Handle
+  {8b56620f-b936-45bb-911b-1766cf673c8c}, !- Handle
   clothes washer allday ruleset3 Shifted, !- Name
   {761adc64-fbca-4220-8e63-b92c2e315583}, !- Schedule Ruleset Name
   17,                                     !- Rule Order
-  {a8ec72ad-8588-453a-9f70-392144e3d076}, !- Day Schedule Name
+  {9dc1d85d-5571-46ef-9432-f4125ab26c63}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -16538,7 +16538,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {a8ec72ad-8588-453a-9f70-392144e3d076}, !- Handle
+  {9dc1d85d-5571-46ef-9432-f4125ab26c63}, !- Handle
   clothes washer allday3 Shifted,         !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -16616,11 +16616,11 @@ OS:Schedule:Day,
   0.197674418604651;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {f8abcff8-d2b4-4ad4-a015-69a7be869ed8}, !- Handle
+  {c6d9b51d-1d35-450d-86db-016fdcb69edf}, !- Handle
   clothes washer allday ruleset2 Shifted, !- Name
   {761adc64-fbca-4220-8e63-b92c2e315583}, !- Schedule Ruleset Name
   19,                                     !- Rule Order
-  {97a2af32-1211-4a7e-9cfc-be97408dd32e}, !- Day Schedule Name
+  {7792a740-6b19-4150-b087-6e75040660cc}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -16635,7 +16635,7 @@ OS:Schedule:Rule,
   28;                                     !- End Day
 
 OS:Schedule:Day,
-  {97a2af32-1211-4a7e-9cfc-be97408dd32e}, !- Handle
+  {7792a740-6b19-4150-b087-6e75040660cc}, !- Handle
   clothes washer allday2 Shifted,         !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -16713,11 +16713,11 @@ OS:Schedule:Day,
   0.193806034678924;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {d3724684-f229-4ec4-aa83-23a386ede31c}, !- Handle
+  {46f344af-d8dc-4aad-8290-d6fd39f8d677}, !- Handle
   clothes washer allday ruleset1 Shifted, !- Name
   {761adc64-fbca-4220-8e63-b92c2e315583}, !- Schedule Ruleset Name
   21,                                     !- Rule Order
-  {3ed66af1-64c3-4f8c-b460-acf953d49fc8}, !- Day Schedule Name
+  {367f4566-81b2-4eeb-a366-649b6970d038}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -16732,7 +16732,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {3ed66af1-64c3-4f8c-b460-acf953d49fc8}, !- Handle
+  {367f4566-81b2-4eeb-a366-649b6970d038}, !- Handle
   clothes washer allday1 Shifted,         !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -16810,11 +16810,11 @@ OS:Schedule:Day,
   0.195546807445501;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {4aebca27-6a37-4187-9d58-95ba37af1392}, !- Handle
+  {2efb2b85-4d23-41e1-b792-0773f39d084a}, !- Handle
   cooking range allday ruleset12 Shifted, !- Name
   {2b0bf605-7bf3-4d55-8411-a2a9d7a4b65e}, !- Schedule Ruleset Name
   1,                                      !- Rule Order
-  {389c5993-fb0f-4e79-a704-d777c40ebc14}, !- Day Schedule Name
+  {8265b419-6a5e-403b-8eab-bae851316abc}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -16829,7 +16829,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {389c5993-fb0f-4e79-a704-d777c40ebc14}, !- Handle
+  {8265b419-6a5e-403b-8eab-bae851316abc}, !- Handle
   cooking range allday12 Shifted,         !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -16907,11 +16907,11 @@ OS:Schedule:Day,
   0.0733333333333333;                     !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {d7972af9-bf46-4a37-8c74-5e6b933cae1b}, !- Handle
+  {a6645e2c-5567-4270-a421-8a54f4430ab2}, !- Handle
   cooking range allday ruleset10 Shifted, !- Name
   {2b0bf605-7bf3-4d55-8411-a2a9d7a4b65e}, !- Schedule Ruleset Name
   3,                                      !- Rule Order
-  {bff9b491-685b-4a77-9db3-247a3b54e860}, !- Day Schedule Name
+  {8d67ab44-6590-4aef-a7e7-f327dfec576c}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -16926,7 +16926,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {bff9b491-685b-4a77-9db3-247a3b54e860}, !- Handle
+  {8d67ab44-6590-4aef-a7e7-f327dfec576c}, !- Handle
   cooking range allday10 Shifted,         !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -17004,11 +17004,11 @@ OS:Schedule:Day,
   0.0725311455484655;                     !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {8177a0fa-474a-408e-a824-6ef985d7f057}, !- Handle
+  {c14f5d0b-5c3b-4704-a9cf-934f519ee471}, !- Handle
   cooking range allday ruleset9 Shifted,  !- Name
   {2b0bf605-7bf3-4d55-8411-a2a9d7a4b65e}, !- Schedule Ruleset Name
   5,                                      !- Rule Order
-  {c92605a5-50cf-4769-a12b-6a14bac9ca12}, !- Day Schedule Name
+  {3630f20b-0301-4016-bd5b-5ca25de33a23}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -17023,7 +17023,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {c92605a5-50cf-4769-a12b-6a14bac9ca12}, !- Handle
+  {3630f20b-0301-4016-bd5b-5ca25de33a23}, !- Handle
   cooking range allday9 Shifted,          !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -17101,11 +17101,11 @@ OS:Schedule:Day,
   0.0594955940443634;                     !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {0fc95d67-d033-482e-a45c-56f0b8a4a90d}, !- Handle
+  {88ac21de-5220-4764-a647-c4d742baea69}, !- Handle
   cooking range allday ruleset7 Shifted,  !- Name
   {2b0bf605-7bf3-4d55-8411-a2a9d7a4b65e}, !- Schedule Ruleset Name
   7,                                      !- Rule Order
-  {db9b6c75-b0e8-4953-a23d-ae665dafb6fb}, !- Day Schedule Name
+  {261d5d95-037f-4970-a2e5-e3fede5275de}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -17120,7 +17120,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {db9b6c75-b0e8-4953-a23d-ae665dafb6fb}, !- Handle
+  {261d5d95-037f-4970-a2e5-e3fede5275de}, !- Handle
   cooking range allday7 Shifted,          !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -17198,11 +17198,11 @@ OS:Schedule:Day,
   0.0598966879367973;                     !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {5181b3a3-3705-4b0c-bae7-0e91bd0b7937}, !- Handle
+  {ca72d87e-03de-444a-b84f-79ac25e81f13}, !- Handle
   cooking range allday ruleset6 Shifted,  !- Name
   {2b0bf605-7bf3-4d55-8411-a2a9d7a4b65e}, !- Schedule Ruleset Name
   9,                                      !- Rule Order
-  {c4c977f0-11be-43c3-b766-133f5656cdde}, !- Day Schedule Name
+  {cfa6fdfb-4c0c-4612-9bc3-15e278dd89e5}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -17217,7 +17217,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {c4c977f0-11be-43c3-b766-133f5656cdde}, !- Handle
+  {cfa6fdfb-4c0c-4612-9bc3-15e278dd89e5}, !- Handle
   cooking range allday6 Shifted,          !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -17295,11 +17295,11 @@ OS:Schedule:Day,
   0.0594955940443634;                     !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {cae93c1b-c4fc-4931-be77-b6f727dc696f}, !- Handle
+  {ad57d911-8545-423c-807a-90884f60a7bb}, !- Handle
   cooking range allday ruleset5 Shifted,  !- Name
   {2b0bf605-7bf3-4d55-8411-a2a9d7a4b65e}, !- Schedule Ruleset Name
   11,                                     !- Rule Order
-  {ad718c55-f4cb-40ab-a3d5-e9e2727975ca}, !- Day Schedule Name
+  {1a0cd5c2-b212-4150-bf15-f5ce1bda26a0}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -17314,7 +17314,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {ad718c55-f4cb-40ab-a3d5-e9e2727975ca}, !- Handle
+  {1a0cd5c2-b212-4150-bf15-f5ce1bda26a0}, !- Handle
   cooking range allday5 Shifted,          !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -17392,11 +17392,11 @@ OS:Schedule:Day,
   0.0662473412336676;                     !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {19bc6f87-dd52-4852-bfb0-92a6a5cd821d}, !- Handle
+  {31056aae-927a-4bed-9c4a-a3f324ce9603}, !- Handle
   cooking range allday ruleset4 Shifted,  !- Name
   {2b0bf605-7bf3-4d55-8411-a2a9d7a4b65e}, !- Schedule Ruleset Name
   13,                                     !- Rule Order
-  {f9e4679b-c427-4a78-8c98-04b53c9b9ffe}, !- Day Schedule Name
+  {8f715ddc-2099-43a5-95b3-10656b9186a9}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -17411,7 +17411,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {f9e4679b-c427-4a78-8c98-04b53c9b9ffe}, !- Handle
+  {8f715ddc-2099-43a5-95b3-10656b9186a9}, !- Handle
   cooking range allday4 Shifted,          !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -17489,11 +17489,11 @@ OS:Schedule:Day,
   0.0659799453053783;                     !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {b8cbfae9-823b-4416-ac5e-fbbaa375a56b}, !- Handle
+  {112fc661-7201-453d-b17c-93076570776e}, !- Handle
   cooking range allday ruleset3 Shifted,  !- Name
   {2b0bf605-7bf3-4d55-8411-a2a9d7a4b65e}, !- Schedule Ruleset Name
   15,                                     !- Rule Order
-  {fa55bfb4-578a-4107-89f9-a7b9dfb31864}, !- Day Schedule Name
+  {75821f33-3343-49b8-b064-6b6cf13189f9}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -17508,7 +17508,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {fa55bfb4-578a-4107-89f9-a7b9dfb31864}, !- Handle
+  {75821f33-3343-49b8-b064-6b6cf13189f9}, !- Handle
   cooking range allday3 Shifted,          !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -17586,11 +17586,11 @@ OS:Schedule:Day,
   0.0662473412336676;                     !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {646f6409-9459-44ab-951a-f51a4a90749c}, !- Handle
+  {ef474d5c-58b4-4b00-8cbe-0eb176664d54}, !- Handle
   cooking range allday ruleset1 Shifted,  !- Name
   {2b0bf605-7bf3-4d55-8411-a2a9d7a4b65e}, !- Schedule Ruleset Name
   17,                                     !- Rule Order
-  {a5b8a5c2-9f5d-413c-acd1-27477eb2d008}, !- Day Schedule Name
+  {139feea4-1bf3-4b7c-b31b-59faa3883854}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -17605,7 +17605,7 @@ OS:Schedule:Rule,
   28;                                     !- End Day
 
 OS:Schedule:Day,
-  {a5b8a5c2-9f5d-413c-acd1-27477eb2d008}, !- Handle
+  {139feea4-1bf3-4b7c-b31b-59faa3883854}, !- Handle
   cooking range allday1 Shifted,          !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -17683,11 +17683,11 @@ OS:Schedule:Day,
   0.0733333333333333;                     !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {aeee47fd-6e95-4375-8913-131aae7a2bfe}, !- Handle
+  {dd84f10d-1e92-4408-96b6-033ed77dd2ea}, !- Handle
   dishwasher allday ruleset12 Shifted,    !- Name
   {939a0500-465c-43af-95ca-ad89297c467a}, !- Schedule Ruleset Name
   1,                                      !- Rule Order
-  {ef631693-550b-4077-8d22-e413c6de63e1}, !- Day Schedule Name
+  {0926f7d9-723d-4a4d-9a09-bfdbaed13ac8}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -17702,7 +17702,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {ef631693-550b-4077-8d22-e413c6de63e1}, !- Handle
+  {0926f7d9-723d-4a4d-9a09-bfdbaed13ac8}, !- Handle
   dishwasher allday12 Shifted,            !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -17780,11 +17780,11 @@ OS:Schedule:Day,
   0.279279279279279;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {e93aa6a0-11dc-4ac5-926d-7a58b35a8925}, !- Handle
+  {55fea517-9c28-4578-aa85-12910e7d0801}, !- Handle
   dishwasher allday ruleset10 Shifted,    !- Name
   {939a0500-465c-43af-95ca-ad89297c467a}, !- Schedule Ruleset Name
   3,                                      !- Rule Order
-  {8c8f3db9-164b-49dc-8c1e-7420a04faaff}, !- Day Schedule Name
+  {73c61691-ac2f-4331-8f9f-0d2752a0de3c}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -17799,7 +17799,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {8c8f3db9-164b-49dc-8c1e-7420a04faaff}, !- Handle
+  {73c61691-ac2f-4331-8f9f-0d2752a0de3c}, !- Handle
   dishwasher allday10 Shifted,            !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -17877,11 +17877,11 @@ OS:Schedule:Day,
   0.276224264373763;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {5f383216-3feb-4355-a3ab-967f833ff34c}, !- Handle
+  {4ee03d5f-fcb3-487b-b53a-bec65cdfb11d}, !- Handle
   dishwasher allday ruleset9 Shifted,     !- Name
   {939a0500-465c-43af-95ca-ad89297c467a}, !- Schedule Ruleset Name
   5,                                      !- Rule Order
-  {79659125-89af-49ac-a48a-522c377a2d91}, !- Day Schedule Name
+  {2be02d98-c45c-4f35-a2de-b28d582841b6}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -17896,7 +17896,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {79659125-89af-49ac-a48a-522c377a2d91}, !- Handle
+  {2be02d98-c45c-4f35-a2de-b28d582841b6}, !- Handle
   dishwasher allday9 Shifted,             !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -17974,11 +17974,11 @@ OS:Schedule:Day,
   0.226580272159124;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {483fe0a9-6670-4ac8-bb3e-f775af2832f6}, !- Handle
+  {cd8513a6-fc3c-455d-925e-363fa15ba7d9}, !- Handle
   dishwasher allday ruleset7 Shifted,     !- Name
   {939a0500-465c-43af-95ca-ad89297c467a}, !- Schedule Ruleset Name
   7,                                      !- Rule Order
-  {d3c35b47-1103-4be7-8776-51a30d099926}, !- Day Schedule Name
+  {7ca365bf-7721-4ca2-a537-e048a6b3b184}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -17993,7 +17993,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {d3c35b47-1103-4be7-8776-51a30d099926}, !- Handle
+  {7ca365bf-7721-4ca2-a537-e048a6b3b184}, !- Handle
   dishwasher allday7 Shifted,             !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -18071,11 +18071,11 @@ OS:Schedule:Day,
   0.228107779611882;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {033180a1-7368-4cb8-8f10-766b4c8a97e3}, !- Handle
+  {84e2245c-9fbf-4b92-a052-fac368b7f786}, !- Handle
   dishwasher allday ruleset6 Shifted,     !- Name
   {939a0500-465c-43af-95ca-ad89297c467a}, !- Schedule Ruleset Name
   9,                                      !- Rule Order
-  {e2cb796b-f2db-4a9f-a92f-7270ee216a87}, !- Day Schedule Name
+  {8bbc9afe-0cf8-4490-81bb-176b11755044}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -18090,7 +18090,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {e2cb796b-f2db-4a9f-a92f-7270ee216a87}, !- Handle
+  {8bbc9afe-0cf8-4490-81bb-176b11755044}, !- Handle
   dishwasher allday6 Shifted,             !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -18168,11 +18168,11 @@ OS:Schedule:Day,
   0.226580272159124;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {a7466bb1-5c16-4799-bd2b-20163d45c478}, !- Handle
+  {52e5678c-e82b-4a15-8ee2-3a5d3fc7d5cb}, !- Handle
   dishwasher allday ruleset5 Shifted,     !- Name
   {939a0500-465c-43af-95ca-ad89297c467a}, !- Schedule Ruleset Name
   11,                                     !- Rule Order
-  {e3e96af3-fa9f-4080-b858-131b31f2e1c3}, !- Day Schedule Name
+  {196d6a0e-4e7a-4969-b257-6778314e2b81}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -18187,7 +18187,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {e3e96af3-fa9f-4080-b858-131b31f2e1c3}, !- Handle
+  {196d6a0e-4e7a-4969-b257-6778314e2b81}, !- Handle
   dishwasher allday5 Shifted,             !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -18265,11 +18265,11 @@ OS:Schedule:Day,
   0.252293314280552;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {bf27931b-3d72-48d9-8dd2-3056cdd56d2d}, !- Handle
+  {38eb4bed-9390-4e29-8ca4-d1e6aa02cf27}, !- Handle
   dishwasher allday ruleset4 Shifted,     !- Name
   {939a0500-465c-43af-95ca-ad89297c467a}, !- Schedule Ruleset Name
   13,                                     !- Rule Order
-  {470600fe-00b5-4ac0-b547-413ef74fead1}, !- Day Schedule Name
+  {bc3c85f1-ffef-4b16-a745-e56e2bfee12a}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -18284,7 +18284,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {470600fe-00b5-4ac0-b547-413ef74fead1}, !- Handle
+  {bc3c85f1-ffef-4b16-a745-e56e2bfee12a}, !- Handle
   dishwasher allday4 Shifted,             !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -18362,11 +18362,11 @@ OS:Schedule:Day,
   0.251274975978713;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {f8b3ae84-71d0-438d-83c9-e36d87f41b48}, !- Handle
+  {dd0c7d19-9c37-4843-9064-272ae4e92b7c}, !- Handle
   dishwasher allday ruleset3 Shifted,     !- Name
   {939a0500-465c-43af-95ca-ad89297c467a}, !- Schedule Ruleset Name
   15,                                     !- Rule Order
-  {29eb369a-2676-4813-a7eb-c342472f1331}, !- Day Schedule Name
+  {11149265-f960-4b9d-b0d9-f62530bcac75}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -18381,7 +18381,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {29eb369a-2676-4813-a7eb-c342472f1331}, !- Handle
+  {11149265-f960-4b9d-b0d9-f62530bcac75}, !- Handle
   dishwasher allday3 Shifted,             !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -18459,11 +18459,11 @@ OS:Schedule:Day,
   0.252293314280552;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {c0c35d59-f6a2-46d5-800e-9f7b1296b9d5}, !- Handle
+  {0f67e0ba-2cfe-4d5d-99ad-8e7f27fbae73}, !- Handle
   dishwasher allday ruleset1 Shifted,     !- Name
   {939a0500-465c-43af-95ca-ad89297c467a}, !- Schedule Ruleset Name
   17,                                     !- Rule Order
-  {a834186e-98dc-4127-b74c-6d3c8499f499}, !- Day Schedule Name
+  {5dcf0095-1819-419f-8233-8fd4afe55aa0}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -18478,7 +18478,7 @@ OS:Schedule:Rule,
   28;                                     !- End Day
 
 OS:Schedule:Day,
-  {a834186e-98dc-4127-b74c-6d3c8499f499}, !- Handle
+  {5dcf0095-1819-419f-8233-8fd4afe55aa0}, !- Handle
   dishwasher allday1 Shifted,             !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -18556,11 +18556,11 @@ OS:Schedule:Day,
   0.279279279279279;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {114a834c-e0c8-4eb2-a47f-6c0e099e6c66}, !- Handle
+  {e261ad09-66e1-41ef-83af-eaa60f9f1db2}, !- Handle
   exterior lighting schedule weekday ruleset12 Shifted, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
-  1,                                      !- Rule Order
-  {b8172b40-6e92-4531-8241-847de413fcd7}, !- Day Schedule Name
+  2,                                      !- Rule Order
+  {3471b91c-0182-48ab-8403-4f75eb39382d}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -18575,7 +18575,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {b8172b40-6e92-4531-8241-847de413fcd7}, !- Handle
+  {3471b91c-0182-48ab-8403-4f75eb39382d}, !- Handle
   exterior lighting schedule weekday12 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -18653,11 +18653,11 @@ OS:Schedule:Day,
   0.595704057279236;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {e26700dd-d31c-4449-93c0-8283021990b1}, !- Handle
+  {6285ce2c-8038-4ab0-bc0c-4a8a52d0ffe2}, !- Handle
   exterior lighting schedule weekday ruleset11 Shifted, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
-  4,                                      !- Rule Order
-  {e4c731cf-133d-4f61-bbb1-a80da0ea6ab6}, !- Day Schedule Name
+  5,                                      !- Rule Order
+  {44ef29d5-d1cd-4219-9801-b0a28eafc414}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -18672,7 +18672,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {e4c731cf-133d-4f61-bbb1-a80da0ea6ab6}, !- Handle
+  {44ef29d5-d1cd-4219-9801-b0a28eafc414}, !- Handle
   exterior lighting schedule weekday11 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -18750,11 +18750,11 @@ OS:Schedule:Day,
   0.471121718377088;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {8ba3b663-67c3-4cf3-9d77-5f54c461983b}, !- Handle
+  {338056e5-aec5-4bf1-80f7-b70b1f1b6bf4}, !- Handle
   exterior lighting schedule weekday ruleset10 Shifted, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
-  7,                                      !- Rule Order
-  {df145ab5-a970-4961-bfa5-09db89dd1fe0}, !- Day Schedule Name
+  8,                                      !- Rule Order
+  {36ec22cf-7110-493d-9c37-3aa5f4fd0b84}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -18769,7 +18769,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {df145ab5-a970-4961-bfa5-09db89dd1fe0}, !- Handle
+  {36ec22cf-7110-493d-9c37-3aa5f4fd0b84}, !- Handle
   exterior lighting schedule weekday10 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -18847,11 +18847,11 @@ OS:Schedule:Day,
   0.47255369928401;                       !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {00f70a13-b69a-4ec7-96fc-512fdda48181}, !- Handle
+  {5ae98542-afac-42d9-9307-41ca75abca95}, !- Handle
   exterior lighting schedule weekday ruleset9 Shifted, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
-  10,                                     !- Rule Order
-  {e99f55a2-5d20-4624-bc02-32f09fad3cfe}, !- Day Schedule Name
+  11,                                     !- Rule Order
+  {f80fea0c-852d-4103-b49f-9798492e9b46}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -18866,7 +18866,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {e99f55a2-5d20-4624-bc02-32f09fad3cfe}, !- Handle
+  {f80fea0c-852d-4103-b49f-9798492e9b46}, !- Handle
   exterior lighting schedule weekday9 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -18944,11 +18944,11 @@ OS:Schedule:Day,
   0.394749403341289;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {0e4885ff-d5e5-4ad5-9269-0c11ed096014}, !- Handle
+  {335c3f2d-6754-4b60-854e-7d36c576ac23}, !- Handle
   exterior lighting schedule weekday ruleset7 Shifted, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
-  13,                                     !- Rule Order
-  {51550842-f6be-43f0-b8b4-5e33bfb35f8b}, !- Day Schedule Name
+  14,                                     !- Rule Order
+  {5576f61e-eb22-46fd-9290-5c4e68446f41}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -18963,7 +18963,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {51550842-f6be-43f0-b8b4-5e33bfb35f8b}, !- Handle
+  {5576f61e-eb22-46fd-9290-5c4e68446f41}, !- Handle
   exterior lighting schedule weekday7 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -19041,11 +19041,11 @@ OS:Schedule:Day,
   0.391885441527446;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {2d1a1d52-8970-430c-ae67-21c7e4a14f4c}, !- Handle
+  {60bef948-a3d7-40a6-ae8a-3362faad7050}, !- Handle
   exterior lighting schedule weekday ruleset6 Shifted, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
   17,                                     !- Rule Order
-  {13d7907c-6236-4541-aed4-bbdaf439d971}, !- Day Schedule Name
+  {6e3fe479-6996-4b7c-8678-2a4126ac8a26}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -19060,7 +19060,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {13d7907c-6236-4541-aed4-bbdaf439d971}, !- Handle
+  {6e3fe479-6996-4b7c-8678-2a4126ac8a26}, !- Handle
   exterior lighting schedule weekday6 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -19138,11 +19138,11 @@ OS:Schedule:Day,
   0.394749403341289;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {92f525ad-426b-4554-8cba-3fcaf9db1238}, !- Handle
+  {572214dd-bf30-4e5c-a71c-0e0af13aa61a}, !- Handle
   exterior lighting schedule weekday ruleset5 Shifted, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
   20,                                     !- Rule Order
-  {e129347b-8a44-4be8-8d43-f51dfedb0fe9}, !- Day Schedule Name
+  {00e7fda3-fe10-4962-9565-cbd82cab45d6}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -19157,7 +19157,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {e129347b-8a44-4be8-8d43-f51dfedb0fe9}, !- Handle
+  {00e7fda3-fe10-4962-9565-cbd82cab45d6}, !- Handle
   exterior lighting schedule weekday5 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -19235,11 +19235,11 @@ OS:Schedule:Day,
   0.473985680190931;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {d7a4e3e7-c357-4f09-a767-16fa583e9824}, !- Handle
+  {d1b7a44d-0bb8-4bce-abea-bfae1cb84a15}, !- Handle
   exterior lighting schedule weekday ruleset4 Shifted, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
   23,                                     !- Rule Order
-  {f3fc610b-da8f-4b0c-bb09-a242123c755f}, !- Day Schedule Name
+  {976d6f12-51ef-458f-9b2f-7023ccf58684}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -19254,7 +19254,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {f3fc610b-da8f-4b0c-bb09-a242123c755f}, !- Handle
+  {976d6f12-51ef-458f-9b2f-7023ccf58684}, !- Handle
   exterior lighting schedule weekday4 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -19332,11 +19332,11 @@ OS:Schedule:Day,
   0.472076372315036;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {f300703e-ccbd-4251-b593-efee8d8f90e5}, !- Handle
+  {5116d192-03a2-46f2-8525-5fb45ffc9952}, !- Handle
   exterior lighting schedule weekday ruleset3 Shifted, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
   26,                                     !- Rule Order
-  {0090c7f6-38c6-4037-aa2f-756cae38d490}, !- Day Schedule Name
+  {1ccb0b23-8b3b-4506-9deb-7ca3536c170c}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -19351,7 +19351,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {0090c7f6-38c6-4037-aa2f-756cae38d490}, !- Handle
+  {1ccb0b23-8b3b-4506-9deb-7ca3536c170c}, !- Handle
   exterior lighting schedule weekday3 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -19429,11 +19429,11 @@ OS:Schedule:Day,
   0.473985680190931;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {e51a1a8f-56b0-4e9c-8e72-9023db8ce837}, !- Handle
+  {16867c2d-601b-475b-b413-45bbb6e5d9c9}, !- Handle
   exterior lighting schedule weekday ruleset2 Shifted, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
-  28,                                     !- Rule Order
-  {6e6c6649-7b73-4159-8274-24b944a7d640}, !- Day Schedule Name
+  29,                                     !- Rule Order
+  {5c6238d4-0979-4268-9d2b-0cdbb0e9a539}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -19448,7 +19448,7 @@ OS:Schedule:Rule,
   28;                                     !- End Day
 
 OS:Schedule:Day,
-  {6e6c6649-7b73-4159-8274-24b944a7d640}, !- Handle
+  {5c6238d4-0979-4268-9d2b-0cdbb0e9a539}, !- Handle
   exterior lighting schedule weekday2 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -19526,11 +19526,11 @@ OS:Schedule:Day,
   0.6;                                    !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {9af61297-25f1-44c8-8370-25947434f718}, !- Handle
+  {9a62c542-7d5c-47dc-b8ff-f50f5d042f7e}, !- Handle
   exterior lighting schedule weekday ruleset1 Shifted, !- Name
   {99c047ed-72cf-47e1-8a3d-1ac4d25dc5d8}, !- Schedule Ruleset Name
-  32,                                     !- Rule Order
-  {042d1d13-d236-4d28-aeaf-ea8632288f1d}, !- Day Schedule Name
+  31,                                     !- Rule Order
+  {4d1a565d-ecfe-4d95-b0d9-1b29c89747fc}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -19545,7 +19545,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {042d1d13-d236-4d28-aeaf-ea8632288f1d}, !- Handle
+  {4d1a565d-ecfe-4d95-b0d9-1b29c89747fc}, !- Handle
   exterior lighting schedule weekday1 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -19623,11 +19623,11 @@ OS:Schedule:Day,
   0.595704057279236;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {6354a76c-4640-4553-ba10-dfdff7a77675}, !- Handle
+  {bc374166-23b6-49b9-8c6f-6959ee5af3aa}, !- Handle
   fridge allday ruleset12 Shifted,        !- Name
   {aba45ff7-2717-49a4-a9bc-3cf63a587c91}, !- Schedule Ruleset Name
   1,                                      !- Rule Order
-  {92575663-559d-48ac-bbe5-e758a054a428}, !- Day Schedule Name
+  {ec15e03f-69e3-4d7c-b5cd-f8019583fc01}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -19642,7 +19642,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {92575663-559d-48ac-bbe5-e758a054a428}, !- Handle
+  {ec15e03f-69e3-4d7c-b5cd-f8019583fc01}, !- Handle
   fridge allday12 Shifted,                !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -19720,11 +19720,11 @@ OS:Schedule:Day,
   0.626222627737226;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {e26cbfa4-c605-48c8-b460-1128f5a3709c}, !- Handle
+  {1816d952-4d28-4a9c-93fe-0ac9d7d2cc93}, !- Handle
   fridge allday ruleset11 Shifted,        !- Name
   {aba45ff7-2717-49a4-a9bc-3cf63a587c91}, !- Schedule Ruleset Name
   3,                                      !- Rule Order
-  {9df698c2-cf9f-422a-ab3e-b6fd1cbc4e42}, !- Day Schedule Name
+  {be65b26e-16b1-445e-a862-8988747b1ac9}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -19739,7 +19739,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {9df698c2-cf9f-422a-ab3e-b6fd1cbc4e42}, !- Handle
+  {be65b26e-16b1-445e-a862-8988747b1ac9}, !- Handle
   fridge allday11 Shifted,                !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -19817,11 +19817,11 @@ OS:Schedule:Day,
   0.69206204379562;                       !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {257167bb-fc9a-49c9-a898-6cd63bb9370e}, !- Handle
+  {acefc9f8-7f6c-4922-989d-a11d67dfa2ac}, !- Handle
   fridge allday ruleset10 Shifted,        !- Name
   {aba45ff7-2717-49a4-a9bc-3cf63a587c91}, !- Schedule Ruleset Name
   5,                                      !- Rule Order
-  {45cc8432-d839-41be-af75-e569a2c1c748}, !- Day Schedule Name
+  {e719e6b0-0115-4418-9c9f-cbc6de79f2b5}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -19836,7 +19836,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {45cc8432-d839-41be-af75-e569a2c1c748}, !- Handle
+  {e719e6b0-0115-4418-9c9f-cbc6de79f2b5}, !- Handle
   fridge allday10 Shifted,                !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -19914,11 +19914,11 @@ OS:Schedule:Day,
   0.696551094890511;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {c3752d95-495f-463e-a49c-4fa0df4b29df}, !- Handle
+  {a2fcc093-0d24-4806-adf8-4d1566a61ee7}, !- Handle
   fridge allday ruleset6 Shifted,         !- Name
   {aba45ff7-2717-49a4-a9bc-3cf63a587c91}, !- Schedule Ruleset Name
   7,                                      !- Rule Order
-  {bfd2d60a-27e6-4f51-9d2d-bde5bf238353}, !- Day Schedule Name
+  {c4c28c7e-31d0-47d3-8029-20fb2b6947e3}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -19933,7 +19933,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {bfd2d60a-27e6-4f51-9d2d-bde5bf238353}, !- Handle
+  {c4c28c7e-31d0-47d3-8029-20fb2b6947e3}, !- Handle
   fridge allday6 Shifted,                 !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -20011,11 +20011,11 @@ OS:Schedule:Day,
   0.82;                                   !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {c858a22a-75a2-4dce-bfa4-73ebdd0030b4}, !- Handle
+  {3213dad6-2673-4843-8286-8fe4035da4cf}, !- Handle
   fridge allday ruleset3 Shifted,         !- Name
   {aba45ff7-2717-49a4-a9bc-3cf63a587c91}, !- Schedule Ruleset Name
   9,                                      !- Rule Order
-  {99c9342b-c391-4b1e-b50c-7bf930b46c83}, !- Day Schedule Name
+  {13d7709e-234a-4824-9963-d498bd8da11f}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -20030,7 +20030,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {99c9342b-c391-4b1e-b50c-7bf930b46c83}, !- Handle
+  {13d7709e-234a-4824-9963-d498bd8da11f}, !- Handle
   fridge allday3 Shifted,                 !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -20108,11 +20108,11 @@ OS:Schedule:Day,
   0.811021897810219;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {c0dbed6c-01df-4d89-9318-468e0e5a38dd}, !- Handle
+  {1313c378-e756-43e8-913a-038ede924b14}, !- Handle
   fridge allday ruleset2 Shifted,         !- Name
   {aba45ff7-2717-49a4-a9bc-3cf63a587c91}, !- Schedule Ruleset Name
   11,                                     !- Rule Order
-  {fa3f9f7c-5e67-4a6b-9381-35f013682ca3}, !- Day Schedule Name
+  {f8fdaedb-db51-4591-a90c-5fef745eaac8}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -20127,7 +20127,7 @@ OS:Schedule:Rule,
   28;                                     !- End Day
 
 OS:Schedule:Day,
-  {fa3f9f7c-5e67-4a6b-9381-35f013682ca3}, !- Handle
+  {f8fdaedb-db51-4591-a90c-5fef745eaac8}, !- Handle
   fridge allday2 Shifted,                 !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -20205,11 +20205,11 @@ OS:Schedule:Day,
   0.624726277372263;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {cc47a841-5c63-44b6-8413-232e800820b9}, !- Handle
+  {23bc219b-57c7-4526-ae80-5460db0d2b06}, !- Handle
   fridge allday ruleset1 Shifted,         !- Name
   {aba45ff7-2717-49a4-a9bc-3cf63a587c91}, !- Schedule Ruleset Name
   13,                                     !- Rule Order
-  {88d674fa-3536-4c35-957d-7842c3acc51a}, !- Day Schedule Name
+  {286ca984-8703-4f45-8890-95cc747b23fd}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -20224,7 +20224,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {88d674fa-3536-4c35-957d-7842c3acc51a}, !- Handle
+  {286ca984-8703-4f45-8890-95cc747b23fd}, !- Handle
   fridge allday1 Shifted,                 !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -20302,11 +20302,11 @@ OS:Schedule:Day,
   0.626222627737226;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {a97af4ac-a0fd-4d29-99e5-b5fcef443af9}, !- Handle
+  {c2d78e27-ffb9-4e0f-af78-69d67ddc6605}, !- Handle
   lighting schedule allday ruleset12 Shifted, !- Name
   {e0511dea-33fb-4b2e-b6fc-938785b30767}, !- Schedule Ruleset Name
   1,                                      !- Rule Order
-  {41e6338e-88ce-448a-9ee6-fdf53976540f}, !- Day Schedule Name
+  {202ad6b9-7fc7-418c-bbd8-f61684756b79}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -20321,7 +20321,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {41e6338e-88ce-448a-9ee6-fdf53976540f}, !- Handle
+  {202ad6b9-7fc7-418c-bbd8-f61684756b79}, !- Handle
   lighting schedule allday12 Shifted,     !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -20399,11 +20399,11 @@ OS:Schedule:Day,
   0.249225449441605;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {54db7f5c-298c-4d2c-ad79-ff970ae18cf1}, !- Handle
+  {4a6fe182-7ee0-4211-b5be-53057ebeefeb}, !- Handle
   lighting schedule allday ruleset11 Shifted, !- Name
   {e0511dea-33fb-4b2e-b6fc-938785b30767}, !- Schedule Ruleset Name
   3,                                      !- Rule Order
-  {300cfc59-2110-417d-812e-c08331a5888e}, !- Day Schedule Name
+  {58896fee-d7da-483c-aef8-7fc36512045f}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -20418,7 +20418,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {300cfc59-2110-417d-812e-c08331a5888e}, !- Handle
+  {58896fee-d7da-483c-aef8-7fc36512045f}, !- Handle
   lighting schedule allday11 Shifted,     !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -20496,11 +20496,11 @@ OS:Schedule:Day,
   0.249225449441605;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {16f45083-153a-4d58-b359-a6d129ccd9f0}, !- Handle
+  {cf95d920-d54b-4c3c-baca-386a81b43e9d}, !- Handle
   lighting schedule allday ruleset10 Shifted, !- Name
   {e0511dea-33fb-4b2e-b6fc-938785b30767}, !- Schedule Ruleset Name
   5,                                      !- Rule Order
-  {42edfe74-efab-49dc-acbb-1df462b17b44}, !- Day Schedule Name
+  {4c4e7555-ee81-47ea-a1ed-f28b1bea8b7c}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -20515,7 +20515,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {42edfe74-efab-49dc-acbb-1df462b17b44}, !- Handle
+  {4c4e7555-ee81-47ea-a1ed-f28b1bea8b7c}, !- Handle
   lighting schedule allday10 Shifted,     !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -20593,11 +20593,11 @@ OS:Schedule:Day,
   0.249225449441605;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {a71c545a-e792-4edf-828e-15976296b80f}, !- Handle
+  {39bf1139-a989-4bd9-a13d-116807696b64}, !- Handle
   lighting schedule allday ruleset9 Shifted, !- Name
   {e0511dea-33fb-4b2e-b6fc-938785b30767}, !- Schedule Ruleset Name
   7,                                      !- Rule Order
-  {e0b35e3c-cbce-4725-847a-10e098a49ef8}, !- Day Schedule Name
+  {124f11ec-5e71-4559-b67a-afc30229468f}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -20612,7 +20612,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {e0b35e3c-cbce-4725-847a-10e098a49ef8}, !- Handle
+  {124f11ec-5e71-4559-b67a-afc30229468f}, !- Handle
   lighting schedule allday9 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -20690,11 +20690,11 @@ OS:Schedule:Day,
   0.249225449441605;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {e2505c12-c61b-4ac2-b614-f91e322f8632}, !- Handle
+  {6241e3e8-30a9-40c6-97a4-29060c6e4730}, !- Handle
   lighting schedule allday ruleset8 Shifted, !- Name
   {e0511dea-33fb-4b2e-b6fc-938785b30767}, !- Schedule Ruleset Name
   9,                                      !- Rule Order
-  {54bb76b0-2f2b-413f-8cfd-28e9f6d00910}, !- Day Schedule Name
+  {8cffbba6-5b33-4e2e-b941-659d1f17dd7e}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -20709,7 +20709,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {54bb76b0-2f2b-413f-8cfd-28e9f6d00910}, !- Handle
+  {8cffbba6-5b33-4e2e-b941-659d1f17dd7e}, !- Handle
   lighting schedule allday8 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -20787,11 +20787,11 @@ OS:Schedule:Day,
   0.249225449441605;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {c385da3b-8d4c-4cc4-b232-2ab65d39f305}, !- Handle
+  {bf3e3825-13bc-40c4-b3fb-5c512a63c50b}, !- Handle
   lighting schedule allday ruleset7 Shifted, !- Name
   {e0511dea-33fb-4b2e-b6fc-938785b30767}, !- Schedule Ruleset Name
   11,                                     !- Rule Order
-  {2576979f-6583-4b76-8077-acd50c26da05}, !- Day Schedule Name
+  {a54ef601-8def-4584-9d47-43e2023e229b}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -20806,7 +20806,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {2576979f-6583-4b76-8077-acd50c26da05}, !- Handle
+  {a54ef601-8def-4584-9d47-43e2023e229b}, !- Handle
   lighting schedule allday7 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -20884,11 +20884,11 @@ OS:Schedule:Day,
   0.249225449441605;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {21f91082-d0b8-48f7-b631-d41f64dd306e}, !- Handle
+  {e6d74f66-0ba9-4de2-b15e-6f359d42cf8b}, !- Handle
   lighting schedule allday ruleset6 Shifted, !- Name
   {e0511dea-33fb-4b2e-b6fc-938785b30767}, !- Schedule Ruleset Name
   13,                                     !- Rule Order
-  {00dd75b7-77aa-428f-9a63-c03c5c09d72a}, !- Day Schedule Name
+  {e9569134-647b-4140-9317-68c137a22e74}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -20903,7 +20903,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {00dd75b7-77aa-428f-9a63-c03c5c09d72a}, !- Handle
+  {e9569134-647b-4140-9317-68c137a22e74}, !- Handle
   lighting schedule allday6 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -20981,11 +20981,11 @@ OS:Schedule:Day,
   0.249225449441605;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {9e0f3944-ae05-45c7-baf6-594b8f526126}, !- Handle
+  {cf615582-1731-447c-8536-671b7bc6432c}, !- Handle
   lighting schedule allday ruleset5 Shifted, !- Name
   {e0511dea-33fb-4b2e-b6fc-938785b30767}, !- Schedule Ruleset Name
   15,                                     !- Rule Order
-  {1cec893f-9466-45ac-bfbe-a93a57bc50bc}, !- Day Schedule Name
+  {d0364809-0dcc-434f-9ef8-04b5a286de44}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -21000,7 +21000,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {1cec893f-9466-45ac-bfbe-a93a57bc50bc}, !- Handle
+  {d0364809-0dcc-434f-9ef8-04b5a286de44}, !- Handle
   lighting schedule allday5 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -21078,11 +21078,11 @@ OS:Schedule:Day,
   0.249225449441605;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {d104f17f-2b67-4db0-9ae3-33acacaa6862}, !- Handle
+  {4c03107b-f648-4943-a4ee-a090e178e0b1}, !- Handle
   lighting schedule allday ruleset4 Shifted, !- Name
   {e0511dea-33fb-4b2e-b6fc-938785b30767}, !- Schedule Ruleset Name
   17,                                     !- Rule Order
-  {77bf1a04-5429-42f1-b2d8-0e290037ea51}, !- Day Schedule Name
+  {4027dbbc-ecb5-4513-a2a0-6a592b6a09a7}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -21097,7 +21097,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {77bf1a04-5429-42f1-b2d8-0e290037ea51}, !- Handle
+  {4027dbbc-ecb5-4513-a2a0-6a592b6a09a7}, !- Handle
   lighting schedule allday4 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -21175,11 +21175,11 @@ OS:Schedule:Day,
   0.249225449441605;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {86034106-f33d-4dcb-91c3-8cb3fb483372}, !- Handle
+  {b8fdfa21-e09d-41b4-a7f8-b0b8c6ddeded}, !- Handle
   lighting schedule allday ruleset3 Shifted, !- Name
   {e0511dea-33fb-4b2e-b6fc-938785b30767}, !- Schedule Ruleset Name
   19,                                     !- Rule Order
-  {f9879e59-a718-4e4d-853f-e42bdc18e33b}, !- Day Schedule Name
+  {0b8c8ad7-a6e1-47da-a006-7aca611a804b}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -21194,7 +21194,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {f9879e59-a718-4e4d-853f-e42bdc18e33b}, !- Handle
+  {0b8c8ad7-a6e1-47da-a006-7aca611a804b}, !- Handle
   lighting schedule allday3 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -21272,11 +21272,11 @@ OS:Schedule:Day,
   0.249225449441605;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {73fd2e55-fae6-4cf5-a776-76dbd7238a46}, !- Handle
+  {76c21c7d-c5d7-423e-ab34-a3f06cc0ef2c}, !- Handle
   lighting schedule allday ruleset2 Shifted, !- Name
   {e0511dea-33fb-4b2e-b6fc-938785b30767}, !- Schedule Ruleset Name
   21,                                     !- Rule Order
-  {446ec24d-6d1c-491b-936f-c9764153af25}, !- Day Schedule Name
+  {fea7d59f-5b86-47b9-bd28-8b620fadd8f8}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -21291,7 +21291,7 @@ OS:Schedule:Rule,
   28;                                     !- End Day
 
 OS:Schedule:Day,
-  {446ec24d-6d1c-491b-936f-c9764153af25}, !- Handle
+  {fea7d59f-5b86-47b9-bd28-8b620fadd8f8}, !- Handle
   lighting schedule allday2 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -21369,11 +21369,11 @@ OS:Schedule:Day,
   0.249225449441605;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {94d12d2a-4f2f-43e2-9246-f5cf79cb873d}, !- Handle
+  {e6621f24-4e09-4716-94b3-6b2d4e112cfd}, !- Handle
   lighting schedule allday ruleset1 Shifted, !- Name
   {e0511dea-33fb-4b2e-b6fc-938785b30767}, !- Schedule Ruleset Name
   23,                                     !- Rule Order
-  {0744e492-76d2-4ccd-9cb3-1c5908e33fc0}, !- Day Schedule Name
+  {0dfc9c8e-b1d0-4644-9c5d-61ac9ee58e26}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -21388,7 +21388,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {0744e492-76d2-4ccd-9cb3-1c5908e33fc0}, !- Handle
+  {0dfc9c8e-b1d0-4644-9c5d-61ac9ee58e26}, !- Handle
   lighting schedule allday1 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -21466,11 +21466,11 @@ OS:Schedule:Day,
   0.249225449441605;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {9d597e87-ba56-4801-ac77-b5fe05de5c8d}, !- Handle
+  {9f6ce016-c411-4b18-bfea-6d53f4407e97}, !- Handle
   misc plug loads schedule allday ruleset12 Shifted, !- Name
   {34c098a2-f132-4bfd-90b2-66f4f0a50d00}, !- Schedule Ruleset Name
   1,                                      !- Rule Order
-  {cf63fa4b-c980-4ae8-8fa3-606e56adb8ab}, !- Day Schedule Name
+  {9ba5c024-806a-4ae0-9654-5f3a764868f5}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -21485,7 +21485,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {cf63fa4b-c980-4ae8-8fa3-606e56adb8ab}, !- Handle
+  {9ba5c024-806a-4ae0-9654-5f3a764868f5}, !- Handle
   misc plug loads schedule allday12 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -21563,11 +21563,11 @@ OS:Schedule:Day,
   0.674381951636871;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {e20f7bf3-9866-4231-9651-45982e0077e7}, !- Handle
+  {558ee277-af72-404b-8ec8-6bfd5cf719e8}, !- Handle
   misc plug loads schedule allday ruleset11 Shifted, !- Name
   {34c098a2-f132-4bfd-90b2-66f4f0a50d00}, !- Schedule Ruleset Name
   3,                                      !- Rule Order
-  {f63f925c-00d8-4d95-9e29-88a780d4ba87}, !- Day Schedule Name
+  {baaadeb1-bf43-4390-be2e-be2815d9b707}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -21582,7 +21582,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {f63f925c-00d8-4d95-9e29-88a780d4ba87}, !- Handle
+  {baaadeb1-bf43-4390-be2e-be2815d9b707}, !- Handle
   misc plug loads schedule allday11 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -21660,11 +21660,11 @@ OS:Schedule:Day,
   0.533345341558968;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {c3e17b74-790b-43b8-bc41-66acabe4be3b}, !- Handle
+  {fe94f968-fd39-4f41-b549-131b17f35a65}, !- Handle
   misc plug loads schedule allday ruleset10 Shifted, !- Name
   {34c098a2-f132-4bfd-90b2-66f4f0a50d00}, !- Schedule Ruleset Name
   5,                                      !- Rule Order
-  {269c6bab-ca1d-4c94-8b31-1d540576fb13}, !- Day Schedule Name
+  {a05ece39-8251-4573-9d38-dcb60fc27443}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -21679,7 +21679,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {269c6bab-ca1d-4c94-8b31-1d540576fb13}, !- Handle
+  {a05ece39-8251-4573-9d38-dcb60fc27443}, !- Handle
   misc plug loads schedule allday10 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -21757,11 +21757,11 @@ OS:Schedule:Day,
   0.534966452019633;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {52c5461e-4aa9-4b66-a7c9-7d18b85e43ae}, !- Handle
+  {2cf4007e-4bb6-4517-b8e8-069048c26a6f}, !- Handle
   misc plug loads schedule allday ruleset9 Shifted, !- Name
   {34c098a2-f132-4bfd-90b2-66f4f0a50d00}, !- Schedule Ruleset Name
   7,                                      !- Rule Order
-  {a0be77cc-8e33-40c4-a546-ae7673e6488b}, !- Day Schedule Name
+  {1add3aed-44b2-4870-816c-fb4a8d68d80a}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -21776,7 +21776,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {a0be77cc-8e33-40c4-a546-ae7673e6488b}, !- Handle
+  {1add3aed-44b2-4870-816c-fb4a8d68d80a}, !- Handle
   misc plug loads schedule allday9 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -21854,11 +21854,11 @@ OS:Schedule:Day,
   0.446886116990138;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {3549b585-1fa8-4bc3-8459-4d9b961a8fb4}, !- Handle
+  {7d67baa0-90e6-438a-ab21-1dc403ed3c7b}, !- Handle
   misc plug loads schedule allday ruleset7 Shifted, !- Name
   {34c098a2-f132-4bfd-90b2-66f4f0a50d00}, !- Schedule Ruleset Name
   9,                                      !- Rule Order
-  {670c2b59-a5f5-46e9-a04c-0a9914998d4c}, !- Day Schedule Name
+  {046f4738-fbbd-4a03-82fc-15626f2972c2}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -21873,7 +21873,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {670c2b59-a5f5-46e9-a04c-0a9914998d4c}, !- Handle
+  {046f4738-fbbd-4a03-82fc-15626f2972c2}, !- Handle
   misc plug loads schedule allday7 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -21951,11 +21951,11 @@ OS:Schedule:Day,
   0.443643896068807;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {a4b6415b-ef36-49c0-b752-934ef718a2ec}, !- Handle
+  {0c76d172-a23f-419e-8c47-8b58bcd2f856}, !- Handle
   misc plug loads schedule allday ruleset6 Shifted, !- Name
   {34c098a2-f132-4bfd-90b2-66f4f0a50d00}, !- Schedule Ruleset Name
   11,                                     !- Rule Order
-  {96e54b92-c2bc-4e30-8b54-34c29b8b74d0}, !- Day Schedule Name
+  {c497b9f2-c210-470c-9d49-425beb827c02}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -21970,7 +21970,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {96e54b92-c2bc-4e30-8b54-34c29b8b74d0}, !- Handle
+  {c497b9f2-c210-470c-9d49-425beb827c02}, !- Handle
   misc plug loads schedule allday6 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -22048,11 +22048,11 @@ OS:Schedule:Day,
   0.446886116990138;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {3318e32f-b39b-45c0-b178-e705f9e5b18f}, !- Handle
+  {d5b45999-e7c7-4c47-aece-b6696935b77c}, !- Handle
   misc plug loads schedule allday ruleset5 Shifted, !- Name
   {34c098a2-f132-4bfd-90b2-66f4f0a50d00}, !- Schedule Ruleset Name
   13,                                     !- Rule Order
-  {f5a0ee75-3f67-4e75-bd38-09067cb88d1f}, !- Day Schedule Name
+  {9bb4f595-cb6e-4d13-b74e-4799e4ca151a}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -22067,7 +22067,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {f5a0ee75-3f67-4e75-bd38-09067cb88d1f}, !- Handle
+  {9bb4f595-cb6e-4d13-b74e-4799e4ca151a}, !- Handle
   misc plug loads schedule allday5 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -22145,11 +22145,11 @@ OS:Schedule:Day,
   0.536587562480299;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {0777e955-21db-4a07-822f-a68a970c2db2}, !- Handle
+  {d3b9628e-b898-4fbc-bccf-69e2a8ece817}, !- Handle
   misc plug loads schedule allday ruleset4 Shifted, !- Name
   {34c098a2-f132-4bfd-90b2-66f4f0a50d00}, !- Schedule Ruleset Name
   15,                                     !- Rule Order
-  {c5278695-1eb2-450e-ba0a-4f07782c08f2}, !- Day Schedule Name
+  {a6a3ef99-62a1-4b1f-816f-a4c27fcc51ca}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -22164,7 +22164,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {c5278695-1eb2-450e-ba0a-4f07782c08f2}, !- Handle
+  {a6a3ef99-62a1-4b1f-816f-a4c27fcc51ca}, !- Handle
   misc plug loads schedule allday4 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -22242,11 +22242,11 @@ OS:Schedule:Day,
   0.534426081866078;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {dfca1e5d-4171-4922-9cfb-f9baf9dbcb8e}, !- Handle
+  {7fb0f002-d8fb-452a-ad79-9993b8cdbe8b}, !- Handle
   misc plug loads schedule allday ruleset3 Shifted, !- Name
   {34c098a2-f132-4bfd-90b2-66f4f0a50d00}, !- Schedule Ruleset Name
   17,                                     !- Rule Order
-  {52634c91-6219-4ecb-ac27-e2e514038c8a}, !- Day Schedule Name
+  {bcf7f849-125a-46b3-b160-6ece91c9f238}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -22261,7 +22261,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {52634c91-6219-4ecb-ac27-e2e514038c8a}, !- Handle
+  {bcf7f849-125a-46b3-b160-6ece91c9f238}, !- Handle
   misc plug loads schedule allday3 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -22339,11 +22339,11 @@ OS:Schedule:Day,
   0.536587562480299;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {2cab06ad-a3f0-4768-b567-c14bd20a88f1}, !- Handle
+  {a02401c9-abcc-489e-8e2d-47fab4cba384}, !- Handle
   misc plug loads schedule allday ruleset2 Shifted, !- Name
   {34c098a2-f132-4bfd-90b2-66f4f0a50d00}, !- Schedule Ruleset Name
   19,                                     !- Rule Order
-  {c00bcd03-dd01-4cd5-a82d-65a2e16182d6}, !- Day Schedule Name
+  {9565f9f8-2865-4b38-a3ff-b316a7889d9f}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -22358,7 +22358,7 @@ OS:Schedule:Rule,
   28;                                     !- End Day
 
 OS:Schedule:Day,
-  {c00bcd03-dd01-4cd5-a82d-65a2e16182d6}, !- Handle
+  {9565f9f8-2865-4b38-a3ff-b316a7889d9f}, !- Handle
   misc plug loads schedule allday2 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -22436,11 +22436,11 @@ OS:Schedule:Day,
   0.679245283018868;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {e5860524-7e67-4114-ae58-e25abffc6ed6}, !- Handle
+  {9d56c54f-4dcb-4c4c-b8d8-c96e89159f65}, !- Handle
   misc plug loads schedule allday ruleset1 Shifted, !- Name
   {34c098a2-f132-4bfd-90b2-66f4f0a50d00}, !- Schedule Ruleset Name
   21,                                     !- Rule Order
-  {2c4fef03-42f9-40e7-bbd0-56248410259b}, !- Day Schedule Name
+  {632061ac-c3bd-4ad7-9110-7c0774e77423}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -22455,7 +22455,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {2c4fef03-42f9-40e7-bbd0-56248410259b}, !- Handle
+  {632061ac-c3bd-4ad7-9110-7c0774e77423}, !- Handle
   misc plug loads schedule allday1 Shifted, !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -22533,11 +22533,11 @@ OS:Schedule:Day,
   0.674381951636871;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {c5caba8d-d1c2-49e8-9ba1-34c76ffdb840}, !- Handle
+  {640bd784-ec4c-473e-aa1a-bddee067673c}, !- Handle
   misc tv schedule weekday ruleset12 Shifted, !- Name
   {5588a408-3edd-43b1-9ea2-8d36ad2c9d47}, !- Schedule Ruleset Name
-  1,                                      !- Rule Order
-  {caf0706d-7910-4768-8caf-7d885f02e58c}, !- Day Schedule Name
+  2,                                      !- Rule Order
+  {8e9282ef-e7f8-4ba3-9835-21901c7915e8}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -22552,7 +22552,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {caf0706d-7910-4768-8caf-7d885f02e58c}, !- Handle
+  {8e9282ef-e7f8-4ba3-9835-21901c7915e8}, !- Handle
   misc tv schedule weekday12 Shifted,     !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -22630,11 +22630,11 @@ OS:Schedule:Day,
   0.247933884297521;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {189f1216-fc31-4d13-9d32-147653e45680}, !- Handle
+  {0ef8f56b-05c5-4f7f-a7db-faf24d044ec9}, !- Handle
   misc tv schedule weekday ruleset11 Shifted, !- Name
   {5588a408-3edd-43b1-9ea2-8d36ad2c9d47}, !- Schedule Ruleset Name
-  4,                                      !- Rule Order
-  {b067df66-153b-44e6-90a7-222b25eb539f}, !- Day Schedule Name
+  5,                                      !- Rule Order
+  {17e67096-48e4-4269-8a1d-b35c86936a1d}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -22649,7 +22649,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {b067df66-153b-44e6-90a7-222b25eb539f}, !- Handle
+  {17e67096-48e4-4269-8a1d-b35c86936a1d}, !- Handle
   misc tv schedule weekday11 Shifted,     !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -22727,11 +22727,11 @@ OS:Schedule:Day,
   0.187531346082557;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {721612f5-da99-415e-93c3-6a38c6e173ed}, !- Handle
+  {699b94d1-dfe7-4504-9240-a01a2eee4085}, !- Handle
   misc tv schedule weekday ruleset10 Shifted, !- Name
   {5588a408-3edd-43b1-9ea2-8d36ad2c9d47}, !- Schedule Ruleset Name
   8,                                      !- Rule Order
-  {fd5194ca-416a-42fa-993e-07d2490d6b37}, !- Day Schedule Name
+  {c6c9cd04-41b0-49ef-b6d3-1dddcd5c68d3}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -22746,7 +22746,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {fd5194ca-416a-42fa-993e-07d2490d6b37}, !- Handle
+  {c6c9cd04-41b0-49ef-b6d3-1dddcd5c68d3}, !- Handle
   misc tv schedule weekday10 Shifted,     !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -22824,11 +22824,11 @@ OS:Schedule:Day,
   0.189057764015788;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {5b66ab78-e113-43b2-9a4c-1e5bbbb259f1}, !- Handle
+  {de4a9916-e51e-4de5-a25e-863f67c89c8c}, !- Handle
   misc tv schedule weekday ruleset9 Shifted, !- Name
   {5588a408-3edd-43b1-9ea2-8d36ad2c9d47}, !- Schedule Ruleset Name
   11,                                     !- Rule Order
-  {d6123cc3-a9ff-41e3-8d6e-f27beeb53d33}, !- Day Schedule Name
+  {4301dae6-3474-4ebf-ab06-bd13f3a11f02}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -22843,7 +22843,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {d6123cc3-a9ff-41e3-8d6e-f27beeb53d33}, !- Handle
+  {4301dae6-3474-4ebf-ab06-bd13f3a11f02}, !- Handle
   misc tv schedule weekday9 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -22921,11 +22921,11 @@ OS:Schedule:Day,
   0.21653328681393;                       !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {b525fe07-8ed7-40e9-9ad2-b9e90bf2167d}, !- Handle
+  {4ad22870-f17d-480d-98b5-5bc6b1bde736}, !- Handle
   misc tv schedule weekday ruleset8 Shifted, !- Name
   {5588a408-3edd-43b1-9ea2-8d36ad2c9d47}, !- Schedule Ruleset Name
   14,                                     !- Rule Order
-  {d90bf712-f47f-4a3c-b0d1-c0680273ac70}, !- Day Schedule Name
+  {d89569e1-d26e-4488-abfe-9191fd737b4c}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -22940,7 +22940,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {d90bf712-f47f-4a3c-b0d1-c0680273ac70}, !- Handle
+  {d89569e1-d26e-4488-abfe-9191fd737b4c}, !- Handle
   misc tv schedule weekday8 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -23018,11 +23018,11 @@ OS:Schedule:Day,
   0.209337316557273;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {699a2232-f6e4-4f18-a416-3802d90ae0df}, !- Handle
+  {8078fd6c-a889-41a0-a3ab-e7f6ef61df71}, !- Handle
   misc tv schedule weekday ruleset7 Shifted, !- Name
   {5588a408-3edd-43b1-9ea2-8d36ad2c9d47}, !- Schedule Ruleset Name
-  16,                                     !- Rule Order
-  {aaad84c2-c1d9-4321-8ef0-a0326c19dc3f}, !- Day Schedule Name
+  17,                                     !- Rule Order
+  {6fc20559-dbf4-4940-8cc3-718c1a9ad3fd}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -23037,7 +23037,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {aaad84c2-c1d9-4321-8ef0-a0326c19dc3f}, !- Handle
+  {6fc20559-dbf4-4940-8cc3-718c1a9ad3fd}, !- Handle
   misc tv schedule weekday7 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -23115,11 +23115,11 @@ OS:Schedule:Day,
   0.217187465928171;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {2df7f0e9-4067-4ba4-94fa-ddeaac22f3e7}, !- Handle
+  {1359340a-cc88-476c-9f2d-1b1dedbb5bbe}, !- Handle
   misc tv schedule weekday ruleset6 Shifted, !- Name
   {5588a408-3edd-43b1-9ea2-8d36ad2c9d47}, !- Schedule Ruleset Name
   20,                                     !- Rule Order
-  {7e2eb9a8-e22f-4c6c-bc15-81d64da2fbaf}, !- Day Schedule Name
+  {626bbd45-57aa-4514-80e8-9252b2791e8e}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -23134,7 +23134,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {7e2eb9a8-e22f-4c6c-bc15-81d64da2fbaf}, !- Handle
+  {626bbd45-57aa-4514-80e8-9252b2791e8e}, !- Handle
   misc tv schedule weekday6 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -23212,11 +23212,11 @@ OS:Schedule:Day,
   0.21653328681393;                       !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {a47e8d56-e6ba-4c3a-97c2-117ddca9426c}, !- Handle
+  {9ec06f07-af40-43ba-ae7f-45268021d4ed}, !- Handle
   misc tv schedule weekday ruleset5 Shifted, !- Name
   {5588a408-3edd-43b1-9ea2-8d36ad2c9d47}, !- Schedule Ruleset Name
   23,                                     !- Rule Order
-  {a2cd46b5-8e32-4c17-9ffb-e0a30445c474}, !- Day Schedule Name
+  {2001c3a5-5ff5-48aa-8ab8-89d372b39655}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -23231,7 +23231,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {a2cd46b5-8e32-4c17-9ffb-e0a30445c474}, !- Handle
+  {2001c3a5-5ff5-48aa-8ab8-89d372b39655}, !- Handle
   misc tv schedule weekday5 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -23309,11 +23309,11 @@ OS:Schedule:Day,
   0.209555376262021;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {9f4adcbd-6043-4254-9eca-b7397ea0b9d7}, !- Handle
+  {53729bb8-1c72-4463-a481-813cf815fbcd}, !- Handle
   misc tv schedule weekday ruleset4 Shifted, !- Name
   {5588a408-3edd-43b1-9ea2-8d36ad2c9d47}, !- Schedule Ruleset Name
   26,                                     !- Rule Order
-  {f2be0c5d-6365-4d2f-a5c3-ad7cb1405c8a}, !- Day Schedule Name
+  {63924233-ebfc-4988-89e7-4aeb53a89c70}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -23328,7 +23328,7 @@ OS:Schedule:Rule,
   30;                                     !- End Day
 
 OS:Schedule:Day,
-  {f2be0c5d-6365-4d2f-a5c3-ad7cb1405c8a}, !- Handle
+  {63924233-ebfc-4988-89e7-4aeb53a89c70}, !- Handle
   misc tv schedule weekday4 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -23406,11 +23406,11 @@ OS:Schedule:Day,
   0.211299853899998;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {62cc1645-9a2d-4224-905f-65654cda96da}, !- Handle
+  {c7277326-6d41-4650-9964-bebe059fa6cf}, !- Handle
   misc tv schedule weekday ruleset3 Shifted, !- Name
   {5588a408-3edd-43b1-9ea2-8d36ad2c9d47}, !- Schedule Ruleset Name
   29,                                     !- Rule Order
-  {fbeef699-5caa-4f83-997e-f46a0291cebd}, !- Day Schedule Name
+  {3542ba89-d8de-40b7-a5a3-8f79601241f0}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -23425,7 +23425,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {fbeef699-5caa-4f83-997e-f46a0291cebd}, !- Handle
+  {3542ba89-d8de-40b7-a5a3-8f79601241f0}, !- Handle
   misc tv schedule weekday3 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -23503,11 +23503,11 @@ OS:Schedule:Day,
   0.209555376262021;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {3df77a3e-0335-4554-ada9-04725efae016}, !- Handle
+  {dde9b2fc-996d-4fa0-a68e-0b236032d942}, !- Handle
   misc tv schedule weekday ruleset2 Shifted, !- Name
   {5588a408-3edd-43b1-9ea2-8d36ad2c9d47}, !- Schedule Ruleset Name
   32,                                     !- Rule Order
-  {7c58330e-4e61-471b-9e27-e7215c96851b}, !- Day Schedule Name
+  {d1c580ec-3f59-4234-a310-1108c0a3f458}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -23522,7 +23522,7 @@ OS:Schedule:Rule,
   28;                                     !- End Day
 
 OS:Schedule:Day,
-  {7c58330e-4e61-471b-9e27-e7215c96851b}, !- Handle
+  {d1c580ec-3f59-4234-a310-1108c0a3f458}, !- Handle
   misc tv schedule weekday2 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -23600,11 +23600,11 @@ OS:Schedule:Day,
   0.246189406659543;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {76e30105-d1a8-4624-889d-58edccd650bc}, !- Handle
+  {63fc8e58-95f1-431c-912a-a4da73d2acc9}, !- Handle
   misc tv schedule weekday ruleset1 Shifted, !- Name
   {5588a408-3edd-43b1-9ea2-8d36ad2c9d47}, !- Schedule Ruleset Name
   34,                                     !- Rule Order
-  {0061c01d-9659-4938-a8b2-b1e4c1eaaa97}, !- Day Schedule Name
+  {a9a3921e-88cb-4076-a85f-0d1df17a7bee}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -23619,7 +23619,7 @@ OS:Schedule:Rule,
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {0061c01d-9659-4938-a8b2-b1e4c1eaaa97}, !- Handle
+  {a9a3921e-88cb-4076-a85f-0d1df17a7bee}, !- Handle
   misc tv schedule weekday1 Shifted,      !- Name
   {3693dd39-b891-4312-8204-74ff711245d3}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
