@@ -305,7 +305,7 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
     assert(schedule_files_before.empty?)
     assert(schedule_files_after.empty?)
   end
-  
+
   def test_stochastic_schedules
     # create an instance of the measure
     measure = PeakPeriodSchedulesShift.new
@@ -498,8 +498,6 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
     end
     assert(!schedule_rulesets.empty?)
     assert_equal(schedule_rulesets['fridge'].scheduleRules.size, 7)
-    shiftable_rule = schedule_rulesets['fridge'].scheduleRules.find { |schedule_rule| schedule_rule.name.to_s == 'fridge allday ruleset1' }
-    values_before = measure.get_hourly_values(shiftable_rule.daySchedule)
 
     schedule_files_before = {}
     model.getExternalFiles.each do |external_file|

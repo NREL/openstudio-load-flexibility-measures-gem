@@ -123,7 +123,7 @@ class PeakPeriodSchedulesShift < OpenStudio::Measure::ModelMeasure
     end
 
     if (peak_period_length + end_hour + schedules_peak_period_delay > 24)
-      runner.registerError("Cannot shift day schedules into the next day.")
+      runner.registerError('Cannot shift day schedules into the next day.')
       return false
     end
 
