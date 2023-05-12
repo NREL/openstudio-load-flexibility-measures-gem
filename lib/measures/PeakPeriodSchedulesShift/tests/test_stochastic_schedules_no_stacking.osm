@@ -3529,7 +3529,7 @@ OS:Schedule:Rule,
   {8d308a8f-750d-4615-990e-6c37a8d00504}, !- Handle
   fridge allday ruleset2,                 !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  5,                                      !- Rule Order
+  0,                                      !- Rule Order
   {8f1e36ff-ccb3-4d0b-ad14-46d381ccabe5}, !- Day Schedule Name
   Yes,                                    !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -3611,7 +3611,7 @@ OS:Schedule:Rule,
   {bfd93fd8-5517-43b3-9c0e-97443bb9db7b}, !- Handle
   fridge allday ruleset3,                 !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  4,                                      !- Rule Order
+  5,                                      !- Rule Order
   {443ecabb-1efa-4955-9429-9e4dda9c4fd5}, !- Day Schedule Name
   Yes,                                    !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -3693,7 +3693,7 @@ OS:Schedule:Rule,
   {34124836-1224-4e56-b7e6-f55cfd610568}, !- Handle
   fridge allday ruleset6,                 !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  3,                                      !- Rule Order
+  4,                                      !- Rule Order
   {d637785e-cbf5-437a-aa91-fb516dccedb5}, !- Day Schedule Name
   Yes,                                    !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -3775,7 +3775,7 @@ OS:Schedule:Rule,
   {b2529bb7-dbcf-4161-8a7c-e236a0927f72}, !- Handle
   fridge allday ruleset10,                !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  2,                                      !- Rule Order
+  3,                                      !- Rule Order
   {25617eab-4f18-402e-a8b8-5650e9abb650}, !- Day Schedule Name
   Yes,                                    !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -3857,7 +3857,7 @@ OS:Schedule:Rule,
   {90658191-ef15-40d4-9d8d-4687cd13a03a}, !- Handle
   fridge allday ruleset11,                !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  1,                                      !- Rule Order
+  2,                                      !- Rule Order
   {593b6112-b8b0-4407-96f3-63e8fad76715}, !- Day Schedule Name
   Yes,                                    !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -3939,7 +3939,7 @@ OS:Schedule:Rule,
   {86bc7d15-3efc-4cd3-80db-6c0764d91c79}, !- Handle
   fridge allday ruleset12,                !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  0,                                      !- Rule Order
+  1,                                      !- Rule Order
   {2dedcbc4-408f-4fc0-baba-2006051a82fb}, !- Day Schedule Name
   Yes,                                    !- Apply Sunday
   Yes,                                    !- Apply Monday

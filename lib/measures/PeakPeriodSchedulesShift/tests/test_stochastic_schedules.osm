@@ -3447,7 +3447,7 @@ OS:Schedule:Rule,
   {f578414f-f80b-465d-9695-90fadf400fb2}, !- Handle
   fridge allday ruleset1,                 !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  13,                                     !- Rule Order
+  8,                                      !- Rule Order
   {78f9765c-d260-44ff-ba92-7978bfcedfa6}, !- Day Schedule Name
   Yes,                                    !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -3529,7 +3529,7 @@ OS:Schedule:Rule,
   {8d308a8f-750d-4615-990e-6c37a8d00504}, !- Handle
   fridge allday ruleset2,                 !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  11,                                     !- Rule Order
+  9,                                      !- Rule Order
   {8f1e36ff-ccb3-4d0b-ad14-46d381ccabe5}, !- Day Schedule Name
   Yes,                                    !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -3611,7 +3611,7 @@ OS:Schedule:Rule,
   {bfd93fd8-5517-43b3-9c0e-97443bb9db7b}, !- Handle
   fridge allday ruleset3,                 !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  9,                                      !- Rule Order
+  11,                                     !- Rule Order
   {443ecabb-1efa-4955-9429-9e4dda9c4fd5}, !- Day Schedule Name
   Yes,                                    !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -3693,7 +3693,7 @@ OS:Schedule:Rule,
   {34124836-1224-4e56-b7e6-f55cfd610568}, !- Handle
   fridge allday ruleset6,                 !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  7,                                      !- Rule Order
+  12,                                     !- Rule Order
   {d637785e-cbf5-437a-aa91-fb516dccedb5}, !- Day Schedule Name
   Yes,                                    !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -3775,7 +3775,7 @@ OS:Schedule:Rule,
   {b2529bb7-dbcf-4161-8a7c-e236a0927f72}, !- Handle
   fridge allday ruleset10,                !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  5,                                      !- Rule Order
+  13,                                     !- Rule Order
   {25617eab-4f18-402e-a8b8-5650e9abb650}, !- Day Schedule Name
   Yes,                                    !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -3857,7 +3857,7 @@ OS:Schedule:Rule,
   {90658191-ef15-40d4-9d8d-4687cd13a03a}, !- Handle
   fridge allday ruleset11,                !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  3,                                      !- Rule Order
+  7,                                      !- Rule Order
   {593b6112-b8b0-4407-96f3-63e8fad76715}, !- Day Schedule Name
   Yes,                                    !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -3939,7 +3939,7 @@ OS:Schedule:Rule,
   {86bc7d15-3efc-4cd3-80db-6c0764d91c79}, !- Handle
   fridge allday ruleset12,                !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  1,                                      !- Rule Order
+  10,                                     !- Rule Order
   {2dedcbc4-408f-4fc0-baba-2006051a82fb}, !- Day Schedule Name
   Yes,                                    !- Apply Sunday
   Yes,                                    !- Apply Monday
@@ -8305,11 +8305,11 @@ OS:OutputControl:Files,
   Yes;                                    !- Output Tarcog
 
 OS:Schedule:Rule,
-  {b9c03145-3e4b-46ae-b885-9fbddc580bef}, !- Handle
-  fridge allday ruleset12 Shifted,        !- Name
+  {5a436597-1370-46c8-94d3-0da80dc0fca9}, !- Handle
+  fridge allday ruleset1 Shifted,         !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  0,                                      !- Rule Order
-  {ca0309d5-71a4-40ec-97d5-a73cde18b18b}, !- Day Schedule Name
+  6,                                      !- Rule Order
+  {7a702c87-8a32-4f3e-89aa-d5544489c1da}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -8318,14 +8318,14 @@ OS:Schedule:Rule,
   Yes,                                    !- Apply Friday
   No,                                     !- Apply Saturday
   DateRange,                              !- Date Specification Type
-  12,                                     !- Start Month
+  1,                                      !- Start Month
   1,                                      !- Start Day
-  12,                                     !- End Month
+  1,                                      !- End Month
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {ca0309d5-71a4-40ec-97d5-a73cde18b18b}, !- Handle
-  fridge allday12 Shifted,                !- Name
+  {7a702c87-8a32-4f3e-89aa-d5544489c1da}, !- Handle
+  fridge allday1 Shifted,                 !- Name
   {ed453776-f1a7-47dd-a762-7a78feae68aa}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
   1,                                      !- Hour 1
@@ -8402,399 +8402,11 @@ OS:Schedule:Day,
   0.626222627737226;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {3b6fb851-cc94-4dff-a335-bb29f5dcf107}, !- Handle
-  fridge allday ruleset11 Shifted,        !- Name
-  {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  2,                                      !- Rule Order
-  {6c81dbfd-ee48-4815-adfa-ea195440ac41}, !- Day Schedule Name
-  No,                                     !- Apply Sunday
-  Yes,                                    !- Apply Monday
-  Yes,                                    !- Apply Tuesday
-  Yes,                                    !- Apply Wednesday
-  Yes,                                    !- Apply Thursday
-  Yes,                                    !- Apply Friday
-  No,                                     !- Apply Saturday
-  DateRange,                              !- Date Specification Type
-  11,                                     !- Start Month
-  1,                                      !- Start Day
-  11,                                     !- End Month
-  30;                                     !- End Day
-
-OS:Schedule:Day,
-  {6c81dbfd-ee48-4815-adfa-ea195440ac41}, !- Handle
-  fridge allday11 Shifted,                !- Name
-  {ed453776-f1a7-47dd-a762-7a78feae68aa}, !- Schedule Type Limits Name
-  ,                                       !- Interpolate to Timestep
-  1,                                      !- Hour 1
-  0,                                      !- Minute 1
-  0.675182481751825,                      !- Value Until Time 1
-  2,                                      !- Hour 2
-  0,                                      !- Minute 2
-  0.658302919708029,                      !- Value Until Time 2
-  3,                                      !- Hour 3
-  0,                                      !- Minute 3
-  0.641423357664234,                      !- Value Until Time 3
-  4,                                      !- Hour 4
-  0,                                      !- Minute 4
-  0.624543795620438,                      !- Value Until Time 4
-  5,                                      !- Hour 5
-  0,                                      !- Minute 5
-  0.607664233576642,                      !- Value Until Time 5
-  6,                                      !- Hour 6
-  0,                                      !- Minute 6
-  0.607664233576642,                      !- Value Until Time 6
-  7,                                      !- Hour 7
-  0,                                      !- Minute 7
-  0.641423357664234,                      !- Value Until Time 7
-  8,                                      !- Hour 8
-  0,                                      !- Minute 8
-  0.675182481751825,                      !- Value Until Time 8
-  9,                                      !- Hour 9
-  0,                                      !- Minute 9
-  0.69206204379562,                       !- Value Until Time 9
-  10,                                     !- Hour 10
-  0,                                      !- Minute 10
-  0.69206204379562,                       !- Value Until Time 10
-  11,                                     !- Hour 11
-  0,                                      !- Minute 11
-  0.675182481751825,                      !- Value Until Time 11
-  12,                                     !- Hour 12
-  0,                                      !- Minute 12
-  0.675182481751825,                      !- Value Until Time 12
-  13,                                     !- Hour 13
-  0,                                      !- Minute 13
-  0.708941605839416,                      !- Value Until Time 13
-  14,                                     !- Hour 14
-  0,                                      !- Minute 14
-  0.708941605839416,                      !- Value Until Time 14
-  15,                                     !- Hour 15
-  0,                                      !- Minute 15
-  0.708941605839416,                      !- Value Until Time 15
-  16,                                     !- Hour 16
-  0,                                      !- Minute 16
-  0.69206204379562,                       !- Value Until Time 16
-  17,                                     !- Hour 17
-  0,                                      !- Minute 17
-  0.742700729927007,                      !- Value Until Time 17
-  18,                                     !- Hour 18
-  0,                                      !- Minute 18
-  0,                                      !- Value Until Time 18
-  19,                                     !- Hour 19
-  0,                                      !- Minute 19
-  0,                                      !- Value Until Time 19
-  20,                                     !- Hour 20
-  0,                                      !- Minute 20
-  0.81021897810219,                       !- Value Until Time 20
-  21,                                     !- Hour 21
-  0,                                      !- Minute 21
-  1.60355839416058,                       !- Value Until Time 21
-  22,                                     !- Hour 22
-  0,                                      !- Minute 22
-  1.62043795620438,                       !- Value Until Time 22
-  23,                                     !- Hour 23
-  0,                                      !- Minute 23
-  0.742700729927007,                      !- Value Until Time 23
-  24,                                     !- Hour 24
-  0,                                      !- Minute 24
-  0.69206204379562;                       !- Value Until Time 24
-
-OS:Schedule:Rule,
-  {d9ff9781-7020-4e99-95f4-b75a19eaf41e}, !- Handle
-  fridge allday ruleset10 Shifted,        !- Name
-  {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  4,                                      !- Rule Order
-  {71aba146-392a-46b0-aa4a-d46aa2859fa9}, !- Day Schedule Name
-  No,                                     !- Apply Sunday
-  Yes,                                    !- Apply Monday
-  Yes,                                    !- Apply Tuesday
-  Yes,                                    !- Apply Wednesday
-  Yes,                                    !- Apply Thursday
-  Yes,                                    !- Apply Friday
-  No,                                     !- Apply Saturday
-  DateRange,                              !- Date Specification Type
-  10,                                     !- Start Month
-  1,                                      !- Start Day
-  10,                                     !- End Month
-  31;                                     !- End Day
-
-OS:Schedule:Day,
-  {71aba146-392a-46b0-aa4a-d46aa2859fa9}, !- Handle
-  fridge allday10 Shifted,                !- Name
-  {ed453776-f1a7-47dd-a762-7a78feae68aa}, !- Schedule Type Limits Name
-  ,                                       !- Interpolate to Timestep
-  1,                                      !- Hour 1
-  0,                                      !- Minute 1
-  0.67956204379562,                       !- Value Until Time 1
-  2,                                      !- Hour 2
-  0,                                      !- Minute 2
-  0.66257299270073,                       !- Value Until Time 2
-  3,                                      !- Hour 3
-  0,                                      !- Minute 3
-  0.645583941605839,                      !- Value Until Time 3
-  4,                                      !- Hour 4
-  0,                                      !- Minute 4
-  0.628594890510949,                      !- Value Until Time 4
-  5,                                      !- Hour 5
-  0,                                      !- Minute 5
-  0.611605839416058,                      !- Value Until Time 5
-  6,                                      !- Hour 6
-  0,                                      !- Minute 6
-  0.611605839416058,                      !- Value Until Time 6
-  7,                                      !- Hour 7
-  0,                                      !- Minute 7
-  0.645583941605839,                      !- Value Until Time 7
-  8,                                      !- Hour 8
-  0,                                      !- Minute 8
-  0.67956204379562,                       !- Value Until Time 8
-  9,                                      !- Hour 9
-  0,                                      !- Minute 9
-  0.696551094890511,                      !- Value Until Time 9
-  10,                                     !- Hour 10
-  0,                                      !- Minute 10
-  0.696551094890511,                      !- Value Until Time 10
-  11,                                     !- Hour 11
-  0,                                      !- Minute 11
-  0.67956204379562,                       !- Value Until Time 11
-  12,                                     !- Hour 12
-  0,                                      !- Minute 12
-  0.67956204379562,                       !- Value Until Time 12
-  13,                                     !- Hour 13
-  0,                                      !- Minute 13
-  0.713540145985401,                      !- Value Until Time 13
-  14,                                     !- Hour 14
-  0,                                      !- Minute 14
-  0.713540145985401,                      !- Value Until Time 14
-  15,                                     !- Hour 15
-  0,                                      !- Minute 15
-  0.713540145985401,                      !- Value Until Time 15
-  16,                                     !- Hour 16
-  0,                                      !- Minute 16
-  0.696551094890511,                      !- Value Until Time 16
-  17,                                     !- Hour 17
-  0,                                      !- Minute 17
-  0.747518248175182,                      !- Value Until Time 17
-  18,                                     !- Hour 18
-  0,                                      !- Minute 18
-  0,                                      !- Value Until Time 18
-  19,                                     !- Hour 19
-  0,                                      !- Minute 19
-  0,                                      !- Value Until Time 19
-  20,                                     !- Hour 20
-  0,                                      !- Minute 20
-  0.815474452554744,                      !- Value Until Time 20
-  21,                                     !- Hour 21
-  0,                                      !- Minute 21
-  1.6139598540146,                        !- Value Until Time 21
-  22,                                     !- Hour 22
-  0,                                      !- Minute 22
-  1.63094890510949,                       !- Value Until Time 22
-  23,                                     !- Hour 23
-  0,                                      !- Minute 23
-  0.747518248175182,                      !- Value Until Time 23
-  24,                                     !- Hour 24
-  0,                                      !- Minute 24
-  0.696551094890511;                      !- Value Until Time 24
-
-OS:Schedule:Rule,
-  {fb06b77e-bb99-4678-9765-705613c39d64}, !- Handle
-  fridge allday ruleset6 Shifted,         !- Name
-  {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  6,                                      !- Rule Order
-  {02120fb6-e4bb-4164-b74e-f60baf3ba44d}, !- Day Schedule Name
-  No,                                     !- Apply Sunday
-  Yes,                                    !- Apply Monday
-  Yes,                                    !- Apply Tuesday
-  Yes,                                    !- Apply Wednesday
-  Yes,                                    !- Apply Thursday
-  Yes,                                    !- Apply Friday
-  No,                                     !- Apply Saturday
-  DateRange,                              !- Date Specification Type
-  6,                                      !- Start Month
-  1,                                      !- Start Day
-  9,                                      !- End Month
-  30;                                     !- End Day
-
-OS:Schedule:Day,
-  {02120fb6-e4bb-4164-b74e-f60baf3ba44d}, !- Handle
-  fridge allday6 Shifted,                 !- Name
-  {ed453776-f1a7-47dd-a762-7a78feae68aa}, !- Schedule Type Limits Name
-  ,                                       !- Interpolate to Timestep
-  1,                                      !- Hour 1
-  0,                                      !- Minute 1
-  0.8,                                    !- Value Until Time 1
-  2,                                      !- Hour 2
-  0,                                      !- Minute 2
-  0.78,                                   !- Value Until Time 2
-  3,                                      !- Hour 3
-  0,                                      !- Minute 3
-  0.76,                                   !- Value Until Time 3
-  4,                                      !- Hour 4
-  0,                                      !- Minute 4
-  0.74,                                   !- Value Until Time 4
-  5,                                      !- Hour 5
-  0,                                      !- Minute 5
-  0.72,                                   !- Value Until Time 5
-  6,                                      !- Hour 6
-  0,                                      !- Minute 6
-  0.72,                                   !- Value Until Time 6
-  7,                                      !- Hour 7
-  0,                                      !- Minute 7
-  0.76,                                   !- Value Until Time 7
-  8,                                      !- Hour 8
-  0,                                      !- Minute 8
-  0.8,                                    !- Value Until Time 8
-  9,                                      !- Hour 9
-  0,                                      !- Minute 9
-  0.82,                                   !- Value Until Time 9
-  10,                                     !- Hour 10
-  0,                                      !- Minute 10
-  0.82,                                   !- Value Until Time 10
-  11,                                     !- Hour 11
-  0,                                      !- Minute 11
-  0.8,                                    !- Value Until Time 11
-  12,                                     !- Hour 12
-  0,                                      !- Minute 12
-  0.8,                                    !- Value Until Time 12
-  13,                                     !- Hour 13
-  0,                                      !- Minute 13
-  0.84,                                   !- Value Until Time 13
-  14,                                     !- Hour 14
-  0,                                      !- Minute 14
-  0.84,                                   !- Value Until Time 14
-  15,                                     !- Hour 15
-  0,                                      !- Minute 15
-  0.84,                                   !- Value Until Time 15
-  16,                                     !- Hour 16
-  0,                                      !- Minute 16
-  0.82,                                   !- Value Until Time 16
-  17,                                     !- Hour 17
-  0,                                      !- Minute 17
-  0.88,                                   !- Value Until Time 17
-  18,                                     !- Hour 18
-  0,                                      !- Minute 18
-  0,                                      !- Value Until Time 18
-  19,                                     !- Hour 19
-  0,                                      !- Minute 19
-  0,                                      !- Value Until Time 19
-  20,                                     !- Hour 20
-  0,                                      !- Minute 20
-  0.96,                                   !- Value Until Time 20
-  21,                                     !- Hour 21
-  0,                                      !- Minute 21
-  1.9,                                    !- Value Until Time 21
-  22,                                     !- Hour 22
-  0,                                      !- Minute 22
-  1.92,                                   !- Value Until Time 22
-  23,                                     !- Hour 23
-  0,                                      !- Minute 23
-  0.88,                                   !- Value Until Time 23
-  24,                                     !- Hour 24
-  0,                                      !- Minute 24
-  0.82;                                   !- Value Until Time 24
-
-OS:Schedule:Rule,
-  {c51e6df7-9ace-43be-b310-bab386ed42cb}, !- Handle
-  fridge allday ruleset3 Shifted,         !- Name
-  {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  8,                                      !- Rule Order
-  {44fbbbff-3141-4b3a-b4b9-6458d88444f4}, !- Day Schedule Name
-  No,                                     !- Apply Sunday
-  Yes,                                    !- Apply Monday
-  Yes,                                    !- Apply Tuesday
-  Yes,                                    !- Apply Wednesday
-  Yes,                                    !- Apply Thursday
-  Yes,                                    !- Apply Friday
-  No,                                     !- Apply Saturday
-  DateRange,                              !- Date Specification Type
-  3,                                      !- Start Month
-  1,                                      !- Start Day
-  5,                                      !- End Month
-  31;                                     !- End Day
-
-OS:Schedule:Day,
-  {44fbbbff-3141-4b3a-b4b9-6458d88444f4}, !- Handle
-  fridge allday3 Shifted,                 !- Name
-  {ed453776-f1a7-47dd-a762-7a78feae68aa}, !- Schedule Type Limits Name
-  ,                                       !- Interpolate to Timestep
-  1,                                      !- Hour 1
-  0,                                      !- Minute 1
-  0.791240875912409,                      !- Value Until Time 1
-  2,                                      !- Hour 2
-  0,                                      !- Minute 2
-  0.771459854014598,                      !- Value Until Time 2
-  3,                                      !- Hour 3
-  0,                                      !- Minute 3
-  0.751678832116788,                      !- Value Until Time 3
-  4,                                      !- Hour 4
-  0,                                      !- Minute 4
-  0.731897810218978,                      !- Value Until Time 4
-  5,                                      !- Hour 5
-  0,                                      !- Minute 5
-  0.712116788321168,                      !- Value Until Time 5
-  6,                                      !- Hour 6
-  0,                                      !- Minute 6
-  0.712116788321168,                      !- Value Until Time 6
-  7,                                      !- Hour 7
-  0,                                      !- Minute 7
-  0.751678832116788,                      !- Value Until Time 7
-  8,                                      !- Hour 8
-  0,                                      !- Minute 8
-  0.791240875912409,                      !- Value Until Time 8
-  9,                                      !- Hour 9
-  0,                                      !- Minute 9
-  0.811021897810219,                      !- Value Until Time 9
-  10,                                     !- Hour 10
-  0,                                      !- Minute 10
-  0.811021897810219,                      !- Value Until Time 10
-  11,                                     !- Hour 11
-  0,                                      !- Minute 11
-  0.791240875912409,                      !- Value Until Time 11
-  12,                                     !- Hour 12
-  0,                                      !- Minute 12
-  0.791240875912409,                      !- Value Until Time 12
-  13,                                     !- Hour 13
-  0,                                      !- Minute 13
-  0.830802919708029,                      !- Value Until Time 13
-  14,                                     !- Hour 14
-  0,                                      !- Minute 14
-  0.830802919708029,                      !- Value Until Time 14
-  15,                                     !- Hour 15
-  0,                                      !- Minute 15
-  0.830802919708029,                      !- Value Until Time 15
-  16,                                     !- Hour 16
-  0,                                      !- Minute 16
-  0.811021897810219,                      !- Value Until Time 16
-  17,                                     !- Hour 17
-  0,                                      !- Minute 17
-  0.87036496350365,                       !- Value Until Time 17
-  18,                                     !- Hour 18
-  0,                                      !- Minute 18
-  0,                                      !- Value Until Time 18
-  19,                                     !- Hour 19
-  0,                                      !- Minute 19
-  0,                                      !- Value Until Time 19
-  20,                                     !- Hour 20
-  0,                                      !- Minute 20
-  0.949489051094891,                      !- Value Until Time 20
-  21,                                     !- Hour 21
-  0,                                      !- Minute 21
-  1.87919708029197,                       !- Value Until Time 21
-  22,                                     !- Hour 22
-  0,                                      !- Minute 22
-  1.89897810218978,                       !- Value Until Time 22
-  23,                                     !- Hour 23
-  0,                                      !- Minute 23
-  0.87036496350365,                       !- Value Until Time 23
-  24,                                     !- Hour 24
-  0,                                      !- Minute 24
-  0.811021897810219;                      !- Value Until Time 24
-
-OS:Schedule:Rule,
-  {eb9b9c56-1176-46a2-9eef-60a01f465121}, !- Handle
+  {603555be-dda6-492b-a520-fb80973f4072}, !- Handle
   fridge allday ruleset2 Shifted,         !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  10,                                     !- Rule Order
-  {9af39794-814c-4f94-8d23-6c24dd5fda8e}, !- Day Schedule Name
+  5,                                      !- Rule Order
+  {7fd9f185-1a1e-4320-b9f7-75caf8042bd0}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -8809,7 +8421,7 @@ OS:Schedule:Rule,
   28;                                     !- End Day
 
 OS:Schedule:Day,
-  {9af39794-814c-4f94-8d23-6c24dd5fda8e}, !- Handle
+  {7fd9f185-1a1e-4320-b9f7-75caf8042bd0}, !- Handle
   fridge allday2 Shifted,                 !- Name
   {ed453776-f1a7-47dd-a762-7a78feae68aa}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
@@ -8887,11 +8499,11 @@ OS:Schedule:Day,
   0.624726277372263;                      !- Value Until Time 24
 
 OS:Schedule:Rule,
-  {35de4a14-e594-47dc-b4d2-1f0fc9eaf863}, !- Handle
-  fridge allday ruleset1 Shifted,         !- Name
+  {e1916eff-b3fe-468a-8c64-a2c562df0786}, !- Handle
+  fridge allday ruleset3 Shifted,         !- Name
   {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
-  12,                                     !- Rule Order
-  {065898fc-bfda-4114-9980-d6aab8a332f1}, !- Day Schedule Name
+  4,                                      !- Rule Order
+  {e6d6d3e6-f7ba-4043-92b7-396db8e88f4f}, !- Day Schedule Name
   No,                                     !- Apply Sunday
   Yes,                                    !- Apply Monday
   Yes,                                    !- Apply Tuesday
@@ -8900,14 +8512,402 @@ OS:Schedule:Rule,
   Yes,                                    !- Apply Friday
   No,                                     !- Apply Saturday
   DateRange,                              !- Date Specification Type
-  1,                                      !- Start Month
+  3,                                      !- Start Month
   1,                                      !- Start Day
-  1,                                      !- End Month
+  5,                                      !- End Month
   31;                                     !- End Day
 
 OS:Schedule:Day,
-  {065898fc-bfda-4114-9980-d6aab8a332f1}, !- Handle
-  fridge allday1 Shifted,                 !- Name
+  {e6d6d3e6-f7ba-4043-92b7-396db8e88f4f}, !- Handle
+  fridge allday3 Shifted,                 !- Name
+  {ed453776-f1a7-47dd-a762-7a78feae68aa}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  1,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.791240875912409,                      !- Value Until Time 1
+  2,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.771459854014598,                      !- Value Until Time 2
+  3,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.751678832116788,                      !- Value Until Time 3
+  4,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.731897810218978,                      !- Value Until Time 4
+  5,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.712116788321168,                      !- Value Until Time 5
+  6,                                      !- Hour 6
+  0,                                      !- Minute 6
+  0.712116788321168,                      !- Value Until Time 6
+  7,                                      !- Hour 7
+  0,                                      !- Minute 7
+  0.751678832116788,                      !- Value Until Time 7
+  8,                                      !- Hour 8
+  0,                                      !- Minute 8
+  0.791240875912409,                      !- Value Until Time 8
+  9,                                      !- Hour 9
+  0,                                      !- Minute 9
+  0.811021897810219,                      !- Value Until Time 9
+  10,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.811021897810219,                      !- Value Until Time 10
+  11,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.791240875912409,                      !- Value Until Time 11
+  12,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.791240875912409,                      !- Value Until Time 12
+  13,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.830802919708029,                      !- Value Until Time 13
+  14,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.830802919708029,                      !- Value Until Time 14
+  15,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.830802919708029,                      !- Value Until Time 15
+  16,                                     !- Hour 16
+  0,                                      !- Minute 16
+  0.811021897810219,                      !- Value Until Time 16
+  17,                                     !- Hour 17
+  0,                                      !- Minute 17
+  0.87036496350365,                       !- Value Until Time 17
+  18,                                     !- Hour 18
+  0,                                      !- Minute 18
+  0,                                      !- Value Until Time 18
+  19,                                     !- Hour 19
+  0,                                      !- Minute 19
+  0,                                      !- Value Until Time 19
+  20,                                     !- Hour 20
+  0,                                      !- Minute 20
+  0.949489051094891,                      !- Value Until Time 20
+  21,                                     !- Hour 21
+  0,                                      !- Minute 21
+  1.87919708029197,                       !- Value Until Time 21
+  22,                                     !- Hour 22
+  0,                                      !- Minute 22
+  1.89897810218978,                       !- Value Until Time 22
+  23,                                     !- Hour 23
+  0,                                      !- Minute 23
+  0.87036496350365,                       !- Value Until Time 23
+  24,                                     !- Hour 24
+  0,                                      !- Minute 24
+  0.811021897810219;                      !- Value Until Time 24
+
+OS:Schedule:Rule,
+  {d9bc607a-7439-40db-ae82-4ea3ad22051b}, !- Handle
+  fridge allday ruleset6 Shifted,         !- Name
+  {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
+  3,                                      !- Rule Order
+  {2f6fe145-41a4-4baa-aa8b-14cbb4367900}, !- Day Schedule Name
+  No,                                     !- Apply Sunday
+  Yes,                                    !- Apply Monday
+  Yes,                                    !- Apply Tuesday
+  Yes,                                    !- Apply Wednesday
+  Yes,                                    !- Apply Thursday
+  Yes,                                    !- Apply Friday
+  No,                                     !- Apply Saturday
+  DateRange,                              !- Date Specification Type
+  6,                                      !- Start Month
+  1,                                      !- Start Day
+  9,                                      !- End Month
+  30;                                     !- End Day
+
+OS:Schedule:Day,
+  {2f6fe145-41a4-4baa-aa8b-14cbb4367900}, !- Handle
+  fridge allday6 Shifted,                 !- Name
+  {ed453776-f1a7-47dd-a762-7a78feae68aa}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  1,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.8,                                    !- Value Until Time 1
+  2,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.78,                                   !- Value Until Time 2
+  3,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.76,                                   !- Value Until Time 3
+  4,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.74,                                   !- Value Until Time 4
+  5,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.72,                                   !- Value Until Time 5
+  6,                                      !- Hour 6
+  0,                                      !- Minute 6
+  0.72,                                   !- Value Until Time 6
+  7,                                      !- Hour 7
+  0,                                      !- Minute 7
+  0.76,                                   !- Value Until Time 7
+  8,                                      !- Hour 8
+  0,                                      !- Minute 8
+  0.8,                                    !- Value Until Time 8
+  9,                                      !- Hour 9
+  0,                                      !- Minute 9
+  0.82,                                   !- Value Until Time 9
+  10,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.82,                                   !- Value Until Time 10
+  11,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.8,                                    !- Value Until Time 11
+  12,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.8,                                    !- Value Until Time 12
+  13,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.84,                                   !- Value Until Time 13
+  14,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.84,                                   !- Value Until Time 14
+  15,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.84,                                   !- Value Until Time 15
+  16,                                     !- Hour 16
+  0,                                      !- Minute 16
+  0.82,                                   !- Value Until Time 16
+  17,                                     !- Hour 17
+  0,                                      !- Minute 17
+  0.88,                                   !- Value Until Time 17
+  18,                                     !- Hour 18
+  0,                                      !- Minute 18
+  0,                                      !- Value Until Time 18
+  19,                                     !- Hour 19
+  0,                                      !- Minute 19
+  0,                                      !- Value Until Time 19
+  20,                                     !- Hour 20
+  0,                                      !- Minute 20
+  0.96,                                   !- Value Until Time 20
+  21,                                     !- Hour 21
+  0,                                      !- Minute 21
+  1.9,                                    !- Value Until Time 21
+  22,                                     !- Hour 22
+  0,                                      !- Minute 22
+  1.92,                                   !- Value Until Time 22
+  23,                                     !- Hour 23
+  0,                                      !- Minute 23
+  0.88,                                   !- Value Until Time 23
+  24,                                     !- Hour 24
+  0,                                      !- Minute 24
+  0.82;                                   !- Value Until Time 24
+
+OS:Schedule:Rule,
+  {63e6400b-1a50-408c-a363-155ada84a5b3}, !- Handle
+  fridge allday ruleset10 Shifted,        !- Name
+  {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
+  2,                                      !- Rule Order
+  {a084328d-8f0b-48fb-b60e-ef43c9cc64e4}, !- Day Schedule Name
+  No,                                     !- Apply Sunday
+  Yes,                                    !- Apply Monday
+  Yes,                                    !- Apply Tuesday
+  Yes,                                    !- Apply Wednesday
+  Yes,                                    !- Apply Thursday
+  Yes,                                    !- Apply Friday
+  No,                                     !- Apply Saturday
+  DateRange,                              !- Date Specification Type
+  10,                                     !- Start Month
+  1,                                      !- Start Day
+  10,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {a084328d-8f0b-48fb-b60e-ef43c9cc64e4}, !- Handle
+  fridge allday10 Shifted,                !- Name
+  {ed453776-f1a7-47dd-a762-7a78feae68aa}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  1,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.67956204379562,                       !- Value Until Time 1
+  2,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.66257299270073,                       !- Value Until Time 2
+  3,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.645583941605839,                      !- Value Until Time 3
+  4,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.628594890510949,                      !- Value Until Time 4
+  5,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.611605839416058,                      !- Value Until Time 5
+  6,                                      !- Hour 6
+  0,                                      !- Minute 6
+  0.611605839416058,                      !- Value Until Time 6
+  7,                                      !- Hour 7
+  0,                                      !- Minute 7
+  0.645583941605839,                      !- Value Until Time 7
+  8,                                      !- Hour 8
+  0,                                      !- Minute 8
+  0.67956204379562,                       !- Value Until Time 8
+  9,                                      !- Hour 9
+  0,                                      !- Minute 9
+  0.696551094890511,                      !- Value Until Time 9
+  10,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.696551094890511,                      !- Value Until Time 10
+  11,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.67956204379562,                       !- Value Until Time 11
+  12,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.67956204379562,                       !- Value Until Time 12
+  13,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.713540145985401,                      !- Value Until Time 13
+  14,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.713540145985401,                      !- Value Until Time 14
+  15,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.713540145985401,                      !- Value Until Time 15
+  16,                                     !- Hour 16
+  0,                                      !- Minute 16
+  0.696551094890511,                      !- Value Until Time 16
+  17,                                     !- Hour 17
+  0,                                      !- Minute 17
+  0.747518248175182,                      !- Value Until Time 17
+  18,                                     !- Hour 18
+  0,                                      !- Minute 18
+  0,                                      !- Value Until Time 18
+  19,                                     !- Hour 19
+  0,                                      !- Minute 19
+  0,                                      !- Value Until Time 19
+  20,                                     !- Hour 20
+  0,                                      !- Minute 20
+  0.815474452554744,                      !- Value Until Time 20
+  21,                                     !- Hour 21
+  0,                                      !- Minute 21
+  1.6139598540146,                        !- Value Until Time 21
+  22,                                     !- Hour 22
+  0,                                      !- Minute 22
+  1.63094890510949,                       !- Value Until Time 22
+  23,                                     !- Hour 23
+  0,                                      !- Minute 23
+  0.747518248175182,                      !- Value Until Time 23
+  24,                                     !- Hour 24
+  0,                                      !- Minute 24
+  0.696551094890511;                      !- Value Until Time 24
+
+OS:Schedule:Rule,
+  {479762e3-3db8-4d4b-9747-2013066b2b7b}, !- Handle
+  fridge allday ruleset11 Shifted,        !- Name
+  {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {690096ea-262c-4750-a06e-b2dbd26e647c}, !- Day Schedule Name
+  No,                                     !- Apply Sunday
+  Yes,                                    !- Apply Monday
+  Yes,                                    !- Apply Tuesday
+  Yes,                                    !- Apply Wednesday
+  Yes,                                    !- Apply Thursday
+  Yes,                                    !- Apply Friday
+  No,                                     !- Apply Saturday
+  DateRange,                              !- Date Specification Type
+  11,                                     !- Start Month
+  1,                                      !- Start Day
+  11,                                     !- End Month
+  30;                                     !- End Day
+
+OS:Schedule:Day,
+  {690096ea-262c-4750-a06e-b2dbd26e647c}, !- Handle
+  fridge allday11 Shifted,                !- Name
+  {ed453776-f1a7-47dd-a762-7a78feae68aa}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  1,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.675182481751825,                      !- Value Until Time 1
+  2,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.658302919708029,                      !- Value Until Time 2
+  3,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.641423357664234,                      !- Value Until Time 3
+  4,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.624543795620438,                      !- Value Until Time 4
+  5,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.607664233576642,                      !- Value Until Time 5
+  6,                                      !- Hour 6
+  0,                                      !- Minute 6
+  0.607664233576642,                      !- Value Until Time 6
+  7,                                      !- Hour 7
+  0,                                      !- Minute 7
+  0.641423357664234,                      !- Value Until Time 7
+  8,                                      !- Hour 8
+  0,                                      !- Minute 8
+  0.675182481751825,                      !- Value Until Time 8
+  9,                                      !- Hour 9
+  0,                                      !- Minute 9
+  0.69206204379562,                       !- Value Until Time 9
+  10,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.69206204379562,                       !- Value Until Time 10
+  11,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.675182481751825,                      !- Value Until Time 11
+  12,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.675182481751825,                      !- Value Until Time 12
+  13,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.708941605839416,                      !- Value Until Time 13
+  14,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.708941605839416,                      !- Value Until Time 14
+  15,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.708941605839416,                      !- Value Until Time 15
+  16,                                     !- Hour 16
+  0,                                      !- Minute 16
+  0.69206204379562,                       !- Value Until Time 16
+  17,                                     !- Hour 17
+  0,                                      !- Minute 17
+  0.742700729927007,                      !- Value Until Time 17
+  18,                                     !- Hour 18
+  0,                                      !- Minute 18
+  0,                                      !- Value Until Time 18
+  19,                                     !- Hour 19
+  0,                                      !- Minute 19
+  0,                                      !- Value Until Time 19
+  20,                                     !- Hour 20
+  0,                                      !- Minute 20
+  0.81021897810219,                       !- Value Until Time 20
+  21,                                     !- Hour 21
+  0,                                      !- Minute 21
+  1.60355839416058,                       !- Value Until Time 21
+  22,                                     !- Hour 22
+  0,                                      !- Minute 22
+  1.62043795620438,                       !- Value Until Time 22
+  23,                                     !- Hour 23
+  0,                                      !- Minute 23
+  0.742700729927007,                      !- Value Until Time 23
+  24,                                     !- Hour 24
+  0,                                      !- Minute 24
+  0.69206204379562;                       !- Value Until Time 24
+
+OS:Schedule:Rule,
+  {ede3da35-f59b-4053-a80a-a71c7b68a2af}, !- Handle
+  fridge allday ruleset12 Shifted,        !- Name
+  {db75eae1-ada9-4ca7-9fc6-6ff6ca695ca1}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {4957086d-5dd5-4cf1-b58e-7b9bc7752db4}, !- Day Schedule Name
+  No,                                     !- Apply Sunday
+  Yes,                                    !- Apply Monday
+  Yes,                                    !- Apply Tuesday
+  Yes,                                    !- Apply Wednesday
+  Yes,                                    !- Apply Thursday
+  Yes,                                    !- Apply Friday
+  No,                                     !- Apply Saturday
+  DateRange,                              !- Date Specification Type
+  12,                                     !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {4957086d-5dd5-4cf1-b58e-7b9bc7752db4}, !- Handle
+  fridge allday12 Shifted,                !- Name
   {ed453776-f1a7-47dd-a762-7a78feae68aa}, !- Schedule Type Limits Name
   ,                                       !- Interpolate to Timestep
   1,                                      !- Hour 1
