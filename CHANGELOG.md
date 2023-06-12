@@ -1,5 +1,8 @@
 # OpenStudio Load Flexibility Measures Gem
 
+## Version 0.7.0
+- Updating dependencies and licenses for OpenStudio 3.6 (upgrade to standards gem 0.4.0, extension gem 0.6.1)
+
 ## Version 0.6.1
 - Fixing E+ run using Coil:Cooling:DX:SingleSpeed:ThermalStorage in Packaged Ice Storage Measure [#52](https://github.com/NREL/openstudio-load-flexibility-measures-gem/issues/52)
 
