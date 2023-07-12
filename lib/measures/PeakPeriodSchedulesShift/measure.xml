@@ -3,8 +3,8 @@
   <schema_version>3.1</schema_version>
   <name>peak_period_schedules_shift</name>
   <uid>4954275f-9caf-422c-9e1f-061244ade152</uid>
-  <version_id>fe457362-f259-4dcc-93a1-50361229e3a6</version_id>
-  <version_modified>2023-07-12T21:04:44Z</version_modified>
+  <version_id>8def67a4-b5d7-4d61-8e13-ddecad864a63</version_id>
+  <version_modified>2023-07-12T21:10:48Z</version_modified>
   <xml_checksum>A8988589</xml_checksum>
   <class_name>PeakPeriodSchedulesShift</class_name>
   <display_name>PeakPeriodSchedulesShift</display_name>
@@ -126,8 +126,20 @@
       <checksum>0536DAD0</checksum>
     </file>
     <file>
+      <filename>measures-overview.png</filename>
+      <filetype>png</filetype>
+      <usage_type>doc</usage_type>
+      <checksum>0536DAD0</checksum>
+    </file>
+    <file>
       <filename>other-examples1.PNG</filename>
       <filetype>PNG</filetype>
+      <usage_type>doc</usage_type>
+      <checksum>39590575</checksum>
+    </file>
+    <file>
+      <filename>other-examples1.png</filename>
+      <filetype>png</filetype>
       <usage_type>doc</usage_type>
       <checksum>39590575</checksum>
     </file>
@@ -138,8 +150,20 @@
       <checksum>5AA85040</checksum>
     </file>
     <file>
+      <filename>other-examples2.png</filename>
+      <filetype>png</filetype>
+      <usage_type>doc</usage_type>
+      <checksum>5AA85040</checksum>
+    </file>
+    <file>
       <filename>other-examples3.PNG</filename>
       <filetype>PNG</filetype>
+      <usage_type>doc</usage_type>
+      <checksum>D6815644</checksum>
+    </file>
+    <file>
+      <filename>other-examples3.png</filename>
+      <filetype>png</filetype>
       <usage_type>doc</usage_type>
       <checksum>D6815644</checksum>
     </file>
