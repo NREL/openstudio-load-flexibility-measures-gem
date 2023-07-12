@@ -55,7 +55,7 @@ Below are additional examples illustrating various scenarios for changing values
 *Delay*: None |
 *Weekdays Only*: Yes
 
-![Overview](./docs/other-examples1.png?raw=true)
+![Shorter Peak Period](./docs/other-examples1.png?raw=true)
 
 ### Non-zero delay value
 
@@ -63,7 +63,7 @@ Below are additional examples illustrating various scenarios for changing values
 *Delay*: 1hr |
 *Weekdays Only*: Yes
 
-![Overview](./docs/other-examples2.png?raw=true)
+![Nonzero Delay Value](./docs/other-examples2.png?raw=true)
 
 ### Applied to weekends
 
@@ -71,7 +71,7 @@ Below are additional examples illustrating various scenarios for changing values
 *Delay*: None |
 *Weekdays Only*: No
 
-![Overview](./docs/other-examples3.png?raw=true)
+![Applied To Weekends](./docs/other-examples3.png?raw=true)
 
 ___
 
