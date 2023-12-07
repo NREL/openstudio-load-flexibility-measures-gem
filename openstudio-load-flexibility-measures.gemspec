@@ -25,8 +25,8 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'bundler', '~> 2.1'
 
-  spec.add_dependency 'openstudio-extension', '~> 0.6.1'
-  spec.add_dependency 'openstudio-standards', '~> 0.4.0'
+  spec.add_dependency 'openstudio-extension', '~> 0.7.0'
+  spec.add_dependency 'openstudio-standards', '~> 0.5.0'
 
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.9'
