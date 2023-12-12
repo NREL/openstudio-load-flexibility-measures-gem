@@ -3,8 +3,8 @@
   <schema_version>3.1</schema_version>
   <name>add_packaged_ice_storage</name>
   <uid>2aa8c128-53b9-49fd-9aaf-9253a1f05936</uid>
-  <version_id>27273d85-0323-45fa-87c1-05f4a4e06626</version_id>
-  <version_modified>2023-12-02T00:06:08Z</version_modified>
+  <version_id>21dee291-3e59-413a-9353-efb85b3e8d7b</version_id>
+  <version_modified>2023-12-12T07:23:13Z</version_modified>
   <xml_checksum>2617824F</xml_checksum>
   <class_name>AddPackagedIceStorage</class_name>
   <display_name>Add Packaged Ice Storage</display_name>
@@ -221,7 +221,7 @@ If 'AutoSize' is selected for ice capacity, these inputs set an ice capacity siz
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>74476013</checksum>
+      <checksum>30BE5060</checksum>
     </file>
     <file>
       <filename>TESCurves.idf</filename>
@@ -245,7 +245,7 @@ If 'AutoSize' is selected for ice capacity, these inputs set an ice capacity siz
       <filename>add_packaged_ice_storage_test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>F4B38BC7</checksum>
+      <checksum>2D36B76B</checksum>
     </file>
     <file>
       <filename>single_speed_dx_350.osm</filename>
