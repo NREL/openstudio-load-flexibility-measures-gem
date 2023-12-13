@@ -2,6 +2,7 @@
 
 ## Version 0.8.0
 - Updating dependencies and licenses for OpenStudio 3.7 (upgrade to standards gem 0.5.0, extension gem 0.7.0)
+- Fix field indexes for CoilCoolingDXTwoSpeed in add_packaged_ice_storage
 
 ## Version 0.7.0
 - Updating dependencies and licenses for OpenStudio 3.6 (upgrade to standards gem 0.4.0, extension gem 0.6.1)
