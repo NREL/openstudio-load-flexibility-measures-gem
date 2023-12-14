@@ -534,22 +534,22 @@ class AddPackagedIceStorage < OpenStudio::Measure::EnergyPlusMeasure
       case sel_coil.iddObject.name
       when 'Coil:Cooling:DX:SingleSpeed'
         runner.registerInfo("Grabing inputs for #{utss.getString(0)} from #{sel_coil.iddObject.name} object named #{sel_coil.getString(0)}")
-        utss.setString(16, sel_coil.getString(2).get)
-        utss.setString(18, sel_coil.getString(4).get)
-        utss.setString(19, sel_coil.getString(10).get)
-        utss.setString(20, sel_coil.getString(11).get)
-        utss.setString(21, sel_coil.getString(12).get)
-        utss.setString(22, sel_coil.getString(13).get)
-        utss.setString(23, sel_coil.getString(14).get)
+        utss.setString(16, sel_coil.getString(2).get) # Gross Rated Total Cooling Capacity
+        utss.setString(18, sel_coil.getString(4).get) # Gross Rated Cooling COP
+        utss.setString(19, sel_coil.getString(10).get) # Total Cooling Capacity Function of Temperature Curve Name
+        utss.setString(20, sel_coil.getString(11).get) # Total Cooling Capacity Function of Flow Fraction Curve Name
+        utss.setString(21, sel_coil.getString(12).get) # Energy Input Ratio Function of Temperature Curve Name
+        utss.setString(22, sel_coil.getString(13).get) # Energy Input Ratio Function of Flow Fraction Curve Name
+        utss.setString(23, sel_coil.getString(14).get) # Part Load Fraction Correlation Curve Name
       when 'Coil:Cooling:DX:TwoSpeed'
         runner.registerInfo("Grabing inputs for #{utss.getString(0)} from #{sel_coil.iddObject.name} object named #{sel_coil.getString(0)}")
-        utss.setString(16, sel_coil.getString(14).get)
-        utss.setString(18, sel_coil.getString(16).get)
-        utss.setString(19, sel_coil.getString(18).get)
-        utss.setString(20, sel_coil.getString(10).get)
-        utss.setString(21, sel_coil.getString(19).get)
-        utss.setString(22, sel_coil.getString(12).get)
-        utss.setString(23, sel_coil.getString(13).get)
+        utss.setString(16, sel_coil.getString(16).get) # Low Speed Gross Rated Total Cooling Capacity
+        utss.setString(18, sel_coil.getString(18).get) # Low Speed Gross Rated Cooling COP
+        utss.setString(19, sel_coil.getString(22).get) # Low Speed Total Cooling Capacity Function of Temperature Curve Name
+        utss.setString(20, sel_coil.getString(12).get) # Total Cooling Capacity Function of Flow Fraction Curve Name
+        utss.setString(21, sel_coil.getString(23).get) # Low Speed Energy Input Ratio Function of Temperature Curve Name
+        utss.setString(22, sel_coil.getString(14).get) # Energy Input Ratio Function of Flow Fraction Curve Name
+        utss.setString(23, sel_coil.getString(15).get) # Part Load Fraction Correlation Curve Name
       end
 
       # identify container object in which the coil is used
