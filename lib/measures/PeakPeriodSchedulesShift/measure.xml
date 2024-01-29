@@ -3,8 +3,8 @@
   <schema_version>3.1</schema_version>
   <name>peak_period_schedules_shift</name>
   <uid>4954275f-9caf-422c-9e1f-061244ade152</uid>
-  <version_id>8def67a4-b5d7-4d61-8e13-ddecad864a63</version_id>
-  <version_modified>2023-07-12T21:10:48Z</version_modified>
+  <version_id>605a9988-c6cd-4412-aeb0-2583b94a46a1</version_id>
+  <version_modified>2024-01-29T17:01:52Z</version_modified>
   <xml_checksum>A8988589</xml_checksum>
   <class_name>PeakPeriodSchedulesShift</class_name>
   <display_name>PeakPeriodSchedulesShift</display_name>
@@ -176,7 +176,7 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>A6B793A8</checksum>
+      <checksum>4C5C8F2D</checksum>
     </file>
     <file>
       <filename>PeakPeriodSchedulesShift_Test.rb</filename>
