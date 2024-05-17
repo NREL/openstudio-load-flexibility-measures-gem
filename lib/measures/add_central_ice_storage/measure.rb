@@ -698,7 +698,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
                        'summer_design_day' => summer_design_day,
                        'default_day' => default_day,
                        'rules' => rules }
-      ctes_av_new = OpenstudioStandards::Schedules.createComplexSchedule(model, options_ctes)
+      ctes_av_new = OpenstudioStandards::Schedules.create_complex_schedule(model, options_ctes)
       ctes_av_new.setScheduleTypeLimits(sched_limits_onoff)
 
       # Create ctes setpoint temperature schedule
@@ -714,7 +714,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
                             'summer_design_day' => summer_design_day,
                             'default_day' => default_day,
                             'rules' => rules }
-      ctes_sch_new = OpenstudioStandards::Schedules.createComplexSchedule(model, options_ctes_ctes)
+      ctes_sch_new = OpenstudioStandards::Schedules.create_complex_schedule(model, options_ctes_ctes)
       ctes_sch_new.setScheduleTypeLimits(sched_limits_temp)
 
       # Create chiller setpoint temperature schedule
@@ -730,7 +730,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
                                'summer_design_day' => summer_design_day,
                                'default_day' => default_day,
                                'rules' => rules }
-      chill_sch_new = OpenstudioStandards::Schedules.createComplexSchedule(model, options_ctes_chiller)
+      chill_sch_new = OpenstudioStandards::Schedules.create_complex_schedule(model, options_ctes_chiller)
       chill_sch_new.setScheduleTypeLimits(sched_limits_temp)
 
       # Create loop setpoint temperature schedule - if new = true
@@ -740,7 +740,7 @@ class AddCentralIceStorage < OpenStudio::Measure::ModelMeasure
                               'winterTimeValuePairs' => [[24, loop_sp]],
                               'summerTimeValuePairs' => [[24, loop_sp]],
                               'defaultTimeValuePairs' => [[24, loop_sp]] }
-        loop_sch_new = OpenstudioStandards::Schedules.createSimpleSchedule(model, options_ctes_loop)
+        loop_sch_new = OpenstudioStandards::Schedules.create_simple_schedule(model, options_ctes_loop)
         loop_sch_new.setScheduleTypeLimits(sched_limits_temp)
       end
 
