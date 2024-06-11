@@ -3,8 +3,8 @@
   <schema_version>3.1</schema_version>
   <name>add_central_ice_storage</name>
   <uid>48f37812-0cb6-4770-b695-beb8d8a5660d</uid>
-  <version_id>64f768d0-6597-4c50-83f1-c433aa040486</version_id>
-  <version_modified>2024-05-17T08:06:53Z</version_modified>
+  <version_id>f094a339-b1ff-4de7-8122-8e6c1e7b26b5</version_id>
+  <version_modified>2024-06-10T22:33:01Z</version_modified>
   <xml_checksum>6394841D</xml_checksum>
   <class_name>AddCentralIceStorage</class_name>
   <display_name>Add Central Ice Storage</display_name>
@@ -491,7 +491,7 @@
       <filename>add_central_ice_storage_test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>3A924340</checksum>
+      <checksum>408B3296</checksum>
     </file>
     <file>
       <filename>ice_test_model.osm</filename>
