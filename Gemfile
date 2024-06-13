@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+# Specify your gem's dependencies in openstudio-model-articulation.gemspec
 gemspec
 
 # Local gems are useful when developing and integrating the various dependencies.
@@ -10,29 +11,9 @@ gemspec
 # checkout the latest version (develop) from github.
 allow_local = ENV['FAVOR_LOCAL_GEMS']
 
-
-# Delete when these branchesa are merged and released
-#gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'v0.6.0-rc1'
-#gem 'openstudio-standards', '= 0.2.17.rc1', :github => 'NREL/openstudio-standards', :ref => '3.5.0_changes'
-
-
-
-# uncomment when you want CI to use develop branch of extension gem
-# gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'develop'
-
-# uncomment when you want CI to use develop branch of openstudio-standards gem
-# gem 'openstudio-standards', github: 'NREL/OpenStudio-standards', branch: 'master'
-
 # Only uncomment if you need to test a different version of the extension gem
 # if allow_local && File.exist?('../OpenStudio-extension-gem')
 #   gem 'openstudio-extension', path: '../OpenStudio-extension-gem'
 # elsif allow_local
 #   gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'develop'
-# end
-
-# Only uncomment if you need to test a different version of OpenStudio-standards
-# if allow_local && File.exist?('../openstudio-standards')
-#   gem 'openstudio-standards', path: '../openstudio-standards'
-# elsif allow_local
-#   gem 'openstudio-standards', github: 'NREL/OpenStudio-standards', branch: 'develop'
 # end
