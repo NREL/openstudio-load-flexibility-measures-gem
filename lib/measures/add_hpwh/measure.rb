@@ -514,7 +514,7 @@ class AddHpwh < OpenStudio::Measure::ModelMeasure
       # => openstudio-standards/prototypes/common/objects/Prototype.ServiceWaterHeating.rb
       if type != 'Simplified'
         # convert zone name from STRING into OS model OBJECT
-        hpwh = std.model_add_heatpump_water_heater(model, # model
+        hpwh = OpenstudioStandards::ServiceWaterHeating.create_heatpump_water_heater(model, # model
                                                    type: type,                                                           # type
                                                    water_heater_capacity: (cap * 1000 / cop),                            # water_heater_capacity
                                                    electric_backup_capacity: (bu_cap * 1000),                            # electric_backup_capacity
@@ -530,7 +530,7 @@ class AddHpwh < OpenStudio::Measure::ModelMeasure
                                                    flowrate_schedule: nil,                                               # flowrate_schedule
                                                    water_heater_thermal_zone: zone)                                      # water_heater_thermal_zone
       else
-        hpwh = std.model_add_water_heater(model, # model
+        hpwh = OpenstudioStandards::ServiceWaterHeating.create_water_heater(model, # model
                                           (cap * 1000),                                                         # water_heater_capacity
                                           v.to_f,                                                               # water_heater_volume
                                           'HeatPump',                                                           # water_heater_fuel
