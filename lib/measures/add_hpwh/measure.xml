@@ -3,8 +3,8 @@
   <schema_version>3.1</schema_version>
   <name>add_hpwh</name>
   <uid>518cde6f-1806-4b9a-bee9-ccaac49c7a53</uid>
-  <version_id>9e1d4f20-4538-4681-bc41-951d02a81121</version_id>
-  <version_modified>2024-06-10T22:33:01Z</version_modified>
+  <version_id>49617911-6411-4f6d-a171-608d811d82b1</version_id>
+  <version_modified>2024-11-05T17:56:37Z</version_modified>
   <xml_checksum>A374667A</xml_checksum>
   <class_name>AddHpwh</class_name>
   <display_name>Add HPWH for Domestic Hot Water</display_name>
@@ -384,7 +384,7 @@ The flexibility of the system is based on user-defined temperatures and times, w
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>A460A43B</checksum>
+      <checksum>7A066B5F</checksum>
     </file>
     <file>
       <filename>SmallHotel-2A.osm</filename>
