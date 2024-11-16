@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <measure>
-  <schema_version>3.0</schema_version>
+  <schema_version>3.1</schema_version>
   <name>shift_schedule_by_type</name>
   <uid>1c642348-f074-4ad1-98ee-2208ddc89ac7</uid>
-  <version_id>92c84435-26f6-4f6f-a853-98101f16967e</version_id>
-  <version_modified>20230602T162400Z</version_modified>
+  <version_id>26b33d75-4173-4721-a59b-999f6576d90c</version_id>
+  <version_modified>2024-11-16T23:41:35Z</version_modified>
   <xml_checksum>B6CD1F98</xml_checksum>
   <class_name>ShiftScheduleByType</class_name>
   <display_name>ShiftScheduleByType</display_name>
@@ -71,16 +71,10 @@
   </attributes>
   <files>
     <file>
-      <filename>README.md.erb</filename>
-      <filetype>erb</filetype>
-      <usage_type>readmeerb</usage_type>
-      <checksum>703C9964</checksum>
-    </file>
-    <file>
-      <filename>3Story2Space.osm</filename>
-      <filetype>osm</filetype>
-      <usage_type>test</usage_type>
-      <checksum>B4AB814E</checksum>
+      <filename>LICENSE.md</filename>
+      <filetype>md</filetype>
+      <usage_type>license</usage_type>
+      <checksum>8696A072</checksum>
     </file>
     <file>
       <filename>README.md</filename>
@@ -89,16 +83,10 @@
       <checksum>74D43592</checksum>
     </file>
     <file>
-      <filename>ShiftScheduleByType_Test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>7A931A23</checksum>
-    </file>
-    <file>
-      <filename>LICENSE.md</filename>
-      <filetype>md</filetype>
-      <usage_type>license</usage_type>
-      <checksum>BFFB1AA6</checksum>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>703C9964</checksum>
     </file>
     <file>
       <version>
@@ -110,6 +98,18 @@
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
       <checksum>50925435</checksum>
+    </file>
+    <file>
+      <filename>3Story2Space.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>B4AB814E</checksum>
+    </file>
+    <file>
+      <filename>ShiftScheduleByType_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>7A931A23</checksum>
     </file>
   </files>
 </measure>
