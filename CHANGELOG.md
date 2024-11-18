@@ -1,5 +1,8 @@
 # OpenStudio Load Flexibility Measures Gem
 
+## Version 0.10.0
+- Support for OpenStudio 3.9 (upgrade to standards gem 0.7.0, extension gem 0.8.1)
+
 ## Version 0.9.0
 - Updating dependencies and licenses for OpenStudio 3.8 (upgrade to standards gem 0.6.0)
 
