@@ -12,8 +12,8 @@ gemspec
 allow_local = ENV['FAVOR_LOCAL_GEMS']
 
 # Only uncomment if you need to test a different version of the extension gem
-# if allow_local && File.exist?('../OpenStudio-extension-gem')
-#   gem 'openstudio-extension', path: '../OpenStudio-extension-gem'
-# elsif allow_local
-#   gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'develop'
-# end
+if allow_local && File.exist?('../OpenStudio-extension-gem')
+  gem 'openstudio-extension', path: '../OpenStudio-extension-gem'
+elsif allow_local
+  gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'develop'
+end
