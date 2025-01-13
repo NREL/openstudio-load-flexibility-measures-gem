@@ -32,7 +32,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'octokit', '4.18.0' # for change logs
   spec.add_dependency 'multipart-post', '2.4.0'
   spec.add_dependency 'parallel', '1.19.1'
-  spec.add_dependency 'addressable', '2.8.1'
 
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.9'
