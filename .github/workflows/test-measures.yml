@@ -11,22 +11,25 @@ jobs:
       BUILD_NUMBER: ${{ github.run_number }}
       DEPLOY_PATH: ${{ github.ref_name }}/${{ github.run_number }}
 
-    container:  nrel/openstudio:3.10.0
+    #container:  nrel/openstudio:3.10.0
     steps:
     - name: check out repository
       uses: actions/checkout@v2
-    - name: environment info
+    - name: Run Docker container and copy output
       shell: bash 
       run: |
-          openstudio --version
-          ruby -v
-          bundle -v
-          openstudio gem_list
-    - name: tests measures
-      shell: bash 
-      run: |
-          openstudio --verbose measure -r ./lib/measures
+        # Run the container and name it
+        docker run --name test-measures --rm \
+          -v ${{ github.workspace }}:/app \
+          -w /app \
+          nrel/openstudio:3.10.0 \
+          bash -c "openstudio --version; ruby -v; openstudio gem_list; openstudio --verbose measure -r ./lib/measures"
 
+        # Copy the static site output from container to host
+        docker cp test-measures:/app/test ./test
+
+        ls -al ./test
+    
     - name: Sync files to S3 with branch and build in path
       shell: bash 
       run: |
