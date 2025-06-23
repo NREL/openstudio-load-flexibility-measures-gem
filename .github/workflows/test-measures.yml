@@ -37,10 +37,10 @@ jobs:
             --cache-control "max-age=0, no-cache, no-store, must-revalidate"
 
     - name: Archive static site as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: static-html-artifact
-          path: ./test
+      uses: actions/upload-artifact@v4
+      with:
+        name: static-html-artifact
+        path: ./test
 
 
 #  test-gems-develop:
