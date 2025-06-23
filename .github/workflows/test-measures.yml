@@ -18,7 +18,7 @@ jobs:
     - name: tests measures
       shell: bash 
       run: |
-          openstudio --verbose -r ./lib/measures
+          openstudio --verbose measure -r ./lib/measures
 #  test-gems-develop:
 #    runs-on: ubuntu-latest
 #    container:  nrel/openstudio:3.10.0
