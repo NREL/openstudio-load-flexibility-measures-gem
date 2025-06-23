@@ -1,0 +1,42 @@
+name: Test Measure Gems
+on: push
+
+jobs:
+  test-gems-latest:
+    runs-on: ubuntu-latest
+    container:  nrel/openstudio:3.10.0
+    steps:
+    - name: check out repository
+      uses: actions/checkout@v2
+    - name: environment info
+      shell: bash 
+      run: |
+          openstudio --version
+          ruby -v
+          bundle -v
+          openstudio gem_list
+    - name: tests measures
+      shell: bash 
+      run: |
+          openstudio --verbose -r ./lib/measures
+#  test-gems-develop:
+#    runs-on: ubuntu-latest
+#    container:  nrel/openstudio:3.10.0
+#    steps:
+#    - name: check out repository
+#      uses: actions/checkout@v2
+#    - name: environment info
+#      shell: bash 
+#      run: |
+#          openstudio --version
+#          ruby -v
+#          bundle -v
+#    - name: install dependencies
+#      shell: bash 
+#      run: |
+#          gem install parallel
+#          gem install rubyXL
+#    - name: run workflows
+#      shell: bash 
+#      run: |
+#          ruby run_all_generate_reports.rb 3.10.0_prep
