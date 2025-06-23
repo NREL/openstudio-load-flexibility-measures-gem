@@ -28,7 +28,8 @@ jobs:
           openstudio --verbose measure -r ./lib/measures
 
     - name: Sync files to S3 with branch and build in path
-        run: |
+      shell: bash 
+      run: |
           echo "Deploying to s3://${{ secrets.S3_BUCKET }}/${DEPLOY_PATH}/"
           aws s3 sync ./public s3://${{ secrets.S3_BUCKET }}/$DEPLOY_PATH/ \
             --delete \
