@@ -1,9 +1,16 @@
 name: Test Measure Gems
 on: push
 
+
 jobs:
   test-gems-latest:
     runs-on: ubuntu-latest
+
+    env:
+      BRANCH_NAME: ${{ github.ref_name }}
+      BUILD_NUMBER: ${{ github.run_number }}
+      DEPLOY_PATH: ${{ github.ref_name }}/${{ github.run_number }
+
     container:  nrel/openstudio:3.10.0
     steps:
     - name: check out repository
@@ -19,6 +26,22 @@ jobs:
       shell: bash 
       run: |
           openstudio --verbose measure -r ./lib/measures
+
+    - name: Sync files to S3 with branch and build in path
+        run: |
+          echo "Deploying to s3://${{ secrets.S3_BUCKET }}/${DEPLOY_PATH}/"
+          aws s3 sync ./public s3://${{ secrets.S3_BUCKET }}/$DEPLOY_PATH/ \
+            --delete \
+            --acl public-read \
+            --cache-control "max-age=0, no-cache, no-store, must-revalidate"
+
+    - name: Archive static site as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-html-artifact
+          path: ./test
+
+
 #  test-gems-develop:
 #    runs-on: ubuntu-latest
 #    container:  nrel/openstudio:3.10.0
