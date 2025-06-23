@@ -26,6 +26,7 @@ jobs:
           bash -c "openstudio --version; ruby -v; openstudio gem_list; openstudio --verbose measure -r ./lib/measures"
 
         # Copy the static site output from container to host
+        docker ps -a 
         docker cp test-measures:/app/test ./test
 
         ls -al ./test
