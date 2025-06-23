@@ -19,14 +19,13 @@ jobs:
       shell: bash 
       run: |
         # Run the container and name it
-        docker run --name test-measures --rm \
+        docker run --name test-measures \
           -v ${{ github.workspace }}:/app \
           -w /app \
           nrel/openstudio:3.10.0 \
           bash -c "openstudio --version; ruby -v; openstudio gem_list; openstudio --verbose measure -r ./lib/measures"
 
         # Copy the static site output from container to host
-        docker ps -a 
         docker cp test-measures:/app/test ./test
 
         ls -al ./test
