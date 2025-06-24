@@ -7,7 +7,7 @@ jobs:
     env:
       BRANCH_NAME: ${{ github.ref_name }}
       BUILD_NUMBER: ${{ github.run_number }}
-      DEPLOY_PATH: ${{ github.ref_name }}/${{ github.run_number }} # Path for S3 deployment
+      DEPLOY_PATH: ${{ github.repository }}/${{ github.ref_name }}/${{ github.run_number }} # Path for S3 deployment
 
     container: # Define the Docker container for the job. All subsequent steps run inside it.
       image: nrel/openstudio:3.10.0
@@ -85,6 +85,7 @@ jobs:
             --acl public-read \
             --cache-control "max-age=0, no-cache, no-store, must-revalidate"
           echo "S3 sync complete."
+          echo "https://ext-gem-dashboard.s3.amazonaws.com/${env.DEPLOY_PATH}/cli_bundler/dashboard/index.html"
 
       - name: Archive static site as artifact
         uses: actions/upload-artifact@v4
