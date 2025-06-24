@@ -57,6 +57,7 @@ jobs:
           echo "OpenStudio Version: $(openstudio --version)"
           echo "Ruby Version: $(ruby -v)"
           echo "Listing OpenStudio Gems: $(openstudio gem_list)"
+          echo "Running spec tests: $(rake spec)"
           echo "Running measures with verbose output:"
           # This command will execute within the container.
           # Ensure that './lib/measures' is the correct path relative to the checkout.
