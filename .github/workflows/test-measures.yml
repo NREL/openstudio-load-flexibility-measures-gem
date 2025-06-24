@@ -20,6 +20,35 @@ jobs:
         with:
           submodules: true # Set to true if your repository uses Git submodules
 
+      - name: Install Node.js and AWS CLI
+        # Install required dependencies for AWS actions to work in the OpenStudio container
+        shell: bash
+        run: |
+          echo "Installing Node.js and AWS CLI..."
+
+          # Update package list
+          apt-get update
+
+          # Install curl and other dependencies
+          apt-get install -y curl unzip
+
+          # Install Node.js (using NodeSource repository for latest LTS)
+          curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+          apt-get install -y nodejs
+
+          # Install AWS CLI v2
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          unzip awscliv2.zip
+          ./aws/install
+
+          # Verify installations
+          echo "Node.js version: $(node --version)"
+          echo "npm version: $(npm --version)"
+          echo "AWS CLI version: $(aws --version)"
+
+          # Clean up
+          rm -rf awscliv2.zip aws/
+
       - name: Verify Environment and Run Measures
         # All 'run' commands in this job now execute inside the specified Docker container.
         shell: bash # Specify the shell if needed, though bash is default for Ubuntu runners
