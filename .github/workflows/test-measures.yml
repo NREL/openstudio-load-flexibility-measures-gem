@@ -103,4 +103,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: static-html-artifact
-          path: ./test # Path should be relative to the GitHub workspace, which is shared with the container
+          path: $dir_name # Path should be relative to the GitHub workspace, which is shared with the container
