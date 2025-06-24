@@ -54,10 +54,19 @@ jobs:
         # All 'run' commands in this job now execute inside the specified Docker container.
         shell: bash # Specify the shell if needed, though bash is default for Ubuntu runners
         run: |
+          # Fix git ownership issue in container
+          git config --global --add safe.directory /__w/openstudio-load-flexibility-measures-gem/openstudio-load-flexibility-measures-gem
+          
           echo "OpenStudio Version: $(openstudio --version)"
           echo "Ruby Version: $(ruby -v)"
           echo "Listing OpenStudio Gems: $(openstudio gem_list)"
-          echo "Running spec tests: $(rake spec)"
+          
+          # Install dependencies before running tests
+          echo "Installing gem dependencies..."
+          bundle install
+          
+          echo "Running spec tests..."
+          rake spec
           echo "Running measures with verbose output:"
           # This command will execute within the container.
           # Ensure that './lib/measures' is the correct path relative to the checkout.
