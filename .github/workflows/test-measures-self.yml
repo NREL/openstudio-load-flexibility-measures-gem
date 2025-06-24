@@ -104,5 +104,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: static-html-artifact
-          path: ${{ env.dir_name }} # Path should be relative to the GitHub workspace, which is shared with the container        env:
+          path: ${{ env.dir_name }} # Path should be relative to the GitHub workspace, which is shared with the container
+        env:
           NODE_TLS_REJECT_UNAUTHORIZED: '0'
