@@ -98,6 +98,7 @@ jobs:
             --cache-control "max-age=0, no-cache, no-store, must-revalidate"
           echo "S3 sync complete."
           echo "https://${{ env.S3_BUCKET }}.s3.amazonaws.com/${{ env.DEPLOY_PATH }}/dashboard/index.html"
+          echo dir_name=$dir_name >> $GITHUB_ENV # Save the directory name to an environment variable for later use
 
       - name: Archive static site as artifact
         uses: actions/upload-artifact@v4
