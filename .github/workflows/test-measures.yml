@@ -81,7 +81,7 @@ jobs:
           echo "Deploying to s3://${{ env.S3_BUCKET }}/${{ env.DEPLOY_PATH }}/"
           # Ensure './test' is the correct source directory for the files to upload to S3.
           # It must match the output directory from the 'Run Measures' step.
-          aws s3 sync ./test s3:///${{ env.DEPLOY_PATH }}/ \
+          aws s3 sync ./test s3://${{ env.S3_BUCKET }}/${{ env.DEPLOY_PATH }}/ \
             --delete \
             --acl public-read \
             --cache-control "max-age=0, no-cache, no-store, must-revalidate"
