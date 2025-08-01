@@ -8,7 +8,7 @@
 require 'openstudio'
 require 'openstudio/measure/ShowRunnerOutput'
 require 'minitest/autorun'
-require_relative '../measure.rb'
+require_relative '../measure'
 require 'fileutils'
 
 class PeakPeriodSchedulesShiftTest < Minitest::Test
@@ -30,7 +30,7 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
 
     # load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new(File.dirname(__FILE__) + '/base.osm')
+    path = OpenStudio::Path.new("#{File.dirname(__FILE__)}/base.osm")
     model = translator.loadModel(path)
     assert(!model.empty?)
     model = model.get
@@ -98,7 +98,7 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
 
     # load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new(File.dirname(__FILE__) + '/base.osm')
+    path = OpenStudio::Path.new("#{File.dirname(__FILE__)}/base.osm")
     model = translator.loadModel(path)
     assert(!model.empty?)
     model = model.get
@@ -166,7 +166,7 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
 
     # load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new(File.dirname(__FILE__) + '/base.osm')
+    path = OpenStudio::Path.new("#{File.dirname(__FILE__)}/base.osm")
     model = translator.loadModel(path)
     assert(!model.empty?)
     model = model.get
@@ -234,7 +234,7 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
 
     # load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new(File.dirname(__FILE__) + '/base.osm')
+    path = OpenStudio::Path.new("#{File.dirname(__FILE__)}/base.osm")
     model = translator.loadModel(path)
     assert(!model.empty?)
     model = model.get
@@ -309,7 +309,7 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
     assert_equal(result.info.size, 9)
 
     # save the model
-    output_file_path = OpenStudio::Path.new(File.dirname(__FILE__) + '/test_smooth_schedules.osm')
+    output_file_path = OpenStudio::Path.new("#{File.dirname(__FILE__)}/test_smooth_schedules.osm")
     model.save(output_file_path, true)
 
     # after
@@ -349,7 +349,7 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
 
     # load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new(File.dirname(__FILE__) + '/base-schedules-detailed-occupancy-stochastic.osm')
+    path = OpenStudio::Path.new("#{File.dirname(__FILE__)}/base-schedules-detailed-occupancy-stochastic.osm")
     model = translator.loadModel(path)
     assert(!model.empty?)
     model = model.get
@@ -424,7 +424,7 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
     assert_equal(result.info.size, 5)
 
     # save the model
-    output_file_path = OpenStudio::Path.new(File.dirname(__FILE__) + '/test_stochastic_schedules.osm')
+    output_file_path = OpenStudio::Path.new("#{File.dirname(__FILE__)}/test_stochastic_schedules.osm")
     model.save(output_file_path, true)
 
     # after
@@ -484,7 +484,7 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
 
     # load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new(File.dirname(__FILE__) + '/base-schedules-detailed-occupancy-stochastic.osm')
+    path = OpenStudio::Path.new("#{File.dirname(__FILE__)}/base-schedules-detailed-occupancy-stochastic.osm")
     model = translator.loadModel(path)
     assert(!model.empty?)
     model = model.get
@@ -557,7 +557,7 @@ class PeakPeriodSchedulesShiftTest < Minitest::Test
     assert_equal(result.info.size, 5)
 
     # save the model
-    output_file_path = OpenStudio::Path.new(File.dirname(__FILE__) + '/test_stochastic_schedules_no_stacking.osm')
+    output_file_path = OpenStudio::Path.new("#{File.dirname(__FILE__)}/test_stochastic_schedules_no_stacking.osm")
     model.save(output_file_path, true)
 
     # after
