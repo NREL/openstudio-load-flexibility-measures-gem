@@ -7,7 +7,7 @@ require 'openstudio'
 require 'openstudio/measure/ShowRunnerOutput'
 require 'fileutils'
 
-require_relative '../measure'
+require_relative '../measure.rb'
 require 'minitest/autorun'
 
 class ShiftScheduleByType_Test < Minitest::Test
@@ -20,7 +20,7 @@ class ShiftScheduleByType_Test < Minitest::Test
 
     # load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new("#{File.dirname(__FILE__)}/3Story2Space.osm")
+    path = OpenStudio::Path.new(File.dirname(__FILE__) + '/3Story2Space.osm')
     model = translator.loadModel(path)
     assert(!model.empty?)
     model = model.get
@@ -58,7 +58,7 @@ class ShiftScheduleByType_Test < Minitest::Test
 
     # load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new("#{File.dirname(__FILE__)}/3Story2Space.osm")
+    path = OpenStudio::Path.new(File.dirname(__FILE__) + '/3Story2Space.osm')
     model = translator.loadModel(path)
     assert(!model.empty?)
     model = model.get
@@ -96,7 +96,7 @@ class ShiftScheduleByType_Test < Minitest::Test
 
     # load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new("#{File.dirname(__FILE__)}/3Story2Space.osm")
+    path = OpenStudio::Path.new(File.dirname(__FILE__) + '/3Story2Space.osm')
     model = translator.loadModel(path)
     assert(!model.empty?)
     model = model.get
@@ -134,7 +134,7 @@ class ShiftScheduleByType_Test < Minitest::Test
 
     # load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new("#{File.dirname(__FILE__)}/3Story2Space.osm")
+    path = OpenStudio::Path.new(File.dirname(__FILE__) + '/3Story2Space.osm')
     model = translator.loadModel(path)
     assert(!model.empty?)
     model = model.get

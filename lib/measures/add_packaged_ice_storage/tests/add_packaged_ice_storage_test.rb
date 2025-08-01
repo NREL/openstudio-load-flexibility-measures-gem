@@ -49,7 +49,7 @@ class AddPackagedIceStorageTest < MiniTest::Test
     ep_path = OpenStudio.getEnergyPlusExecutable
 
     puts "EnergyPlus is: #{ep_path}"
-    job = "energyplus -w #{epw_path} -d #{run_dir} #{idf_path}"
+    job = "energyplus -w #{epw_path.to_s} -d #{run_dir} #{idf_path.to_s}"
     puts job
     system(job)
 
@@ -114,7 +114,7 @@ class AddPackagedIceStorageTest < MiniTest::Test
     end
 
     return true
-  end
+  end  
 
   def test_good_argument_values
     # create an instance of the measure
@@ -155,9 +155,9 @@ class AddPackagedIceStorageTest < MiniTest::Test
 
     # run the annual simulation
     # commented out for now E+ run in test doesn't function on CI yet
-    # output_file_path = "#{File.dirname(__FILE__)}/output/test_good_argument_values"
-    # sim_results = self.model_run_simulation_and_log_errors(model, workspace, output_file_path)
-    # assert(sim_results)
+    #output_file_path = "#{File.dirname(__FILE__)}/output/test_good_argument_values"
+    #sim_results = self.model_run_simulation_and_log_errors(model, workspace, output_file_path)
+    #assert(sim_results)
 
     result = runner.result
     assert_equal('Success', result.value.valueName)
@@ -192,7 +192,7 @@ class AddPackagedIceStorageTest < MiniTest::Test
 
     # create hash of argument values
     args_hash = {}
-    # args_hash['ice_cap'] = '40,50'
+    #args_hash['ice_cap'] = '40,50'
 
     # populate argument with specified has value if set
     arguments.each do |arg|
@@ -206,9 +206,9 @@ class AddPackagedIceStorageTest < MiniTest::Test
 
     # run the annual simulation
     # commented out for now E+ run in test doesn't function on CI yet
-    # output_file_path = "#{File.dirname(__FILE__)}/output/single_speed_dx"
-    # sim_results = self.model_run_simulation_and_log_errors(model, workspace, output_file_path)
-    # assert(sim_results)
+    #output_file_path = "#{File.dirname(__FILE__)}/output/single_speed_dx"
+    #sim_results = self.model_run_simulation_and_log_errors(model, workspace, output_file_path)
+    #assert(sim_results)
 
     result = runner.result
     assert_equal('Success', result.value.valueName)
