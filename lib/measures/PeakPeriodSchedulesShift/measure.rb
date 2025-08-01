@@ -134,12 +134,12 @@ class PeakPeriodSchedulesShift < OpenStudio::Measure::ModelMeasure
     end
 
     peak_period_length = end_hour - begin_hour
-    if (peak_period_length + schedules_peak_period_delay > 12)
+    if peak_period_length + schedules_peak_period_delay > 12
       runner.registerError("Specified peak period (#{begin_hour} - #{end_hour}), plus the delay (#{schedules_peak_period_delay}), must be no longer than 12 hours.")
       return false
     end
 
-    if (peak_period_length + end_hour + schedules_peak_period_delay > 24)
+    if peak_period_length + end_hour + schedules_peak_period_delay > 24
       runner.registerError('Cannot shift day schedules into the next day.')
       return false
     end
@@ -166,9 +166,9 @@ class PeakPeriodSchedulesShift < OpenStudio::Measure::ModelMeasure
 
       shifted_schedule = false
       schedule_ruleset = schedule_rulesets.find { |schedule_ruleset| schedule_ruleset.name.to_s == schedule_ruleset_name }
-      schedule_ruleset.scheduleRules.reverse.each do |schedule_rule|
-        if schedules_peak_period_weekdays_only
-          next unless schedule_rule.applyMonday || schedule_rule.applyTuesday || schedule_rule.applyWednesday || schedule_rule.applyThursday || schedule_rule.applyFriday # at least one weekday applies
+      schedule_ruleset.scheduleRules.reverse_each do |schedule_rule|
+        if schedules_peak_period_weekdays_only && !(schedule_rule.applyMonday || schedule_rule.applyTuesday || schedule_rule.applyWednesday || schedule_rule.applyThursday || schedule_rule.applyFriday)
+          next # at least one weekday applies
         end
 
         new_schedule_rule = schedule_rule.clone.to_ScheduleRule.get
@@ -249,7 +249,7 @@ class PeakPeriodSchedulesShift < OpenStudio::Measure::ModelMeasure
 
       schedules = Schedules.new(file_path: external_file_path)
       schedules.shift_schedules(model, runner, schedule_file_column_names_enabled, begin_hour, end_hour, schedules_peak_period_delay, schedules_peak_period_allow_stacking, total_days_in_year, sim_start_day, steps_in_day, schedules_peak_period_weekdays_only)
-      schedules.export()
+      schedules.export
     end
 
     return true
@@ -309,21 +309,21 @@ class Schedules
   def initialize(file_path:)
     @file_path = file_path
 
-    import()
+    import
   end
 
-  def import()
+  def import
     @schedules = {}
     columns = CSV.read(@file_path).transpose
     columns.each do |col|
       col_name = col[0]
 
-      values = col[1..-1].reject { |v| v.nil? }
+      values = col[1..].reject(&:nil?)
 
       begin
         values = values.map { |v| Float(v) }
       rescue ArgumentError
-        fail "Schedule value must be numeric for column '#{col_name}'. [context: #{schedules_path}]"
+        raise "Schedule value must be numeric for column '#{col_name}'. [context: #{schedules_path}]"
       end
 
       @schedules[col_name] = values
@@ -336,7 +336,7 @@ class Schedules
       schedule_file = model.getScheduleFiles.find { |schedule_file| schedule_file.name.to_s == schedule_file_column_name }
 
       next if schedule_file.nil?
-      next if !@schedules.keys.include?(schedule_file_column_name)
+      next if !@schedules.key?(schedule_file_column_name)
       next if !peak_period_shift_enabled
 
       schedule = @schedules[schedule_file_column_name]
@@ -387,8 +387,8 @@ class Schedules
     new_end_ix = new_begin_ix + period
 
     shifted = false
-    if !allow_stacking
-      return shifted if schedule[new_begin_ix...new_end_ix].any? { |x| x > 0 } # prevent stacking
+    if !allow_stacking && schedule[new_begin_ix...new_end_ix].any? { |x| x > 0 }
+      return shifted # prevent stacking
     end
 
     shifted = true if schedule[peak_begin_ix...peak_end_ix].any? { |x| x > 0 } # schedule was actually moved
@@ -398,7 +398,7 @@ class Schedules
     return shifted
   end
 
-  def export()
+  def export
     CSV.open(@file_path, 'wb') do |csv|
       csv << @schedules.keys
       rows = @schedules.values.transpose
@@ -413,9 +413,9 @@ class Schedules
   end
 
   def self.parse_time_range(time_range)
-    begin_end_times = time_range.split('-').map { |v| v.strip }
+    begin_end_times = time_range.split('-').map(&:strip)
     if begin_end_times.size != 2
-      fail "Invalid time format specified for '#{time_range}'."
+      raise "Invalid time format specified for '#{time_range}'."
     end
 
     begin_hour = begin_end_times[0].strip.to_i
