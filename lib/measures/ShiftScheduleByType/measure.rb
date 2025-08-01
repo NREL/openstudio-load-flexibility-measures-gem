@@ -10,7 +10,7 @@
 # http://openstudio.nrel.gov/sites/openstudio.nrel.gov/files/nv_data/cpp_documentation_it/model/html/namespaces.html
 
 # This measure was created as an adaptation of the "ShiftScheduleProfileTime" common
-# measure. This measure adds the ability to choose types (Cooling/Heating) of 
+# measure. This measure adds the ability to choose types (Cooling/Heating) of
 # schedules to shift instead of choosing all schedules or one schedule.
 
 # Start the measure
@@ -43,7 +43,7 @@ class ShiftScheduleByType < OpenStudio::Measure::ModelMeasure
 
     # Argument to choose which schedules will be shifted
     choices = OpenStudio::StringVector.new
-    choices << 'Cooling' 
+    choices << 'Cooling'
     choices << 'Heating'
     choices << 'CoolHeat'
     schedchoice = OpenStudio::Measure::OSArgument.makeChoiceArgument('schedchoice', choices)
@@ -62,10 +62,10 @@ class ShiftScheduleByType < OpenStudio::Measure::ModelMeasure
     if !runner.validateUserArguments(arguments(model), user_arguments)
       return false
     end
-    
+
     # Export CSV file with Schedule setpoints before schedule shifts
-    #model1 = runner.lastOpenStudioModel
-    #model = model1.get
+    # model1 = runner.lastOpenStudioModel
+    # model = model1.get
     interval = 60
     header = []
     header << 'Time'
@@ -89,7 +89,7 @@ class ShiftScheduleByType < OpenStudio::Measure::ModelMeasure
 
       time += dt
     end
-    
+
     runner.registerInfo("Writing CSV report 'schedulereportbefore.csv'")
     File.open('schedulereportbefore.csv', 'w') do |file|
       file.puts header.join(',')
@@ -97,7 +97,7 @@ class ShiftScheduleByType < OpenStudio::Measure::ModelMeasure
         file.puts row.join(',')
       end
     end
-    
+
     # populate choice argument for schedules that are applied to surfaces in the model
     schedule_handles = OpenStudio::StringVector.new
     schedule_display_names = OpenStudio::StringVector.new
@@ -137,7 +137,7 @@ class ShiftScheduleByType < OpenStudio::Measure::ModelMeasure
       raw_schedules.each do |raw_schedule|
         raw_schedules_hash[raw_schedule.name.to_s] = raw_schedule
       end
-  
+
       # Looping through sorted hash of schedules
       raw_schedules_hash.sort.map do |name, value|
         # Only include if the schedule is used in the model
@@ -145,25 +145,26 @@ class ShiftScheduleByType < OpenStudio::Measure::ModelMeasure
           schedule_handles << value.handle.to_s
           schedule_display_names << name
           runner.registerInfo("Searching Schedule: #{name}")
-          if !name.downcase.include?("setback")
-            if schedchoice == "Cool" # Cooling and Air Only
-              if (name.to_s.include?("CLG") || name.to_s.include?("Air"))
+          if !name.downcase.include?('setback')
+            case schedchoice
+            when 'Cool' # Cooling and Air Only
+              if name.to_s.include?('CLG') || name.to_s.include?('Air')
                 # ADD v to Cooling list
                 schedules << value
                 runner.registerInfo("Schedule #{name} does contain 'CLG' or 'Air'")
               else
                 runner.registerInfo("Schedule #{name} does not contain 'CLG' or 'Air'")
               end
-            elsif schedchoice == "Heat" # Heating and Air Only
-              if (name.to_s.include?("HTG") || name.to_s.include?("Air"))
+            when 'Heat' # Heating and Air Only
+              if name.to_s.include?('HTG') || name.to_s.include?('Air')
                 # ADD v to Heating list
                 schedules << value
                 runner.registerInfo("Schedule #{name} does contain 'HTG' or 'Air'")
               else
                 runner.registerInfo("Schedule #{name} does not contain 'HTG' or 'Air'")
               end
-            elsif schedchoice == "CoolHeat" # Cooling, Heating, and Air
-              if (name.to_s.include?("CLG") || name.to_s.include?("HTG") || name.to_s.include?("Air"))
+            when 'CoolHeat' # Cooling, Heating, and Air
+              if name.to_s.include?('CLG') || name.to_s.include?('HTG') || name.to_s.include?('Air')
                 # ADD v to Cooling/Heating list
                 schedules << value
                 runner.registerInfo("Schedule #{name} does contain 'CLG' or 'HTG' or 'Air'")
@@ -171,7 +172,7 @@ class ShiftScheduleByType < OpenStudio::Measure::ModelMeasure
                 runner.registerInfo("Schedule #{name} does not contain 'CLG' or 'HTG' or 'Air'")
               end
             else
-              runner.registerError('Unexpected value of schedchoice: ' + schedchoice + '.')
+              runner.registerError("Unexpected value of schedchoice: #{schedchoice}.")
               return false
             end
           end
@@ -259,28 +260,28 @@ class ShiftScheduleByType < OpenStudio::Measure::ModelMeasure
 
           if values.length == 2
             timeschg = values.length - 2
-          else 
+          else
             timeschg = values.length - 3
           end
 
           # Count number of arrays
-          for i in 0..timeschg 
+          for i in 0..timeschg
             new_time = times[i] + shift_time
             # Adjust wrap around times for times that are t > 24 or t < 0
             if new_time < time_0
-              new_time = new_time + time_24
+              new_time += time_24
               values.rotate(1) # Move first value to last value in array
-              runner.registerWarning("Times adjusted for wrap around due to new time < 0.")
+              runner.registerWarning('Times adjusted for wrap around due to new time < 0.')
             elsif new_time > time_24
-              new_time = new_time - time_24
+              new_time -= time_24
               values.rotate(-1) # Move last value to first value in array
-              runner.registerWarning("Times adjusted for wrap around due to new time > 24.")
+              runner.registerWarning('Times adjusted for wrap around due to new time > 24.')
             else # If 0 < new_time < 24
               new_time = new_time
             end
             # Make new values
             new_times = times.insert(i, new_time)
-            new_times.delete_at(i+1)
+            new_times.delete_at(i + 1)
           end
 
           new_values = values # Set new values equal to original schedule values
@@ -294,7 +295,7 @@ class ShiftScheduleByType < OpenStudio::Measure::ModelMeasure
           timeschg = values.length - 2
         end
 
-        for i in 0..(timeschg)
+        for i in 0..timeschg
           day_sch.addValue(new_times[i], new_values[i])
         end
         runner.registerInfo("New day_sch: #{day_sch}")
@@ -307,12 +308,12 @@ class ShiftScheduleByType < OpenStudio::Measure::ModelMeasure
     if apply_to_all_schedules
       runner.registerFinalCondition('Shifted time for all profiles for all schedules.')
     else
-      runner.registerFinalCondition("Shifted time for all profiles used by this schedule.")
+      runner.registerFinalCondition('Shifted time for all profiles used by this schedule.')
     end
-    
+
     # Export CSV file with Schedule setpoints after schedule shifts
-    #model = runner.lastOpenStudioModel
-    #model = model.get
+    # model = runner.lastOpenStudioModel
+    # model = model.get
     interval = 60
 
     header = []
@@ -346,7 +347,7 @@ class ShiftScheduleByType < OpenStudio::Measure::ModelMeasure
         file.puts row.join(',')
       end
     end
-    
+
     return true
   end
 end
