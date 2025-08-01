@@ -31,6 +31,8 @@ Detailed instructions for usage are included in each measure's respective README
 
 |OpenStudio Load Flexibility Measures Gem|OpenStudio|Ruby|
 |:--------------:|:----------:|:--------:|
+| 0.11.0| 3.10      | 3.2.2  |
+| 0.10.1| 3.9      | 3.2.2  |
 | 0.10.0| 3.9      | 3.2.2  |
 | 0.9.0| 3.8      | 3.2.2  |
 | 0.8.0| 3.7      | 2.7    |
@@ -43,9 +45,13 @@ Detailed instructions for usage are included in each measure's respective README
 | 0.1.1 - 0.1.3  | 3.0      | 2.5    |
 
 
-# Contributing 
+# Contributing
 
 Please review the [OpenStudio Contribution Policy](https://openstudio.net/openstudio-contribution-policy) if you would like to contribute code to this gem.
+
+## Local Testing
+
+To test the GitHub Actions workflow locally using `act`, see the [Local Testing Guide](docs/LOCAL_TESTING.md).
 
 # Releasing
 

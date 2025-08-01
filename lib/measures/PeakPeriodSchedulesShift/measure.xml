@@ -3,8 +3,8 @@
   <schema_version>3.1</schema_version>
   <name>peak_period_schedules_shift</name>
   <uid>4954275f-9caf-422c-9e1f-061244ade152</uid>
-  <version_id>afa2ee97-3397-4fc6-91ee-f2a9ea97397d</version_id>
-  <version_modified>2024-11-16T23:41:36Z</version_modified>
+  <version_id>380db2d7-6b81-4cd8-83d6-6a8e68585f7d</version_id>
+  <version_modified>2025-08-01T16:03:34Z</version_modified>
   <xml_checksum>A8988589</xml_checksum>
   <class_name>PeakPeriodSchedulesShift</class_name>
   <display_name>PeakPeriodSchedulesShift</display_name>
@@ -105,7 +105,7 @@
       <filename>LICENSE.md</filename>
       <filetype>md</filetype>
       <usage_type>license</usage_type>
-      <checksum>8696A072</checksum>
+      <checksum>BFFB1AA6</checksum>
     </file>
     <file>
       <filename>README.md</filename>
@@ -176,13 +176,13 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>22D1A6CA</checksum>
+      <checksum>A557EE11</checksum>
     </file>
     <file>
       <filename>PeakPeriodSchedulesShift_Test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>3061BC32</checksum>
+      <checksum>AA5A7B2A</checksum>
     </file>
     <file>
       <filename>base-schedules-detailed-occupancy-stochastic.osm</filename>

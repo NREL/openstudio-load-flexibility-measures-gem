@@ -1,5 +1,15 @@
 # OpenStudio Load Flexibility Measures Gem
 
+## Version 0.11.0
+* Support for OpenStudio 3.10 (upgrade to standards gem 0.8.2, extension gem 0.9.2)
+* Improved CI/CD workflows:
+  * Added GitHub Actions for measure testing
+  * Improved Docker container permissions and test workflow reliability
+  * Added local testing support and AWS integration
+  * Enhanced S3 deployment configuration for test artifacts
+  * Added rake spec test execution to CI workflow
+* Added example secrets file and local testing documentation
+
 ## Version 0.10.1
 * Update dependencies for 3.9
 
